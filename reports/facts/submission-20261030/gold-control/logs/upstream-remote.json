@@ -1,0 +1,9 @@
+{
+  "remotes": [
+    {
+      "name": "origin",
+      "identity": "gitee.com/mirrors/tqdm"
+    }
+  ],
+  "official_tqdm_remote_found": false
+}

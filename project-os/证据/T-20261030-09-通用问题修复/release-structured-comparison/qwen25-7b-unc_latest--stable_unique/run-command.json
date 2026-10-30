@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-m",
+    "replens",
+    "run",
+    "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\stable_unique",
+    "--issue",
+    "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+    "--auto-patch",
+    "--test-cmd",
+    "python -m pytest tests",
+    "--acceptance-suite",
+    "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\validation\\stable_unique.json",
+    "--require-verified",
+    "--format",
+    "json",
+    "--output",
+    "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\release-structured-comparison\\qwen25-7b-unc_latest--stable_unique\\report.json"
+  ],
+  "exit_code": 2,
+  "seconds": 12.922
+}

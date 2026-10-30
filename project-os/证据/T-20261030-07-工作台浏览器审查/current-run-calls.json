@@ -1,0 +1,37 @@
+{
+  "selection": "HAR /api/run start/end timestamp window",
+  "start": "2026-10-30T07:29:00.611000+00:00",
+  "end": "2026-10-30T07:29:21.613456+00:00",
+  "calls": [
+    {
+      "file": "46faea57c5814956ac8cfa63027db2ed.json",
+      "purpose": "patch",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    },
+    {
+      "file": "62d7ac484d0a49b4b0618815b36d3253.json",
+      "purpose": "patch",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    },
+    {
+      "file": "6d755bca58a84a628d98c73334bac436.json",
+      "purpose": "plan",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    },
+    {
+      "file": "c0e0e739bd9c4254b94726ee7284b598.json",
+      "purpose": "patch",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    },
+    {
+      "file": "e8550d1d81864fd8bf3ae65054cf0cb4.json",
+      "purpose": "patch",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "exit_code": 0,
+  "seconds": 127.257,
+  "mode": "offline regression; model configuration removed"
+}

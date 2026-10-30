@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-m",
+    "pytest",
+    "--version"
+  ],
+  "returncode": 0,
+  "stdout": "pytest 9.1.1\n",
+  "stderr": ""
+}

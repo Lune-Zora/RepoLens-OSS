@@ -1,0 +1,31 @@
+{
+  "model": "qwen25-7b-unc:latest",
+  "task": "config_values",
+  "seconds": 20.674,
+  "exit_code": 2,
+  "repair_status": "UNVERIFIED",
+  "blocked_reason": "",
+  "reasons": [
+    "定位证据不足，不能确认修复"
+  ],
+  "patch_note": "当前实现中，`read_flag` 函数在检查值时没有考虑空格或其他非字母字符。这会导致在输入包含这些字符时抛出 ValueError。",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "cb1649bd0e074756bfd1c5f78586e7f6.json",
+      "purpose": "intent",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "fd84a0b008ad48a097dd335d6b6932f7.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

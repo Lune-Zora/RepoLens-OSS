@@ -1,0 +1,71 @@
+{
+  "after": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "framework": "unittest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+      "stdout": "",
+      "structured": true,
+      "summary": {
+        "collected": 5,
+        "errors": 0,
+        "failed": 0,
+        "passed": 5,
+        "ran": 5,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_helper": "PASS",
+        "test_behavior.IndependentBehavior.test_input_unchanged": "PASS",
+        "test_behavior.IndependentBehavior.test_order": "PASS",
+        "test_behavior.IndependentBehavior.test_strings": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "before": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "framework": "unittest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "....F\n======================================================================\nFAIL: test_strings (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_hh7s5yv7\\__replens_acceptance__\\test_behavior.py\", line 6, in test_strings\n    def test_strings(self): self.assertEqual(api.unique_values([\"z\",\"a\",\"z\",\"m\"]),[\"z\",\"a\",\"m\"])\nAssertionError: Lists differ: ['m', 'a', 'z'] != ['z', 'a', 'm']\n\nFirst differing element 0:\n'm'\n'z'\n\n- ['m', 'a', 'z']\n?   ^         ^\n\n+ ['z', 'a', 'm']\n?   ^         ^\n\n\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nFAILED (failures=1)\n",
+      "stdout": "",
+      "structured": true,
+      "summary": {
+        "collected": 5,
+        "errors": 0,
+        "failed": 1,
+        "passed": 4,
+        "ran": 5,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_helper": "PASS",
+        "test_behavior.IndependentBehavior.test_input_unchanged": "PASS",
+        "test_behavior.IndependentBehavior.test_order": "PASS",
+        "test_behavior.IndependentBehavior.test_strings": "FAIL"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "enabled": true,
+  "files": {
+    "__replens_acceptance__/test_behavior.py": "import unittest\nimport api\n\nclass IndependentBehavior(unittest.TestCase):\n    def test_order(self): self.assertEqual(api.unique_values([9,3,9,1,3]),[9,3,1])\n    def test_strings(self): self.assertEqual(api.unique_values([\"z\",\"a\",\"z\",\"m\"]),[\"z\",\"a\",\"m\"])\n    def test_empty(self): self.assertEqual(api.unique_values([]),[])\n    def test_input_unchanged(self):\n        x=[8,1,8]; api.unique_values(x); self.assertEqual(x,[8,1,8])\n    def test_helper(self): self.assertEqual(api.count_values([3,3]),2)\n"
+  },
+  "sha256": "13c64a01bcff739bf3b3fd6a48bde444c843ccee8820aa51e330639a086e65cf",
+  "timeout": 120
+}

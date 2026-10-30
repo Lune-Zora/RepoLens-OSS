@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T07:21:45.637061+00:00",
+  "purpose": "plan",
+  "context": {},
+  "request": {
+    "model": "qwen2.5-coder:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "你是开源贡献辅助工具。基于给定的代码证据生成结构化修改计划。只允许引用提供的证据，不得编造不存在的文件或行号。严格输出 JSON，字段：root_cause(字符串)、affected_scope(数组)、files_to_modify(数组)、steps(数组)、risks(数组)、regression_test(字符串)。"
+      },
+      {
+        "role": "user",
+        "content": "问题描述：日期字符串(date string)首尾有空白(whitespace)时解析(parse)失败\n\n检索到的代码证据：\n- evidence=src/dateparse/parser.py:9 (function parse_date): 符号名/文档命中关键词: date, string, str, whitespace, parse\n[代码]\n0009 | def parse_date(s):\n0010 |     \"\"\"Parse a date string in YYYY-MM-DD format.\n0011 | \n0012 |     Args:\n0013 |         s: the date string, e.g. \"2024-01-01\".\n0014 | \n0015 |     Returns:\n0016 |         datetime.date object.\n0017 | \n0018 |     Note:\n0019 |         The input is not stripped of surrounding whitespace, so a string\n0020 |         like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n0021 |         call s.strip() before parsing.\n0022 |     \"\"\"\n0023 |     return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n[/代码]\n- evidence=src/dateparse/validator.py:8 (function is_valid_date): 符号名/文档命中关键词: date, string, str, whitespace, parse\n[代码]\n0008 | def is_valid_date(s):\n0009 |     \"\"\"Check whether a date string is a valid YYYY-MM-DD date.\n0010 | \n0011 |     Args:\n0012 |         s: date string like \"2024-01-01\".\n0013 | \n0014 |     Returns:\n0015 |         True if the string parses to a valid date, False otherwise.\n0016 | \n0017 |     Note:\n0018 |         Delegates to parse_date, which does not strip surrounding whitespace,\n0019 |         so \" 2024-01-01 \" is wrongly reported as invalid.\n0020 |     \"\"\"\n0021 |     from .parser import parse_date\n0022 |     try:\n0023 |         parse_date(s)\n0024 |         return True\n0025 |     except ValueError:\n0026 |         return False\n[/代码]\n- evidence=src/dateparse/utils.py:25 (function add_days): 符号名/文档命中关键词: date, string, str\n[代码]\n0025 | def add_days(s, n):\n0026 |     \"\"\"Add n days to a date string and return a date object.\n0027 | \n0028 |     Args:\n0029 |         s: date string \"YYYY-MM-DD\".\n0030 |         n: integer number of days (can be negative).\n0031 | \n0032 |     Returns:\n0033 |         datetime.date object.\n0034 |     \"\"\"\n0035 |     from .parser import parse_date\n0036 |     d = parse_date(s)\n0037 |     return d + datetime.timedelta(days=n)\n[/代码]\n- evidence=src/dateparse/utils.py:5 (function days_between): 符号名/文档命中关键词: date, string, str\n[代码]\n0005 | def days_between(a, b):\n0006 |     \"\"\"Return the number of days between two date strings (absolute value).\n0007 | \n0008 |     Args:\n0009 |         a: start date string \"YYYY-MM-DD\".\n0010 |         b: end date string \"YYYY-MM-DD\".\n0011 | \n0012 |     Returns:\n0013 |         Non-negative integer day count.\n0014 | \n0015 |     Note:\n0016 |         Subtraction order is reversed — returns a negative value when a < b.\n0017 |         This is the bug to fix.\n0018 |     \"\"\"\n0019 |     from .parser import parse_date\n0020 |     da = parse_date(a)\n0021 |     db = parse_date(b)\n0022 |     return (da - db).days\n[/代码]\n- evidence=src/dateparse/validator.py:29 (function validate_range): 符号名/文档命中关键词: date, string, str\n[代码]\n0029 | def validate_range(start, end):\n0030 |     \"\"\"Validate that the start date is not after the end date.\n0031 | \n0032 |     Args:\n0033 |         start: start date string \"YYYY-MM-DD\".\n0034 |         end: end date string \"YYYY-MM-DD\".\n0035 | \n0036 |     Returns:\n0037 |         True if start <= end, False otherwise.\n0038 | \n0039 |     Note:\n0040 |         Uses strict less-than instead of less-or-equal, so equal dates are\n0041 |         wrongly rejected. This is the bug to fix.\n0042 |     \"\"\"\n0043 |     from .parser import parse_date\n0044 |     s = parse_date(start)\n0045 |     e = parse_date(end)\n0046 |     return s < e\n[/代码]\n- evidence=tests/test_parser.py:8 (method test_parse_date): 与 parse_date 存在调用关系（调用图扩展）\n[代码]\n0008 | def test_parse_date(self):\n0009 |         self.assertEqual(parse_date(\"2024-01-01\"), datetime.date(2024, 1, 1))\n[/代码]\n- evidence=tests/test_parser.py:17 (method test_parse_date_with_whitespace): 与 parse_date 存在调用关系（调用图扩展）\n[代码]\n0017 | def test_parse_date_with_whitespace(self):\n0018 |         self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))\n[/代码]"
+      }
+    ],
+    "temperature": 0.2,
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T07:21:53.268758+00:00",
+  "duration_seconds": 7.641,
+  "response_text": "{\"id\":\"chatcmpl-146\",\"object\":\"chat.completion\",\"created\":1793344913,\"model\":\"qwen2.5-coder:1.5b\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"root_cause\\\": \\\"在解析日期字符串时，首尾有空白导致解析失败。\\\",\\n  \\\"affected_scope\\\": [\\\"src/dateparse/parser.py\\\", \\\"src/dateparse/validator.py\\\", \\\"src/dateparse/utils.py\\\", \\\"src/dateparse/validator.py\\\", \\\"tests/test_parser.py\\\"],\\n  \\\"files_to_modify\\\": [\\\"src/dateparse/parser.py\\\", \\\"src/dateparse/validator.py\\\", \\\"src/dateparse/utils.py\\\", \\\"src/dateparse/validator.py\\\", \\\"tests/test_parser.py\\\"],\\n  \\\"steps\\\": [\\n    \\\"在 parse_date 函数中，添加对字符串的 strip 操作，以去除首尾空白。\\\",\\n    \\\"在 is_valid_date 函数中，添加对字符串的 strip 操作，以去除首尾空白。\\\",\\n    \\\"在 add_days 函数中，添加对字符串的 strip 操作，以去除首尾空白。\\\",\\n    \\\"在 days_between 函数中，添加对字符串的 strip 操作，以去除首尾空白。\\\",\\n    \\\"在 validate_range 函数中，添加对字符串的 strip 操作，以去除首尾空白。\\\"\\n  ],\\n  \\\"risks\\\": [\\n    \\\"如果字符串包含首尾空白，解析将失败，导致程序无法正确处理日期。\\\",\\n    \\\"如果字符串包含首尾空白，验证将失败，导致程序无法正确验证日期范围。\\\"\\n  ],\\n  \\\"regression_test\\\": \\\"添加新的测试用例，验证首尾空白是否影响解析和验证。\\\"\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1480,\"prompt_tokens_details\":{\"cached_tokens\":0},\"completion_tokens\":309,\"total_tokens\":1789}}\n",
+  "parsed": {
+    "root_cause": "在解析日期字符串时，首尾有空白导致解析失败。",
+    "affected_scope": [
+      "src/dateparse/parser.py",
+      "src/dateparse/validator.py",
+      "src/dateparse/utils.py",
+      "src/dateparse/validator.py",
+      "tests/test_parser.py"
+    ],
+    "files_to_modify": [
+      "src/dateparse/parser.py",
+      "src/dateparse/validator.py",
+      "src/dateparse/utils.py",
+      "src/dateparse/validator.py",
+      "tests/test_parser.py"
+    ],
+    "steps": [
+      "在 parse_date 函数中，添加对字符串的 strip 操作，以去除首尾空白。",
+      "在 is_valid_date 函数中，添加对字符串的 strip 操作，以去除首尾空白。",
+      "在 add_days 函数中，添加对字符串的 strip 操作，以去除首尾空白。",
+      "在 days_between 函数中，添加对字符串的 strip 操作，以去除首尾空白。",
+      "在 validate_range 函数中，添加对字符串的 strip 操作，以去除首尾空白。"
+    ],
+    "risks": [
+      "如果字符串包含首尾空白，解析将失败，导致程序无法正确处理日期。",
+      "如果字符串包含首尾空白，验证将失败，导致程序无法正确验证日期范围。"
+    ],
+    "regression_test": "添加新的测试用例，验证首尾空白是否影响解析和验证。"
+  },
+  "error": null,
+  "response_model": "qwen2.5-coder:1.5b",
+  "usage": {
+    "prompt_tokens": 1480,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens": 309,
+    "total_tokens": 1789
+  }
+}

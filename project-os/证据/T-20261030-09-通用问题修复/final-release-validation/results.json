@@ -1,0 +1,486 @@
+[
+  {
+    "model": "qwen2.5-coder:1.5b",
+    "task": "config_values",
+    "seconds": 12.808,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "当前实现中，布尔值字符串 true/false 前后有空格、制表符或换行时无法正确解析，大小写不敏感。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "66d26a86ce0649c989a3c208b640fc0b.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen2.5-coder:1.5b",
+    "task": "sequence_blocks",
+    "seconds": 9.084,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "候选功能与原始问题不匹配：候选函数 `partition` 和 `flatten` 都是用于处理列表的函数，但它们的用途和功能范围不同。`partition` 函数用于将列表分成多个子列表，每个子列表的长度为指定的大小。如果最后一个子列表的长度小于指定的大小，则该子列表中的元素会被保留。而 `flatten` 函数用于将多个子列表合并成一个单一的列表。因此，这两个函数不能完全匹配，因为它们处理的输入和输出类型不同。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "a05be3a947da457aace4637b79ac8b8b.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "f7e37a552076487fbb3eeb77ea1752aa.json",
+        "purpose": "scope_validation",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen2.5-coder:1.5b",
+    "task": "numeric_interval",
+    "seconds": 16.473,
+    "exit_code": 2,
+    "repair_status": "NO_PATCH",
+    "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [0, 10, 5], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}, {'args': [0, 10, 20], 'expected': False, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}, {'args': [-1, 3, 4], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}], 'changes': ['修正了函数的逻辑，使其能够正确处理区间外的情况，并且包含左右端点。']}",
+    "reasons": [
+      "没有进入验收的补丁"
+    ],
+    "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [0, 10, 5], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}, {'args': [0, 10, 20], 'expected': False, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}, {'args': [-1, 3, 4], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}], 'changes': ['修正了函数的逻辑，使其能够正确处理区间外的情况，并且包含左右端点。']}",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "0108f55cb35742f4ab117afbe3da1c3d.json",
+        "purpose": "task_tests",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "12d2c15fcebb470785c939296e6183a3.json",
+        "purpose": "test_review",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "639a0b10f27f458c90bd1642c5739ac7.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "96d7053a04c3435787d5a673f441bd14.json",
+        "purpose": "scope_validation",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "a4622da9c65f445e8cc831d25020220f.json",
+        "purpose": "plan",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen2.5-coder:1.5b",
+    "task": "stable_unique",
+    "seconds": 16.588,
+    "exit_code": 2,
+    "repair_status": "NO_PATCH",
+    "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [[4, 2, 4, 1]], 'expected': [4, 2, 1], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[1, 1, 2]], 'expected': [1, 2], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[]], 'expected': [], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}], 'changes': ['修正了对空列表的处理，返回空列表。', '修正了对重复元素的处理，保持各元素首次出现的顺序。', '修正了对哈希元素的处理，确保元素可以哈希。']}",
+    "reasons": [
+      "没有进入验收的补丁"
+    ],
+    "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [[4, 2, 4, 1]], 'expected': [4, 2, 1], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[1, 1, 2]], 'expected': [1, 2], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[]], 'expected': [], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}], 'changes': ['修正了对空列表的处理，返回空列表。', '修正了对重复元素的处理，保持各元素首次出现的顺序。', '修正了对哈希元素的处理，确保元素可以哈希。']}",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "3d342647e51747fcb3ac6f5af88ee6f9.json",
+        "purpose": "test_review",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "51846567cc4545cebae189a7162d0f7f.json",
+        "purpose": "scope_validation",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "66a1b8c98f264e6abcb4757e00a5d3f5.json",
+        "purpose": "task_tests",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "7852e3e90345410e8eb061c9e4f16bb3.json",
+        "purpose": "plan",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "eec016c861f249cf9503ac1d355d9ce8.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen25-7b-unc:latest",
+    "task": "config_values",
+    "seconds": 17.876,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "当前实现中，read_flag 函数在检查值时忽略了空格、制表符或换行。这会导致在输入包含这些字符时无法正确解析。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "54effd5589b7464db55e230cd05699e1.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen25-7b-unc:latest",
+    "task": "sequence_blocks",
+    "seconds": 12.307,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "候选功能与原始问题不匹配：用户要求在列表分块时，即使最后一块不满一个完整的块也应包含这些元素，并且明确指出当输入为空时不进行任何操作并返回空列表。而提供的函数会在最后一个块不满指定大小时丢弃这部分数据。因此，这两个功能不匹配。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "0228ea36606c438f980b4bbb65ea21cb.json",
+        "purpose": "scope_validation",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "600aa3dca55d4938b2dafef66416d169.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen25-7b-unc:latest",
+    "task": "numeric_interval",
+    "seconds": 11.411,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "候选功能与原始问题不匹配：用户的需求是判断一个数值是否在闭区间内，包括区间的左右端点。而候选函数 `contains` 的实现是不包含区间的左右端点的。因此，这两个功能并不匹配。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "b1bfc841e70f49f7980b90135372fb96.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "b1f7cc34f0b744198c769355ffb31d0f.json",
+        "purpose": "scope_validation",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen25-7b-unc:latest",
+    "task": "stable_unique",
+    "seconds": 36.256,
+    "exit_code": 2,
+    "repair_status": "NO_PATCH",
+    "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [[1, 2, 3]], 'expected': [1, 2, 3], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[4, 2, 4, 1]], 'expected': [4, 2, 1], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[1, 1, 2]], 'expected': [1, 2], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}], 'changes': ['当前的测试用例没有违反任何已知的规范或逻辑错误。但是，它们未能充分验证用户需求中的关键点：保持元素首次出现的顺序。因此，这些测试用例需要进一步修改以确保正确性。', '需要添加一个空列表的测试用例来验证空列表的行为。']}",
+    "reasons": [
+      "没有进入验收的补丁"
+    ],
+    "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [[1, 2, 3]], 'expected': [1, 2, 3], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[4, 2, 4, 1]], 'expected': [4, 2, 1], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[1, 1, 2]], 'expected': [1, 2], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}], 'changes': ['当前的测试用例没有违反任何已知的规范或逻辑错误。但是，它们未能充分验证用户需求中的关键点：保持元素首次出现的顺序。因此，这些测试用例需要进一步修改以确保正确性。', '需要添加一个空列表的测试用例来验证空列表的行为。']}",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "32746d32f8fe492a837dfe9f2a4b0cba.json",
+        "purpose": "plan",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "39c22bd4f1d248b09656327fa2fef278.json",
+        "purpose": "test_review",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "47715bc525f54c8cb33f8acc129c33ea.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "856cfbdb39974d24a60ab4aed1ef2750.json",
+        "purpose": "scope_validation",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "a37f19e2ea39437789d861fb608f457e.json",
+        "purpose": "task_tests",
+        "requested_model": "qwen25-7b-unc:latest",
+        "response_model": "qwen25-7b-unc:latest",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "config_values",
+    "seconds": 77.699,
+    "exit_code": 0,
+    "repair_status": "VERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "patch_note": "LLM 生成 1 个有效候选。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）",
+    "replay_status": "PASS",
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "2ac77ab244fe48c4a8f6d0ebcd899c9c.json",
+        "purpose": "plan",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "8e01303bc1d84463b715a7e26a313ab3.json",
+        "purpose": "scope_validation",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "94657ec62fc649eeae81c2392fb9418a.json",
+        "purpose": "task_tests",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "98c1f09490d545d09f26978d897ca11b.json",
+        "purpose": "patch",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "aa462c660508423a9e2911a617ecba11.json",
+        "purpose": "test_review",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "c9bfaee7998246e38c3ddf458728eb43.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "f2f65bde60794a87af31c86248e042a1.json",
+        "purpose": "patch",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      }
+    ],
+    "pass": true
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "sequence_blocks",
+    "seconds": 87.647,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "问题理解失败，尚未获得可靠目标。请检查模型服务或补充函数名/报错；没有把失败显示为成功。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "ddf9b882684445848719f7d158b98912.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "error"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "numeric_interval",
+    "seconds": 56.184,
+    "exit_code": 0,
+    "repair_status": "VERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "patch_note": "LLM 生成 1 个有效候选。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）",
+    "replay_status": "PASS",
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "163d0da3c5644feb9e171866924e04f7.json",
+        "purpose": "patch",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "2f6dcc2750ba4a61b97c8703cd685cf3.json",
+        "purpose": "plan",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "56f7811d76c9480e834bcd137e1f1496.json",
+        "purpose": "scope_validation",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "5aaaa1196f78450db8ae36773a03e2bb.json",
+        "purpose": "task_tests",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "d5a6dfe09b624b869892853e4ffcf5be.json",
+        "purpose": "patch",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "d6524ac0226b4d349ccb716334eee62c.json",
+        "purpose": "test_review",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "e68b71e6c4c5486794e9bf8f78395276.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      }
+    ],
+    "pass": true
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "stable_unique",
+    "seconds": 21.822,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "候选功能与原始问题不匹配：候选函数 `unique_values` 使用 `set` 去重，虽然能处理可哈希元素和空列表，但 `set` 是无序的（在 Python <3.7 字典视图语境下），导致无法保证‘保持首次出现顺序’这一核心业务需求。用户明确要求顺序保留，而当前实现牺牲了顺序换取无序集合特性，属于功能侧重点不同。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "3e6857b984ec424bb406bd25d01f762b.json",
+        "purpose": "scope_validation",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "88b225c5732b44b4a2dd0ec6ece660a2.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  }
+]

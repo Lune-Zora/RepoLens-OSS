@@ -1,0 +1,85 @@
+[
+  {
+    "case": "chinese",
+    "insufficient": false,
+    "expected": false,
+    "understanding": {
+      "original_issue": "1900年被错误判断为闰年",
+      "summary": "修正1900年被误判为闰年的逻辑判断",
+      "core_operation": "check_leap_year",
+      "requested_return_kind": "boolean",
+      "return_contracts": {
+        "src/dateparse/utils.py:40": []
+      },
+      "expected_behavior": "正确识别1900年为平年（非闰年），因为它是整百年但非400倍数",
+      "search_query": "is_leap_year",
+      "scope": "matched",
+      "explanation": "The core operation is checking the leap year status of a single input 'year'. The candidate function 'is_leap_year' directly consumes this integer and applies the standard Gregorian calendar logic (checking divisibility by 4, 100, and 400) to return a boolean result.",
+      "targets": [
+        {
+          "ref": "src/dateparse/utils.py:40",
+          "path": "src/dateparse/utils.py",
+          "name": "is_leap_year",
+          "start_line": 40
+        }
+      ],
+      "repository_functions": [
+        "src/dateparse/formatter.py:format_date",
+        "src/dateparse/formatter.py:format_iso",
+        "src/dateparse/parser.py:parse_date",
+        "src/dateparse/parser.py:parse_datetime",
+        "src/dateparse/utils.py:days_between",
+        "src/dateparse/utils.py:add_days",
+        "src/dateparse/utils.py:is_leap_year",
+        "src/dateparse/validator.py:is_valid_date",
+        "src/dateparse/validator.py:validate_range",
+        "src/dateparse/validator.py:is_weekend"
+      ],
+      "catalog_total": 10,
+      "catalog_shown": 10,
+      "model": "qwen35-9b-unc:latest",
+      "generated_by": "llm",
+      "error": "",
+      "retrieval_mode": "llm_grounded_source"
+    }
+  },
+  {
+    "case": "mismatched",
+    "insufficient": true,
+    "expected": true,
+    "understanding": {
+      "original_issue": "布尔值字符串 true/false 前后有空格时解析失败",
+      "summary": "解析布尔值字符串时，若前后有空格导致解析失败",
+      "core_operation": "parse boolean string",
+      "requested_return_kind": "boolean",
+      "return_contracts": {
+        "src/dateparse/parser.py:9": [
+          "object"
+        ]
+      },
+      "expected_behavior": "Correctly parse 'true'/'false' strings even when surrounded by whitespace (e.g., ' true '), ignoring leading/trailing spaces.",
+      "search_query": "parse_date strptime",
+      "scope": "needs_clarification",
+      "explanation": "请求期望返回 boolean，但候选接口的公开测试或返回注解不一致：src/dateparse/parser.py:9 公开契约返回 object。请确认仓库或函数。",
+      "targets": [],
+      "repository_functions": [
+        "src/dateparse/formatter.py:format_date",
+        "src/dateparse/formatter.py:format_iso",
+        "src/dateparse/parser.py:parse_date",
+        "src/dateparse/parser.py:parse_datetime",
+        "src/dateparse/utils.py:days_between",
+        "src/dateparse/utils.py:add_days",
+        "src/dateparse/utils.py:is_leap_year",
+        "src/dateparse/validator.py:is_valid_date",
+        "src/dateparse/validator.py:validate_range",
+        "src/dateparse/validator.py:is_weekend"
+      ],
+      "catalog_total": 10,
+      "catalog_shown": 10,
+      "model": "qwen35-9b-unc:latest",
+      "generated_by": "llm",
+      "error": "",
+      "retrieval_mode": "llm_grounded_source"
+    }
+  }
+]

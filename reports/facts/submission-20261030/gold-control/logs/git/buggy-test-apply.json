@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "git",
+    "--no-optional-locks",
+    "-c",
+    "safe.directory=E:/osspj/人工智能/_delivery-work/tqdm_reset_inf_qkqlk1p2/buggy",
+    "-C",
+    "E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\buggy",
+    "apply",
+    "E:\\osspj\\人工智能\\_delivery-staging\\validation\\tqdm-reset-inf\\patches\\upstream-test.patch"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": ""
+}

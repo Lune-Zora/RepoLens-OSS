@@ -1,0 +1,64 @@
+{
+  "after": [
+    {
+      "command": "python -m pytest tests/test_parser.py",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_bp5njumi\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_parser.py ...                                                 [100%]\n\n============================== 3 passed in 0.45s ==============================\n",
+      "structured": true,
+      "summary": {
+        "collected": 3,
+        "errors": 0,
+        "failed": 0,
+        "passed": 3,
+        "ran": 3,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "tests/test_parser.py::ParserTests::test_parse_date": "PASS",
+        "tests/test_parser.py::ParserTests::test_parse_date_with_whitespace": "PASS",
+        "tests/test_parser.py::ParserTests::test_parse_datetime": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "before": [
+    {
+      "command": "python -m pytest tests/test_parser.py",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_utma9v0u\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_parser.py .F.                                                 [100%]\n\n================================== FAILURES ===================================\n_________________ ParserTests.test_parse_date_with_whitespace _________________\n\nself = <test_parser.ParserTests testMethod=test_parse_date_with_whitespace>\n\n    def test_parse_date_with_whitespace(self):\n>       self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))\n\ntests\\test_parser.py:18: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nsrc\\dateparse\\parser.py:23: in parse_date\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n..\\..\\Programs\\Python\\Python310\\lib\\_strptime.py:568: in _strptime_datetime\n    tt, fraction, gmtoff_fraction = _strptime(data_string, format)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\ndata_string = ' 2024-01-01 ', format = '%Y-%m-%d'\n\n    def _strptime(data_string, format=\"%a %b %d %H:%M:%S %Y\"):\n        \"\"\"Return a 2-tuple consisting of a time struct and an int containing\n        the number of microseconds based on the input string and the\n        format string.\"\"\"\n    \n        for index, arg in enumerate([data_string, format]):\n            if not isinstance(arg, str):\n                msg = \"strptime() argument {} must be str, not {}\"\n                raise TypeError(msg.format(index, type(arg)))\n    \n        global _TimeRE_cache, _regex_cache\n        with _cache_lock:\n            locale_time = _TimeRE_cache.locale_time\n            if (_getlang() != locale_time.lang or\n                time.tzname != locale_time.tzname or\n                time.daylight != locale_time.daylight):\n                _TimeRE_cache = TimeRE()\n                _regex_cache.clear()\n                locale_time = _TimeRE_cache.locale_time\n            if len(_regex_cache) > _CACHE_MAX_SIZE:\n                _regex_cache.clear()\n            format_regex = _regex_cache.get(format)\n            if not format_regex:\n                try:\n                    format_regex = _TimeRE_cache.compile(format)\n                # KeyError raised when a bad format is found; can be specified as\n                # \\\\, in which case it was a stray % but with a space after it\n                except KeyError as err:\n                    bad_directive = err.args[0]\n                    if bad_directive == \"\\\\\":\n                        bad_directive = \"%\"\n                    del err\n                    raise ValueError(\"'%s' is a bad directive in format '%s'\" %\n                                        (bad_directive, format)) from None\n                # IndexError only occurs when the format string is \"%\"\n                except IndexError:\n                    raise ValueError(\"stray %% in format '%s'\" % format) from None\n                _regex_cache[format] = format_regex\n        found = format_regex.match(data_string)\n        if not found:\n>           raise ValueError(\"time data %r does not match format %r\" %\n                             (data_string, format))\nE           ValueError: time data ' 2024-01-01 ' does not match format '%Y-%m-%d'\n\n..\\..\\Programs\\Python\\Python310\\lib\\_strptime.py:349: ValueError\n=========================== short test summary info ===========================\nFAILED tests/test_parser.py::ParserTests::test_parse_date_with_whitespace - V...\n========================= 1 failed, 2 passed in 0.98s =========================\n",
+      "structured": true,
+      "summary": {
+        "collected": 3,
+        "errors": 0,
+        "failed": 1,
+        "passed": 2,
+        "ran": 3,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "tests/test_parser.py::ParserTests::test_parse_date": "PASS",
+        "tests/test_parser.py::ParserTests::test_parse_date_with_whitespace": "FAIL",
+        "tests/test_parser.py::ParserTests::test_parse_datetime": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m pytest tests/test_parser.py",
+  "enabled": true,
+  "files": {},
+  "timeout": 120
+}

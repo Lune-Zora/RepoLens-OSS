@@ -1,0 +1,60 @@
+[
+  {
+    "model": "qwen2.5-coder:1.5b",
+    "task": "config_values",
+    "seconds": 21.463,
+    "exit_code": 1,
+    "repair_status": null,
+    "blocked_reason": null,
+    "reasons": null,
+    "patch_note": null,
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "11b30f17163c4a9ba0da2dfdb35af09a.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      },
+      {
+        "file": "7c6b5a5519e94f409463d1302ad4b0e5.json",
+        "purpose": "plan",
+        "requested_model": "qwen2.5-coder:1.5b",
+        "response_model": "qwen2.5-coder:1.5b",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "config_values",
+    "seconds": 46.831,
+    "exit_code": 1,
+    "repair_status": null,
+    "blocked_reason": null,
+    "reasons": null,
+    "patch_note": null,
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "23023c6593b54e14b80fa52e87a4055c.json",
+        "purpose": "plan",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "893de3451b82475a876f091265b239d3.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  }
+]

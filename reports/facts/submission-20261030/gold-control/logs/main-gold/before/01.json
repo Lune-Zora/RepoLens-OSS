@@ -1,0 +1,27 @@
+{
+  "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+  "returncode": 1,
+  "timed_out": false,
+  "passed": false,
+  "valid": true,
+  "structured": true,
+  "framework": "pytest",
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "collected": 3,
+    "ran": 3
+  },
+  "invalid_reason": "",
+  "tests": {
+    "tests/tests_tqdm.py::test_reset": "PASS",
+    "tests/tests_tqdm.py::test_reset_inf": "FAIL",
+    "tests/tests_tqdm.py::test_disabled_reset": "PASS"
+  },
+  "stdout_sha256": "2ccb43a34b6fc285772654ff07a993b7367172b07230e1dcdd921a28fa48379a",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RepoLens evidence bundle 2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "created_at", "source", "environment", "issue", "insufficient_evidence", "repair", "patch", "suites", "reports"],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "created_at": {"type": "string"},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["root", "files", "tree_sha256", "git_commit"],
+      "properties": {
+        "root": {"type": "string"},
+        "files": {"$ref": "#/$defs/hashes"},
+        "tree_sha256": {"$ref": "#/$defs/sha256"},
+        "git_commit": {"type": "string"}
+      }
+    },
+    "environment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["python_version", "implementation", "platform", "executable", "packages"],
+      "properties": {
+        "python_version": {"type": "string"}, "implementation": {"type": "string"},
+        "platform": {"type": "string"}, "executable": {"type": "string"},
+        "packages": {"type": "object", "additionalProperties": {"type": "string"}}
+      }
+    },
+    "issue": {"type": "string"},
+    "insufficient_evidence": {"type": "boolean"},
+    "repair": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "reasons", "validation", "patch_note"],
+      "properties": {
+        "status": {"enum": ["VERIFIED", "UNVERIFIED", "FAILED", "INVALID", "NO_PATCH"]},
+        "reasons": {"type": "array", "items": {"type": "string"}},
+        "validation": {"type": "object"}, "patch_note": {"type": "string"}
+      }
+    },
+    "patch": {
+      "oneOf": [{"type": "null"}, {
+        "type": "object", "additionalProperties": false, "required": ["path", "sha256", "content"],
+        "properties": {
+          "path": {"enum": ["patch/patch.json", "patch/patch.diff"]},
+          "sha256": {"$ref": "#/$defs/sha256"}, "content": {"type": "string"}
+        }
+      }]
+    },
+    "suites": {"const": {"primary": "suites/primary.json", "auxiliary": "suites/auxiliary.json", "acceptance": "suites/acceptance.json"}},
+    "reports": {"const": {"json": "report.json", "markdown": "report.md"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "hashes": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/sha256"}},
+    "manifest": {
+      "type": "object", "additionalProperties": false, "required": ["schema_version", "files"],
+      "properties": {"schema_version": {"const": "2.0"}, "files": {"$ref": "#/$defs/hashes"}}
+    },
+    "results": {"oneOf": [{"type": "null"}, {"type": "array", "items": {"$ref": "#/$defs/test_result"}}]},
+    "test_result": {
+      "type": "object", "additionalProperties": false,
+      "required": ["command", "returncode", "stdout", "stderr", "timed_out", "passed", "valid", "summary", "invalid_reason", "tests", "structured", "framework"],
+      "properties": {
+        "command": {"type": "string"}, "returncode": {"type": "integer"},
+        "stdout": {"type": "string"}, "stderr": {"type": "string"},
+        "timed_out": {"type": "boolean"}, "passed": {"type": "boolean"}, "valid": {"type": "boolean"},
+        "summary": {"type": ["object", "null"], "additionalProperties": {"type": "integer", "minimum": 0}},
+        "invalid_reason": {"type": "string"}, "structured": {"type": "boolean"}, "framework": {"type": "string"},
+        "tests": {"type": "object", "additionalProperties": {"enum": ["PASS", "FAIL", "ERROR", "SKIP", "XFAIL", "XPASS"]}}
+      }
+    },
+    "suite": {
+      "type": "object", "required": ["enabled", "command", "timeout", "files", "before", "after"],
+      "properties": {
+        "enabled": {"type": "boolean"}, "command": {"type": "string"},
+        "timeout": {"type": "integer", "minimum": 1},
+        "files": {"type": "object", "additionalProperties": {"type": "string"}},
+        "before": {"$ref": "#/$defs/results"}, "after": {"$ref": "#/$defs/results"}
+      }
+    },
+    "primary": {"$ref": "#/$defs/suite", "unevaluatedProperties": false},
+    "auxiliary": {
+      "$ref": "#/$defs/suite", "unevaluatedProperties": false, "required": ["kind"],
+      "properties": {"kind": {"enum": ["none", "generated_auxiliary", "invalid_generated"]}}
+    },
+    "acceptance": {
+      "$ref": "#/$defs/suite", "unevaluatedProperties": false, "required": ["sha256"],
+      "properties": {"sha256": {"oneOf": [{"const": ""}, {"$ref": "#/$defs/sha256"}]}}
+    }
+  }
+}

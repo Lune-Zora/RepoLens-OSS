@@ -1,0 +1,408 @@
+{
+  "schema_version": "2.0",
+  "status": "VERIFIED",
+  "reasons": [
+    "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+  ],
+  "validation": {
+    "status": "VERIFIED",
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "targets": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01"
+    ],
+    "preserved": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_00",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_02",
+      "tests/test_public.py::PublicTests::test_empty",
+      "tests/test_public.py::PublicTests::test_exact",
+      "tests/test_public.py::PublicTests::test_flatten",
+      "tests/test_public.py::PublicTests::test_invalid"
+    ],
+    "preexisting_failures": [],
+    "scope": "current_issue_and_preserved_tests",
+    "acceptance_sha256": "f0f142aebf3516a09983d768d27451de39576952e9c9800763c2df4a473764dd",
+    "acceptance_targets": [
+      "test_behavior.IndependentBehavior.test_short",
+      "test_behavior.IndependentBehavior.test_tail"
+    ]
+  },
+  "test_framework": "pytest",
+  "generated_test_kind": "model_behavioral_cases",
+  "acceptance_before": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "...FF.\n======================================================================\nFAIL: test_short (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_ymz6ots4\\__replens_acceptance__\\test_behavior.py\", line 6, in test_short\n    def test_short(self): self.assertEqual(api.partition([7],4),[[7]])\nAssertionError: Lists differ: [] != [[7]]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n[7]\n\n- []\n+ [[7]]\n\n======================================================================\nFAIL: test_tail (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_ymz6ots4\\__replens_acceptance__\\test_behavior.py\", line 5, in test_tail\n    def test_tail(self): self.assertEqual(api.partition([0,1,2,3,4,5,6],3),[[0,1,2],[3,4,5],[6]])\nAssertionError: Lists differ: [[0, 1, 2], [3, 4, 5]] != [[0, 1, 2], [3, 4, 5], [6]]\n\nSecond list contains 1 additional elements.\nFirst extra element 2:\n[6]\n\n- [[0, 1, 2], [3, 4, 5]]\n+ [[0, 1, 2], [3, 4, 5], [6]]\n?                      ++++ +\n\n\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nFAILED (failures=2)\n",
+      "timed_out": false,
+      "passed": false,
+      "valid": true,
+      "summary": {
+        "passed": 4,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 6,
+        "ran": 6
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_helper": "PASS",
+        "test_behavior.IndependentBehavior.test_invalid": "PASS",
+        "test_behavior.IndependentBehavior.test_short": "FAIL",
+        "test_behavior.IndependentBehavior.test_tail": "FAIL",
+        "test_behavior.IndependentBehavior.test_unit": "PASS"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "acceptance_after": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 6,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 6,
+        "ran": 6
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_helper": "PASS",
+        "test_behavior.IndependentBehavior.test_invalid": "PASS",
+        "test_behavior.IndependentBehavior.test_short": "PASS",
+        "test_behavior.IndependentBehavior.test_tail": "PASS",
+        "test_behavior.IndependentBehavior.test_unit": "PASS"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\sequence_blocks",
+  "issue": "列表分块时最后不足一个分块的元素也需要保留。输入为空时返回空列表，分块大小必须是正整数。",
+  "insufficient_evidence": false,
+  "evidences": [
+    {
+      "ref": "api.py:1",
+      "type": "function",
+      "name": "partition",
+      "confidence": 0.0,
+      "reason": "用户核心需求是处理‘最后不足一个分块的元素’（即非整除情况），候选函数通过切片逻辑 `values[i:i+size]` 天然支持此场景；同时用户明确约束‘输入为空返回空’和‘大小必须为正’，候选函数均通过 `len()` 和 `range` 及 `if size <= 0` 完美覆盖。虽然简介未显式提及‘非整除’，但切片逻辑已隐含处理，符合‘恰好缺少边界描述也算匹配’的原则。",
+      "source": "intent_target",
+      "signature": "def partition(values, size)",
+      "code": "def partition(values, size):\n    if size <= 0:\n        raise ValueError(\"size must be positive\")\n    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]"
+    },
+    {
+      "ref": "api.py:7",
+      "type": "function",
+      "name": "flatten",
+      "confidence": 0.7,
+      "reason": "代码片段命中检索词（function @ api.py:7）",
+      "source": "keyword_match",
+      "signature": "def flatten(groups)",
+      "code": "def flatten(groups):\n    return [value for group in groups for value in group]"
+    },
+    {
+      "ref": "tests/test_public.py:6",
+      "type": "method",
+      "name": "test_empty",
+      "confidence": 0.55,
+      "reason": "代码片段命中检索词（method @ tests/test_public.py:6）",
+      "source": "keyword_match",
+      "signature": "def test_empty(self)",
+      "code": "def test_empty(self): self.assertEqual(api.partition([],2), [])"
+    },
+    {
+      "ref": "tests/test_public.py:4",
+      "type": "class",
+      "name": "PublicTests",
+      "confidence": 0.4,
+      "reason": "代码片段命中检索词（class @ tests/test_public.py:4）",
+      "source": "keyword_match",
+      "signature": "class PublicTests",
+      "code": "class PublicTests(unittest.TestCase):\n    def test_exact(self): self.assertEqual(api.partition([1,2,3,4],2), [[1,2],[3,4]])\n    def test_empty(self): self.assertEqual(api.partition([],2), [])\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.partition([1],0)\n    def test_flatten(self): self.assertEqual(api.flatten([[1],[2,3]]),[1,2,3])"
+    },
+    {
+      "ref": "tests/test_public.py:5",
+      "type": "method",
+      "name": "test_exact",
+      "confidence": 0.6,
+      "reason": "与 partition 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_exact(self)",
+      "code": "def test_exact(self): self.assertEqual(api.partition([1,2,3,4],2), [[1,2],[3,4]])"
+    },
+    {
+      "ref": "tests/test_public.py:7",
+      "type": "method",
+      "name": "test_invalid",
+      "confidence": 0.6,
+      "reason": "与 partition 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_invalid(self)",
+      "code": "def test_invalid(self):\n        with self.assertRaises(ValueError): api.partition([1],0)"
+    },
+    {
+      "ref": "tests/test_public.py:9",
+      "type": "method",
+      "name": "test_flatten",
+      "confidence": 0.42,
+      "reason": "与 flatten 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_flatten(self)",
+      "code": "def test_flatten(self): self.assertEqual(api.flatten([[1],[2,3]]),[1,2,3])"
+    }
+  ],
+  "plan": {
+    "root_cause": "The core requirement is to handle the 'last chunk with fewer elements' scenario. The current `partition` function uses Python's native slice `values[i:i+size]`, which naturally handles non-divisible lengths by stopping at the list end, effectively solving the 'non-exact division' problem described in the evidence.",
+    "affected_scope": [
+      "api.py",
+      "tests/test_public.py"
+    ],
+    "files_to_modify": [
+      "api.py"
+    ],
+    "steps": [
+      "1. Verify the current implementation of `partition` in `api.py` (lines 1-4) to confirm it uses `range(0, len(values) - size + 1, size)` logic.",
+      "2. Add a specific test case for 'non-exact division' (e.g., list length 3, size 2) to `tests/test_public.py` to validate the edge case where the last chunk is smaller than `size`.",
+      "3. Run the existing `test_exact` and `test_empty` tests to ensure no regression in the core logic."
+    ],
+    "risks": [
+      "Potential off-by-one error in list slicing if 'size' is larger than remaining elements but not handled explicitly, though Python slicing handles it gracefully; risk of modifying existing logic unnecessarily."
+    ],
+    "regression_test": "Ensure partition handles non-divisible lists (e.g., [1,2,3] with size 2) by adding a test case like: self.assertEqual(api.partition([1,2,3], 2), [[1,2],[3]])",
+    "generated_by": "llm"
+  },
+  "test_command": "python -m pytest tests __replens_task__/test_current_issue.py",
+  "patch_note": "LLM 生成 1 个有效候选。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）",
+  "before": [
+    {
+      "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+      "returncode": 1,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_l1jxtt81\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 7 items\n\ntests\\test_public.py ....                                                [ 57%]\n__replens_task__\\test_current_issue.py .F.                               [100%]\n\n================================== FAILURES ===================================\n___________________________ TaskTests.test_issue_01 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_01>\n\n    def test_issue_01(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_l1jxtt81/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.partition(*[[1], 2], **{})\n>       self.assertEqual(actual, [[1]])\nE       AssertionError: Lists differ: [] != [[1]]\nE       \nE       Second list contains 1 additional elements.\nE       First extra element 0:\nE       [1]\nE       \nE       - []\nE       + [[1]]\n\n__replens_task__\\test_current_issue.py:23: AssertionError\n=========================== short test summary info ===========================\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_01 - Ass...\n========================= 1 failed, 6 passed in 0.86s =========================\n",
+      "stderr": "",
+      "timed_out": false,
+      "passed": false,
+      "valid": true,
+      "summary": {
+        "passed": 6,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 7,
+        "ran": 7
+      },
+      "invalid_reason": "",
+      "tests": {
+        "tests/test_public.py::PublicTests::test_empty": "PASS",
+        "tests/test_public.py::PublicTests::test_exact": "PASS",
+        "tests/test_public.py::PublicTests::test_flatten": "PASS",
+        "tests/test_public.py::PublicTests::test_invalid": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS"
+      },
+      "structured": true,
+      "framework": "pytest"
+    }
+  ],
+  "after": [
+    {
+      "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+      "returncode": 0,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_6bhswf_5\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 7 items\n\ntests\\test_public.py ....                                                [ 57%]\n__replens_task__\\test_current_issue.py ...                               [100%]\n\n============================== 7 passed in 0.41s ==============================\n",
+      "stderr": "",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 7,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 7,
+        "ran": 7
+      },
+      "invalid_reason": "",
+      "tests": {
+        "tests/test_public.py::PublicTests::test_empty": "PASS",
+        "tests/test_public.py::PublicTests::test_exact": "PASS",
+        "tests/test_public.py::PublicTests::test_flatten": "PASS",
+        "tests/test_public.py::PublicTests::test_invalid": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS"
+      },
+      "structured": true,
+      "framework": "pytest"
+    }
+  ],
+  "generated_test": "# Model-proposed task tests, frozen before patch generation.\nimport unittest\n\nclass TaskTests(unittest.TestCase):\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.partition(*[[1, 2, 3, 4], 2], **{})\n        self.assertEqual(actual, [[1, 2], [3, 4]])\n\n    def test_issue_01(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.partition(*[[1], 2], **{})\n        self.assertEqual(actual, [[1]])\n\n    def test_issue_02(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.partition(*[[], 2], **{})\n        self.assertEqual(actual, [])\n\n",
+  "patch_diff": "--- a/api.py\n+++ b/api.py\n@@ -1,7 +1,7 @@\n def partition(values, size):\n     if size <= 0:\n         raise ValueError(\"size must be positive\")\n-    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]\n+    return [values[i:i + size] for i in range(0, len(values), size)]\n \n \n def flatten(groups):",
+  "execution_hints": [],
+  "flip_prediction": {
+    "predicted": [
+      "test_empty",
+      "test_exact",
+      "test_invalid"
+    ],
+    "actual_flips": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01"
+    ],
+    "hit": [],
+    "precision": 0.0,
+    "recall": 0.0,
+    "identity": "full_test_id; prediction matching uses method names"
+  },
+  "regression_before": [],
+  "regression_after": [],
+  "regression_test_cmd": "",
+  "test_timeout": 120,
+  "requested_test_command": "python -m pytest tests",
+  "understanding": {
+    "original_issue": "列表分块时最后不足一个分块的元素也需要保留。输入为空时返回空列表，分块大小必须是正整数。",
+    "summary": "列表分块时，当总长度不是分块大小的整数倍，最后剩余的元素（即使不足一个分块）需要被保留。",
+    "expected_behavior": "输入 `values` 为 `[1, 2, 3]`，分块大小 `size` 为 `2` 时，期望返回 `[[1, 2], [3]]`，即最后剩余的单个元素也被视为一个分块。",
+    "search_query": "partition values size range len",
+    "scope": "matched",
+    "explanation": "用户核心需求是处理‘最后不足一个分块的元素’（即非整除情况），候选函数通过切片逻辑 `values[i:i+size]` 天然支持此场景；同时用户明确约束‘输入为空返回空’和‘大小必须为正’，候选函数均通过 `len()` 和 `range` 及 `if size <= 0` 完美覆盖。虽然简介未显式提及‘非整除’，但切片逻辑已隐含处理，符合‘恰好缺少边界描述也算匹配’的原则。",
+    "targets": [
+      {
+        "ref": "api.py:1",
+        "path": "api.py",
+        "name": "partition",
+        "start_line": 1
+      }
+    ],
+    "repository_functions": [
+      "api.py:partition",
+      "api.py:flatten"
+    ],
+    "catalog_total": 2,
+    "catalog_shown": 2,
+    "model": "qwen35-9b-unc:latest",
+    "generated_by": "llm",
+    "error": "",
+    "retrieval_mode": "llm_grounded_source"
+  },
+  "task_tests": {
+    "kind": "model_behavioral_cases",
+    "model": "qwen35-9b-unc:latest",
+    "cases": [
+      {
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4
+          ],
+          2
+        ],
+        "expected": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "api.py",
+        "raises": "",
+        "symbol": "partition"
+      },
+      {
+        "args": [
+          [
+            1
+          ],
+          2
+        ],
+        "expected": [
+          [
+            1
+          ]
+        ],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "api.py",
+        "raises": "",
+        "symbol": "partition"
+      },
+      {
+        "args": [
+          [],
+          2
+        ],
+        "expected": [],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "api.py",
+        "raises": "",
+        "symbol": "partition"
+      }
+    ],
+    "review": {
+      "approved": true,
+      "changes": [
+        "Verified that 'test_exact' correctly expects the last chunk to be preserved even if it's smaller than 'size'.",
+        "Confirmed 'test_empty' aligns with the contract that an empty input returns an empty list, not a list containing one empty list.",
+        "Checked 'test_invalid' (now implied as part of the suite context) to ensure it raises ValueError for size 0, matching the 'positive integer' requirement."
+      ],
+      "independent": false
+    },
+    "sha256": "3fdaf57c99b312a8500b72324c7c7441f579255ae03f348d2526ce2834ae35f4",
+    "independent": false,
+    "frozen_before_patch": true,
+    "baseline_tests": {
+      "tests/test_public.py::PublicTests::test_empty": "PASS",
+      "tests/test_public.py::PublicTests::test_exact": "PASS",
+      "tests/test_public.py::PublicTests::test_flatten": "PASS",
+      "tests/test_public.py::PublicTests::test_invalid": "PASS",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "FAIL",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS"
+    },
+    "reproduced_issue_tests": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01"
+    ]
+  },
+  "blocked_reason": "",
+  "verification_scope": "当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为",
+  "model": "qwen35-9b-unc:latest",
+  "provenance": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

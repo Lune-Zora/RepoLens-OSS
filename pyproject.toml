@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "replens-oss"
+version = "0.7.0"
+description = "RepoLens-OSS: 面向开源贡献的新手 Issue 定位、补丁生成与验证工作台"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "RepoLens-OSS Team" }]
+# 核心零第三方依赖，Web 层可选依赖单独声明
+dependencies = []
+
+[project.optional-dependencies]
+# 版本下界来自 2026-10-28 实测通过的组合，完整约束见 constraints.txt
+# 关键：anyio>=4.13 要求 typing_extensions>=4.16.0，低版本缺少 sentinel 会导致 FastAPI 导入失败
+web = [
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "anyio>=4.13,<5",
+    "typing_extensions>=4.16.0",
+]
+# 测试需要 httpx 才能跑 FastAPI TestClient 集成用例
+test = [
+    "pytest>=8",
+    "httpx>=0.27,<0.29",
+    "fastapi>=0.110",
+    "anyio>=4.13,<5",
+    "typing_extensions>=4.16.0",
+]
+
+[project.scripts]
+replens = "replens.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["replens*", "web*"]
+
+[tool.setuptools.package-data]
+web = ["static/*"]
+
+[tool.pytest.ini_options]
+# 见 constraints.txt：缺少 typing_extensions>=4.16.0 时 FastAPI 无法导入，HTTP 集成用例会整体失败
+testpaths = ["tests"]

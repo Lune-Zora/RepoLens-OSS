@@ -1,0 +1,9 @@
+{
+  "after": null,
+  "before": null,
+  "command": "",
+  "enabled": false,
+  "files": {},
+  "kind": "model_behavioral_cases",
+  "timeout": 120
+}

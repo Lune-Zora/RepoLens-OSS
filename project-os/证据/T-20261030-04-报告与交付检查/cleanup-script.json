@@ -1,0 +1,7 @@
+{
+  "source": "E:\\osspj\\人工智能\\repo\\scripts\\_sim.py",
+  "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\scripts\\_sim.py",
+  "sha256": "8DA39F6254D88B243ABC0AB24270787DAD8124A4C5220070C9A7C620623FB07A",
+  "reason": "unreferenced ad-hoc dependency simulation script",
+  "operation": "reversible_move"
+}

@@ -1,0 +1,34 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0
+rootdir: E:\osspj\人工智能\_delivery-work\tqdm_reset_inf_qkqlk1p2\execution-temp\replens_kmpt7qc2
+configfile: pyproject.toml
+plugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0
+asyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+timeout: 30.0s
+timeout method: thread
+timeout func_only: False
+collected 72 items / 69 deselected / 3 selected
+
+tests\tests_tqdm.py .F.                                                  [100%]
+
+================================== FAILURES ===================================
+_______________________________ test_reset_inf ________________________________
+
+    def test_reset_inf():
+        """Test resetting a bar to an infinite total (#651)"""
+        with closing(StringIO()) as our_file:
+            with tqdm(total=10, file=our_file,
+                      miniters=1, mininterval=0, maxinterval=0) as t:
+                t.update(5)
+                t.reset(total=float("inf"))
+                t.update()
+                # same as tqdm(total=float("inf")): treated as unknown
+>               assert t.total is None
+E               assert inf is None
+E                +  where inf = <tqdm.std.tqdm object at 0x00000252D65E3820>.total
+
+tests\tests_tqdm.py:1156: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/tests_tqdm.py::test_reset_inf - assert inf is None
+ +  where inf = <tqdm.std.tqdm object at 0x00000252D65E3820>.total
+================= 1 failed, 2 passed, 69 deselected in 0.47s ==================

@@ -1,0 +1,15 @@
+{
+  "files": 837,
+  "broken_links": [],
+  "tests_exit_code": 0,
+  "resource_statuses": {
+    "已核验": 42,
+    "待核验": 4,
+    "不适用": 3
+  },
+  "source_package_scope": "供评审复核；不宣称待确认的文本/模型来源已经获得公开分发许可",
+  "cover_fields_to_fill": [
+    "团队名称",
+    "参赛编号"
+  ]
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "model": "qwen2.5-coder:1.5b",
+    "passed": 0,
+    "total": 4,
+    "actual_calls": 20
+  },
+  {
+    "model": "qwen25-7b-unc:latest",
+    "passed": 0,
+    "total": 4,
+    "actual_calls": 11
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "passed": 4,
+    "total": 4,
+    "actual_calls": 32
+  }
+]

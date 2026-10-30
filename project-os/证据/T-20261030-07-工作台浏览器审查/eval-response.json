@@ -1,0 +1,713 @@
+{
+  "schema_version": "3.0",
+  "top_k": 5,
+  "candidate_limit": 100,
+  "total_positive": 20,
+  "total_noise": 5,
+  "total_func_eval": 20,
+  "total_line_eval": 20,
+  "total_qualified_unsupported": 0,
+  "counts": {
+    "positive": 20,
+    "noise": 5,
+    "func_name_eval": 20,
+    "symbol_start_eval": 20,
+    "qualified_unsupported": 0,
+    "hit1": 16,
+    "hitk": 19,
+    "func": 17,
+    "line": 17,
+    "rr_sum": 17.333333333333332,
+    "refused": 5,
+    "positive_refused": 1,
+    "evidence_hit": 19
+  },
+  "details": [
+    {
+      "id": 1,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/parser.py:parse_date:9"
+      ],
+      "returned": [
+        "src/dateparse/validator.py:8",
+        "src/dateparse/utils.py:5",
+        "src/dateparse/parser.py:9",
+        "src/dateparse/utils.py:25",
+        "src/dateparse/validator.py:29"
+      ],
+      "ranked_files": [
+        "src/dateparse/validator.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 20,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 0.3333333333333333,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 2,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/parser.py:parse_date:9"
+      ],
+      "returned": [
+        "src/dateparse/parser.py:9",
+        "src/dateparse/validator.py:8",
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/parser.py:1",
+        "src/dateparse/utils.py:25"
+      ],
+      "ranked_files": [
+        "src/dateparse/parser.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 18,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 3,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/parser.py:parse_datetime:26"
+      ],
+      "returned": [
+        "src/dateparse/parser.py:9",
+        "src/dateparse/utils.py:5",
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/validator.py:8",
+        "src/dateparse/utils.py:25"
+      ],
+      "ranked_files": [
+        "src/dateparse/parser.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 21,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": false,
+      "symbol_start_hit": false,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 4,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/parser.py:parse_datetime:26"
+      ],
+      "returned": [
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/parser.py:9",
+        "src/dateparse/utils.py:25",
+        "src/dateparse/validator.py:8",
+        "src/dateparse/validator.py:49"
+      ],
+      "ranked_files": [
+        "src/dateparse/formatter.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 21,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 0.5,
+      "func_name_hit": false,
+      "symbol_start_hit": false,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 5,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/validator.py:is_valid_date:8"
+      ],
+      "returned": [
+        "src/dateparse/validator.py:8",
+        "src/dateparse/utils.py:40",
+        "src/dateparse/parser.py:9",
+        "src/dateparse/validator.py:1",
+        "src/dateparse/utils.py:25"
+      ],
+      "ranked_files": [
+        "src/dateparse/validator.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 19,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 6,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/validator.py:is_valid_date:8"
+      ],
+      "returned": [
+        "src/dateparse/validator.py:8",
+        "src/dateparse/validator.py:49",
+        "src/dateparse/validator.py:29",
+        "src/dateparse/validator.py:1",
+        "src/dateparse/parser.py:9"
+      ],
+      "ranked_files": [
+        "src/dateparse/validator.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 21,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 7,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/validator.py:validate_range:29"
+      ],
+      "returned": [
+        "src/dateparse/validator.py:1",
+        "src/dateparse/validator.py:29",
+        "src/dateparse/validator.py:8",
+        "src/dateparse/utils.py:5",
+        "src/dateparse/validator.py:49"
+      ],
+      "ranked_files": [
+        "src/dateparse/validator.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 19,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 8,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/validator.py:validate_range:29"
+      ],
+      "returned": [
+        "src/dateparse/validator.py:29",
+        "src/dateparse/validator.py:1",
+        "src/dateparse/utils.py:5",
+        "src/dateparse/validator.py:8",
+        "src/dateparse/utils.py:25"
+      ],
+      "ranked_files": [
+        "src/dateparse/validator.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 18,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 9,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/validator.py:is_weekend:49"
+      ],
+      "returned": [
+        "src/dateparse/validator.py:49",
+        "src/dateparse/validator.py:1",
+        "src/dateparse/utils.py:40",
+        "src/dateparse/validator.py:8",
+        "src/dateparse/utils.py:25"
+      ],
+      "ranked_files": [
+        "src/dateparse/validator.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 19,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 10,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/validator.py:is_weekend:49"
+      ],
+      "returned": [
+        "src/dateparse/utils.py:5",
+        "src/dateparse/validator.py:49",
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/utils.py:40",
+        "src/dateparse/validator.py:29"
+      ],
+      "ranked_files": [
+        "src/dateparse/utils.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 21,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 0.5,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 11,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/utils.py:days_between:5"
+      ],
+      "returned": [
+        "src/dateparse/utils.py:5",
+        "src/dateparse/utils.py:1",
+        "src/dateparse/utils.py:25",
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/validator.py:29"
+      ],
+      "ranked_files": [
+        "src/dateparse/utils.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 21,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 12,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/utils.py:days_between:5"
+      ],
+      "returned": [
+        "src/dateparse/utils.py:5",
+        "src/dateparse/utils.py:1",
+        "src/dateparse/validator.py:29",
+        "src/dateparse/utils.py:25",
+        "src/dateparse/formatter.py:5"
+      ],
+      "ranked_files": [
+        "src/dateparse/utils.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 18,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 13,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/utils.py:add_days:25"
+      ],
+      "returned": [
+        "src/dateparse/utils.py:5",
+        "src/dateparse/utils.py:25",
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/utils.py:1",
+        "src/dateparse/validator.py:8"
+      ],
+      "ranked_files": [
+        "src/dateparse/utils.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 18,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 14,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/utils.py:add_days:25"
+      ],
+      "returned": [
+        "src/dateparse/utils.py:25",
+        "src/dateparse/utils.py:5",
+        "src/dateparse/utils.py:1",
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/validator.py:8"
+      ],
+      "ranked_files": [
+        "src/dateparse/utils.py",
+        "src/dateparse/formatter.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 21,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 15,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/utils.py:is_leap_year:40"
+      ],
+      "returned": [
+        "src/dateparse/utils.py:40",
+        "src/dateparse/utils.py:1",
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/formatter.py:1"
+      ],
+      "ranked_files": [
+        "src/dateparse/utils.py",
+        "src/dateparse/formatter.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 4,
+      "returned_distinct_files": 2,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 16,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/utils.py:is_leap_year:40"
+      ],
+      "returned": [
+        "src/dateparse/utils.py:40",
+        "src/dateparse/utils.py:1",
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/formatter.py:1"
+      ],
+      "ranked_files": [
+        "src/dateparse/utils.py",
+        "src/dateparse/formatter.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 4,
+      "returned_distinct_files": 2,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 17,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/formatter.py:format_date:5"
+      ],
+      "returned": [
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/formatter.py:1",
+        "src/dateparse/utils.py:5",
+        "src/dateparse/utils.py:25",
+        "src/dateparse/utils.py:1"
+      ],
+      "ranked_files": [
+        "src/dateparse/formatter.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 18,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 18,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/formatter.py:format_date:5"
+      ],
+      "returned": [
+        "src/dateparse/formatter.py:5",
+        "src/dateparse/formatter.py:1",
+        "src/dateparse/validator.py:29",
+        "src/dateparse/parser.py:9",
+        "src/dateparse/validator.py:8"
+      ],
+      "ranked_files": [
+        "src/dateparse/formatter.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 19,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 19,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/formatter.py:format_iso:21"
+      ],
+      "returned": [
+        "src/dateparse/formatter.py:21",
+        "src/dateparse/utils.py:5",
+        "src/dateparse/formatter.py:1",
+        "src/dateparse/parser.py:26",
+        "src/dateparse/parser.py:9"
+      ],
+      "ranked_files": [
+        "src/dateparse/formatter.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/__init__.py"
+      ],
+      "insufficient": false,
+      "returned_pool_size": 21,
+      "returned_distinct_files": 8,
+      "file_hit": true,
+      "file_rr": 1.0,
+      "func_name_hit": true,
+      "symbol_start_hit": true,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 20,
+      "type": "positive",
+      "expected": [
+        "src/dateparse/formatter.py:format_iso:21"
+      ],
+      "returned": [],
+      "ranked_files": [],
+      "insufficient": true,
+      "returned_pool_size": 0,
+      "returned_distinct_files": 0,
+      "file_hit": false,
+      "file_rr": 0.0,
+      "func_name_hit": false,
+      "symbol_start_hit": false,
+      "unsupported_qualified_targets": []
+    },
+    {
+      "id": 21,
+      "type": "noise",
+      "expected": [],
+      "returned": [],
+      "ranked_files": [],
+      "insufficient": true,
+      "returned_pool_size": 0,
+      "returned_distinct_files": 0,
+      "correct_refusal": true
+    },
+    {
+      "id": 22,
+      "type": "noise",
+      "expected": [],
+      "returned": [],
+      "ranked_files": [],
+      "insufficient": true,
+      "returned_pool_size": 0,
+      "returned_distinct_files": 0,
+      "correct_refusal": true
+    },
+    {
+      "id": 23,
+      "type": "noise",
+      "expected": [],
+      "returned": [],
+      "ranked_files": [],
+      "insufficient": true,
+      "returned_pool_size": 0,
+      "returned_distinct_files": 0,
+      "correct_refusal": true
+    },
+    {
+      "id": 24,
+      "type": "noise",
+      "expected": [],
+      "returned": [],
+      "ranked_files": [],
+      "insufficient": true,
+      "returned_pool_size": 0,
+      "returned_distinct_files": 0,
+      "correct_refusal": true
+    },
+    {
+      "id": 25,
+      "type": "noise",
+      "expected": [],
+      "returned": [],
+      "ranked_files": [],
+      "insufficient": true,
+      "returned_pool_size": 0,
+      "returned_distinct_files": 0,
+      "correct_refusal": true
+    }
+  ],
+  "refusal_rate": 1.0,
+  "positive_refusal_rate": 0.05,
+  "recall_evidences": 0.95,
+  "hit@1": 0.8,
+  "hit@5": 0.95,
+  "func_name@5": 0.85,
+  "symbol_start@5": 0.85,
+  "mrr@5": 0.8667,
+  "metric_definitions": {
+    "file": "先按文件首次出现顺序去重，再取前 k；MRR 在同一 k 截断，未命中为 0",
+    "function": "前 k 个符号的 path + 函数/方法短名；限定名不支持并单列",
+    "line": "前 k 个函数/方法符号须匹配同一 path + 短名 + 起始行 ±3；不是语句定位",
+    "denominators": "文件/MRR=全部正向样本；函数/行分别为具有受支持标注的样本；拒答=干扰样本",
+    "pool": "固定 candidate_limit 检索符号池（可能带调用图扩展）；不等于全仓库无限深度排名"
+  },
+  "mrr": 0.8667,
+  "func@5": 0.85,
+  "line_acc@5": 0.85,
+  "legacy_aliases": {
+    "func@5": "func_name@5",
+    "line_acc@5": "symbol_start@5",
+    "mrr": "mrr@5"
+  },
+  "requested_hybrid": false,
+  "retrieval_mode": "bm25_callgraph",
+  "input_audit": {
+    "mode": "repository_audit_only",
+    "indexed_files": [
+      {
+        "path": "src/dateparse/__init__.py",
+        "sha256": "c13916f3a1eefe385e585daddff06929a18fc9dec24be8c35482cacb402dc360"
+      },
+      {
+        "path": "src/dateparse/formatter.py",
+        "sha256": "04d99dec99d4f6dc49cac47e3ee53d20180919e8e3b80042bac13c5e94dce3b6"
+      },
+      {
+        "path": "src/dateparse/parser.py",
+        "sha256": "7c25598931d6e17bdb2abf9799ca2ff31c9e738337807139a4971518695c31c3"
+      },
+      {
+        "path": "src/dateparse/utils.py",
+        "sha256": "592c99db8d6232bd8a638bab9a90f89703f25236ab6a60ea2b3a4b8aab46ad78"
+      },
+      {
+        "path": "src/dateparse/validator.py",
+        "sha256": "bc205b2233bea7ca1660d6d3b7902eb186cc8424ee0095b9fba9c49804a57048"
+      },
+      {
+        "path": "tests/test_parser.py",
+        "sha256": "afdde31ae84ccefebfae81f2058c3dce8b04b76223a2ed077406d52fd5fb7a98"
+      },
+      {
+        "path": "README.md",
+        "sha256": "8b2f258ec2626bfeffda770f27a268d0d4ad6d177e6c7b976f596830d5ca95e6"
+      },
+      {
+        "path": "docs/usage.md",
+        "sha256": "3acac61bc71f1b3d59797c255faec56ea51611e46048d31b2863121c018daa1f"
+      },
+      {
+        "path": "reports/compliance/open_source_checklist.md",
+        "sha256": "a93aa06202d9f780c470b3f8b75950fca2877cf25d0ce9b6d6d25b83a2c3287a"
+      },
+      {
+        "path": "reports/compliance/third_party_disclosure.md",
+        "sha256": "2a97b78967e6fb9c6812e9edd655ecdab0c7f9630318f645c336a632630d5abd"
+      }
+    ],
+    "warning": "未提供冻结输入清单；本次仅记录索引材料，不认证答案隔离"
+  }
+}

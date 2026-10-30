@@ -1,0 +1,84 @@
+{
+  "verified_on": "2026-10-26",
+  "prepared_on": "2026-10-25",
+  "desktop_application_status": "not_applied_approval_service_failed",
+  "desktop_baseline_files_unchanged": 201,
+  "desktop_changed_files": [],
+  "desktop_missing_files": [],
+  "git_index_unchanged": true,
+  "moves_verified_in_workspace_copy": 26,
+  "untracked_before_application": [
+    "EXECUTION_LOG.md",
+    "docs/05_测试/统一修复验收.md",
+    "docs/05_测试/评测口径与输入隔离.md",
+    "examples/acceptance/demo.json",
+    "replens/eval_inputs.py",
+    "replens/eval_metrics.py",
+    "replens/runner.py",
+    "replens/test_adapter.py",
+    "replens/validation.py",
+    "reports/_demo_raw.json",
+    "reports/ablation_demo_smoke.md",
+    "reports/demo_failure.md",
+    "reports/demo_success.md",
+    "reports/validate_sample_manifest_test.md",
+    "tests/test_eval.py",
+    "tests/test_eval_inputs.py",
+    "tests/test_patch_loop.py",
+    "tests/test_validation.py"
+  ],
+  "verification": {
+    "immutable_moves_checked": 26,
+    "planned_writes_checked": 50,
+    "changed_python_syntax": [
+      "eval/ablation.py",
+      "eval/baselines.py",
+      "eval/eval.py",
+      "replens/compliance.py",
+      "replens/miner.py",
+      "scripts/build_training_data.py",
+      "scripts/eval_finetune.py",
+      "scripts/finetune.py",
+      "scripts/prepare_loguru_eval.py",
+      "scripts/prepare_real_eval.py",
+      "tests/test_eval.py",
+      "web/app.py"
+    ],
+    "navigation_links_checked": 78,
+    "active_source_old_paths": [],
+    "targeted_unittest": {
+      "run": 22,
+      "passed": 21,
+      "skipped": [
+        "test_real_web_eval_dynamic_metrics_and_invalid_input (layout_existing_eval_tests.EvaluationIntegration.test_real_web_eval_dynamic_metrics_and_invalid_input): Web dependencies unavailable"
+      ],
+      "failures": 0,
+      "errors": 0
+    },
+    "web_path_functions": {
+      "listed_datasets": 5,
+      "valid_path_forms": 3,
+      "scope": "Actual source functions and dataset reads; no HTTP server or FastAPI test"
+    },
+    "data_locations": {
+      "datasets": 5,
+      "train": 14,
+      "heldout": 2,
+      "reference_metadata": 8
+    },
+    "cli_entrypoints": [
+      "cli_eval",
+      "baseline_default",
+      "ablation_default"
+    ],
+    "demo_metrics_unchanged": {
+      "hit@1": 0.85,
+      "hit@5": 0.95,
+      "mrr@5": 0.8917
+    },
+    "full_regression_run": false,
+    "desktop_source_executed_or_modified": false,
+    "readme_strict_rule_demo": "VERIFIED; actual README command; workspace copy only"
+  },
+  "remaining_gate": "Normal app authorization must actually add the desktop project to writable roots, or approval service must recover."
+}

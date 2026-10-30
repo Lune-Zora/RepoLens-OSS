@@ -1,0 +1,79 @@
+{
+  "生成时间": "2026-10-29",
+  "任务": "T-20261029-01-交付证据与挖掘能力修复",
+  "缺陷1_CI报告未入库": {
+    "根因": "reports/runs/ 被 .gitignore 排除，而 scripts/run_ci.py 写入该目录",
+    "后果": "「本地 CI 8/8 通过」在仓库内无可查证据",
+    "修复": [
+      "报告目录改为 reports/ci/（入库）",
+      "额外写 reports/ci/最新一次.json 稳定指针"
+    ],
+    "验证": {
+      "reports_runs_被忽略": true,
+      "reports_ci_被忽略": false,
+      "最新一次存在": true
+    }
+  },
+  "缺陷2_挖掘结果不可提升": {
+    "根因": "replens/miner.py 组装输出时只保留 id/category/issue/expected，丢弃 commit 与 parent",
+    "后果": "验证 fail→pass 的候选因缺 buggy_parent/fix_commit 无法还原 buggy 基线，只能停在定位级",
+    "修复": "输出补充 project / buggy_parent / fix_commit / test_files / src_files",
+    "实测": {
+      "仓库": "本地 tqdm",
+      "挖掘条数": 3,
+      "验证通过": 3,
+      "字段完整": true,
+      "示例": {
+        "project": "tqdm",
+        "fix_commit": "2a9e4e82ddba07c5dd6d126e23a4745b76ea49c8",
+        "buggy_parent": "8d6ff8de5a9066de77d0a9df3e80a022a3dcf146"
+      }
+    },
+    "附带发现": "miner 要求同一次修复提交内既有源码改动也有测试改动；只改源码不会被挖掘（既有行为，已在测试中说明）"
+  },
+  "缺陷3_交付包不可重建": {
+    "根因": [
+      "repo-control 为手工整理，控制端改动后只能人肉重做",
+      "使用说明.txt 描述的 payload/ 目录从未随包提供"
+    ],
+    "修复": "新增 scripts/build_delivery.py，打包脚本化",
+    "实跑": {
+      "命令": "python scripts/build_delivery.py --staging <staging> --target <repo-control> --label 20261029",
+      "控制端结论": {
+        "status": "PASS",
+        "materials_status": "PASS",
+        "replay_status": "PASS",
+        "repair_status": "VERIFIED",
+        "model_repair_credit": false
+      },
+      "登记文件数": 38,
+      "证据目录文件数": 92,
+      "哈希校验": "38/38 全部匹配",
+      "产出": [
+        "validation/tqdm-reset-inf-20261029/",
+        "manifest-20261029.json",
+        "delivery_summary-20261029.json",
+        "使用说明-20261029.md"
+      ]
+    }
+  },
+  "新增测试": {
+    "文件": "tests/test_delivery_contract.py",
+    "用例数": 4,
+    "覆盖": [
+      "reports/ci 未被 gitignore 排除",
+      "run_ci.py 不再写入 reports/runs",
+      "最新一次.json 存在且无失败步骤",
+      "miner 输出含 buggy_parent/fix_commit/project"
+    ]
+  },
+  "回归": {
+    "全量测试": "149 passed / 0 failed / 81 subtests",
+    "此前": "145 passed",
+    "本地CI": "8/8 通过"
+  },
+  "仍未解决": [
+    "托管 CI 平台运行记录（需账号侧操作）",
+    "统计显著所需样本量（n=12 时 95% CI 宽 0.49）"
+  ]
+}

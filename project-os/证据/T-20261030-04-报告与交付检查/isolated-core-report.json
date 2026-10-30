@@ -1,0 +1,372 @@
+{
+  "schema_version": "2.0",
+  "status": "VERIFIED",
+  "reasons": [
+    "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+  ],
+  "validation": {
+    "status": "VERIFIED",
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "targets": [
+      "test_parser.ParserTests.test_parse_date_with_whitespace"
+    ],
+    "preserved": [
+      "test_parser.ParserTests.test_parse_date",
+      "test_parser.ParserTests.test_parse_datetime"
+    ],
+    "acceptance_sha256": "1aacb96e419b642cacc224843609d7aab7fcad4da6266bdff2d87b80e9b7688d",
+    "acceptance_targets": [
+      "test_date_behavior.DateBehavior.test_tab_and_newline_padding"
+    ]
+  },
+  "test_framework": "unittest",
+  "generated_test_kind": "generated_auxiliary",
+  "acceptance_before": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_date_behavior.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ".E.\n======================================================================\nERROR: test_tab_and_newline_padding (test_date_behavior.DateBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_0hseec9u\\__replens_acceptance__\\test_date_behavior.py\", line 7, in test_tab_and_newline_padding\n    self.assertEqual(parse_date('\\t2024-02-29\\n'), datetime.date(2024, 2, 29))\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_0hseec9u\\src\\dateparse\\parser.py\", line 23, in parse_date\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n  File \"C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_strptime.py\", line 568, in _strptime_datetime\n    tt, fraction, gmtoff_fraction = _strptime(data_string, format)\n  File \"C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_strptime.py\", line 349, in _strptime\n    raise ValueError(\"time data %r does not match format %r\" %\nValueError: time data '\\t2024-02-29\\n' does not match format '%Y-%m-%d'\n\n----------------------------------------------------------------------\nRan 3 tests in 0.006s\n\nFAILED (errors=1)\n",
+      "timed_out": false,
+      "passed": false,
+      "valid": true,
+      "summary": {
+        "passed": 2,
+        "failed": 0,
+        "errors": 1,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 3,
+        "ran": 3
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_date_behavior.DateBehavior.test_invalid_date_stays_invalid": "PASS",
+        "test_date_behavior.DateBehavior.test_tab_and_newline_padding": "ERROR",
+        "test_date_behavior.DateBehavior.test_unpadded_date": "PASS"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "acceptance_after": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_date_behavior.py",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.005s\n\nOK\n",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 3,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 3,
+        "ran": 3
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_date_behavior.DateBehavior.test_invalid_date_stays_invalid": "PASS",
+        "test_date_behavior.DateBehavior.test_tab_and_newline_padding": "PASS",
+        "test_date_behavior.DateBehavior.test_unpadded_date": "PASS"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_date_behavior.py",
+  "repo": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+  "issue": "date string with surrounding whitespace fails to parse",
+  "insufficient_evidence": false,
+  "evidences": [
+    {
+      "ref": "src/dateparse/parser.py:9",
+      "type": "function",
+      "name": "parse_date",
+      "confidence": 1.0,
+      "reason": "失败轨迹 1 帧命中 src/dateparse/parser.py:9（累计权重 1.00）→ 未被执行证伪",
+      "source": "execution_confirmed",
+      "signature": "def parse_date(s)",
+      "code": "def parse_date(s):\n    \"\"\"Parse a date string in YYYY-MM-DD format.\n\n    Args:\n        s: the date string, e.g. \"2024-01-01\".\n\n    Returns:\n        datetime.date object.\n\n    Note:\n        The input is not stripped of surrounding whitespace, so a string\n        like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n        call s.strip() before parsing.\n    \"\"\"\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()"
+    },
+    {
+      "ref": "tests/test_parser.py:17",
+      "type": "method",
+      "name": "test_parse_date_with_whitespace",
+      "confidence": 1.0,
+      "reason": "失败轨迹 1 帧命中 tests/test_parser.py:17（累计权重 0.75）→ 未被执行证伪",
+      "source": "execution_confirmed",
+      "signature": "def test_parse_date_with_whitespace(self)",
+      "code": "def test_parse_date_with_whitespace(self):\n        self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))"
+    },
+    {
+      "ref": "src/dateparse/validator.py:8",
+      "type": "function",
+      "name": "is_valid_date",
+      "confidence": 0.85,
+      "reason": "符号名/文档命中关键词: date, string, str, surrounding, surround",
+      "source": "keyword_match",
+      "signature": "def is_valid_date(s)",
+      "code": "def is_valid_date(s):\n    \"\"\"Check whether a date string is a valid YYYY-MM-DD date.\n\n    Args:\n        s: date string like \"2024-01-01\".\n\n    Returns:\n        True if the string parses to a valid date, False otherwise.\n\n    Note:\n        Delegates to parse_date, which does not strip surrounding whitespace,\n        so \" 2024-01-01 \" is wrongly reported as invalid.\n    \"\"\"\n    from .parser import parse_date\n    try:\n        parse_date(s)\n        return True\n    except ValueError:\n        return False"
+    },
+    {
+      "ref": "src/dateparse/utils.py:25",
+      "type": "function",
+      "name": "add_days",
+      "confidence": 0.7,
+      "reason": "符号名/文档命中关键词: date, string, str",
+      "source": "keyword_match",
+      "signature": "def add_days(s, n)",
+      "code": "def add_days(s, n):\n    \"\"\"Add n days to a date string and return a date object.\n\n    Args:\n        s: date string \"YYYY-MM-DD\".\n        n: integer number of days (can be negative).\n\n    Returns:\n        datetime.date object.\n    \"\"\"\n    from .parser import parse_date\n    d = parse_date(s)\n    return d + datetime.timedelta(days=n)"
+    },
+    {
+      "ref": "src/dateparse/parser.py:9",
+      "type": "function",
+      "name": "parse_date",
+      "confidence": 0.6,
+      "reason": "失败轨迹 1 帧命中 src/dateparse/parser.py:9（累计权重 1.00）→ 未被执行证伪",
+      "source": "execution_confirmed",
+      "signature": "def parse_date(s)",
+      "code": "def parse_date(s):\n    \"\"\"Parse a date string in YYYY-MM-DD format.\n\n    Args:\n        s: the date string, e.g. \"2024-01-01\".\n\n    Returns:\n        datetime.date object.\n\n    Note:\n        The input is not stripped of surrounding whitespace, so a string\n        like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n        call s.strip() before parsing.\n    \"\"\"\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()"
+    },
+    {
+      "ref": "src/dateparse/utils.py:5",
+      "type": "function",
+      "name": "days_between",
+      "confidence": 0.55,
+      "reason": "符号名/文档命中关键词: date, string, str",
+      "source": "keyword_match",
+      "signature": "def days_between(a, b)",
+      "code": "def days_between(a, b):\n    \"\"\"Return the number of days between two date strings (absolute value).\n\n    Args:\n        a: start date string \"YYYY-MM-DD\".\n        b: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        Non-negative integer day count.\n\n    Note:\n        Subtraction order is reversed — returns a negative value when a < b.\n        This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    da = parse_date(a)\n    db = parse_date(b)\n    return (da - db).days"
+    },
+    {
+      "ref": "tests/test_parser.py:17",
+      "type": "method",
+      "name": "test_parse_date_with_whitespace",
+      "confidence": 0.45,
+      "reason": "失败轨迹 1 帧命中 tests/test_parser.py:17（累计权重 0.75）→ 未被执行证伪",
+      "source": "execution_confirmed",
+      "signature": "def test_parse_date_with_whitespace(self)",
+      "code": "def test_parse_date_with_whitespace(self):\n        self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))"
+    },
+    {
+      "ref": "tests/test_parser.py:17",
+      "type": "method",
+      "name": "test_parse_date_with_whitespace",
+      "confidence": 0.45,
+      "reason": "失败轨迹 1 帧命中 tests/test_parser.py:17（累计权重 0.75）→ 未被执行证伪",
+      "source": "execution_confirmed",
+      "signature": "def test_parse_date_with_whitespace(self)",
+      "code": "def test_parse_date_with_whitespace(self):\n        self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))"
+    },
+    {
+      "ref": "src/dateparse/validator.py:29",
+      "type": "function",
+      "name": "validate_range",
+      "confidence": 0.4,
+      "reason": "符号名/文档命中关键词: date, string, str",
+      "source": "keyword_match",
+      "signature": "def validate_range(start, end)",
+      "code": "def validate_range(start, end):\n    \"\"\"Validate that the start date is not after the end date.\n\n    Args:\n        start: start date string \"YYYY-MM-DD\".\n        end: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        True if start <= end, False otherwise.\n\n    Note:\n        Uses strict less-than instead of less-or-equal, so equal dates are\n        wrongly rejected. This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    s = parse_date(start)\n    e = parse_date(end)\n    return s < e"
+    },
+    {
+      "ref": "tests/test_parser.py:8",
+      "type": "method",
+      "name": "test_parse_date",
+      "confidence": 0.25,
+      "reason": "证伪：位于测试文件，不是源码证据（降权）",
+      "source": "call_related",
+      "signature": "def test_parse_date(self)",
+      "code": "def test_parse_date(self):\n        self.assertEqual(parse_date(\"2024-01-01\"), datetime.date(2024, 1, 1))"
+    }
+  ],
+  "plan": {
+    "root_cause": "根据检索证据，问题最可能位于 src/dateparse/parser.py:9 的 function `parse_date`。 签名：`def parse_date(s)`。 关键代码：`def parse_date(s):`。",
+    "affected_scope": [
+      "src/dateparse/parser.py",
+      "src/dateparse/utils.py",
+      "src/dateparse/validator.py",
+      "tests/test_parser.py"
+    ],
+    "files_to_modify": [
+      "src/dateparse/parser.py",
+      "src/dateparse/utils.py",
+      "src/dateparse/validator.py",
+      "tests/test_parser.py"
+    ],
+    "steps": [
+      "阅读 src/dateparse/parser.py 第 9-23 行的实现。",
+      "确认 `parse_date` 的输入边界条件与现有测试覆盖。",
+      "在临时副本中应用候选修改并运行白名单测试。"
+    ],
+    "risks": [
+      "本计划由规则模板生成，未经过大模型语义推理，需人工复核。",
+      "仅覆盖检索到的局部证据，可能遗漏相关调用方。"
+    ],
+    "regression_test": "# 建议在测试中覆盖 `parse_date` 的边界输入（如空字符串、带空格、None 等）。\n# 目标文件: src/dateparse/parser.py 函数定义位于第 9 行。",
+    "generated_by": "rule"
+  },
+  "test_command": "python -m unittest discover -s tests",
+  "patch_note": "规则引擎生成 strip 补丁（在 parse_date 函数体首行前插入 s = s.strip()）。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）",
+  "before": [
+    {
+      "command": "python -m unittest discover -s tests",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ".E.\n======================================================================\nERROR: test_parse_date_with_whitespace (test_parser.ParserTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_6tb2r8fb\\tests\\test_parser.py\", line 18, in test_parse_date_with_whitespace\n    self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_6tb2r8fb\\src\\dateparse\\parser.py\", line 23, in parse_date\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n  File \"C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_strptime.py\", line 568, in _strptime_datetime\n    tt, fraction, gmtoff_fraction = _strptime(data_string, format)\n  File \"C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_strptime.py\", line 349, in _strptime\n    raise ValueError(\"time data %r does not match format %r\" %\nValueError: time data ' 2024-01-01 ' does not match format '%Y-%m-%d'\n\n----------------------------------------------------------------------\nRan 3 tests in 0.006s\n\nFAILED (errors=1)\n",
+      "timed_out": false,
+      "passed": false,
+      "valid": true,
+      "summary": {
+        "passed": 2,
+        "failed": 0,
+        "errors": 1,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 3,
+        "ran": 3
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_parser.ParserTests.test_parse_date": "PASS",
+        "test_parser.ParserTests.test_parse_date_with_whitespace": "ERROR",
+        "test_parser.ParserTests.test_parse_datetime": "PASS"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "after": [
+    {
+      "command": "python -m unittest discover -s tests",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.005s\n\nOK\n",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 3,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 3,
+        "ran": 3
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_parser.ParserTests.test_parse_date": "PASS",
+        "test_parser.ParserTests.test_parse_date_with_whitespace": "PASS",
+        "test_parser.ParserTests.test_parse_datetime": "PASS"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "generated_test": "# 由 RepoLens-OSS 生成的回归测试（unittest）\n# 目标: src/dateparse/parser.py:9 函数 parse_date\n# 对应 Issue: date string with surrounding whitespace fails to parse\nimport inspect, unittest\nimport importlib, pathlib, sys\nsys.path.insert(0, str(pathlib.Path('__TMP_REPO__') / 'src'))\n_mod = importlib.import_module('dateparse.parser')\n\n\nclass TestRepoLensRegression(unittest.TestCase):\n    @classmethod\n    def setUpClass(cls):\n        cls._mod = _mod\n        cls._target = staticmethod(_mod.parse_date)\n\n    def test_regression_parse_date_whitespace_invariance(self):\n        # 行为回归：首尾空白不应改变函数结果\n        self.assertEqual(self._target(' 2024-01-01 '),\n                         self._target('2024-01-01'))\n\n    def test_parse_date_exists_and_callable(self):\n        self.assertTrue(callable(self._target),\n                        '函数 parse_date 不存在或不可调用')\n\n    def test_parse_date_signature(self):\n        params = inspect.signature(self._target).parameters\n        required_count = sum(1 for p in params.values()\n            if p.default is inspect.Parameter.empty\n            and p.kind in (inspect.Parameter.POSITIONAL_ONLY,\n                          inspect.Parameter.POSITIONAL_OR_KEYWORD))\n        self.assertEqual(required_count, 1, '必填参数个数应与源码一致')",
+  "patch_diff": "--- a/src/dateparse/parser.py\n+++ b/src/dateparse/parser.py\n@@ -20,6 +20,7 @@\n         like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n         call s.strip() before parsing.\n     \"\"\"\n+    s = s.strip()\n     return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n \n ",
+  "execution_hints": [
+    {
+      "ref": "tests/test_parser.py:18",
+      "frame_func": "test_parse_date_with_whitespace",
+      "weight": 0.75
+    },
+    {
+      "ref": "src/dateparse/parser.py:23",
+      "frame_func": "parse_date",
+      "weight": 1.0
+    }
+  ],
+  "flip_prediction": {
+    "predicted": [
+      "test_parse_date",
+      "test_parse_date_with_whitespace"
+    ],
+    "actual_flips": [
+      "test_parser.ParserTests.test_parse_date_with_whitespace"
+    ],
+    "hit": [
+      "test_parser.ParserTests.test_parse_date_with_whitespace"
+    ],
+    "precision": 0.5,
+    "recall": 1.0,
+    "identity": "full_test_id; prediction matching uses method names"
+  },
+  "regression_before": [
+    {
+      "command": "python -m unittest discover -s tests -p test_replens_regression.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "..E\n======================================================================\nERROR: test_regression_parse_date_whitespace_invariance (test_replens_regression.TestRepoLensRegression)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_u9fcjsuu\\tests\\test_replens_regression.py\", line 18, in test_regression_parse_date_whitespace_invariance\n    self.assertEqual(self._target(' 2024-01-01 '),\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_u9fcjsuu\\src\\dateparse\\parser.py\", line 23, in parse_date\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n  File \"C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_strptime.py\", line 568, in _strptime_datetime\n    tt, fraction, gmtoff_fraction = _strptime(data_string, format)\n  File \"C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_strptime.py\", line 349, in _strptime\n    raise ValueError(\"time data %r does not match format %r\" %\nValueError: time data ' 2024-01-01 ' does not match format '%Y-%m-%d'\n\n----------------------------------------------------------------------\nRan 3 tests in 0.006s\n\nFAILED (errors=1)\n",
+      "timed_out": false,
+      "passed": false,
+      "valid": true,
+      "summary": {
+        "passed": 2,
+        "failed": 0,
+        "errors": 1,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 3,
+        "ran": 3
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_replens_regression.TestRepoLensRegression.test_parse_date_exists_and_callable": "PASS",
+        "test_replens_regression.TestRepoLensRegression.test_parse_date_signature": "PASS",
+        "test_replens_regression.TestRepoLensRegression.test_regression_parse_date_whitespace_invariance": "ERROR"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "regression_after": [
+    {
+      "command": "python -m unittest discover -s tests -p test_replens_regression.py",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.005s\n\nOK\n",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 3,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 3,
+        "ran": 3
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_replens_regression.TestRepoLensRegression.test_parse_date_exists_and_callable": "PASS",
+        "test_replens_regression.TestRepoLensRegression.test_parse_date_signature": "PASS",
+        "test_replens_regression.TestRepoLensRegression.test_regression_parse_date_whitespace_invariance": "PASS"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "regression_test_cmd": "python -m unittest discover -s tests -p test_replens_regression.py",
+  "test_timeout": 120,
+  "provenance": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

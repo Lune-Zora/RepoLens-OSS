@@ -1,0 +1,197 @@
+[
+ {
+  "id": 1,
+  "category": "bug",
+  "issue": "\"@logger.catch()\" ignoring errors raised by \"athrow()\" (#1510)",
+  "expected": [
+   "loguru/_logger.py:athrow:1361"
+  ],
+  "validation": {
+   "id": 1,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 2,
+  "category": "bug",
+  "issue": "incorrect formatting of negative timestamps (#1508)",
+  "expected": [
+   "loguru/_datetime.py:_compile_format:111"
+  ],
+  "validation": {
+   "id": 2,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 3,
+  "category": "bug",
+  "issue": "incorrect formatting of negative timezone offsets (#1507)",
+  "expected": [
+   "loguru/_datetime.py:_format_timezone:44"
+  ],
+  "validation": {
+   "id": 3,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 4,
+  "category": "bug",
+  "issue": "first rotation of \"<weekday> at <time>\" ignoring the weekday",
+  "expected": [
+   "loguru/_file_sink.py:__init__:109"
+  ],
+  "validation": {
+   "id": 4,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 5,
+  "category": "bug",
+  "issue": "parsing of 12-hour rotation times without seconds (#1474)",
+  "expected": [
+   "loguru/_string_parsers.py:parse_time:300"
+  ],
+  "validation": {
+   "id": 5,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 6,
+  "category": "bug",
+  "issue": "possible internal error if \"f_lineno\" is None (#1442)",
+  "expected": [
+   "loguru/_better_exceptions.py:get_info:211"
+  ],
+  "validation": {
+   "id": 6,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 7,
+  "category": "bug",
+  "issue": "wrong formatting of microsecond timestamp (\"x\" token for time) (#1441)",
+  "expected": [
+   "loguru/_datetime.py:_compile_format:112"
+  ],
+  "validation": {
+   "id": 7,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 8,
+  "category": "bug",
+  "issue": "Trivial grammar fix (#1429)",
+  "expected": [
+   "loguru/_colorizer.py:feed:283"
+  ],
+  "validation": {
+   "id": 8,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 9,
+  "category": "bug",
+  "issue": "hex color short code expansion (#1425)",
+  "expected": [
+   "loguru/_colorizer.py:_get_ansicode:319"
+  ],
+  "validation": {
+   "id": 9,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 10,
+  "category": "bug",
+  "issue": "the \".level\" of standard \"Handler\" previously ignored (#1410)",
+  "expected": [
+   "loguru/_simple_sinks.py:write:70"
+  ],
+  "validation": {
+   "id": 10,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 11,
+  "category": "bug",
+  "issue": "\"NO_COLOR\" and \"FORCE_COLOR\" affecting non-standard streams",
+  "expected": [
+   "loguru/_colorama.py:should_colorize:10"
+  ],
+  "validation": {
+   "id": 11,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 12,
+  "category": "bug",
+  "issue": "possible error when clock is far in the future on Windows (#1297)",
+  "expected": [
+   "loguru/_datetime.py:aware_now:144"
+  ],
+  "validation": {
+   "id": 12,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 13,
+  "category": "bug",
+  "issue": "\"ValueError\" when using Loguru with Cython (missing stack frame) (#1240)",
+  "expected": [
+   "loguru/_logger.py:_log:1959"
+  ],
+  "validation": {
+   "id": 13,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 14,
+  "category": "bug",
+  "issue": "repeated line not detected during exception formatting (#1239)",
+  "expected": [
+   "loguru/_better_exceptions.py:_format_list:537"
+  ],
+  "validation": {
+   "id": 14,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ },
+ {
+  "id": 15,
+  "category": "bug",
+  "issue": "possible infinite recursion with \"__repr__\" and \"logger.catch()\" (#1237)",
+  "expected": [
+   "loguru/_logger.py:__exit__:1245"
+  ],
+  "validation": {
+   "id": 15,
+   "ok": false,
+   "reason": "修复后测试未通过"
+  }
+ }
+]

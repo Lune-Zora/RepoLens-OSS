@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RepoLens-OSS 可视化工作台</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">RL</div>
+      <div class="brand-text">
+        <div class="brand-name">RepoLens-OSS</div>
+        <div class="brand-sub">开源贡献工作台</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item active" data-view="overview">
+        <span class="nav-ico">◈</span>概览
+      </button>
+      <button class="nav-item" data-view="analyze">
+        <span class="nav-ico">◎</span>定位 / 计划
+      </button>
+      <button class="nav-item" data-view="run">
+        <span class="nav-ico">▶</span>完整闭环
+      </button>
+      <button class="nav-item" data-view="eval">
+        <span class="nav-ico">≡</span>评测
+      </button>
+      <button class="nav-item" data-view="compliance">
+        <span class="nav-ico">⚖</span>合规披露
+      </button>
+      <button class="nav-item" data-view="mine">
+        <span class="nav-ico">⛏</span>挖掘
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="env-pill" id="envPill">环境检测中…</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="repo-picker">
+        <label for="repoSelect">目标仓库（可选下拉，也可手输本地路径）</label>
+        <div class="repo-row">
+          <input id="repoSelect" list="repoList" placeholder="选择或输入本地仓库路径…" autocomplete="off">
+          <datalist id="repoList"></datalist>
+          <button id="btnBrowse" class="btn ghost" title="浏览本地目录选择仓库">浏览…</button>
+          <button id="repoRefresh" class="btn ghost" title="刷新仓库列表">↻</button>
+        </div>
+        <div class="repo-row repo-url-row">
+          <input id="repoUrl" type="text" placeholder="粘贴 GitHub / http 链接，克隆到本地…">
+          <button id="btnClone" class="btn ghost">导入链接</button>
+        </div>
+      </div>
+      <div class="workbench-config">
+        <label for="modelSelect">本次使用的本地模型</label>
+        <select id="modelSelect"><option value="">读取模型列表…</option></select>
+        <label for="scenarioSelect">独立构造的验证任务（也可自行选择仓库）</label>
+        <select id="scenarioSelect"><option value="">自定义仓库 / 问题</option></select>
+      </div>
+      <div class="topbar-actions">
+        <button id="btnInit" class="btn ghost">导入仓库</button>
+        <button id="btnIndex" class="btn ghost">构建索引</button>
+      </div>
+    </header>
+
+    <section class="content">
+      <!-- 概览 -->
+      <div class="view active" id="view-overview">
+        <h1 class="view-title">概览</h1>
+        <p class="view-desc">面向开源贡献的新手 Issue 定位、补丁生成与验证工作台 —— 每一个判断都能被代码证据与测试结果证伪或证实。</p>
+
+        <div class="grid env-grid" id="envCards"></div>
+        <p class="note">先选择实际仓库，再描述该仓库中的问题。模型生成的测试属于辅助验证；独立验收需要另外提供，VERIFIED仅针对展示的测试范围。</p>
+
+        <div class="card">
+          <div class="card-head"><h2>仓库元信息</h2><span class="muted" id="metaRepoPath"></span></div>
+          <div id="metaInfo" class="card-body"><p class="muted">点击右上角「导入仓库」加载元信息。</p></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>快速开始</h2></div>
+          <div class="card-body quick-list">
+            <div class="quick" data-goto="analyze"><b>① 定位 / 计划</b><span>输入 Issue 描述，检索相关代码证据并生成修改计划。</span></div>
+            <div class="quick" data-goto="run"><b>② 完整闭环</b><span>定位 → 计划 → 自动补丁 → 测试验证 → 报告，一键跑通。</span></div>
+            <div class="quick" data-goto="eval"><b>③ 评测</b><span>对标注数据集计算 hit@k / MRR / 拒答率等指标。</span></div>
+            <div class="quick" data-goto="compliance"><b>④ 合规披露</b><span>生成第三方依赖与开源许可披露报告。</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 定位 / 计划 -->
+      <div class="view" id="view-analyze">
+        <h1 class="view-title">定位 / 计划</h1>
+        <p class="view-desc">把 Issue 文本转化为带「文件:行号」的代码证据，并生成结构化修改计划。</p>
+
+        <div class="card">
+          <div class="card-body">
+            <label class="field-label" for="analyzeIssue">问题描述（Issue）</label>
+            <textarea id="analyzeIssue" rows="3" placeholder="描述当前仓库中的实际现象、示例输入和期望行为，支持中文。"></textarea>
+            <p class="muted" style="margin:6px 0 0">先确认目标仓库。所选模型将理解问题并核对实际源码；缺少相关功能时会说明原因。</p>
+            <div class="field-row">
+              <label>Top-K <input id="analyzeTopK" type="number" min="1" max="20" value="5"></label>
+
+              <button id="btnAnalyze" class="btn primary">检索并生成计划</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="analyzeResult"></div>
+      </div>
+
+      <!-- 完整闭环 -->
+      <div class="view" id="view-run">
+        <h1 class="view-title">完整闭环</h1>
+        <p class="view-desc">定位 → 计划 → 补丁生成 → 测试验证 → 报告，一键完成。模型模式会先生成并冻结当前问题的行为测试，再检查补丁和原有测试。</p>
+
+        <div class="card">
+          <div class="card-body">
+            <label class="field-label" for="runIssue">问题描述（Issue）</label>
+            <textarea id="runIssue" rows="3" placeholder="描述当前仓库中的实际现象、示例输入和期望行为，支持中文。"></textarea>
+            <p class="muted" style="margin:6px 0 0">先确认目标仓库。所选模型将理解问题并核对实际源码；缺少相关功能时会说明原因。</p>
+            <details class="accordion">
+              <summary>提供明确的输入与期望结果（可选，可用于纠正模型提出的测试）</summary>
+              <label class="field-label" for="runExamples">行为样例 JSON 数组：args为位置参数列表，expected为期望返回值；预期异常用raises。</label>
+              <textarea id="runExamples" rows="4" placeholder='[{"args": [具体参数], "expected": 期望结果}]'></textarea>
+              <p class="muted">单个目标函数可省略path和symbol。你提供的预期会原样冻结，模型不会修改；这些样例不能替代独立验收。</p>
+            </details>
+            <div class="field-row">
+              <label>测试命令 <input id="runTestCmd" type="text" value="" placeholder="留空检测；模型模式会运行仓库测试与当前问题用例"></label>
+              <label>超时(s) <input id="runTimeout" type="number" min="5" max="600" value="120"></label>
+              <label>Top-K <input id="runTopK" type="number" min="1" max="20" value="5"></label>
+            </div>
+              <div class="field-row">
+                <label>独立行为验收文件（可选） <input id="runAcceptanceSuite" type="text" placeholder="仓库外的验收 JSON 路径；留空时无法标记 VERIFIED"></label>
+              </div>
+              <div class="field-row">
+                <label class="check"><input id="runAutoPatch" type="checkbox" checked> 自动生成补丁</label>
+
+              <label class="check"><input id="runNoProv" type="checkbox"> 不生成证据包</label>
+              <button id="btnRun" class="btn primary">▶ 运行完整闭环</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="runResult"></div>
+      </div>
+
+      <!-- 评测 -->
+      <div class="view" id="view-eval">
+        <h1 class="view-title">评测</h1>
+        <p class="view-desc">文件先去重，hit 与 MRR 按同一 Top-K 截断；函数比较短名，行号比较同一函数的起始行。结果显示各粒度分母。</p>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="field-row">
+              <label>数据集
+                <select id="evalDataset"></select>
+              </label>
+              <label>Top-K <input id="evalTopK" type="number" min="1" max="100" value="5"></label>
+              <label class="check"><input id="evalHybrid" type="checkbox"> 混合检索</label>
+              <button id="btnEval" class="btn primary">运行评测</button>
+            </div>
+            <div class="field-row">
+              <label>自定义标签路径（可选） <input id="evalDatasetPath" type="text" placeholder="服务器上的 labels.json 绝对路径"></label>
+              <label>固定候选符号预算 <input id="evalCandidateLimit" type="number" min="1" max="1000" value="100"></label>
+              <label>隔离输入清单（可选） <input id="evalInputManifest" type="text" placeholder="服务器上的 manifest JSON 路径"></label>
+              <label>样本 ID <input id="evalSampleId" type="text" placeholder="隔离评测时填写"></label>
+            </div>
+          </div>
+        </div>
+
+        <div id="evalResult"></div>
+      </div>
+
+      <!-- 合规 -->
+      <div class="view" id="view-compliance">
+        <h1 class="view-title">合规披露</h1>
+        <p class="view-desc">生成《第三方依赖与开源许可披露报告》与《开源及第三方资源使用清单》（离线、逐项对应）。</p>
+
+        <div class="card">
+          <div class="card-body">
+            <button id="btnCompliance" class="btn primary">生成披露报告</button>
+          </div>
+        </div>
+
+        <div id="complianceResult"></div>
+      </div>
+
+      <!-- 挖掘 -->
+      <div class="view" id="view-mine">
+        <h1 class="view-title">评测集挖掘</h1>
+        <p class="view-desc">从任意 git 仓库自动挖掘历史修复提交，生成与内置评测集同构的数据集（需仓库为 git 仓库）。</p>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="field-row">
+              <label>最大样本 <input id="mineMax" type="number" min="1" max="200" value="20"></label>
+              <label>超时(s) <input id="mineTimeout" type="number" min="5" max="600" value="120"></label>
+              <label class="check"><input id="mineValidate" type="checkbox"> 在 worktree 中验证 fail→pass</label>
+              <button id="btnMine" class="btn primary">开始挖掘</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="mineResult"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- 目录浏览对话框 -->
+  <div id="fsModal" class="modal-overlay" style="display:none">
+    <div class="modal">
+      <div class="modal-head">
+        <span class="modal-title">选择本地仓库目录</span>
+        <button id="fsClose" class="btn ghost" title="关闭">✕</button>
+      </div>
+      <div class="modal-path mono" id="fsPath">（磁盘列表）</div>
+      <div class="modal-body" id="fsList"><div class="empty">加载中…</div></div>
+      <div class="modal-foot">
+        <button id="fsUp" class="btn ghost">⬆ 上一级</button>
+        <span style="flex:1"></span>
+        <button id="fsCancel" class="btn ghost">取消</button>
+        <button id="fsSelect" class="btn primary" disabled>选择此目录</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

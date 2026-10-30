@@ -1,0 +1,1802 @@
+[
+  {
+    "id": 1,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "2a9e4e82ddba07c5dd6d126e23a4745b76ea49c8",
+    "buggy_parent": "8d6ff8de5a9066de77d0a9df3e80a022a3dcf146",
+    "test_cmd": "pytest tests/tests_concurrent.py::test_min_map_len tests/tests_concurrent.py::test_concurrent_map_no_length_hint",
+    "issue": "contrib.concurrent: fix no-len iterables",
+    "expected": [
+      "tqdm/contrib/concurrent.py:_min_map_len:102"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 2,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "0eaee96e4fd5ccf18e5bc2a637aa19a280e54bc3",
+    "buggy_parent": "4a7f422734a765d3df89ad7dbfec3ef1baf53b30",
+    "test_cmd": "pytest tests/tests_concurrent.py::test_chunksize_warning",
+    "issue": "length detection in contrib.concurrent",
+    "expected": [
+      "tqdm/contrib/concurrent.py:_executor_map:29"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 3,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "164ef7302b4c8c9dd455b523d8e8c38c61e68d50",
+    "buggy_parent": "6ab24dcc5df910044f1f6e0685f95dbf9cd424f3",
+    "test_cmd": "pytest tests/tests_rich.py::test_rich_no_total tests/tests_rich.py::test_rich_fraction_column_no_total",
+    "issue": "handle iterables without len, mirrorin rich's `DownloadColumn` (fixes #1391)",
+    "expected": [
+      "tqdm/rich.py:render:28"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_body",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 4,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "ef15578141f2df10f9c169ec619d8a5217f6a37f",
+    "buggy_parent": "6ab24dcc5df910044f1f6e0685f95dbf9cd424f3",
+    "test_cmd": "pytest tests/tests_tqdm.py::test_format_meter",
+    "issue": "handle total=inf in format_meter to avoid OverflowError",
+    "expected": [
+      "tqdm/std.py:format_meter:463"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 5,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "f83290ce32f424e0562d47efe2304cdb90d244d5",
+    "buggy_parent": "59029c37ad6af57df7b49d31c0f48728280ae824",
+    "test_cmd": "pytest tests/tests_synchronisation.py::test_monitor_atexit_does_not_deadlock_on_stuck_get_lock",
+    "issue": "TMonitor deadlock at interpreter shutdown",
+    "expected": [
+      "tqdm/_monitor.py:__init__:30"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 6,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "b557cb03b6fd573a98e433fcf80b016c7e48702f",
+    "buggy_parent": "75bdb6c379bcfc6c592b6342dc791a092b5d6ae0",
+    "test_cmd": "pytest tests/tests_tqdm.py::test_disp_trim_all_format_meter_paths",
+    "issue": "apply disp_trim to all format_meter return paths",
+    "expected": [
+      "tqdm/std.py:format_meter:465"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 7,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "9bcd04b3ba730c8bceb3c39d84850457660632fc",
+    "buggy_parent": "8c175ea97fdf586a10b21def09c27c0218b17bad",
+    "test_cmd": "pytest tests/tests_tqdm.py::test_format_interval",
+    "issue": "pandas>=3 & negative format_interval",
+    "expected": [
+      "tqdm/std.py:format_interval:400"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 8,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "b38a9221c4b2723a82d8b186c0fd8e7b05771a12",
+    "buggy_parent": "9a11b2e591d77d5ff2dc1e27fb469f27e78b6dbf",
+    "test_cmd": "pytest tests/tests_tqdm.py::test_format_num",
+    "issue": "fix negative decimals format",
+    "expected": [
+      "tqdm/std.py:format_num:423"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "upstream_issue",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 9,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "6ce50bedb3c525f762258fb0701aacae15515f4d",
+    "buggy_parent": "f12b8bc907b5f333147d538deaf30686ed5cb99f",
+    "test_cmd": "pytest tests/tests_utils.py::test_envwrap tests/tests_utils.py::test_envwrap_types tests/tests_utils.py::test_envwrap_annotations",
+    "issue": "utils.envwrap: fix types",
+    "expected": [
+      "tqdm/std.py:tqdm:245"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 10,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "84546d6be86810915b868078efb4d426dbac9d6c",
+    "buggy_parent": "fff3bf5f3ead77e493cad1ce29d8adf1b72da33c",
+    "test_cmd": "pytest tests/tests_utils.py::test_envwrap tests/tests_utils.py::test_envwrap_case",
+    "issue": "edge cases & windows tests",
+    "expected": [
+      "tqdm/utils.py:envwrap:35"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "weak",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 11,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "2edd32dbfc757b59f811dddd8bf18f61c1bd9b65",
+    "buggy_parent": "fc69d5dcf578f7c7986fa76841a6b793f813df35",
+    "test_cmd": "pytest tests/tests_tqdm.py::test_postfix",
+    "issue": "Make postfix whitespace stripping optional",
+    "expected": [
+      "tqdm/std.py:set_postfix:1401"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 12,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "ea92a0b5fba1ac7438a976184e41247a0c476d29",
+    "buggy_parent": "bcce20f771a16cb8e4ac5cc5b2307374a2c0e535",
+    "test_cmd": "pytest tests/tests_contrib.py::test_enumerate tests/tests_contrib.py::test_enumerate_numpy tests/tests_contrib.py::test_zip tests/tests_contrib.py::test_map",
+    "issue": "Fix that tqdm_class cannot be passed to `tmap` and `tzip`",
+    "expected": [
+      "tqdm/contrib/__init__.py:DummyTqdmFile:17"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 13,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "d1894af08967f41e539e88bedc6d2b94dc485dfe",
+    "buggy_parent": "82b91951dc74496bb3efe6465434f041bb6a5e6b",
+    "test_cmd": "pytest tests/generic/test_font.py::test_font__collect_cid_character_widths__indirect_widths",
+    "issue": "Resolve indirect widths in CID font /W arrays (#4267)",
+    "expected": [
+      "pypdf/generic/_font.py:_collect_cid_character_widths:206"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 14,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "6a4caa10613282666301ddfe71128eff9ddb29cd",
+    "buggy_parent": "b891fef37000cd86baa6e9848a3387d080b3b03e",
+    "test_cmd": "pytest tests/test_cmap.py::test_get_encoding__unicode_glyph_names",
+    "issue": "Decode Unicode glyph names in font encodings (#4257)",
+    "expected": [
+      "pypdf/_cmap.py:_parse_encoding:70"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 15,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "451e8b7d5e01f471c7f1222737f89d9d3f35de3f",
+    "buggy_parent": "6d804f0058751343c9b42bf07e2d34133b754e4f",
+    "test_cmd": "pytest tests/generic/test_viewerpref.py::test_viewer_preference_name_roundtrip tests/generic/test_viewerpref.py::test_viewer_preference_name_rejects_invalid_value",
+    "issue": "Accept strings in viewer preference names (#4238)",
+    "expected": [
+      "pypdf/generic/_viewerpref.py:_add_prop_name:121"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 16,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "b7eb7b9d6253876b2f0078651450ca1d4e0cb06b",
+    "buggy_parent": "885e7430cdf96b55b4ebaf2515e6efe46c396834",
+    "test_cmd": "pytest tests/test_cmap.py::test_unigb_utf16_without_tounicode",
+    "issue": "Decode UniGB-UTF16 CMaps as UTF-16BE (#4231)",
+    "expected": [
+      "pypdf/_cmap.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 17,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "a91817ac1f8d98c0a50540c6333ed9ca99f163ea",
+    "buggy_parent": "b32df1d4cad45ce58fdddcbf9ebcbe166c0a822d",
+    "test_cmd": "pytest tests/generic/test_image_xobject.py::test_device_rgb_mode_is_not_overwritten",
+    "issue": "Keep 8-bit DeviceRGB image mode (#4230)",
+    "expected": [
+      "pypdf/generic/_image_xobject.py:_get_mode_and_invert_color:482"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 18,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "cf2dabb9bd14aebbb04e924d0c0e5737a938b97f",
+    "buggy_parent": "32fd5fbbce7616ff5a6a506c69ea986fd2861692",
+    "test_cmd": "pytest tests/test_page.py::test_merge_page_preserves_annotation_quad_points",
+    "issue": "Preserve all annotation quadrilaterals when merging pages (#4223)",
+    "expected": [
+      "pypdf/_page.py:_merge_page_writer:1373"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 19,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "f2f158a2b051818f4981b34ff15d1ca67b324611",
+    "buggy_parent": "4a296e43c59fde5efeafc2d057581155d9558268",
+    "test_cmd": "pytest tests/test_generic.py::test_read_array_with_nul_whitespace",
+    "issue": "Treat NUL as whitespace in ArrayObject (#4198)",
+    "expected": [
+      "pypdf/generic/_data_structures.py:read_from_stream:257"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 20,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "4a296e43c59fde5efeafc2d057581155d9558268",
+    "buggy_parent": "b29ac76fcd890db1b2f1ba5f387241a776520b1b",
+    "test_cmd": "pytest tests/test_reader.py::test_form_topname_preserves_unread_objects tests/test_reader.py::test_form_topname_allocation_bounds",
+    "issue": "Avoid overwriting unread objects in add_form_topname (#4190)",
+    "expected": [
+      "pypdf/_reader.py:add_form_topname:1588"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 21,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "42c5f114b88f54e1baf338d36e4889d6f71fe746",
+    "buggy_parent": "55ffd5013ad08eedb4c09727815762eb1f1eb62a",
+    "test_cmd": "pytest tests/test_page.py::test_get_rectangle__indirect_box_on_a_writer_page",
+    "issue": "Read an indirect page box on a writer page (#4179)",
+    "expected": [
+      "pypdf/_page.py:_get_rectangle:133"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 22,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "55ffd5013ad08eedb4c09727815762eb1f1eb62a",
+    "buggy_parent": "628c06057308b76a21cc9779df601c7a321399fb",
+    "test_cmd": "pytest tests/test_doc_common.py::test_outline__outlines_entry_references_a_free_object",
+    "issue": "BUG: Do not crash on an /Outlines reference to a free object (#4177)",
+    "expected": [
+      "pypdf/_doc_common.py:_get_outline:954"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 23,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "8ed783efc5e18c907b0d9b0ff92de43c3e7f89e9",
+    "buggy_parent": "b3f28fa8e1184aa319f62339dfeaaf7c3422eb0c",
+    "test_cmd": "pytest tests/test_xmp.py::test_converter_date_minute_offsets tests/test_xmp.py::test_read_xmp_date_with_positive_zero_hour_offset",
+    "issue": "Apply the sign of zero-hour XMP timezone offsets (#4182)",
+    "expected": [
+      "pypdf/xmp.py:_converter_date:116"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 24,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "b5557f06cc4675245a206a1a66cd866e2f453261",
+    "buggy_parent": "ece7730074487ef647dcaa941a5b10177fab7a15",
+    "test_cmd": "pytest tests/generic/test_appearance_stream.py::test_parse_default_appearance tests/generic/test_appearance_stream.py::test_text_annotation_default_appearance_with_other_operators tests/generic/test_color.py::test_color",
+    "issue": "Only read the colour operator from a text field's default appearance (#4158)",
+    "expected": [
+      "pypdf/generic/_appearance_stream.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 25,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "11458e74b7208caefbd565bfcbdc6136d7ec56b7",
+    "buggy_parent": "93d357106d70d00ecb6376bd1d976ea2a1cfdd07",
+    "test_cmd": "pytest tests/test_text_extraction.py::test_text_before_a_change_of_direction_is_kept tests/text_extraction/test_text_extraction_cache.py::test_get_display_str_caches_repeated_character_lookups",
+    "issue": "Keep the text shown before a change of direction (#4155)",
+    "expected": [
+      "pypdf/_text_extraction/__init__.py:get_display_str:233"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 26,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "93d357106d70d00ecb6376bd1d976ea2a1cfdd07",
+    "buggy_parent": "8c7d4441954d2ada4a9d5d08fca02926bfad5a00",
+    "test_cmd": "pytest tests/test_text_extraction.py::test_wrapped_table_cell_line_is_not_split",
+    "issue": "Keep wrapped table-cell text on one extracted line (#4132)",
+    "expected": [
+      "pypdf/_text_extraction/__init__.py:crlf_space_check:102"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 27,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "175f6c0391aa508f2e0c2ae64cf06bfdf13aa8ce",
+    "buggy_parent": "ca99aa42994b2ef8355e2dae674190a858b06395",
+    "test_cmd": "pytest tests/test_text_extraction.py::test_layout_mode_space_tx_scaled_into_page_space",
+    "issue": "Scale layout-mode space_tx into page space (#4128)",
+    "expected": [
+      "pypdf/_text_extraction/_layout_mode/_fixed_width_page.py:recurse_to_target_op:91"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 28,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "ca99aa42994b2ef8355e2dae674190a858b06395",
+    "buggy_parent": "1fdc10f2ce45469400c2af045f4c2e6e552c17b7",
+    "test_cmd": "pytest tests/test_page.py::test_page_number_of_identical_pages tests/test_page.py::test_page_number_of_named_destination",
+    "issue": "Report the correct page number for identical pages (#4154)",
+    "expected": [
+      "pypdf/_page.py:page_number:1810"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 29,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "59c1d74a0cc52d45b0dadd9e8736be6c1375b3b7",
+    "buggy_parent": "1758ef5fd95140597316dad06a6bc7f1fc452759",
+    "test_cmd": "pytest tests/test_generic.py::test_rectangleobject__requires_four_values",
+    "issue": "Raise a clear error for a rectangle without four values (#4123)",
+    "expected": [
+      "pypdf/generic/_rectangle.py:__init__:21"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 30,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "1758ef5fd95140597316dad06a6bc7f1fc452759",
+    "buggy_parent": "a776b495063520400f5a77681b07c9b10f73f920",
+    "test_cmd": "pytest tests/test_generic.py::test_missing_hashbin",
+    "issue": "FloatObject.hash_bin hashes the as_numeric method, not the value (#4129)",
+    "expected": [
+      "pypdf/generic/_base.py:hash_bin:527"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 31,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "d4c9a6239cf470e036fe042acb20352b0fda5a1e",
+    "buggy_parent": "d92bbcfbe9c4128b9d9b21aa92b87f400bbb6626",
+    "test_cmd": "pytest tests/test_font.py::test_simple_font_space_char_with_tounicode_cmap tests/text_extraction/test_text_extraction_cache.py::test_get_display_str_caches_repeated_character_lookups tests/text_extraction/test_text_extraction_cache.py::test_get_text_operands_cache_is_scoped_to_each_call tests/text_extraction/test_text_extraction_cache.py::test_get_display_str_invalidates_caches_after_visitor_callback tests/text_extraction/test_text_extraction_cache.py::test_get_text_operands_caches_repeated_character_lookups tests/text_extraction/test_text_extraction_cache.py::test_get_text_operands_dict_encoding_byte_caching",
+    "issue": "Fixes for standard mode text extraction with simple fonts with difference encoding and ToUnicode CMap (#4124)",
+    "expected": [
+      "pypdf/_cmap.py:_parse_encoding:65"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 32,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "25c5cdb038fef9415da522d1398eec8d91f52397",
+    "buggy_parent": "2c536fc1d2eeea63581d5d13dad60c53eda53761",
+    "test_cmd": "pytest tests/test_text_extraction.py::test_text_state_params__unicode_decode_error tests/test_text_extraction.py::test_simple_font_character_widths_with_differences_encoding",
+    "issue": "Layout mode text extraction: Use raw character codes in word_tx for width calculation (#4116)",
+    "expected": [
+      "pypdf/_text_extraction/_layout_mode/_text_state_params.py:TextStateParams:12"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 33,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "f0b34a2879173df71467a889ce848e7064bbfb34",
+    "buggy_parent": "df5397d680b11619ed2c9498eb4ad9d1cc245aaa",
+    "test_cmd": "pytest tests/test_text_extraction.py::test_visitor_text_reports_form_xobject_text_once",
+    "issue": "Remove duplicate visitor_text callback for Form XObject text (#4100)",
+    "expected": [
+      "pypdf/_page.py:_extract_text:1848"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 34,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "27d592f5af257b89d67074be905dbedabe50b5fa",
+    "buggy_parent": "095d5af1dacc6c5fcfe7cde1dca0d33e56c7810e",
+    "test_cmd": "pytest tests/test_page.py::test_compress_content_streams_releases_replaced_streams tests/test_page.py::test_replace_contents_skips_direct_array_entries",
+    "issue": "Release content streams replaced by replace_contents() (#4088)",
+    "expected": [
+      "pypdf/_page.py:replace_contents:1155"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 35,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "d970841341d6d95d9a7a3390a24a1675e5fab05a",
+    "buggy_parent": "8202d2a2ba4703e7afad13b994dc92c20f7eb726",
+    "test_cmd": "pytest tests/test_writer.py::test_add_named_destination__fit_h_uses_the_page_top",
+    "issue": "Use the page top for a named destination instead of a fixed value (#4099)",
+    "expected": [
+      "pypdf/_writer.py:add_named_destination:1956"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 36,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "ca60531d3ca90d71c02f55ff23c30a6f6ec9a764",
+    "buggy_parent": "6eb7ca2e7bc129944163609c37c339c4a679e56d",
+    "test_cmd": "pytest tests/generic/test_link.py::test_extract_links_warns_when_internal_links_are_missing tests/test_writer.py::test_transfer_internal_links_without_spurious_warnings",
+    "issue": "Avoid link mismatch warnings for excluded annotations (#4092)",
+    "expected": [
+      "pypdf/_writer.py:_add_page:511"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 37,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "cf5cec2e49b9da8fae0d82a0f99f1bfe9eceb8ed",
+    "buggy_parent": "96d81f05ba4b3ec9ff1b3c3e52bc71a3cdd702c7",
+    "test_cmd": "pytest tests/test_annotations.py::test_link__existing_target_uses_indirect_reference tests/test_annotations.py::test_link__future_target_preserves_page_index tests/test_annotations.py::test_link__completed_destination_is_preserved",
+    "issue": "Use page reference for existing internal link targets (#4076)",
+    "expected": [
+      "pypdf/_writer.py:add_annotation:2520"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 38,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "96d81f05ba4b3ec9ff1b3c3e52bc71a3cdd702c7",
+    "buggy_parent": "2d219015b4cf92edcfd6d28c564295f0704fd204",
+    "test_cmd": "pytest tests/test_text_extraction.py::test_arabic_indic_digits_keep_their_order",
+    "issue": "Arabic-Indic digits are reversed during text extraction (#4077)",
+    "expected": [
+      "pypdf/_utils.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 39,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "3a1111d65ce463d03d9d0b7eaf731d7b993ba3d1",
+    "buggy_parent": "d26df365f60c63802aa743c7b7c61b7223a71da3",
+    "test_cmd": "pytest tests/test_writer.py::test_add_uri",
+    "issue": "Parse a string rect for add_uri into a rectangle (#4074)",
+    "expected": [
+      "pypdf/_writer.py:add_uri:2291"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 40,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "d80ccfc79d94ae48035b4ecef1e605ff532a99b8",
+    "buggy_parent": "7bb71dd911553eeb27b149aa00804234a7f0eeae",
+    "test_cmd": "pytest tests/test_font.py::test_font_old_fonttools_substitution",
+    "issue": "Fix compatibility for fonttools < 4.57.0 (#4050)",
+    "expected": [
+      "pypdf/_font.py:from_truetype_font_file:513"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 41,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "231698766174a1ab1cd5c41cf3e4cca716071560",
+    "buggy_parent": "d8fe3e733bfda007aafc609378920e554ea5c092",
+    "test_cmd": "pytest tests/test_annotations.py::test_free_text__font_color",
+    "issue": "Use font color for FreeText default appearance (#4051)",
+    "expected": [
+      "pypdf/annotations/_markup_annotations.py:__init__:134"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 42,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "a692202de32adef695fd38c29499280fba53175a",
+    "buggy_parent": "5c2ec34dca41fa246ed1ab41f7ce671504e7f61b",
+    "test_cmd": "pytest tests/test_writer.py::test_append_with_direct_dests_dictionary",
+    "issue": "BUG: Do not read indirect_reference off a direct /Dests dictionary (#4028)",
+    "expected": [
+      "pypdf/_doc_common.py:get_named_dest_root:432"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 43,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "0b0721e7f99f3437659aa62642fa0cb7cd9eacf6",
+    "buggy_parent": "a1f510c940ed653bfe60e08263359675cc2ba7a6",
+    "test_cmd": "pytest tests/test_writer.py::test_add_named_destination_out_of_range tests/test_writer.py::test_add_uri_out_of_range tests/test_writer.py::test_add_named_destination_in_range",
+    "issue": "Report an out-of-range page number when adding a destination or URI (#4016)",
+    "expected": [
+      "pypdf/_writer.py:PdfWriter:150"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 44,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "a1f510c940ed653bfe60e08263359675cc2ba7a6",
+    "buggy_parent": "d85ef0faf7853d242ef200ed6e475b80267b5664",
+    "test_cmd": "pytest tests/generic/test_data_structures.py::test_dictionary_object__duplicate_key_with_falsy_first_value__strict tests/generic/test_data_structures.py::test_dictionary_object__duplicate_key_with_falsy_first_value__non_strict tests/generic/test_data_structures.py::test_dictionary_object__duplicate_key_with_non_falsy_first_value__strict tests/generic/test_data_structures.py::test_dictionary_object__different_keys_with_falsy_first_value",
+    "issue": "Detect a duplicate dictionary key whose first value is falsy (#4024)",
+    "expected": [
+      "pypdf/generic/_data_structures.py:read_from_stream:579"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 45,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "b0ec95d9392232b3873bf2dd8d9179095734ca16",
+    "buggy_parent": "38170a2be6516e41ee2edf34f61257750dd179ab",
+    "test_cmd": "pytest tests/test_writer.py::test_box_preferences_accept_the_page_boxes tests/test_writer.py::test_box_preferences_reject_other_names",
+    "issue": "Check the box names assigned to the area and clip preferences (#4014)",
+    "expected": [
+      "pypdf/generic/_viewerpref.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 46,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "38170a2be6516e41ee2edf34f61257750dd179ab",
+    "buggy_parent": "8687d2504d09887c8e0e252dad5f9c0fb02c1bb7",
+    "test_cmd": "pytest tests/test_writer.py::test_print_pagerange_rejects_an_odd_length tests/test_writer.py::test_print_pagerange_accepts_page_pairs",
+    "issue": "Reject an odd-length print page range (#4013)",
+    "expected": [
+      "pypdf/generic/_viewerpref.py:_set_arr:70"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 47,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "e1abeb088f3458c10c07f90ec02c2b3bf814ef7a",
+    "buggy_parent": "29f389c4fc8a45d3f0cef48065e22d3fbecf4757",
+    "test_cmd": "pytest tests/test_writer.py::test_print_scaling_accepts_the_spec_values tests/test_writer.py::test_print_scaling_rejects_other_values",
+    "issue": "Check the value assigned to print_scaling (#4011)",
+    "expected": [
+      "pypdf/generic/_viewerpref.py:__new__:91"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 48,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "29f389c4fc8a45d3f0cef48065e22d3fbecf4757",
+    "buggy_parent": "9344ad6517daa1b7564b3777946df004120fadc0",
+    "test_cmd": "pytest tests/test_writer.py::test_page_layout_warning_lists_the_valid_layouts tests/test_writer.py::test_page_mode_warning_lists_the_valid_modes",
+    "issue": "List the valid layouts in the page layout warning (#4010)",
+    "expected": [
+      "pypdf/_writer.py:_set_page_layout:2364"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 49,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "98e649e78f8c2295747bc281becef359f14e79ff",
+    "buggy_parent": "db93ea6554a394dbfac25ac2d5c8f3d1e10609dd",
+    "test_cmd": "pytest tests/test_pagerange.py::test_str_init_zero_step tests/test_pagerange.py::test_valid",
+    "issue": "Reject a page range with a zero stride (#4004)",
+    "expected": [
+      "pypdf/pagerange.py:__init__:36"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 50,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "db93ea6554a394dbfac25ac2d5c8f3d1e10609dd",
+    "buggy_parent": "bc1a49f75af9783ee08f09e9e281c163749678c2",
+    "test_cmd": "pytest tests/test_writer.py::test_add_outline_item tests/test_writer.py::test_add_outline_item_collapsed tests/test_writer.py::test_add_outline_item_nested_count",
+    "issue": "Make is_open=False collapse outline items (#3998)",
+    "expected": [
+      "pypdf/_writer.py:add_outline_item_destination:1779"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 51,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "f6853ccd3ff492309c84060186aabc88ed472ffd",
+    "buggy_parent": "c6d38af1c561c629cd6965f611e8afad9b445ab0",
+    "test_cmd": "pytest tests/generic/test_data_structures.py::test_remove_from_tree_on_outline_item tests/generic/test_data_structures.py::test_remove_from_tree_on_outline_item_without_clone tests/generic/test_data_structures.py::test_remove_from_tree_on_nested_outline_item tests/generic/test_data_structures.py::test_remove_from_tree_on_destination_without_node tests/generic/test_data_structures.py::test_remove_from_tree_on_node_already_detached",
+    "issue": "Make remove_from_tree() work on outline items (#3939)",
+    "expected": [
+      "pypdf/generic/_data_structures.py:remove_child:894"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 52,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "412975a86033ec2d66c6e4cfd73afd85390a7db0",
+    "buggy_parent": "ddbfea942cadd1594cb3902a27289a53ca637204",
+    "test_cmd": "pytest tests/test_text_extraction.py::test_recurse_to_target_op__excessive_intra_group_spacing",
+    "issue": "Be more lenient about space width in layout mode text extraction (#3992)",
+    "expected": [
+      "pypdf/_text_extraction/_layout_mode/_fixed_width_page.py:recurse_to_target_op:91"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 53,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "ddbfea942cadd1594cb3902a27289a53ca637204",
+    "buggy_parent": "c646ef24857f152afdf84f8b5f8a9d4097bae258",
+    "test_cmd": "pytest tests/test_writer.py::test_reset_translation_invalid_parameter",
+    "issue": "Interpolate the reader in the reset_translation error message (#3981)",
+    "expected": [
+      "pypdf/_writer.py:reset_translation:3214"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 54,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "31b32980f85a68c821349b006d7258044717a75e",
+    "buggy_parent": "7595da3201604309ab8d96afdc6f2e8bc661b3cd",
+    "test_cmd": "pytest tests/test_text_extraction.py::test_text_leading_is_not_scaled_by_font_size tests/test_text_extraction.py::test_line_breaks_with_scaled_current_matrix",
+    "issue": "BUG: Do not scale the text leading by the font size (#3987)",
+    "expected": [
+      "pypdf/_text_extraction/__init__.py:crlf_space_check:95"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 55,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "7595da3201604309ab8d96afdc6f2e8bc661b3cd",
+    "buggy_parent": "a548e4126ddd96711e05c6017d97f393d45e3765",
+    "test_cmd": "pytest tests/test_appearance_stream.py::test_merge_transformed_page_annotation_with_ap_but_no_normal_state tests/test_appearance_stream.py::test_merge_transformed_page_annotation_with_malformed_normal_state tests/test_appearance_stream.py::test_merge_transformed_page_updates_annotation_appearance_matrix tests/test_appearance_stream.py::test_merge_transformed_page_composes_existing_annotation_matrix tests/test_appearance_stream.py::test_merge_transformed_page_annotation_without_appearance_stream tests/test_appearance_stream.py::test_merge_transformed_page_annotation_with_multi_state_appearance",
+    "issue": "Update annotation appearance stream matrix on page transform (#3968)",
+    "expected": [
+      "pypdf/_page.py:_merge_page_writer:1316"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 56,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "f98acfdc9702499c837575ba0c9fea69063c17ca",
+    "buggy_parent": "b45aeba7b1ffd93d3a2414d1ce8c5115370be965",
+    "test_cmd": "pytest tests/test_page.py::test_get_fonts__acroform_default_resources",
+    "issue": "Collect the fonts declared in the AcroForm /DR dictionary (#3983)",
+    "expected": [
+      "pypdf/_page.py:process_font:2530"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 57,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "b45aeba7b1ffd93d3a2414d1ce8c5115370be965",
+    "buggy_parent": "bb62d06b993cb3d3e90c031c35f399f48b3b3c3e",
+    "test_cmd": "pytest tests/test_filters.py::test_decode_stream_data__default_parms_are_dictionary_objects",
+    "issue": "Default decode_parms to a DictionaryObject (#3971)",
+    "expected": [
+      "pypdf/filters.py:decode_stream_data:812"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 58,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "718dd1417788495cb66618673e8b02d1029656ee",
+    "buggy_parent": "1856f9e02e615506ed3f6a27d3203b87379211b2",
+    "test_cmd": "pytest tests/test_doc_common.py::test_flatten__repeated_page_reference tests/test_doc_common.py::test_flatten__repeated_page_reference_with_different_inheritance tests/test_doc_common.py::test_flatten__depth_limit tests/test_doc_common.py::test_flatten__entry_limit_for_reused_paths",
+    "issue": "Allow repeated page references (#3959)",
+    "expected": [
+      "pypdf/_doc_common.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 59,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "c53d3732b98c764932e146c007146ad402acb229",
+    "buggy_parent": "bb695aaecdef95832d167fc1d508921745aa824e",
+    "test_cmd": "pytest tests/test_options.py::test_show_envvar_empty tests/test_options.py::test_missing_envvar_sequence",
+    "issue": "`show_envvar` output for a sequence or an empty `envvar`",
+    "expected": [
+      "src/click/core.py:get_error_hint:3271"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 60,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e",
+    "buggy_parent": "6d5bac5c712195cbfa9666ba0ecbf0573cdea356",
+    "test_cmd": "pytest tests/test_utils/test_make_default_short_help.py::test_make_default_short_help",
+    "issue": "Just a small bug I encountered in my CLIs, where as `vs.` or `e.g.` was prematurely ending the shorten version of a help message produced by `_make_default_short_help`.",
+    "expected": [
+      "src/click/utils.py:_make_default_short_help:62"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "upstream_pull",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 61,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "fc518e41218b447e875fe27244ae692c269bcb77",
+    "buggy_parent": "08a7bc6d2a2af02268b09b3b5fd8079546c81c03",
+    "test_cmd": "pytest tests/test_abort_interrupt.py::test_interrupt_while_reporting_abort tests/test_abort_interrupt.py::test_interrupt_while_reporting_error tests/test_abort_interrupt.py::test_late_interrupt_with_disabled_standalone_mode tests/test_abort_interrupt.py::test_interrupt_while_exiting_after_success",
+    "issue": "race condition on `KeyboardInterrupt` arriving in `Command.main()`",
+    "expected": [
+      "src/click/core.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 62,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "f58ca3e81424a35626c8a475eb59ab95589008ce",
+    "buggy_parent": "420c8fb44eeadb537cae69d2fee3796e808558dd",
+    "test_cmd": "pytest tests/test_utils/test_sentinel.py::test_sentinel_duplication_preserves_identity tests/test_utils/test_sentinel.py::test_parameter_duplication",
+    "issue": "`copy`, `deepcopy` and `pickle` of `Sentinel` members",
+    "expected": [
+      "src/click/_utils.py:Sentinel:7"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 63,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "07c909f23f0f83b5ca137c167b9a134d66201f67",
+    "buggy_parent": "7925a3410d7098c28cfca3b2baa6c852666bbd14",
+    "test_cmd": "pytest tests/test_utils/test_style.py::test_styling tests/test_utils/test_style.py::test_styling_invalid_color",
+    "issue": "Validate style() color arguments, fix explicit black color argument",
+    "expected": [
+      "src/click/termui.py:_interpret_color:572"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 64,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "82f377c547e1867d073f02bb8f476214d07e245b",
+    "buggy_parent": "648d7c403829013ade629d63ddbfe808f6b2b770",
+    "test_cmd": "pytest tests/test_commands.py::test_deprecated_empty_help_no_leading_space tests/test_options.py::test_deprecated_empty_help_no_leading_space",
+    "issue": "A bug I stumble upon while reviewing #3473: the `(DEPRECATED)` label can be rendered with a leading empty space in certain cases.",
+    "expected": [
+      "src/click/core.py:format_help_text:1183"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "upstream_pull",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 65,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "b7e5fd4cc7de70280eccd39f2bb956df617e5519",
+    "buggy_parent": "5b1aba82745cbde04c75e0bab995e5ddf0804196",
+    "test_cmd": "pytest tests/test_shell_completion.py::test_full_complete",
+    "issue": "broken fish completion and multiline help string",
+    "expected": [
+      "src/click/shell_completion.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 66,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "7d05a59b9d46a415d85937630d1d812cf477f60a",
+    "buggy_parent": "4b24a6c8f6658ef89fd6db4dcaf8ee88eef75dfa",
+    "test_cmd": "pytest tests/test_defaults.py::test_parameter_source_during_paramtype_convert tests/test_defaults.py::test_parameter_source_during_eager_callback tests/test_defaults.py::test_flask_debug_env_not_stomped_by_default_flag tests/test_options.py::test_bool_flag_group_parameter_source",
+    "issue": "get_parameter_source() during type conversion and eager callbacks",
+    "expected": [
+      "src/click/core.py:handle_parse_result:2587"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 67,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "d15f3c23a177e80c324e1ee9681c9449c31ac965",
+    "buggy_parent": "e0d1678ebc10cc663f2bc1973e0399b31415f8db",
+    "test_cmd": "pytest tests/test_utils.py::test_echo_via_pager",
+    "issue": "Skip flaky pager test on macOS with free-threaded Python 3.14t",
+    "expected": [
+      "src/click/_compat.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 68,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "0551bf53588ae87f462d336f24f853a156fefe3a",
+    "buggy_parent": "7c99ebe23b931f27562d926814423cce85fd9766",
+    "test_cmd": "pytest tests/test_formatting.py::test_help_formatter_write_usage tests/test_formatting.py::test_help_formatter_write_usage_without_args_styled_prefix tests/test_formatting.py::test_command_write_usage_no_args",
+    "issue": "`HelpFormatter.write_usage` producing spurious characters",
+    "expected": [
+      "src/click/formatting.py:write_usage:153"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 69,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "0f71fe771ceefd5715b3b375c9b2e3a701c0648e",
+    "buggy_parent": "c943271a269e6941fcc51e3506ead074b9dda6be",
+    "test_cmd": "pytest tests/test_options.py::test_bool_flag_group_competition tests/test_options.py::test_bool_flag_group_competition_with_envvar tests/test_options.py::test_bool_flag_group_competition_with_default_map tests/test_options.py::test_flag_group_competition_non_boolean tests/test_options.py::test_flag_group_unset_vs_none_vs_explicit tests/test_options.py::test_flag_group_competition_duplicate_option_name tests/test_options.py::test_flag_group_competition_repeated_cmdline tests/test_options.py::test_flag_group_competition_four_flags tests/test_options.py::test_flag_group_competition_envvar_prefix_and_unset_default_map",
+    "issue": "dual-option arbitration to respect explicit defaults",
+    "expected": [
+      "src/click/core.py:__init__:289"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 70,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "a09c1c655eef3d43181eb46036b66cf058d72df4",
+    "buggy_parent": "fc6c7c47edd6110b6bd5a1a5297b2035214b0cd1",
+    "test_cmd": "pytest tests/test_termui.py::test_hide_input_error_message",
+    "issue": "show custom error message in prompt with hide_input=True",
+    "expected": [
+      "src/click/termui.py:prompt:107"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 71,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "19fd4d6e18bc9fce451f92f422696b11169faa57",
+    "buggy_parent": "c69643b60cf971cd5d8e5d3902632807ceab9b8f",
+    "test_cmd": "pytest tests/test_shell_completion.py::test_full_complete tests/test_shell_completion.py::test_fish_multiline_help_complete",
+    "issue": "Ensure fish completion handles multiline help strings correctly (#3126)",
+    "expected": [
+      "src/click/shell_completion.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 72,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "b96c2601af4e01341b4d2c0db494ebee4aef8f42",
+    "buggy_parent": "04ef3a6f473deb2499721a8d11f92a7d2c0912f2",
+    "test_cmd": "pytest tests/test_termui.py::test_editor_path_normalization tests/test_termui.py::test_editor_windows_path_normalization tests/test_termui.py::test_editor_env_passed_through tests/test_termui.py::test_editor_failure_exception tests/test_termui.py::test_editor_nonexistent_exception",
+    "issue": "Document and fix command string sanitizing with `shlex.split`",
+    "expected": [
+      "src/click/_termui_impl.py:pager:369"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 73,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "d340b0c1202284a1b9d0ca892549208527d586ce",
+    "buggy_parent": "04ef3a6f473deb2499721a8d11f92a7d2c0912f2",
+    "test_cmd": "pytest tests/test_options.py::test_show_default_with_empty_string",
+    "issue": "semver.Version as default causing an error",
+    "expected": [
+      "src/click/core.py:get_help_extra:3052"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "upstream_issue",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 74,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "546f2851f414b07413777ebcae89b2c21a685252",
+    "buggy_parent": "ae46cfd6bc997804893adc799589248eadcdbc29",
+    "test_cmd": "pytest tests/test_defaults.py::test_default_map_with_callable_flag_value tests/test_options.py::test_custom_type_flag_value_dual_options tests/test_options.py::test_callable_flag_value_not_instantiated tests/test_options.py::test_callable_flag_value_default_map tests/test_options.py::test_callable_flag_value_show_default tests/test_options.py::test_callable_flag_value_get_default_override",
+    "issue": "callable ``flag_value`` being instantiated when used as a default",
+    "expected": [
+      "src/click/core.py:__init__:2714"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 75,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "91de59c6c8abc8251e7af551cd4546cc964288af",
+    "buggy_parent": "7f7bbe4569ea68e8dabee232eade069ef3310aea",
+    "test_cmd": "pytest tests/test_options.py::test_flag_value_optional_behavior tests/test_options.py::test_flag_value_with_type_conversion",
+    "issue": "#3084: Correct flag optional value behavior and add comprehensive tests",
+    "expected": [
+      "src/click/core.py:Option:2641"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 76,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "1c20dc6e724cd5625faaa17b715ba928d44c08bf",
+    "buggy_parent": "6a1c0d077311f180b356965914e2de5b9e0fdb44",
+    "test_cmd": "pytest tests/test_defaults.py::test_shared_param_prefers_first_default",
+    "issue": "`default=True` on feature flags is order-sensitive",
+    "expected": [
+      "src/click/core.py:parse_args:1219"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "upstream_issue",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 77,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "701b313160be12752e49b3f7cea32402c0969a69",
+    "buggy_parent": "3be1f33c8e0b13295853f6aa64d1f7412b5312df",
+    "test_cmd": "pytest tests/test_shell_completion.py::test_full_complete",
+    "issue": "completions for quoted/escaped parameters in Fish (#3013)",
+    "expected": [
+      "src/click/shell_completion.py:get_completion_args:405"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 78,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "a1235aacb1be55dc66ddcfefbf64dec44b6ab54d",
+    "buggy_parent": "565f36d5bc4a15d304337b749e113fb4477b1843",
+    "test_cmd": "pytest tests/test_shell_completion.py::test_zsh_full_complete_with_colons",
+    "issue": "Zsh completions with colons (#2846)",
+    "expected": [
+      "src/click/shell_completion.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 79,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "ac6a2acfdb4550c35ce69ce54db502ba96c96324",
+    "buggy_parent": "884af5c20fdc95c9c7352df35c37273391464fb9",
+    "test_cmd": "pytest tests/test_shell_completion.py::test_nested_group",
+    "issue": "We need to extract the args from the fresh context when following nested groups to keep 8.1.8 behavior for shell completion for nested groups.",
+    "expected": [
+      "src/click/shell_completion.py:_resolve_context:539"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_body",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 80,
+    "project": "click",
+    "category": "bug",
+    "fix_commit": "4fd2fea0db423d242aedcae0a5f664efe0a93484",
+    "buggy_parent": "9ce34f20d2370f2e298268227edf0ffce6b9725f",
+    "test_cmd": "pytest tests/test_options.py::test_flag_value_is_correctly_set tests/test_options.py::test_non_flag_with_non_negatable_default",
+    "issue": "condition for setting flag value when type is provided",
+    "expected": [
+      "src/click/core.py:__init__:2533"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 81,
+    "project": "requests",
+    "category": "bug",
+    "fix_commit": "3ff3ff21dd45957c9e143cd500291959bb15f690",
+    "buggy_parent": "96b22fa18c00831656ee4b286bf1c9062459b00a",
+    "test_cmd": "pytest tests/test_requests.py::test_json_decode_errors_are_serializable_deserializable",
+    "issue": "#6628 - JSONDecodeError are not deserializable",
+    "expected": [
+      "src/requests/exceptions.py:JSONDecodeError:31"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 82,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "bce5dfd3b435b1d1658507d7e095ad7a9919bf1c",
+    "buggy_parent": "12b0479b86630d38a3fc42586a545c4e75e00b84",
+    "test_cmd": "pytest tests/test_standard_handler.py::test_thread_info_with_enqueue tests/test_standard_handler.py::test_process_info_with_enqueue_fork tests/test_standard_handler.py::test_process_info_with_enqueue_spawn",
+    "issue": "thread/process info in standard handlers with `enqueue=True` (#1529)",
+    "expected": [
+      "loguru/_simple_sinks.py:write:65"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 83,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "5672e7d0ad610d70c5e549939b049303edefda19",
+    "buggy_parent": "8052eff4c1ba86793a6f38ee890a898e902bc1ea",
+    "test_cmd": "pytest tests/test_datetime.py::test_formatting",
+    "issue": "incorrect formatting of negative timestamps (#1508)",
+    "expected": [
+      "loguru/_datetime.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 84,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "8052eff4c1ba86793a6f38ee890a898e902bc1ea",
+    "buggy_parent": "54c89d609fc98a63b5bf7f801119c5bc526e2016",
+    "test_cmd": "pytest tests/test_datetime.py::test_formatting_timezone_offset_down_to_the_second",
+    "issue": "incorrect formatting of negative timezone offsets (#1507)",
+    "expected": [
+      "loguru/_datetime.py:_format_timezone:40"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 85,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "e49d1539042e18ca17b96fd28727234a0705d22a",
+    "buggy_parent": "764cd30d4b285ca01718ab3162a9f1a022bc49c6",
+    "test_cmd": "pytest tests/test_datetime.py::test_formatting",
+    "issue": "wrong formatting of microsecond timestamp (\"x\" token for time) (#1441)",
+    "expected": [
+      "loguru/_datetime.py:_compile_format:55"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 86,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "92952b912c6e32866f2ec3dd6bee2aa5403d418b",
+    "buggy_parent": "78f86ffcfeef1f194cb3ab2a59beed1e83af8312",
+    "test_cmd": "pytest tests/test_colorama.py::test_honor_no_color_standard tests/test_colorama.py::test_honor_force_color_standard",
+    "issue": "\"NO_COLOR\" and \"FORCE_COLOR\" affecting non-standard streams",
+    "expected": [
+      "loguru/_colorama.py:should_colorize:6"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 87,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "8c3c8e45448bf55d233531c32cd583eff258e11d",
+    "buggy_parent": "37f44eda5555ffed3b4c581925650fb939e55b94",
+    "test_cmd": "pytest tests/test_ansimarkup_basic.py::test_escaping",
+    "issue": "inability to display '\\' before color markups (#1236)",
+    "expected": [
+      "loguru/_colorizer.py:AnsiParser:71"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 88,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "91e3646e8c0f1384d375bce49a5fb313dad5f7d6",
+    "buggy_parent": "aa6fdd883d75ada646ce42ff7d8c29595ef1f252",
+    "test_cmd": "pytest tests/test_threading.py::test_safe_removing_all_while_logging tests/test_threading.py::test_safe_slow_removing_all_while_logging",
+    "issue": "\"remove()\" not thread-safe causing possible RuntimeError (#1183)",
+    "expected": [
+      "loguru/_logger.py:remove:1014"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 89,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "086126fd8d0065336e40f7ea05546c5e62313e1b",
+    "buggy_parent": "14fa062bdb4388d77250b1f7224024fea3c84bbf",
+    "test_cmd": "pytest tests/test_add_option_context.py::test_using_multiprocessing_directly_if_context_is_none tests/test_add_option_context.py::test_fork_context_as_string tests/test_add_option_context.py::test_spawn_context_as_string tests/test_add_option_context.py::test_fork_context_as_object tests/test_add_option_context.py::test_spawn_context_as_object tests/test_add_option_context.py::test_global_start_method_is_none_if_enqueue_is_false",
+    "issue": "error using \"set_start_method()\" after \"logger\" import (#974)",
+    "expected": [
+      "loguru/_handler.py"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 90,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "565a6f63bbbc39da8cca365fcf7ddf757f79b5e4",
+    "buggy_parent": "2718257fe1a393184e0e6e9222d93efa2193a95e",
+    "test_cmd": "pytest tests/test_add_option_enqueue.py::test_logging_not_picklable_exception tests/test_add_option_enqueue.py::test_logging_not_unpicklable_exception",
+    "issue": "errors due to non-unpicklable Exception when \"enqueue=True\" (#329)",
+    "expected": [
+      "loguru/_recattrs.py:__reduce__:66"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 91,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "de646c6ba64b1be484b6a77acb2e3a3dffaba35d",
+    "buggy_parent": "2465fca6ca2e52b59845371d3d230367d5b45725",
+    "test_cmd": "pytest tests/test_datetime.py::test_formatting_timezone_offset_down_to_the_second",
+    "issue": "missing seconds when formatting timezone offset (#961)",
+    "expected": [
+      "loguru/_datetime.py:__format__:13"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 92,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "2465fca6ca2e52b59845371d3d230367d5b45725",
+    "buggy_parent": "e49dfa53cffc1116e25d58d727ff4eea34fafb64",
+    "test_cmd": "pytest tests/test_filesink_rotation.py::test_dont_rotate_earlier_when_utc_is_one_day_before tests/test_filesink_rotation.py::test_dont_rotate_later_when_utc_is_one_day_after tests/test_filesink_rotation.py::test_rotation_at_midnight_with_date_in_filename",
+    "issue": "incorrect rotation when re-starting around midnight (#894)",
+    "expected": [
+      "loguru/_file_sink.py:__call__:114"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 93,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "20eb57f8728c64b95aa5fb1c5b34eedf1fb03024",
+    "buggy_parent": "a08cd5161d1f25c9f511faa5761f4ae51013cd88",
+    "test_cmd": "pytest tests/test_filesink_rotation.py::test_time_rotation_with_tzinfo_diff_bigger tests/test_filesink_rotation.py::test_time_rotation_with_tzinfo_diff_lower tests/test_filesink_rotation.py::test_time_rotation_with_tzinfo_utc tests/test_filesink_rotation.py::test_time_rotation_multiple_days_at_midnight_utc tests/test_filesink_rotation.py::test_daily_rotation_with_different_timezone tests/test_filesink_rotation.py::test_time_rotation_after_positive_timezone_changes_forward tests/test_filesink_rotation.py::test_time_rotation_when_positive_timezone_changes_forward tests/test_filesink_rotation.py::test_time_rotation_after_negative_timezone_changes_forward tests/test_filesink_rotation.py::test_time_rotation_when_negative_timezone_changes_forward tests/test_filesink_rotation.py::test_time_rotation_after_positive_timezone_changes_backward_aware tests/test_filesink_rotation.py::test_time_rotation_after_positive_timezone_changes_backward_naive tests/test_filesink_rotation.py::test_time_rotation_after_negative_timezone_changes_backward_aware tests/test_filesink_rotation.py::test_time_rotation_after_negative_timezone_changes_backward_naive tests/test_filesink_rotation.py::test_time_rotation_when_timezone_changes_backward_rename_file tests/test_filesink_rotation.py::test_unknown_rotation",
+    "issue": "usage of aware \"datetime.time\" for file rotation (#697)",
+    "expected": [
+      "loguru/_file_sink.py:__call__:114"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 94,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "21cc3a5f4beff25a25ecf74cf6c15bae767fd86e",
+    "buggy_parent": "4c9b7e08867604e2203744f424f641755c170b99",
+    "test_cmd": "pytest tests/test_datetime.py::test_formatting tests/test_datetime.py::test_locale_formatting tests/test_datetime.py::test_stdout_formatting tests/test_datetime.py::test_file_formatting tests/test_datetime.py::test_missing_struct_time_fields tests/test_datetime.py::test_freezegun_mocking",
+    "issue": "incompatibility with \"freezegun\" library to simulate time (#600)",
+    "expected": [
+      "loguru/_datetime.py:aware_now:81"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 95,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "0f0b698f91cfd9aadff10aa750bfc8abb4b6a18a",
+    "buggy_parent": "2e36263c91921e3a0b6309d1f26a5fbc019f4502",
+    "test_cmd": "pytest tests/test_add_option_colorize.py::test_jupyter_fixed tests/test_add_option_colorize.py::test_jupyter_ignored tests/test_add_option_colorize.py::test_github_actions_fixed tests/test_add_option_colorize.py::test_github_actions_ignored",
+    "issue": "colors in Github Actions and others CI platforms (#604)",
+    "expected": [
+      "loguru/_colorama.py:should_colorize:5"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 96,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "0e54edffdff09b5fb87edbca301ec6407bf868c0",
+    "buggy_parent": "bd59ca4a8d47f2e7c026310a6525fb3f073248ba",
+    "test_cmd": "pytest tests/test_add_option_colorize.py::test_jupyter_fixed tests/test_add_option_colorize.py::test_jupyter_ignored",
+    "issue": "colors in Jupyter Notebook and Google Colab (#494)",
+    "expected": [
+      "loguru/_colorama.py:should_colorize:5"
+    ],
+    "validation_scope": "targeted",
+    "issue_source": "commit_subject",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "modern"
+  },
+  {
+    "id": 97,
+    "project": "requests",
+    "category": "bug",
+    "fix_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+    "buggy_parent": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+    "test_cmd": "pytest tests/test_lowlevel.py::test_json_decode_compatibility_for_alt_utf_encodings",
+    "issue": "inconsistent exception for JSONDecode error (#6097)",
+    "issue_source": "commit_subject",
+    "expected": [
+      "requests/models.py:json:878"
+    ],
+    "validation_scope": "targeted",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "urllib3-1"
+  },
+  {
+    "id": 98,
+    "project": "requests",
+    "category": "bug",
+    "fix_commit": "79c4a017fe341fb989d3a7876cf4e44b87601b58",
+    "buggy_parent": "5e749546a26ce62e53d0a14ae1455f8b066fe19f",
+    "test_cmd": "pytest tests/test_requests.py::TestRequests::test_env_cert_bundles",
+    "issue": "environment CA Bundle resolution",
+    "issue_source": "commit_subject",
+    "expected": [
+      "requests/sessions.py:merge_environment_settings:691"
+    ],
+    "validation_scope": "targeted",
+    "issue_quality": "weak",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "urllib3-1"
+  },
+  {
+    "id": 99,
+    "project": "requests",
+    "category": "bug",
+    "fix_commit": "38f3f8ecb93cadfac03a6b7b3173018ac829d0cf",
+    "buggy_parent": "0192aac24123735b3eaf9b08df46429bb770c283",
+    "test_cmd": "pytest tests/test_utils.py::test_prepend_scheme_if_needed",
+    "issue": "auth parsing for proxies",
+    "issue_source": "commit_subject",
+    "expected": [
+      "requests/utils.py:prepend_scheme_if_needed:960"
+    ],
+    "validation_scope": "targeted",
+    "issue_quality": "weak",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "urllib3-1"
+  },
+  {
+    "id": 100,
+    "project": "requests",
+    "category": "bug",
+    "fix_commit": "bd100472443dcf4189630f6b1ed3ec0a61259dd8",
+    "buggy_parent": "d91fe00983f1c66b9a428fe1ad15bf6ea8238972",
+    "test_cmd": "pytest tests/test_lowlevel.py::test_response_content_retains_error",
+    "issue": "#4965 fix: Accessing response.content twice removes forgets read error.",
+    "issue_source": "commit_subject",
+    "expected": [
+      "requests/models.py:__init__:596"
+    ],
+    "validation_scope": "targeted",
+    "issue_quality": "clear",
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:07:35",
+    "env_profile": "urllib3-1"
+  }
+]

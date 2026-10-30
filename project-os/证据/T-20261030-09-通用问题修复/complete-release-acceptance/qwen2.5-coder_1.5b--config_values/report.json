@@ -1,0 +1,205 @@
+{
+  "schema_version": "2.0",
+  "status": "NO_PATCH",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "validation": {
+    "status": "NO_PATCH",
+    "reasons": [
+      "没有进入验收的补丁"
+    ],
+    "targets": [],
+    "preserved": [],
+    "acceptance_sha256": "a14a0e673614ed519e38085771b2378d1472a9c556493170422ad4f71ec1f022"
+  },
+  "test_framework": "pytest",
+  "generated_test_kind": "none",
+  "acceptance_before": [],
+  "acceptance_after": [],
+  "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\config_values",
+  "issue": "布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。",
+  "insufficient_evidence": false,
+  "evidences": [
+    {
+      "ref": "api.py:1",
+      "type": "function",
+      "name": "read_flag",
+      "confidence": 0.0,
+      "reason": "解析布尔值字符串，忽略空格、制表符或换行，大小写不敏感。",
+      "source": "intent_target",
+      "signature": "def read_flag(value)",
+      "code": "def read_flag(value):\n    key = value.lower()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\""
+    },
+    {
+      "ref": "api.py:8",
+      "type": "function",
+      "name": "format_flag",
+      "confidence": 1.0,
+      "reason": "符号名/文档命中关键词: value",
+      "source": "keyword_match",
+      "signature": "def format_flag(value)",
+      "code": "def format_flag(value):\n    return \"true\" if value else \"false\""
+    },
+    {
+      "ref": "tests/test_public.py:4",
+      "type": "class",
+      "name": "PublicTests",
+      "confidence": 0.55,
+      "reason": "代码片段命中检索词（class @ tests/test_public.py:4）",
+      "source": "keyword_match",
+      "signature": "class PublicTests",
+      "code": "class PublicTests(unittest.TestCase):\n    def test_true(self): self.assertIs(api.read_flag(\"true\"), True)\n    def test_false(self): self.assertIs(api.read_flag(\"FALSE\"), False)\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.read_flag(\"unknown\")\n    def test_format(self): self.assertEqual(api.format_flag(False), \"false\")"
+    },
+    {
+      "ref": "tests/test_public.py:5",
+      "type": "method",
+      "name": "test_true",
+      "confidence": 0.4,
+      "reason": "符号名/文档命中关键词: true",
+      "source": "keyword_match",
+      "signature": "def test_true(self)",
+      "code": "def test_true(self): self.assertIs(api.read_flag(\"true\"), True)"
+    },
+    {
+      "ref": "tests/test_public.py:9",
+      "type": "method",
+      "name": "test_format",
+      "confidence": 0.6,
+      "reason": "与 format_flag 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_format(self)",
+      "code": "def test_format(self): self.assertEqual(api.format_flag(False), \"false\")"
+    },
+    {
+      "ref": "tests/test_public.py:6",
+      "type": "method",
+      "name": "test_false",
+      "confidence": 0.51,
+      "reason": "与 read_flag 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_false(self)",
+      "code": "def test_false(self): self.assertIs(api.read_flag(\"FALSE\"), False)"
+    },
+    {
+      "ref": "tests/test_public.py:7",
+      "type": "method",
+      "name": "test_invalid",
+      "confidence": 0.51,
+      "reason": "与 read_flag 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_invalid(self)",
+      "code": "def test_invalid(self):\n        with self.assertRaises(ValueError): api.read_flag(\"unknown\")"
+    }
+  ],
+  "plan": {
+    "root_cause": "在 `read_flag` 函数中，布尔值字符串的解析逻辑没有正确处理空格、制表符或换行的情况，导致无法正确解析布尔值字符串。",
+    "affected_scope": [
+      "api.py"
+    ],
+    "files_to_modify": [
+      "api.py"
+    ],
+    "steps": [
+      "修改 `read_flag` 函数，添加对空格、制表符或换行的处理逻辑，使其能够正确解析布尔值字符串。",
+      "添加新的测试用例，验证布尔值字符串解析的正确性。"
+    ],
+    "risks": [
+      "可能会影响代码的可读性和可维护性，因为布尔值字符串的解析逻辑发生了变化。"
+    ],
+    "regression_test": "新增测试用例，验证布尔值字符串解析的正确性。",
+    "generated_by": "llm"
+  },
+  "test_command": "python -m pytest tests",
+  "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': ['true '], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': 'ValueError', 'symbol': 'read_flag'}, {'args': ['FALSE '], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': 'ValueError', 'symbol': 'read_flag'}, {'args': ['true\\n'], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': 'ValueError', 'symbol': 'read_flag'}], 'changes': ['修正了对空输入、制表符和换行的处理，使其能够正确解析布尔值字符串。']}",
+  "before": [
+    {
+      "command": "python -m pytest tests",
+      "returncode": 0,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_j1rbrqto\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 4 items\n\ntests\\test_public.py ....                                                [100%]\n\n============================== 4 passed in 0.52s ==============================\n",
+      "stderr": "",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 4,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 4,
+        "ran": 4
+      },
+      "invalid_reason": "",
+      "tests": {
+        "tests/test_public.py::PublicTests::test_false": "PASS",
+        "tests/test_public.py::PublicTests::test_format": "PASS",
+        "tests/test_public.py::PublicTests::test_invalid": "PASS",
+        "tests/test_public.py::PublicTests::test_true": "PASS"
+      },
+      "structured": true,
+      "framework": "pytest"
+    }
+  ],
+  "after": [],
+  "generated_test": "",
+  "patch_diff": "",
+  "execution_hints": [],
+  "flip_prediction": null,
+  "regression_before": [],
+  "regression_after": [],
+  "regression_test_cmd": "",
+  "test_timeout": 120,
+  "requested_test_command": "python -m pytest tests",
+  "understanding": {
+    "original_issue": "布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。",
+    "summary": "解析布尔值字符串，忽略空格、制表符或换行，大小写不敏感，如果字符串不为 'true' 或 'false'，则抛出 ValueError。",
+    "core_operation": "解析布尔值字符串，忽略空格、制表符或换行，大小写不敏感",
+    "requested_return_kind": "boolean",
+    "return_contracts": {
+      "api.py:8": [
+        "string"
+      ],
+      "api.py:1": [
+        "boolean"
+      ]
+    },
+    "expected_behavior": "如果字符串为 'true' 或 'false'，则返回 True 或 False，忽略空格、制表符或换行。如果字符串不为 'true' 或 'false'，则抛出 ValueError。",
+    "search_query": "布尔值解析忽略空格制表符换行大小写不敏感",
+    "scope": "matched",
+    "explanation": "解析布尔值字符串，忽略空格、制表符或换行，大小写不敏感。",
+    "targets": [
+      {
+        "ref": "api.py:1",
+        "path": "api.py",
+        "name": "read_flag",
+        "start_line": 1
+      }
+    ],
+    "repository_functions": [
+      "api.py:read_flag",
+      "api.py:format_flag"
+    ],
+    "catalog_total": 2,
+    "catalog_shown": 2,
+    "model": "qwen2.5-coder:1.5b",
+    "generated_by": "llm",
+    "error": "",
+    "retrieval_mode": "llm_grounded_source"
+  },
+  "task_tests": {
+    "error": "模型测试审核未通过：{'approved': False, 'cases': [{'args': ['true '], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': 'ValueError', 'symbol': 'read_flag'}, {'args': ['FALSE '], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': 'ValueError', 'symbol': 'read_flag'}, {'args': ['true\\n'], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': 'ValueError', 'symbol': 'read_flag'}], 'changes': ['修正了对空输入、制表符和换行的处理，使其能够正确解析布尔值字符串。']}"
+  },
+  "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': ['true '], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': 'ValueError', 'symbol': 'read_flag'}, {'args': ['FALSE '], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': 'ValueError', 'symbol': 'read_flag'}, {'args': ['true\\n'], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': 'ValueError', 'symbol': 'read_flag'}], 'changes': ['修正了对空输入、制表符和换行的处理，使其能够正确解析布尔值字符串。']}",
+  "verification_scope": "当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为",
+  "model": "qwen2.5-coder:1.5b",
+  "provenance": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

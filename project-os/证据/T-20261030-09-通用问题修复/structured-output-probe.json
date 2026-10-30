@@ -1,0 +1,71 @@
+{
+  "request": {
+    "model": "qwen35-9b-unc:latest",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Return args for a function receiving a list of numbers and an integer block size. JSON only."
+      }
+    ],
+    "temperature": 0,
+    "reasoning_effort": "none",
+    "max_tokens": 150,
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "argument_test",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "args": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "required": [
+            "args"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-110",
+    "object": "chat.completion",
+    "created": 1793351198,
+    "model": "qwen35-9b-unc:latest",
+    "system_fingerprint": "fp_ollama",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"args\": [[1, 2, 3, 4, 5], 2]}"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 31,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens": 22,
+      "total_tokens": 53
+    }
+  }
+}

@@ -1,0 +1,103 @@
+[
+  {
+    "case": "partition",
+    "insufficient": false,
+    "expected_insufficient": false,
+    "understanding": {
+      "original_issue": "列表分块时最后不足一个分块的元素也需要保留。输入为空时返回空列表，分块大小必须是正整数。",
+      "summary": "列表分块时最后不足一个分块的元素也需要保留。输入为空时返回空列表，分块大小必须是正整数。",
+      "expected_behavior": "When partitioning a list, the last group containing fewer elements than the specified size should still be included. An empty input list should return an empty list, and the size must be a positive integer.",
+      "search_query": "partition values size range",
+      "scope": "matched",
+      "explanation": "该函数核心业务是将一个扁平的数值列表（values）按照给定的整数大小（size）进行切片，生成一个包含多个子列表的新列表。其输出意义在于将长列表重组为等长的块序列，尽管当前实现中对于‘最后不足一个分块的元素’的处理逻辑（是否单独成块）存在特定算法倾向，但其本质仍是基于步长的区间划分操作。",
+      "targets": [
+        {
+          "ref": "api.py:1",
+          "path": "api.py",
+          "name": "partition",
+          "start_line": 1
+        }
+      ],
+      "repository_functions": [
+        "api.py:partition",
+        "api.py:flatten"
+      ],
+      "catalog_total": 2,
+      "catalog_shown": 2,
+      "model": "qwen35-9b-unc:latest",
+      "generated_by": "llm",
+      "error": "",
+      "retrieval_mode": "llm_grounded_source"
+    }
+  },
+  {
+    "case": "unique",
+    "insufficient": false,
+    "expected_insufficient": false,
+    "understanding": {
+      "original_issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+      "summary": "列表去重时顺序错乱：[4,2,4,1] 应得 [4,2,1]，现因 `set` 导致顺序变化。",
+      "expected_behavior": "对列表去重时需保持各元素首次出现的顺序（如 [4,2,4,1] -> [4,2,1]），且输入列表不被修改。",
+      "search_query": "unique_values",
+      "scope": "matched",
+      "explanation": "用户核心诉求是‘保持首次出现顺序的去重’。候选函数 `unique_values` 的业务逻辑是‘利用 Set 的无序性快速提取唯一元素’。虽然 Set 天然无序（导致顺序可能改变），且实现中直接返回 `list(set(...))` 暗示了将集合转为列表的动作，这属于对‘保持顺序’这一特定业务细节的实现方式选择，而非完全不同的业务操作（如排序或过滤）。因此，它符合‘处理同一类去重业务’的同类候选标准。",
+      "targets": [
+        {
+          "ref": "api.py:1",
+          "path": "api.py",
+          "name": "unique_values",
+          "start_line": 1
+        }
+      ],
+      "repository_functions": [
+        "api.py:unique_values",
+        "api.py:count_values"
+      ],
+      "catalog_total": 2,
+      "catalog_shown": 2,
+      "model": "qwen35-9b-unc:latest",
+      "generated_by": "llm",
+      "error": "",
+      "retrieval_mode": "llm_grounded_source"
+    }
+  },
+  {
+    "case": "absent",
+    "insufficient": false,
+    "expected_insufficient": true,
+    "understanding": {
+      "original_issue": "布尔值字符串 true/false 前后有空格时解析失败",
+      "summary": "布尔值字符串解析失败",
+      "expected_behavior": "The function should correctly parse a boolean string ('true'/'false') even if it is surrounded by whitespace (e.g., ' true '), returning the corresponding boolean value.",
+      "search_query": "format_date",
+      "scope": "matched",
+      "explanation": "用户核心诉求是解决布尔值字符串（如 ' true'）解析失败的问题，这通常发生在将布尔值转换为日期组件时。候选函数 `format_date` 的业务操作是将一个日期对象（`d`）拆解为年、月、日并拼接成标准字符串。虽然它处理的是日期对象而非直接处理布尔字符串，但在日期解析流程中，它负责输出最终的时间维度数据。其输入是日期对象，输出是带零填充的日期字符串。",
+      "targets": [
+        {
+          "ref": "src/dateparse/formatter.py:5",
+          "path": "src/dateparse/formatter.py",
+          "name": "format_date",
+          "start_line": 5
+        }
+      ],
+      "repository_functions": [
+        "src/dateparse/formatter.py:format_date",
+        "src/dateparse/formatter.py:format_iso",
+        "src/dateparse/parser.py:parse_date",
+        "src/dateparse/parser.py:parse_datetime",
+        "src/dateparse/utils.py:days_between",
+        "src/dateparse/utils.py:add_days",
+        "src/dateparse/utils.py:is_leap_year",
+        "src/dateparse/validator.py:is_valid_date",
+        "src/dateparse/validator.py:validate_range",
+        "src/dateparse/validator.py:is_weekend"
+      ],
+      "catalog_total": 10,
+      "catalog_shown": 10,
+      "model": "qwen35-9b-unc:latest",
+      "generated_by": "llm",
+      "error": "",
+      "retrieval_mode": "llm_grounded_source"
+    }
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "path": "src/dateparse/formatter.py",
+    "name": "format_date",
+    "line": 5
+  },
+  {
+    "path": "src/dateparse/formatter.py",
+    "name": "format_iso",
+    "line": 21
+  },
+  {
+    "path": "src/dateparse/parser.py",
+    "name": "parse_date",
+    "line": 9
+  },
+  {
+    "path": "src/dateparse/parser.py",
+    "name": "parse_datetime",
+    "line": 26
+  },
+  {
+    "path": "src/dateparse/utils.py",
+    "name": "days_between",
+    "line": 5
+  },
+  {
+    "path": "src/dateparse/utils.py",
+    "name": "add_days",
+    "line": 25
+  },
+  {
+    "path": "src/dateparse/utils.py",
+    "name": "is_leap_year",
+    "line": 40
+  },
+  {
+    "path": "src/dateparse/validator.py",
+    "name": "is_valid_date",
+    "line": 8
+  },
+  {
+    "path": "src/dateparse/validator.py",
+    "name": "validate_range",
+    "line": 29
+  },
+  {
+    "path": "src/dateparse/validator.py",
+    "name": "is_weekend",
+    "line": 49
+  }
+]

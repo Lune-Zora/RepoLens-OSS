@@ -1,0 +1,11 @@
+{
+  "after": null,
+  "before": null,
+  "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "enabled": true,
+  "files": {
+    "__replens_acceptance__/test_behavior.py": "import unittest\nimport api\n\nclass IndependentBehavior(unittest.TestCase):\n    def test_tail(self): self.assertEqual(api.partition([0,1,2,3,4,5,6],3),[[0,1,2],[3,4,5],[6]])\n    def test_short(self): self.assertEqual(api.partition([7],4),[[7]])\n    def test_empty(self): self.assertEqual(api.partition([],3),[])\n    def test_unit(self): self.assertEqual(api.partition([5,6],1),[[5],[6]])\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.partition([1,2],-1)\n    def test_helper(self): self.assertEqual(api.flatten([[1],[],[2,3]]),[1,2,3])\n"
+  },
+  "sha256": "f0f142aebf3516a09983d768d27451de39576952e9c9800763c2df4a473764dd",
+  "timeout": 120
+}

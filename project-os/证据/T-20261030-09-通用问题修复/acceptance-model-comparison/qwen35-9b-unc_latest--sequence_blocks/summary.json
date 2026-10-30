@@ -1,0 +1,38 @@
+{
+  "model": "qwen35-9b-unc:latest",
+  "task": "sequence_blocks",
+  "seconds": 34.004,
+  "exit_code": 2,
+  "repair_status": "NO_PATCH",
+  "blocked_reason": "模型计划生成失败：严格模式：禁止规则回退。LLM 返回缺少 root_cause 或有效 files_to_modify",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "patch_note": "模型计划生成失败：严格模式：禁止规则回退。LLM 返回缺少 root_cause 或有效 files_to_modify",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "016850e38d864fdc9b55b493bbd86dd2.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "1405aff8364e44dfb5dee0b4c039e383.json",
+      "purpose": "plan",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "98e77b8f7a8744ed89c773ad31a22cf6.json",
+      "purpose": "scope_validation",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

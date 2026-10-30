@@ -1,0 +1,29 @@
+{
+  "model": "qwen35-9b-unc:latest",
+  "task": "config_values",
+  "seconds": 46.831,
+  "exit_code": 1,
+  "repair_status": null,
+  "blocked_reason": null,
+  "reasons": null,
+  "patch_note": null,
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "23023c6593b54e14b80fa52e87a4055c.json",
+      "purpose": "plan",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "893de3451b82475a876f091265b239d3.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

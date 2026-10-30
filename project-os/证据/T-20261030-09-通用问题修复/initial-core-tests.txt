@@ -1,0 +1,45 @@
+....................................................... [ 75%]
+.F................                                                       [100%]
+================================== FAILURES ===================================
+_ ProvenanceDemoTests.test_actual_web_handlers_without_optional_http_dependencies _
+
+self = <test_provenance.ProvenanceDemoTests testMethod=test_actual_web_handlers_without_optional_http_dependencies>
+
+    def test_actual_web_handlers_without_optional_http_dependencies(self):
+        # Exercise actual handler bodies; this is not an HTTP integration test.
+        module = ast.parse((ROOT / 'web/app.py').read_text(encoding='utf-8'))
+        functions = [node for node in module.body if isinstance(node, ast.FunctionDef)
+                     and node.name in {'api_run', 'api_verify'}]
+        for node in functions:
+            node.decorator_list = []
+        module = ast.Module(body=[ast.ImportFrom(module='__future__', names=[ast.alias(name='annotations')], level=0),
+                                  *functions], type_ignores=[])
+        scope = {'JSONResponse': lambda content: content, 'build_provenance': build_provenance,
+                 'verify_provenance': verify_provenance,
+                 'render_verification_markdown': render_verification_markdown}
+        exec(compile(ast.fix_missing_locations(module), str(ROOT / 'web/app.py'), 'exec'), scope)
+        request = SimpleNamespace(repo=str(self.repo), issue=ISSUE, top_k=5, hybrid=False,
+                                  test_cmd=COMMAND, auto_patch=True, patch='', timeout=20,
+                                  force_reindex=False, no_provenance=False, acceptance_suite=str(ACCEPTANCE))
+        with patch('replens.runner.run_repair', return_value=self.verified) as run:
+>           body = scope['api_run'](request)
+
+tests\test_provenance.py:297: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+req = namespace(repo='C:\\Users\\19248\\AppData\\Local\\Temp\\replens_provenance_4rrbwlqw\\demo', issue='date string with su...0, force_reindex=False, no_provenance=False, acceptance_suite='E:\\osspj\\人工智能\\repo\\examples\\acceptance\\demo.json')
+
+    def api_run(req: RunRequest):
+>       if not _repair_lock.acquire(blocking=False):
+E       NameError: name '_repair_lock' is not defined
+
+web\app.py:413: NameError
+============================== warnings summary ===============================
+tests/test_validation.py::RepairAcceptanceIntegrationTests::test_real_http_api_returns_same_verified_and_failed_status
+  C:\Users\19248\AppData\Local\Programs\Python\Python310\lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_provenance.py::ProvenanceDemoTests::test_actual_web_handlers_without_optional_http_dependencies
+1 failed, 72 passed, 1 warning, 17 subtests passed in 98.08s (0:01:38)

@@ -1,0 +1,45 @@
+{
+  "生成时间": "2026-10-28",
+  "任务": "T-20261028-02-新建远端版本管理",
+  "远端": {
+    "地址": "https://gitee.com/who-ask-my-name-fee/oss1028.git",
+    "分支": "main",
+    "推送前状态": "空仓库（git ls-remote 退出码 0，0 行引用）",
+    "推送结果": "* [new branch] main -> main",
+    "推送后一致": {
+      "本地HEAD": "242633c3922c773f00538db6ded387a56eeb7e32",
+      "远端HEAD": "242633c3922c773f00538db6ded387a56eeb7e32",
+      "ahead_behind": "0 0"
+    }
+  },
+  "换行归一": {
+    "归一前": {
+      "i/crlf": 105,
+      "i/lf": 83
+    },
+    "归一后": {
+      "i/crlf": 0,
+      "i/lf": 189
+    },
+    "新增": ".gitattributes（* text=auto eol=lf；*.patch/*.diff -text；二进制显式声明）",
+    "变更文件数": 106
+  },
+  "敏感文件核验": {
+    "检查项": [
+      "validation/",
+      "reports/runs/",
+      ".replens",
+      ".env",
+      "*.pyc",
+      "replens-realbug-*"
+    ],
+    "结果": "git ls-files 中 0 命中"
+  },
+  "克隆验证": {
+    "方法": "从远端全新 clone 后运行 pytest",
+    "tracked": 189,
+    "eol": "全部 i/lf",
+    "pytest": "126 passed / 3 failed / 81 subtests passed",
+    "与本地一致": true
+  }
+}

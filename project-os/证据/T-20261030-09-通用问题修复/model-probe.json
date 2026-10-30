@@ -1,0 +1,144 @@
+[
+  {
+    "model": "qwen2.5-coder:1.5b",
+    "seconds": 2.76,
+    "request": {
+      "model": "qwen2.5-coder:1.5b",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return JSON only. Translate the user issue to a concise English search query. Do not invent a fix. Keys: query, expected_behavior."
+        },
+        {
+          "role": "user",
+          "content": "当区间起点和终点是同一天时应当判定为合法，现在却返回假。"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 350,
+      "response_format": {
+        "type": "json_object"
+      }
+    },
+    "response": {
+      "id": "chatcmpl-754",
+      "object": "chat.completion",
+      "created": 1793347568,
+      "model": "qwen2.5-coder:1.5b",
+      "system_fingerprint": "fp_ollama",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\n  \"query\": \"interval start and end are the same day, should be valid, but returns false\",\n  \"expected_behavior\": \"The function should correctly identify intervals where the start and end dates are the same day and return true.\"\n}"
+          },
+          "finish_reason": "stop"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 60,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens": 57,
+        "total_tokens": 117
+      }
+    }
+  },
+  {
+    "model": "qwen25-7b-unc:latest",
+    "seconds": 6.54,
+    "request": {
+      "model": "qwen25-7b-unc:latest",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return JSON only. Translate the user issue to a concise English search query. Do not invent a fix. Keys: query, expected_behavior."
+        },
+        {
+          "role": "user",
+          "content": "当区间起点和终点是同一天时应当判定为合法，现在却返回假。"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 350,
+      "response_format": {
+        "type": "json_object"
+      }
+    },
+    "response": {
+      "id": "chatcmpl-427",
+      "object": "chat.completion",
+      "created": 1793347575,
+      "model": "qwen25-7b-unc:latest",
+      "system_fingerprint": "fp_ollama",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\"query\":\"when start and end date are the same it should be considered valid but it returns false\",\"expected_behavior\":\"it should be considered valid when the start and end date are the same\"}"
+          },
+          "finish_reason": "stop"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 60,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens": 40,
+        "total_tokens": 100
+      }
+    }
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "seconds": 19.3,
+    "request": {
+      "model": "qwen35-9b-unc:latest",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return JSON only. Translate the user issue to a concise English search query. Do not invent a fix. Keys: query, expected_behavior."
+        },
+        {
+          "role": "user",
+          "content": "当区间起点和终点是同一天时应当判定为合法，现在却返回假。"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 350,
+      "response_format": {
+        "type": "json_object"
+      }
+    },
+    "response": {
+      "id": "chatcmpl-295",
+      "object": "chat.completion",
+      "created": 1793347594,
+      "model": "qwen35-9b-unc:latest",
+      "system_fingerprint": "fp_ollama",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A user issue description in Chinese (\"当区间起点和终点是同一天时应当判定为合法，现在却返回假。\").\n    *   Output Format: JSON only.\n    *   Keys Required: `query` (concise English search query), `expected_behavior` (what the user expects).\n    *   Constraint: Do not invent a fix (keep it descriptive).\n\n2.  **Analyze the User Issue:**\n    *   Context: Date/Time interval logic (likely code or database query).\n    *   Problem: When start date equals end date, the result is `false` (or invalid), but it should be `true` (or valid).\n    *   Key Concept: \"Same day\", \"Inclusive range\", \"Start equals End\".\n\n3.  **Drafting the Content:**\n    *   `query`: Needs to be concise English for search engines or debugging.\n        *   Option 1: \"date interval start equals end false\"\n        *   Option 2: \"same day date range valid check\"\n        *   Option 3: \"interval start and end same day returns false\"\n        *   Selection: \"date interval start equals end returns false\" or \"same day date range inclusive\". Let's go with something descriptive but concise. \"date range start equals end returns false\" seems accurate.\n    *   `expected_behavior`: What does the user expect?\n        *   Option 1: \"true when start equals end\"\n        *   Option 2: \"valid interval if same day\"\n       "
+          },
+          "finish_reason": "length"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 61,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens": 350,
+        "total_tokens": 411
+      }
+    }
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "files": {
+    "provenance.json": "f092689f6be787459aff629fe0726a053d14f78f7fa2fafde671cae8916b63b5",
+    "report.json": "2c368a5fa725aef1cf31930eedd86eefc69d48b190435dce4d06209303947706",
+    "report.md": "aa3e6e5f7783244c7a22c8753059f772ea4a0fe0cef72e5b8b8f9a853b6f1d78",
+    "suites/acceptance.json": "eaa0265844ac1795c9425cf83505e3e9c016969005380afad0e46ca37de7cc59",
+    "suites/auxiliary.json": "0da6500b5de54333dc884f882b57e7c04be355865085aa221464d865685b9f5b",
+    "suites/primary.json": "7e4481eacb07dd9d7bdd600c8b890260ba8349d96ce19f540d2479ed43a06b33"
+  },
+  "schema_version": "2.0"
+}

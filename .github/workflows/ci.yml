@@ -1,0 +1,75 @@
+# 与 scripts/run_ci.py 的 STEPS 一一对应；改动任一处必须同步另一处。
+# 本地可完全复现：python scripts/run_ci.py
+name: RepoLens CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # anyio>=4.13 requires Python>=3.10; hosted execution is still pending.
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: 安装依赖（含 Web 与测试）
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -c constraints.txt -e '.[web,test]'
+
+      # 第 1 步：依赖版本前置自检。
+      # 2026-10-28 曾因 typing_extensions 低于 anyio 要求，表现为 3 条看似无关的 HTTP 用例失败。
+      - name: 环境自检
+        run: python scripts/check_env.py --with-web
+
+      # 第 2 步：评测集 schema 与业务规则校验。
+      - name: 数据集口径校验
+        run: python scripts/validate_datasets.py
+
+      # 第 3 步：单元与集成测试。
+      - name: 单元与集成测试
+        run: python -m pytest tests/ -q
+
+      # 第 4 步：端到端演示（规则自动补丁，离线）。
+      - name: 端到端演示（规则自动补丁，离线）
+        run: |
+          python -m replens run examples/demo_repo \
+            --issue "date string with surrounding whitespace fails to parse" \
+            --test-cmd "pytest tests/test_parser.py" --auto-patch \
+            --acceptance-suite examples/acceptance/demo.json --require-verified \
+            --no-provenance --output reports/runs/ci_demo.md
+
+      # 第 5 步：退出码 2 表示「跑通但结论 UNVERIFIED」，属预期行为。
+      - name: 拒绝未验证修复（报告仍写出）
+        run: |
+          set +e
+          python -m replens run examples/demo_repo \
+            --issue "date string with surrounding whitespace fails to parse" \
+            --test-cmd "pytest tests/test_parser.py" --auto-patch \
+            --require-verified --no-provenance --format json \
+            --output reports/runs/ci_unverified.json
+          result=$?
+          set -e
+          test "$result" -eq 2
+          python -c "import json; assert json.load(open('reports/runs/ci_unverified.json'))['status'] == 'UNVERIFIED'"
+
+      # 第 6 步：检索评测。
+      - name: 检索评测
+        run: python -m replens eval examples/demo_repo --dataset eval/datasets/dataset.json
+
+      # 第 7 步：基线对比。
+      - name: 基线对比
+        run: python eval/baselines.py examples/demo_repo --dataset eval/datasets/dataset.json
+
+      # 第 8 步：Web 冒烟。
+      - name: Web 冒烟
+        run: python scripts/check_web.py

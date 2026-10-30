@@ -1,0 +1,60 @@
+{
+  "version": "0.7.0",
+  "checked_at": "2026-10-30T19:17:05.995972+08:00",
+  "scope": "documentation synchronization and packaging; no new core code changes or repeated model experiments",
+  "runtime_files_equal_to_verified_wheel": 37,
+  "runtime_differences": [],
+  "report_layout": [
+    {
+      "path": "docs/02_架构/技术报告.pdf",
+      "pages": 13,
+      "bytes": 268488
+    },
+    {
+      "path": "reports/compliance/开源及第三方资源使用清单.pdf",
+      "pages": 5,
+      "bytes": 149816
+    }
+  ],
+  "synchronized_files": {
+    "docs/02_架构/技术报告.docx": "技术报告.docx",
+    "docs/02_架构/技术报告.pdf": "技术报告.pdf",
+    "reports/compliance/开源及第三方资源使用清单.docx": "开源及第三方资源使用清单.docx",
+    "reports/compliance/开源及第三方资源使用清单.pdf": "开源及第三方资源使用清单.pdf",
+    "reports/compliance/open_source_checklist.md": "开源及第三方资源使用清单.md",
+    "reports/compliance/团队与工具辅助说明.md": "团队与工具辅助说明.md",
+    "docs/01_需求/作品简介-提交用.txt": "作品简介.txt",
+    "docs/06_运维/上传说明.md": "上传说明.md"
+  },
+  "services": {
+    "web": {
+      "http_status": 200,
+      "python": "3.10.11",
+      "llm": {
+        "base_url": "http://127.0.0.1:11434/v1",
+        "model": "qwen35-9b-unc:latest",
+        "configured": true,
+        "strict": true
+      },
+      "embedding": {
+        "remote": false,
+        "local": true
+      }
+    },
+    "ollama": {
+      "http_status": 200,
+      "model_names": [
+        "qwen25-7b-unc:latest",
+        "qwen35-9b-unc:latest",
+        "qwen2.5-coder:1.5b"
+      ]
+    }
+  },
+  "git_pushed": false,
+  "cover_team_name_and_registration_id": "requires_user_completion",
+  "resource_counts": {
+    "verified": 42,
+    "pending": 4,
+    "not_applicable": 3
+  }
+}

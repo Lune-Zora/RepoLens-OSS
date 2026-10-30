@@ -1,0 +1,283 @@
+[
+  {
+    "case": "chinese-existing",
+    "request": {
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+      "issue": "1900年被错误判断为闰年",
+      "model": "qwen35-9b-unc:latest",
+      "top_k": 5
+    },
+    "response": {
+      "insufficient_evidence": false,
+      "evidences": [
+        {
+          "ref": "src/dateparse/utils.py:40",
+          "type": "function",
+          "name": "is_leap_year",
+          "confidence": 0.0,
+          "reason": "The core operation is validating the 'Leap Year' status for a single input 'year'. The candidate function 'is_leap_year' directly consumes this integer and applies the standard Gregorian calendar logic (checking divisibility by 4, 100, and 400) to return a boolean result. It acts as the primary gate",
+          "source": "intent_target",
+          "signature": "def is_leap_year(year)",
+          "code": "def is_leap_year(year):\n    \"\"\"Determine whether a year is a leap year.\n\n    Args:\n        year: integer year.\n\n    Returns:\n        True if the year is a leap year.\n\n    Note:\n        Century rule is wrong — treats every year divisible by 100 as a leap\n        year, so 1900 is wrongly reported as leap. This is the bug to fix.\n    \"\"\"\n    if year % 400 == 0:\n        return True\n    if year % 100 == 0:\n        return True\n    return year % 4 == 0"
+        },
+        {
+          "ref": "src/dateparse/utils.py:1",
+          "type": "module",
+          "name": "src/dateparse/utils.py",
+          "confidence": 0.85,
+          "reason": "代码片段命中检索词（module @ src/dateparse/utils.py:1）",
+          "source": "keyword_match",
+          "signature": "",
+          "code": "\"\"\"General date math utilities.\"\"\"\nimport datetime\n\n\ndef days_between(a, b):\n    \"\"\"Return the number of days between two date strings (absolute value).\n\n    Args:\n        a: start date string \"YYYY-MM-DD\".\n        b: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        Non-negative integer day count.\n\n    Note:\n        Subtraction order is reversed — returns a negative value when a < b.\n        This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    da = parse_date(a)\n    db = parse_date(b)\n    return (da - db).days\n\n\ndef add_days(s, n):\n    \"\"\"Add n days to a date string and return a date object.\n\n    Args:\n        s: date string \"YYYY-MM-DD\".\n        n: integer number of days (can be negative).\n\n    Returns:\n        datetime.date object.\n    \"\"\"\n    from .parser import parse_date\n    d = parse_date(s)\n    return d + datetime.timedelta(days=n)\n\n\ndef is_leap_year(year):\n    \"\"\"Determine whether a year is a leap year.\n\n    Args:\n        year: integer year.\n\n    Returns:\n        True if the year is a leap year.\n\n    Note:\n        Century rule is wrong — treats every year divisible by 100 as a leap\n        year, so 1900 is wrongly reported as leap. This is the bug to fix.\n    \"\"\"\n    if year % 400 == 0:\n        return True\n    if year % 100 == 0:\n        return True\n    return year % 4 == 0\n"
+        },
+        {
+          "ref": "src/dateparse/formatter.py:5",
+          "type": "function",
+          "name": "format_date",
+          "confidence": 0.7,
+          "reason": "代码片段命中检索词（function @ src/dateparse/formatter.py:5）",
+          "source": "keyword_match",
+          "signature": "def format_date(d)",
+          "code": "def format_date(d):\n    \"\"\"Format a date object as YYYY-MM-DD with zero padding.\n\n    Args:\n        d: datetime.date object.\n\n    Returns:\n        String like \"2024-01-05\".\n\n    Note:\n        Uses plain attribute access without zero-padding, so single-digit\n        months/days render as \"2024-1-5\". This is the bug to fix.\n    \"\"\"\n    return f\"{d.year}-{d.month}-{d.day}\""
+        },
+        {
+          "ref": "src/dateparse/formatter.py:1",
+          "type": "module",
+          "name": "src/dateparse/formatter.py",
+          "confidence": 0.55,
+          "reason": "代码片段命中检索词（module @ src/dateparse/formatter.py:1）",
+          "source": "keyword_match",
+          "signature": "",
+          "code": "\"\"\"Date formatting utilities.\"\"\"\nimport datetime\n\n\ndef format_date(d):\n    \"\"\"Format a date object as YYYY-MM-DD with zero padding.\n\n    Args:\n        d: datetime.date object.\n\n    Returns:\n        String like \"2024-01-05\".\n\n    Note:\n        Uses plain attribute access without zero-padding, so single-digit\n        months/days render as \"2024-1-5\". This is the bug to fix.\n    \"\"\"\n    return f\"{d.year}-{d.month}-{d.day}\"\n\n\ndef format_iso(dt):\n    \"\"\"Format a datetime as an ISO 8601 string.\"\"\"\n    return dt.isoformat()\n"
+        }
+      ],
+      "plan": {
+        "root_cause": "The function is_leap_year incorrectly identifies century years (divisible by 100) as leap years without first checking divisibility by 400, causing 1900 to be treated as a leap year.",
+        "affected_scope": [
+          "src/dateparse/utils.py",
+          "src/dateparse/formatter.py"
+        ],
+        "files_to_modify": [
+          "src/dateparse/utils.py",
+          "src/dateparse/formatter.py"
+        ],
+        "steps": [
+          "In src/dateparse/utils.py, modify the is_leap_year function to reorder conditions: check divisibility by 400 first, then",
+          "In src/dateparse/formatter.py, update the format_date function to use zero-padding (e.g., via f-string formatting) to '2"
+        ],
+        "risks": [
+          "Potential side effects if is_leap_year logic changes behavior for edge cases like 2000 (though logic"
+        ],
+        "regression_test": "Verify that is_leap_year(1900) returns False and format_date('2024-1-5') returns '2024-01-05'.",
+        "generated_by": "llm"
+      },
+      "understanding": {
+        "original_issue": "1900年被错误判断为闰年",
+        "summary": "修复将1900年误判为闰年的逻辑",
+        "core_operation": "Check Leap Year Logic",
+        "expected_behavior": "Correctly identify 1900 as a common year (28 days in Feb) instead of a leap year, assuming the standard Gregorian rule is applied.",
+        "search_query": "is_leap_year",
+        "scope": "matched",
+        "explanation": "The core operation is validating the 'Leap Year' status for a single input 'year'. The candidate function 'is_leap_year' directly consumes this integer and applies the standard Gregorian calendar logic (checking divisibility by 4, 100, and 400) to return a boolean result. It acts as the primary gate",
+        "targets": [
+          {
+            "ref": "src/dateparse/utils.py:40",
+            "path": "src/dateparse/utils.py",
+            "name": "is_leap_year",
+            "start_line": 40
+          }
+        ],
+        "repository_functions": [
+          "src/dateparse/formatter.py:format_date",
+          "src/dateparse/formatter.py:format_iso",
+          "src/dateparse/parser.py:parse_date",
+          "src/dateparse/parser.py:parse_datetime",
+          "src/dateparse/utils.py:days_between",
+          "src/dateparse/utils.py:add_days",
+          "src/dateparse/utils.py:is_leap_year",
+          "src/dateparse/validator.py:is_valid_date",
+          "src/dateparse/validator.py:validate_range",
+          "src/dateparse/validator.py:is_weekend"
+        ],
+        "catalog_total": 10,
+        "catalog_shown": 10,
+        "model": "qwen35-9b-unc:latest",
+        "generated_by": "llm",
+        "error": "",
+        "retrieval_mode": "llm_grounded_source"
+      }
+    }
+  },
+  {
+    "case": "absent-feature",
+    "request": {
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+      "issue": "布尔值字符串 true/false 前后有空格时解析失败",
+      "model": "qwen35-9b-unc:latest",
+      "top_k": 5
+    },
+    "response": {
+      "insufficient_evidence": false,
+      "evidences": [
+        {
+          "ref": "src/dateparse/parser.py:9",
+          "type": "function",
+          "name": "parse_date",
+          "confidence": 0.0,
+          "reason": "用户核心需求是‘解析布尔字符串’，但候选函数 `parse_date` 的实际业务操作是‘按固定日期格式（YYYY-MM-DD）拆分字符串并提取日期对象’。虽然当前实现可能因输入类型或格式不匹配而显得有缺陷（即用户提到的‘即使当前实现有缺陷’），但该函数确实是承担‘从字符串中提取结构化时间数据’这一核心操作的直接执行者，因此被归入同类候选。",
+          "source": "intent_target",
+          "signature": "def parse_date(s)",
+          "code": "def parse_date(s):\n    \"\"\"Parse a date string in YYYY-MM-DD format.\n\n    Args:\n        s: the date string, e.g. \"2024-01-01\".\n\n    Returns:\n        datetime.date object.\n\n    Note:\n        The input is not stripped of surrounding whitespace, so a string\n        like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n        call s.strip() before parsing.\n    \"\"\"\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()"
+        },
+        {
+          "ref": "src/dateparse/parser.py:26",
+          "type": "function",
+          "name": "parse_datetime",
+          "confidence": 1.0,
+          "reason": "符号名/文档命中关键词: parse, date",
+          "source": "keyword_match",
+          "signature": "def parse_datetime(s)",
+          "code": "def parse_datetime(s):\n    \"\"\"Parse a datetime string in YYYY-MM-DD HH:MM:SS format.\"\"\"\n    return datetime.datetime.strptime(s, \"%Y-%m-%d %H:%M:%S\")"
+        },
+        {
+          "ref": "src/dateparse/validator.py:8",
+          "type": "function",
+          "name": "is_valid_date",
+          "confidence": 0.7,
+          "reason": "符号名/文档命中关键词: parse, date, whitespace",
+          "source": "keyword_match",
+          "signature": "def is_valid_date(s)",
+          "code": "def is_valid_date(s):\n    \"\"\"Check whether a date string is a valid YYYY-MM-DD date.\n\n    Args:\n        s: date string like \"2024-01-01\".\n\n    Returns:\n        True if the string parses to a valid date, False otherwise.\n\n    Note:\n        Delegates to parse_date, which does not strip surrounding whitespace,\n        so \" 2024-01-01 \" is wrongly reported as invalid.\n    \"\"\"\n    from .parser import parse_date\n    try:\n        parse_date(s)\n        return True\n    except ValueError:\n        return False"
+        },
+        {
+          "ref": "src/dateparse/utils.py:25",
+          "type": "function",
+          "name": "add_days",
+          "confidence": 0.55,
+          "reason": "符号名/文档命中关键词: date",
+          "source": "keyword_match",
+          "signature": "def add_days(s, n)",
+          "code": "def add_days(s, n):\n    \"\"\"Add n days to a date string and return a date object.\n\n    Args:\n        s: date string \"YYYY-MM-DD\".\n        n: integer number of days (can be negative).\n\n    Returns:\n        datetime.date object.\n    \"\"\"\n    from .parser import parse_date\n    d = parse_date(s)\n    return d + datetime.timedelta(days=n)"
+        },
+        {
+          "ref": "src/dateparse/validator.py:29",
+          "type": "function",
+          "name": "validate_range",
+          "confidence": 0.4,
+          "reason": "符号名/文档命中关键词: date",
+          "source": "keyword_match",
+          "signature": "def validate_range(start, end)",
+          "code": "def validate_range(start, end):\n    \"\"\"Validate that the start date is not after the end date.\n\n    Args:\n        start: start date string \"YYYY-MM-DD\".\n        end: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        True if start <= end, False otherwise.\n\n    Note:\n        Uses strict less-than instead of less-or-equal, so equal dates are\n        wrongly rejected. This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    s = parse_date(start)\n    e = parse_date(end)\n    return s < e"
+        },
+        {
+          "ref": "tests/test_parser.py:11",
+          "type": "method",
+          "name": "test_parse_datetime",
+          "confidence": 0.6,
+          "reason": "与 parse_datetime 存在调用关系（调用图扩展）",
+          "source": "call_related",
+          "signature": "def test_parse_datetime(self)",
+          "code": "def test_parse_datetime(self):\n        self.assertEqual(\n            parse_datetime(\"2024-01-01 12:30:00\"),\n            datetime.datetime(2024, 1, 1, 12, 30),\n        )"
+        },
+        {
+          "ref": "src/dateparse/utils.py:5",
+          "type": "function",
+          "name": "days_between",
+          "confidence": 0.51,
+          "reason": "与 parse_date 存在调用关系（调用图扩展）",
+          "source": "call_related",
+          "signature": "def days_between(a, b)",
+          "code": "def days_between(a, b):\n    \"\"\"Return the number of days between two date strings (absolute value).\n\n    Args:\n        a: start date string \"YYYY-MM-DD\".\n        b: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        Non-negative integer day count.\n\n    Note:\n        Subtraction order is reversed — returns a negative value when a < b.\n        This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    da = parse_date(a)\n    db = parse_date(b)\n    return (da - db).days"
+        },
+        {
+          "ref": "tests/test_parser.py:8",
+          "type": "method",
+          "name": "test_parse_date",
+          "confidence": 0.51,
+          "reason": "与 parse_date 存在调用关系（调用图扩展）",
+          "source": "call_related",
+          "signature": "def test_parse_date(self)",
+          "code": "def test_parse_date(self):\n        self.assertEqual(parse_date(\"2024-01-01\"), datetime.date(2024, 1, 1))"
+        },
+        {
+          "ref": "tests/test_parser.py:17",
+          "type": "method",
+          "name": "test_parse_date_with_whitespace",
+          "confidence": 0.51,
+          "reason": "与 parse_date 存在调用关系（调用图扩展）",
+          "source": "call_related",
+          "signature": "def test_parse_date_with_whitespace(self)",
+          "code": "def test_parse_date_with_whitespace(self):\n        self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))"
+        },
+        {
+          "ref": "src/dateparse/formatter.py:21",
+          "type": "function",
+          "name": "format_iso",
+          "confidence": 0.1,
+          "reason": "符号名/文档命中关键词: string, str",
+          "source": "keyword_match",
+          "signature": "def format_iso(dt)",
+          "code": "def format_iso(dt):\n    \"\"\"Format a datetime as an ISO 8601 string.\"\"\"\n    return dt.isoformat()"
+        }
+      ],
+      "plan": {
+        "root_cause": "The core function `parse_date` in `src/dateparse/parser.py` does not strip surrounding whitespace from the input string before parsing, causing failures for inputs like ' 2024-01-01 '.",
+        "affected_scope": [
+          "src/dateparse/parser.py",
+          "src/dateparse/validator.py",
+          "src/dateparse/utils.py",
+          "tests/test_parser.py"
+        ],
+        "files_to_modify": [
+          "src/dateparse/parser.py"
+        ],
+        "steps": [
+          "1. Open `src/dateparse/parser.py`.",
+          "2. Locate the `parse_date` function (around line 9).",
+          "3. Modify the function to call `s.strip()` on the input argument `s` before passing it to `datetime.datetime.strptime`.",
+          "4. Update the docstring note (lines 18-21) to reflect that whitespace is now handled."
+        ],
+        "risks": [
+          "Potential regression in functions relying on exact string matching if input is expected to be unstri"
+        ],
+        "regression_test": "Run tests to ensure ' 2024-01-01 ' (with surrounding whitespace) now parses correctly, and verify that existing strict date formats still work.",
+        "generated_by": "llm"
+      },
+      "understanding": {
+        "original_issue": "布尔值字符串 true/false 前后有空格时解析失败",
+        "summary": "布尔值字符串前后带空格导致解析失败",
+        "core_operation": "Parse boolean string",
+        "expected_behavior": "Correctly parse 'true'/'false' strings containing leading or trailing whitespace",
+        "search_query": "parse_date strptime whitespace",
+        "scope": "matched",
+        "explanation": "用户核心需求是‘解析布尔字符串’，但候选函数 `parse_date` 的实际业务操作是‘按固定日期格式（YYYY-MM-DD）拆分字符串并提取日期对象’。虽然当前实现可能因输入类型或格式不匹配而显得有缺陷（即用户提到的‘即使当前实现有缺陷’），但该函数确实是承担‘从字符串中提取结构化时间数据’这一核心操作的直接执行者，因此被归入同类候选。",
+        "targets": [
+          {
+            "ref": "src/dateparse/parser.py:9",
+            "path": "src/dateparse/parser.py",
+            "name": "parse_date",
+            "start_line": 9
+          }
+        ],
+        "repository_functions": [
+          "src/dateparse/formatter.py:format_date",
+          "src/dateparse/formatter.py:format_iso",
+          "src/dateparse/parser.py:parse_date",
+          "src/dateparse/parser.py:parse_datetime",
+          "src/dateparse/utils.py:days_between",
+          "src/dateparse/utils.py:add_days",
+          "src/dateparse/utils.py:is_leap_year",
+          "src/dateparse/validator.py:is_valid_date",
+          "src/dateparse/validator.py:validate_range",
+          "src/dateparse/validator.py:is_weekend"
+        ],
+        "catalog_total": 10,
+        "catalog_shown": 10,
+        "model": "qwen35-9b-unc:latest",
+        "generated_by": "llm",
+        "error": "",
+        "retrieval_mode": "llm_grounded_source"
+      }
+    }
+  }
+]

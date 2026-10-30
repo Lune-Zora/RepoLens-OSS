@@ -1,0 +1,661 @@
+
+#1 tqdm 2a9e4e82dd
+  标题: contrib.concurrent: fix no-len iterables
+  issue: contrib.concurrent: fix no-len iterables
+  源文件: tqdm/contrib/concurrent.py
+    -    """min(map(length_hint, iterables))"""
+    -    return min(n for it in iterables if (n := length_hint(it, -1)) >= 0)
+    +    """min(map(length_hint, iterables)), ignoring unknown lengths [default: 0]"""
+    +    return min((n for it in iterables if (n := length_hint(it, -1)) >= 0), default=0)
+
+#2 tqdm 0eaee96e4f
+  标题: Fix length detection in contrib.concurrent
+  issue: length detection in contrib.concurrent
+  源文件: tqdm/contrib/concurrent.py
+    -        kwargs["total"] = length_hint(iterables[0])
+    +        shortest_iterable_len = min(map(length_hint, iterables))
+    +        kwargs["total"] = shortest_iterable_len
+    -        longest_iterable_len = max(map(length_hint, iterables))
+    -        if longest_iterable_len > 1000:
+    +        shortest_iterable_len = min(map(length_hint, iterables))
+    +        if shortest_iterable_len > 1000:
+
+#3 tqdm 164ef7302b
+  标题: rich: misc fixes
+  issue: rich: misc fixes
+  源文件: tqdm/rich.py
+    -        total = int(task.total)
+    +        # total is None when the iterable has no length (e.g. a generator)
+    +        total = int(task.total) if task.total is not None else None
+    +        base = total if total is not None else completed
+    -                total,
+    +                base,
+    -            unit, suffix = filesize.pick_unit_and_suffix(total, [""], 1)
+
+#4 tqdm ef15578141
+  标题: fix: handle total=inf in format_meter to avoid OverflowError
+  issue: handle total=inf in format_meter to avoid OverflowError
+  源文件: tqdm/std.py
+    -        if total and n >= (total + 0.5):  # allow float imprecision (#849)
+    +        if total == float("inf"):
+    +            # infinite total: behave the same as unknown total (#651)
+    +            total = None
+    +        elif total and n >= (total + 0.5):  # allow float imprecision (#849)
+
+#5 tqdm 3757d0d13e
+  标题: Merge pull requests #1717 and #1767 (fixes #1658)
+  issue: Merge pull requests #1717 and #1767 (fixes #1658)
+  源文件: tqdm/std.py
+    -            nobar = bar_format.format(bar=full_bar, **format_dict)
+    +            nobar = bar_format.format(bar=full_bar, **format_dict)  # no `{bar}`
+    -                return nobar  # no `{bar}`; nothing else to do
+    +                return disp_trim(nobar, ncols) if ncols else nobar
+    -                return nobar
+    +                return disp_trim(nobar, ncols) if ncols else nobar
+    -            return (f'{(prefix + ": ") if prefix else ""}'
+
+#6 tqdm f83290ce32
+  标题: Fix TMonitor deadlock at interpreter shutdown
+  issue: TMonitor deadlock at interpreter shutdown
+  源文件: tqdm/_monitor.py
+    -        atexit.register(self.exit)
+    +        # Register a non-joining shutdown signal. Joining at interpreter exit
+    +        # can deadlock if the monitor thread is blocked acquiring
+    +        # tqdm_cls.get_lock() (the lock is composite; mp_lock can be left held
+    +        # by a forked child that died, or contended by another monitor under
+    +        # heavy instrumentation). The thread is daemon, so the interpreter
+    +        # reaps it on shutdown without needing a join.
+
+#7 tqdm b557cb03b6
+  标题: fix: apply disp_trim to all format_meter return paths
+  issue: apply disp_trim to all format_meter return paths
+  源文件: tqdm/std.py
+    -                return nobar  # no `{bar}`; nothing else to do
+    +                # no `{bar}`; nothing else to do
+    +                return disp_trim(nobar, ncols) if ncols else nobar
+    -                return nobar
+    +                return disp_trim(nobar, ncols) if ncols else nobar
+    -            return (f'{(prefix + ": ") if prefix else ""}'
+    -                    f'{n_fmt}{unit} [{elapsed_str}, {rate_fmt}{postfix}]')
+
+#8 tqdm 9bcd04b3ba
+  标题: fix pandas>=3 & negative format_interval
+  issue: pandas>=3 & negative format_interval
+  源文件: tqdm/std.py
+    -        mins, s = divmod(int(t), 60)
+    +        # Handle negative intervals by using absolute value and adding sign prefix
+    +        sign = '-' if t < 0 else ''
+    +        t = abs(int(t))
+    +        mins, s = divmod(t, 60)
+    -        return f'{h:d}:{m:02d}:{s:02d}' if h else f'{m:02d}:{s:02d}'
+    +        return f'{sign}{h:d}:{m:02d}:{s:02d}' if h else f'{sign}{m:02d}:{s:02d}'
+
+#9 tqdm b38a9221c4
+  标题: fix format_num
+  issue: format_num
+  源文件: tqdm/std.py
+    -        f = '{0:.3g}'.format(n).replace('+0', '+').replace('-0', '-')
+    +        f = f'{n:.3g}'.replace('e+0', 'e+').replace('e-0', 'e-')
+
+#10 tqdm 6ce50bedb3
+  标题: utils.envwrap: fix types
+  issue: utils.envwrap: fix types
+  源文件: tqdm/std.py, tqdm/utils.py
+    -    @envwrap("TQDM_", is_method=True)  # override defaults via env vars
+    +    # override defaults via env vars
+    +    @envwrap("TQDM_", is_method=True, types={'total': float, 'ncols': int, 'miniters': 
+    +                                             'position': int, 'nrows': int})
+    -                 lock_args=None, nrows=None, colour=None, delay=0, gui=False,
+    +                 lock_args=None, nrows=None, colour=None, delay=0.0, gui=False,
+
+#11 tqdm 84546d6be8
+  标题: fix edge cases & windows tests
+  issue: edge cases & windows tests
+  源文件: tqdm/utils.py
+    -    overrides = {k[i:] if case_sensitive else k[i:].lower(): v
+    -                 for k, v in os.environ.items() if k.startswith(prefix)}
+    +    env_overrides = {k[i:] if case_sensitive else k[i:].lower(): v
+    +                     for k, v in os.environ.items() if k.startswith(prefix)}
+    +        overrides = {k: v for k, v in env_overrides.items() if k in params}
+    -            return part(func, **{k: safe_eval(v) for k, v in overrides.items() if k in 
+    +            return part(func, **{k: safe_eval(v) for k, v in overrides.items()})
+
+#12 tqdm 2edd32dbfc
+  标题: Make postfix whitespace stripping optional
+  issue: Make postfix whitespace stripping optional
+  源文件: tqdm/std.py
+    -    def set_postfix(self, ordered_dict=None, refresh=True, **kwargs):
+    +    def set_postfix(self, ordered_dict=None, refresh=True, strip=True, **kwargs):
+    +        strip  : bool, optional
+    +            Whitespace-strips values [default: True].
+    +            if strip:  # strip values if specified
+    +                postfix[key] = postfix[key].strip()
+    -        self.postfix = ', '.join(key + '=' + postfix[key].strip()
+
+#13 tqdm ea92a0b5fb
+  标题: Fix that tqdm_class cannot be passed to `tmap` and `tzip`
+  issue: that tqdm_class cannot be passed to `tmap` and `tzip`
+  源文件: tqdm/contrib/__init__.py
+    +
+    -    for i in zip(tqdm_class(iter1, **tqdm_kwargs), *iter2plus):
+    +    for i in zip(tqdm_class(iter1, **kwargs), *iter2plus):
+
+#14 pypdf d1894af089
+  标题: BUG: Resolve indirect widths in CID font /W arrays (#4267)
+  issue: Resolve indirect widths in CID font /W arrays (#4267)
+  源文件: pypdf/generic/_font.py
+    -                        chr(_cidx): _width
+    +                        chr(_cidx): _width.get_object()
+
+#15 pypdf 6a4caa1061
+  标题: BUG: Decode Unicode glyph names in font encodings (#4257)
+  issue: Decode Unicode glyph names in font encodings (#4257)
+  源文件: pypdf/_cmap.py
+    -                        encoding[x] = adobe_glyphs[o]  # type: ignore[index]
+    +                        encoding[x] = _glyph_name_to_unicode(o) or o  # type: ignore[in
+    -        if not glyph_name.startswith("/uni"):
+    +        if glyph_name.startswith("/uni"):
+    +            code_point = glyph_name[4:]
+    +        elif glyph_name.startswith("/u"):
+    +            code_point = glyph_name[2:]
+
+#16 pypdf 451e8b7d5e
+  标题: BUG: Accept strings in viewer preference names (#4238)
+  issue: Accept strings in viewer preference names (#4238)
+  源文件: pypdf/generic/_viewerpref.py
+    -        if v[0] != "/":
+    -            raise ValueError(f"{v} does not start with '/'")
+    -                lambda self, v: self._set_name(key, lst, v),
+    +                lambda self, v: self._set_name(key, lst, NameObject(v)),
+
+#17 pypdf a91817ac1f
+  标题: BUG: Keep 8-bit DeviceRGB image mode (#4230)
+  issue: Keep 8-bit DeviceRGB image mode (#4230)
+  源文件: pypdf/generic/_image_xobject.py
+    +    bits = x_object.get("/BitsPerComponent", 8)
+    +        and bits >= 8
+    -        # https://pillow.readthedocs.io/en/stable/handbook/concepts.html#modes
+    -        mode: ImageMode = "RGB"
+    -    if x_object.get("/BitsPerComponent", 8) < 8:
+    +        # Full-width /DeviceRGB samples are RGB. Narrower samples stay on
+    +        # the low-bit path so they can be expanded (#3367).
+
+#18 pypdf cf2dabb9bd
+  标题: BUG: Preserve all annotation quadrilaterals when merging pages (#4223)
+  issue: Preserve all annotation quadrilaterals when merging pages (#4223)
+  源文件: pypdf/_page.py
+    -                        trsf.apply_on((q[0], q[1]), True)
+    -                        + trsf.apply_on((q[2], q[3]), True)
+    -                        + trsf.apply_on((q[4], q[5]), True)
+    -                        + trsf.apply_on((q[6], q[7]), True)
+    +                        value
+    +                        for i in range(0, len(q), 2)
+    +                        for value in trsf.apply_on((q[i], q[i + 1]), True)
+
+#19 pypdf f2f158a2b0
+  标题: BUG: Treat NUL as whitespace in ArrayObject (#4198)
+  issue: Treat NUL as whitespace in ArrayObject (#4198)
+  源文件: pypdf/generic/_data_structures.py
+    -            while tok.isspace():
+    +            while tok.isspace() or tok in WHITESPACES:
+
+#20 pypdf 4a296e43c5
+  标题: BUG: Avoid overwriting unread objects in add_form_topname (#4190)
+  issue: Avoid overwriting unread objects in add_form_topname (#4190)
+  源文件: pypdf/_reader.py
+    -        self.cache_indirect_object(
+    -            0,
+    -            max(i for (g, i) in self.resolved_objects if g == 0) + 1,
+    -            interim,
+    -        )
+    +        # Allocate the new object_id beyond the source-file range and all cached object
+    +        object_id = max(
+
+#21 pypdf 42c5f114b8
+  标题: BUG: Read an indirect page box on a writer page (#4179)
+  issue: Read an indirect page box on a writer page (#4179)
+  源文件: pypdf/_page.py
+    -    retval: Union[RectangleObject, ArrayObject, IndirectObject, None] = self.get(name)
+    +    retval: Optional[PdfObject] = self.get(name)
+    -        retval = self.pdf.get_object(retval)
+    +        # Pages of a writer have no `pdf`, the reference knows its own document.
+    +        retval = retval.get_object()
+
+#22 pypdf 55ffd5013a
+  标题: BUG: Do not crash on an /Outlines reference to a free object (#4177)
+  issue: Do not crash on an /Outlines reference to a free object (#4177)
+  源文件: pypdf/_doc_common.py
+    -                lines = catalog[Core.OUTLINES].get_object()
+    +                lines = catalog[Core.OUTLINES]
+    -                if isinstance(lines, NullObject):
+    +                # A reference to an object which is missing or free in the xref table
+    +                # resolves to None.
+    +                if is_null_or_none(lines):
+
+#23 pypdf 8ed783efc5
+  标题: BUG: Apply the sign of zero-hour XMP timezone offsets (#4182)
+  issue: Apply the sign of zero-hour XMP timezone offsets (#4182)
+  源文件: pypdf/xmp.py
+    -        tzd_hours, tzd_minutes = (int(x) for x in tzd.split(":"))
+    -        tzd_hours *= -1
+    -        if tzd_hours < 0:
+    -            tzd_minutes *= -1
+    -        dt = dt + datetime.timedelta(hours=tzd_hours, minutes=tzd_minutes)
+    +        tzd_hours, tzd_minutes = (int(x) for x in tzd[1:].split(":"))
+    +        offset = datetime.timedelta(hours=tzd_hours, minutes=tzd_minutes)
+
+#24 pypdf b5557f06cc
+  标题: BUG: Only read the colour operator from a text field's default appearance (#4158)
+  issue: Only read the colour operator from a text field's default appearance (#4158)
+  源文件: pypdf/generic/_appearance_stream.py, pypdf/generic/_color.py
+    -import re
+    +    ContentStream,
+    +    @staticmethod
+    +    def _parse_default_appearance(
+    +        default_appearance: TextStringObject | ByteStringObject,
+    +    ) -> tuple[str | None, float, Color | None]:
+    +        """
+
+#25 pypdf 11458e74b7
+  标题: BUG: Keep the text shown before a change of direction (#4155)
+  issue: Keep the text shown before a change of direction (#4155)
+  源文件: pypdf/_text_extraction/__init__.py, pypdf/_text_extraction/_text_extractor.py
+    -) -> tuple[str, bool]:
+    +) -> tuple[str, bool, str]:
+    +    """
+    +    Add the characters of ``text_operands`` to ``text`` in display order.
+    +
+    +    Returns:
+    +        A tuple containing the current text run, its direction, and any text runs compl
+
+#26 pypdf 93d357106d
+  标题: BUG: Keep wrapped table-cell text on one extracted line (#4132)
+  issue: Keep wrapped table-cell text on one extracted line (#4132)
+  源文件: pypdf/_text_extraction/__init__.py, pypdf/_text_extraction/_text_extractor.py
+    -def crlf_space_check(
+    +def crlf_space_check(  # noqa: PLR0913, PLR0917
+    -) -> tuple[str, str, list[float], list[float]]:
+    +    line_span: Optional[tuple[int, float, float]],
+    +) -> tuple[str, str, list[float], list[float], Optional[tuple[int, float, float]]]:
+    -    try:
+    -        if abs(moved_height) > 0.8 * min(str_height * scale_prev_y, font_size * scale_y
+
+#27 pypdf 175f6c0391
+  标题: BUG: Scale layout-mode space_tx into page space (#4128)
+  issue: Scale layout-mode space_tx into page space (#4128)
+  源文件: pypdf/_text_extraction/_layout_mode/_fixed_width_page.py
+    -                    # space_tx could be 0 if either Tz or font_size was 0 for this _tj.
+    -                    spaces = round(excess_tx / _tj.space_tx) if excess_tx > 0 else 0
+    +                    # space_tx is measured in text space, while excess_tx is measured
+    +                    # in page-space x coordinates. Convert the space width using the
+    +                    # effective horizontal transform. This matters for PDFs that use
+    +                    # Tf 1 and put the font size in Tm (e.g. Illustrator/InDesign/Figma
+    +                    # The backward-jump test above stays on text-space space_tx:
+
+#28 pypdf ca99aa4299
+  标题: BUG: Report the correct page number for identical pages (#4154)
+  issue: Report the correct page number for identical pages (#4154)
+  源文件: pypdf/_page.py
+    -        try:
+    -            lst = self.indirect_reference.pdf.pages
+    -            return int(lst.index(self))
+    -        except ValueError:
+    -            return None
+    +        # Compare the indirect references, not the pages themselves: two pages
+    +        # with identical contents compare equal, so `list.index` would return
+
+#29 pypdf 59c1d74a0c
+  标题: BUG: Raise a clear error for a rectangle without four values (#4123)
+  issue: Raise a clear error for a rectangle without four values (#4123)
+  源文件: pypdf/generic/_rectangle.py
+    -        # must have four points
+    -        assert len(arr) == 4
+    +        if (length := len(arr)) != 4:
+    +            raise ValueError(f"Expected four values for a rectangle, got {length}: {arr
+
+#30 pypdf 1758ef5fd9
+  标题: BUG: FloatObject.hash_bin hashes the as_numeric method, not the value (#4129)
+  issue: FloatObject.hash_bin hashes the as_numeric method, not the value (#4129)
+  源文件: pypdf/generic/_base.py
+    -        return hash((self.__class__, self.as_numeric))
+    +        return hash((self.__class__, self.as_numeric()))
+
+#31 pypdf d4c9a6239c
+  标题: BUG: Fixes for standard mode text extraction with simple fonts with difference encoding and ToUnicode CMap (#4
+  issue: Fixes for standard mode text extraction with simple fonts with difference encoding and ToUnicode CMa
+  源文件: pypdf/_cmap.py, pypdf/_font.py, pypdf/_text_extraction/__init__.py
+    -            logger_error("Advanced encoding %(encoding)s not implemented yet", source=_
+    -            encoding = enc
+    +            encoding = (
+    +                "utf-16-be" if ft.get("/Subtype", "") == "/Type0" else charset_encoding
+    +            )
+    +            logger_error(
+    +                "Advanced encoding %(encoding)s not implemented yet, using %(new_encodi
+
+#32 pypdf 25c5cdb038
+  标题: BUG: Layout mode text extraction: Use raw character codes in word_tx for width calculation (#4116)
+  issue: Layout mode text extraction: Use raw character codes in word_tx for width calculation (#4116)
+  源文件: pypdf/_text_extraction/_layout_mode/_text_state_params.py
+    -    _decoded_value: str = ""
+    +    _raw_chars: str = ""
+    +        decoded_value: str = ""
+    -            try:
+    -                if isinstance(self.font.encoding, str):
+    -                    self._decoded_value = self.value.decode(self.font.encoding, "surrog
+    -                else:
+
+#33 pypdf f0b34a2879
+  标题: BUG: Remove duplicate visitor_text callback for Form XObject text (#4100)
+  issue: Remove duplicate visitor_text callback for Form XObject text (#4100)
+  源文件: pypdf/_page.py
+    -                        if visitor_text is not None:
+    -                            visitor_text(
+    -                                text,
+    -                                extractor.memo_cm,
+    -                                extractor.memo_tm,
+    -                                extractor.font_resource,
+    -                                extractor.font_size,
+
+#34 pypdf 27d592f5af
+  标题: BUG: Release content streams replaced by replace_contents() (#4088)
+  issue: Release content streams replaced by replace_contents() (#4088)
+  源文件: pypdf/_page.py
+    -        if isinstance(self.get(PG.CONTENTS, None), ArrayObject):
+    -            content_array = cast(ArrayObject, self[PG.CONTENTS])
+    -            for reference in content_array:
+    +        # Resolve /Contents because it may be an indirect reference to an
+    +        # ArrayObject. Without resolving it, an indirect contents array is not
+    +        # recognized and its stream objects are left in the writer's object list.
+    +        old_contents = self.get(PG.CONTENTS, None)
+
+#35 pypdf d970841341
+  标题: BUG: Use the page top for a named destination instead of a fixed value (#4099)
+  issue: Use the page top for a named destination instead of a fixed value (#4099)
+  源文件: pypdf/_writer.py
+    +        top = cast(DictionaryObject, page_ref.get_object()).get(PG.MEDIABOX)
+    +        top = RectangleObject(top).top if top is not None else 0
+    -                    [page_ref, NameObject(TypFitArguments.FIT_H), NumberObject(826)]
+    +                    [page_ref, NameObject(TypFitArguments.FIT_H), FloatObject(top)]
+
+#36 pypdf ca60531d3c
+  标题: BUG: Avoid link mismatch warnings for excluded annotations (#4092)
+  issue: Avoid link mismatch warnings for excluded annotations (#4092)
+  源文件: pypdf/_writer.py
+    -            self._unresolved_links.extend(extract_links(page, page_org))
+    +            if "/Annots" not in excluded_keys:
+    +                self._unresolved_links.extend(extract_links(page, page_org))
+
+#37 pypdf cf5cec2e49
+  标题: BUG: Use page reference for existing internal link targets (#4076)
+  issue: Use page reference for existing internal link targets (#4076)
+  源文件: pypdf/_writer.py
+    -        # Internal link annotations need the correct object type for the
+    -        # destination
+    -        if to_add.get("/Subtype") == "/Link" and "/Dest" in to_add:
+    -            tmp = cast(dict[Any, Any], to_add[NameObject("/Dest")])
+    -            dest = Destination(
+    +        # Resolve pypdf's intermediate internal-link destination.
+    +        destination = to_add.get("/Dest")
+
+#38 pypdf 3a1111d65c
+  标题: BUG: Parse a string rect for add_uri into a rectangle (#4074)
+  issue: Parse a string rect for add_uri into a rectangle (#4074)
+  源文件: pypdf/_writer.py
+    -            rect = NumberObject(rect)
+    +            coords = [float(n) for n in rect.strip().strip("[]").split()]
+    +            rect = RectangleObject(coords)
+
+#39 pypdf d80ccfc79d
+  标题: ROB: Fix compatibility for fonttools < 4.57.0 (#4050)
+  issue: ROB: Fix compatibility for fonttools < 4.57.0 (#4050)
+  源文件: pypdf/_font.py
+    -                reverse_cmap = tt_font_cmap_table.buildReversedMin()
+    +                try:
+    +                    reverse_cmap = tt_font_cmap_table.buildReversedMin()
+    +                except AttributeError:
+    +                    # use buildReversed on fonttools < 4.57 and build a list of minimum
+    +                    reverse_cmap = {k: min(r) for k, r in tt_font_cmap_table.buildRever
+
+#40 pypdf 2316987661
+  标题: BUG: Use font color for FreeText default appearance (#4051)
+  issue: Use font color for FreeText default appearance (#4051)
+  源文件: pypdf/annotations/_markup_annotations.py
+    -        if border_color:
+    -            for st in hex_to_rgb(border_color):
+    +        if font_color:
+    +            for st in hex_to_rgb(font_color):
+
+#41 pypdf a692202de3
+  标题: BUG: Do not read indirect_reference off a direct /Dests dictionary (#4028)
+  issue: Do not read indirect_reference off a direct /Dests dictionary (#4028)
+  源文件: pypdf/_doc_common.py
+    -                dests_ref = dests.indirect_reference
+
+#42 pypdf 0b0721e7f9
+  标题: BUG: Report an out-of-range page number when adding a destination or URI (#4016)
+  issue: Report an out-of-range page number when adding a destination or URI (#4016)
+  源文件: pypdf/_writer.py
+    +    def _get_page_reference(self, page_number: int) -> Any:
+    +        """Look up a page by number, reporting a bad index rather than an IndexError fr
+    +        pages = cast(DictionaryObject, self.get_object(self._pages))
+    +        kids = cast(ArrayObject, pages[PagesAttributes.KIDS])
+    +        count = len(kids)
+    +        if not (-count <= page_number < count):
+    +            raise IndexError(f"Page number {page_number} is out of range")
+
+#43 pypdf a1f510c940
+  标题: BUG: Detect a duplicate dictionary key whose first value is falsy (#4024)
+  issue: Detect a duplicate dictionary key whose first value is falsy (#4024)
+  源文件: pypdf/generic/_data_structures.py
+    -            if not data.get(key):
+    +            if key not in data:
+
+#44 pypdf b0ec95d939
+  标题: BUG: Check the box names assigned to the area and clip preferences (#4014)
+  issue: Check the box names assigned to the area and clip preferences (#4014)
+  源文件: pypdf/generic/_viewerpref.py
+    +from ..constants import PageAttributes
+    +#: The page boundaries a viewer preference may name, per Table 147 in the 2.0
+    +#: reference.
+    +BOX_NAMES = [
+    +    PageAttributes.MEDIABOX,
+    +    PageAttributes.CROPBOX,
+    +    PageAttributes.BLEEDBOX,
+
+#45 loguru bce5dfd3b4
+  标题: Fix thread/process info in standard handlers with `enqueue=True` (#1529)
+  issue: thread/process info in standard handlers with `enqueue=True` (#1529)
+  源文件: loguru/_simple_sinks.py
+    +
+    +        record.thread = raw_record["thread"].id
+    +        record.threadName = raw_record["thread"].name
+    +
+    +        record.process = raw_record["process"].id
+    +        record.processName = raw_record["process"].name
+    +
+
+#46 loguru 5672e7d0ad
+  标题: Fix incorrect formatting of negative timestamps (#1508)
+  issue: incorrect formatting of negative timestamps (#1508)
+  源文件: loguru/_datetime.py
+    +from math import floor
+    -        "X": ("%d", lambda t, dt: dt.timestamp()),
+    -        "x": ("%d", lambda t, dt: int(dt.timestamp()) * 1000000 + dt.microsecond),
+    +        "X": ("%d", lambda t, dt: floor(dt.timestamp())),
+    +        "x": ("%d", lambda t, dt: floor(dt.timestamp()) * 1000000 + dt.microsecond),
+
+#47 loguru 8052eff4c1
+  标题: Fix incorrect formatting of negative timezone offsets (#1507)
+  issue: incorrect formatting of negative timezone offsets (#1507)
+  源文件: loguru/_datetime.py
+    -    (h, m), s = divmod(abs(offset // 60), 60), abs(offset) % 60
+    +    (h, m), s = divmod(abs(offset) // 60, 60), abs(offset) % 60
+
+#48 loguru e49d153904
+  标题: Fix wrong formatting of microsecond timestamp ("x" token for time) (#1441)
+  issue: wrong formatting of microsecond timestamp ("x" token for time) (#1441)
+  源文件: loguru/_datetime.py
+    -        "x": ("%d", lambda t, dt: int(dt.timestamp() * 1000000 + dt.microsecond)),
+    +        "x": ("%d", lambda t, dt: int(dt.timestamp()) * 1000000 + dt.microsecond),
+
+#49 loguru 764cd30d4b
+  标题: Trivial grammar fix (#1429)
+  issue: Trivial grammar fix (#1429)
+  源文件: loguru/_colorizer.py
+    -                        "make sure you did not misspelled it (or prepend '\\' to escape
+    +                        "make sure you have not misspelled it (or prepend '\\' to escap
+
+#50 loguru 92952b912c
+  标题: Fix "NO_COLOR" and "FORCE_COLOR" affecting non-standard streams
+  issue: "NO_COLOR" and "FORCE_COLOR" affecting non-standard streams
+  源文件: loguru/_colorama.py
+    -    # Per the spec (https://no-color.org/), this needs to check for a
+    -    # non-empty string, not just presence of the variable:
+    -    if os.getenv("NO_COLOR"):
+    -        return False
+    +    is_standard_stream = stream is sys.stdout or stream is sys.stderr
+    +    is_original_standard_stream = stream is sys.__stdout__ or stream is sys.__stderr__
+    -    # Per the spec (https://force-color.org/), this needs to check for a
+
+#51 loguru 8c3c8e4544
+  标题: Fix inability to display '\' before color markups (#1236)
+  issue: inability to display '\' before color markups (#1236)
+  源文件: loguru/_colorizer.py, loguru/_logger.py
+    -    _regex_tag = re.compile(r"\\?</?((?:[fb]g\s)?[^<>\s]*)>")
+    +    _regex_tag = re.compile(r"(\\*)(</?(?:[fb]g\s)?[^<>\s]*>)")
+    -            markup, tag = match.group(0), match.group(1)
+    +            escaping, markup = match.group(1), match.group(2)
+    -            if markup[0] == "\\":
+    -                self._tokens.append((TokenType.TEXT, markup[1:]))
+    +            escaping_count = len(escaping)
+
+#52 loguru 91e3646e8c
+  标题: Fix "remove()" not thread-safe causing possible RuntimeError (#1183)
+  issue: "remove()" not thread-safe causing possible RuntimeError (#1183)
+  源文件: loguru/_logger.py
+    -            handlers = self._core.handlers.copy()
+    -
+    -            if handler_id is not None and handler_id not in handlers:
+    +            if handler_id is not None and handler_id not in self._core.handlers:
+    -                handler_ids = list(handlers.keys())
+    +                handler_ids = list(self._core.handlers)
+    +                handlers = self._core.handlers.copy()
+
+#53 loguru dcf42d9625
+  标题: Enable "RET" linting rule of Ruff and fix newly reported errors (#1034)
+  issue: Enable "RET" linting rule of Ruff and fix newly reported errors (#1034)
+  源文件: loguru/_colorizer.py, loguru/_ctime_functions.py, loguru/_defaults.py
+    -                elif tag in self._tags:
+    +                if tag in self._tags:
+    -                else:
+    -                    raise ValueError('Closing tag "%s" has no corresponding opening tag
+    +                raise ValueError('Closing tag "%s" has no corresponding opening tag' % 
+    -        elif tag in foreground:
+    +        if tag in foreground:
+
+#54 loguru 086126fd8d
+  标题: Fix error using "set_start_method()" after "logger" import (#974)
+  issue: error using "set_start_method()" after "logger" import (#974)
+  源文件: loguru/_handler.py, loguru/_logger.py
+    +import multiprocessing
+    -            self._queue = self._multiprocessing_context.SimpleQueue()
+    +            if self._multiprocessing_context is None:
+    +                self._queue = multiprocessing.SimpleQueue()
+    +                self._confirmation_event = multiprocessing.Event()
+    +                self._confirmation_lock = multiprocessing.Lock()
+    +            else:
+
+#55 loguru 565a6f63bb
+  标题: Fix errors due to non-unpicklable Exception when "enqueue=True" (#329)
+  issue: errors due to non-unpicklable Exception when "enqueue=True" (#329)
+  源文件: loguru/_recattrs.py
+    -        # The traceback is not picklable so we need to remove it. Also, some custom exc
+    -        # values aren't picklable either. For user convenience, we try first to seriali
+    -        # we remove the value in case or error. As an optimization, we could have re-us
+    -        # dumped value during unpickling, but this requires using "pickle.loads()" whic
+    -        # flagged as insecure by some security tools.
+    -        # __reduce__ function does not alway raise PickleError. Multidict, for example,
+    -        # TypeError. To manage all the cases, we catch Exception.
+
+#56 loguru 4c8ebe267b
+  标题: Fix errors due to non-unpicklable Exception when "enqueue=True"
+  issue: errors due to non-unpicklable Exception when "enqueue=True"
+  源文件: loguru/_recattrs.py
+    -        # The traceback is not picklable so we need to remove it. Also, some custom exc
+    -        # values aren't picklable either. For user convenience, we try first to seriali
+    -        # we remove the value in case or error. As an optimization, we could have re-us
+    -        # dumped value during unpickling, but this requires using "pickle.loads()" whic
+    -        # flagged as insecure by some security tools.
+    -        # __reduce__ function does not alway raise PickleError. Multidict, for example,
+    -        # TypeError. To manage all the cases, we catch Exception.
+
+#57 loguru de646c6ba6
+  标题: Fix missing seconds when formatting timezone offset (#961)
+  issue: missing seconds when formatting timezone offset (#961)
+  源文件: loguru/_datetime.py
+    -        h, m = divmod(abs(offset // 60), 60)
+    +        (h, m), s = divmod(abs(offset // 60), 60), abs(offset) % 60
+    -            "Z": "%s%02d:%02d" % (sign, h, m),
+    -            "ZZ": "%s%02d%02d" % (sign, h, m),
+    +            "Z": "%s%02d:%02d%s" % (sign, h, m, (":%09.06f" % s)[: 11 if s % 1 else 3] 
+    +            "ZZ": "%s%02d%02d%s" % (sign, h, m, ("%09.06f" % s)[: 10 if s % 1 else 2] *
+
+#58 loguru 2465fca6ca
+  标题: Fix incorrect rotation when re-starting around midnight (#894)
+  issue: incorrect rotation when re-starting around midnight (#894)
+  源文件: loguru/_file_sink.py
+    -                    limit = datetime.datetime(
+    -                        start_time.year,
+    -                        start_time.month,
+    -                        start_time.day,
+    -                        time_init.hour,
+    -                        time_init.minute,
+    -                        time_init.second,
+
+#59 loguru 20eb57f872
+  标题: Fix usage of aware "datetime.time" for file rotation (#697)
+  issue: usage of aware "datetime.time" for file rotation (#697)
+  源文件: loguru/_file_sink.py
+    +            record_time = message.record["time"]
+    +
+    -                start_time = limit = datetime.datetime.fromtimestamp(creation_time)
+    -                if self._time_init is not None:
+    -                    limit = limit.replace(
+    -                        hour=self._time_init.hour,
+    -                        minute=self._time_init.minute,
+
+#60 loguru 21cc3a5f4b
+  标题: Fix incompatibility with "freezegun" library to simulate time (#600)
+  issue: incompatibility with "freezegun" library to simulate time (#600)
+  源文件: loguru/_datetime.py, loguru/_file_sink.py, setup.py
+    -    now = datetime.now()
+    +    now = datetime_.now()
+    -        offset = datetime.fromtimestamp(timestamp) - datetime.utcfromtimestamp(timestam
+    +        offset = datetime_.fromtimestamp(timestamp) - datetime_.utcfromtimestamp(timest
+    -    return now.replace(tzinfo=tzinfo)
+    +
+    +    return datetime.combine(now.date(), now.time().replace(tzinfo=tzinfo))
+
+#61 loguru 0f0b698f91
+  标题: Fix colors in Github Actions and others CI platforms (#604)
+  issue: colors in Github Actions and others CI platforms (#604)
+  源文件: loguru/_colorama.py
+    -    try:
+    -        import ipykernel
+    -        import IPython
+    -
+    -        ipython = IPython.get_ipython()
+    -        is_jupyter_stream = isinstance(stream, ipykernel.iostream.OutStream)
+    -        is_jupyter_shell = isinstance(ipython, ipykernel.zmqshell.ZMQInteractiveShell)
+
+#62 loguru 0e54edffdf
+  标题: Fix colors in Jupyter Notebook and Google Colab (#494)
+  issue: colors in Jupyter Notebook and Google Colab (#494)
+  源文件: loguru/_colorama.py
+    +    try:
+    +        import ipykernel
+    +        import IPython
+    +
+    +        ipython = IPython.get_ipython()
+    +        is_jupyter_stream = isinstance(stream, ipykernel.iostream.OutStream)
+    +        is_jupyter_shell = isinstance(ipython, ipykernel.zmqshell.ZMQInteractiveShell)

@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "install",
+      "argv": [
+        "E:\\osspj\\参赛提交-20261030\\提交前检查\\isolated-core-env\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--no-deps",
+        "E:\\osspj\\参赛提交-20261030\\提交前检查\\wheel\\replens_oss-0.6.0-py3-none-any.whl"
+      ],
+      "exit_code": 0,
+      "seconds": 2.125
+    },
+    {
+      "label": "core-demo",
+      "argv": [
+        "E:\\osspj\\参赛提交-20261030\\提交前检查\\isolated-core-env\\Scripts\\python.exe",
+        "-m",
+        "replens",
+        "run",
+        "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+        "--issue",
+        "date string with surrounding whitespace fails to parse",
+        "--auto-patch",
+        "--test-cmd",
+        "python -m unittest discover -s tests",
+        "--acceptance-suite",
+        "E:\\osspj\\人工智能\\repo\\examples\\acceptance\\demo.json",
+        "--require-verified",
+        "--format",
+        "json",
+        "--output",
+        "E:\\osspj\\参赛提交-20261030\\提交前检查\\isolated-core-report.json"
+      ],
+      "exit_code": 0,
+      "seconds": 2.515
+    }
+  ],
+  "scope": "全新虚拟环境安装本地wheel，只验证无第三方依赖的规则CLI及unittest独立验收；未安装Web/模型依赖",
+  "repair_status": "VERIFIED",
+  "plan_generated_by": "rule",
+  "python_environment": "E:\\osspj\\参赛提交-20261030\\提交前检查\\isolated-core-env",
+  "installed_module": "E:\\osspj\\参赛提交-20261030\\提交前检查\\isolated-core-env\\lib\\site-packages\\replens\\__init__.py",
+  "system_site_packages": false
+}

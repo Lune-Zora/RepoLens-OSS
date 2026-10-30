@@ -1,0 +1,26 @@
+{
+  "command": "python -m pytest -o addopts= __replens_acceptance__/test_reset_infinity_contract.py -q",
+  "returncode": 1,
+  "timed_out": false,
+  "passed": false,
+  "valid": true,
+  "structured": true,
+  "framework": "pytest",
+  "summary": {
+    "passed": 1,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "collected": 2,
+    "ran": 2
+  },
+  "invalid_reason": "",
+  "tests": {
+    "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_finite_total_keeps_normal_counting": "PASS",
+    "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior": "FAIL"
+  },
+  "stdout_sha256": "e9c26627327e56ba544d1a32018e714cef495e0395992bc384a3530b845f12c0",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

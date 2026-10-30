@@ -1,0 +1,6 @@
+{
+  "api.py": {
+    "from": "def partition(values, size):\n    if size <= 0:\n        raise ValueError(\"size must be positive\")\n    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]",
+    "to": "def partition(values, size):\n    if size <= 0:\n        raise ValueError(\"size must be positive\")\n    return [values[i:i + size] for i in range(0, len(values), size)]"
+  }
+}

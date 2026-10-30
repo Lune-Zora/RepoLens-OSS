@@ -1,0 +1,109 @@
+{
+  "schema_version": "2.0",
+  "status": "UNVERIFIED",
+  "reasons": [
+    "定位证据不足，不能确认修复"
+  ],
+  "validation": {
+    "status": "UNVERIFIED",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "targets": [],
+    "preserved": [],
+    "acceptance_sha256": "13c64a01bcff739bf3b3fd6a48bde444c843ccee8820aa51e330639a086e65cf"
+  },
+  "test_framework": "pytest",
+  "generated_test_kind": "none",
+  "acceptance_before": [],
+  "acceptance_after": [],
+  "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\stable_unique",
+  "issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+  "insufficient_evidence": true,
+  "evidences": [],
+  "plan": {
+    "root_cause": "证据不足，无法确认问题根因。",
+    "affected_scope": [],
+    "files_to_modify": [],
+    "steps": [
+      "补充问题描述或确认目标仓库是否包含相关代码。"
+    ],
+    "risks": [
+      "无依据推断风险"
+    ],
+    "regression_test": "",
+    "generated_by": "rule"
+  },
+  "test_command": "python -m pytest tests",
+  "patch_note": "候选功能与原始问题不匹配：候选函数 `unique_values` 使用 `set` 去重，虽然能处理可哈希元素和空列表，但 `set` 是无序的（在 Python <3.7 字典视图语境下），导致无法保证‘保持首次出现顺序’这一核心业务需求。用户明确要求顺序保留，而当前实现牺牲了顺序换取无序集合特性，属于功能侧重点不同。",
+  "before": [
+    {
+      "command": "python -m pytest tests",
+      "returncode": 0,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_yhr1v4tf\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_public.py ...                                                 [100%]\n\n============================== 3 passed in 0.95s ==============================\n",
+      "stderr": "",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 3,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 3,
+        "ran": 3
+      },
+      "invalid_reason": "",
+      "tests": {
+        "tests/test_public.py::PublicTests::test_count": "PASS",
+        "tests/test_public.py::PublicTests::test_empty": "PASS",
+        "tests/test_public.py::PublicTests::test_one": "PASS"
+      },
+      "structured": true,
+      "framework": "pytest"
+    }
+  ],
+  "after": [],
+  "generated_test": "",
+  "patch_diff": "",
+  "execution_hints": [],
+  "flip_prediction": null,
+  "regression_before": [],
+  "regression_after": [],
+  "regression_test_cmd": "",
+  "test_timeout": 120,
+  "requested_test_command": "python -m pytest tests",
+  "understanding": {
+    "original_issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+    "summary": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+    "expected_behavior": "对列表去重时需保持各元素首次出现的顺序（如 [4,2,4,1] -> [4,2,1]），且输入列表不被修改。",
+    "search_query": "unique_values",
+    "scope": "not_found",
+    "explanation": "候选功能与原始问题不匹配：候选函数 `unique_values` 使用 `set` 去重，虽然能处理可哈希元素和空列表，但 `set` 是无序的（在 Python <3.7 字典视图语境下），导致无法保证‘保持首次出现顺序’这一核心业务需求。用户明确要求顺序保留，而当前实现牺牲了顺序换取无序集合特性，属于功能侧重点不同。",
+    "targets": [],
+    "repository_functions": [
+      "api.py:unique_values",
+      "api.py:count_values"
+    ],
+    "catalog_total": 2,
+    "catalog_shown": 2,
+    "model": "qwen35-9b-unc:latest",
+    "generated_by": "llm",
+    "error": "",
+    "retrieval_mode": "llm_grounded_source"
+  },
+  "task_tests": {},
+  "blocked_reason": "",
+  "verification_scope": "当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为",
+  "model": "qwen35-9b-unc:latest",
+  "provenance": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

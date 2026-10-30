@@ -1,0 +1,57 @@
+[
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-03-提交材料事实校正\\修改前文档",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\project-os\\证据\\T-20261030-03-提交材料事实校正\\修改前文档",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-02-模型配置说明\\原始验证",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\project-os\\证据\\T-20261030-02-模型配置说明\\原始验证",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\.pytest_cache",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\.pytest_cache",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\eval\\__pycache__",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\eval\\__pycache__",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\replens\\__pycache__",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\replens\\__pycache__",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\scripts\\__pycache__",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\scripts\\__pycache__",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\scripts\\realbug\\__pycache__",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\scripts\\realbug\\__pycache__",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\tests\\__pycache__",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\tests\\__pycache__",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\web\\__pycache__",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\web\\__pycache__",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\build",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\build",
+    "operation": "reversible_move"
+  },
+  {
+    "source": "E:\\osspj\\人工智能\\repo\\replens_oss.egg-info",
+    "destination": "E:\\osspj\\参赛提交-20261030\\整理回收-20261030\\replens_oss.egg-info",
+    "operation": "reversible_move"
+  }
+]

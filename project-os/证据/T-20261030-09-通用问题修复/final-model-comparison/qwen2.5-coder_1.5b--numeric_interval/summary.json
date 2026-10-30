@@ -1,0 +1,38 @@
+{
+  "model": "qwen2.5-coder:1.5b",
+  "task": "numeric_interval",
+  "seconds": 29.2,
+  "exit_code": 2,
+  "repair_status": "NO_PATCH",
+  "blocked_reason": "当前问题行为测试生成失败：LLM 返回内容不含有效 JSON",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "patch_note": "当前问题行为测试生成失败：LLM 返回内容不含有效 JSON",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "3c536e87d9834cbc8ef7e3320dc23b0f.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    },
+    {
+      "file": "5cdbf758e8254dd091b6666ba4af9d9d.json",
+      "purpose": "plan",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    },
+    {
+      "file": "aef26c9d730e424e8efd0481c269ed1e.json",
+      "purpose": "task_tests",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "error"
+    }
+  ],
+  "pass": false
+}

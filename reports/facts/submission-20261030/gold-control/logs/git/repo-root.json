@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "git",
+    "--no-optional-locks",
+    "-c",
+    "safe.directory=E:/osspj/人工智能/tqdm",
+    "-c",
+    "safe.directory=E:/osspj/人工智能/tqdm/.git",
+    "-C",
+    "E:\\osspj\\人工智能\\tqdm",
+    "rev-parse",
+    "--show-toplevel"
+  ],
+  "returncode": 0,
+  "stdout": "E:/osspj/人工智能/tqdm\n",
+  "stderr": ""
+}

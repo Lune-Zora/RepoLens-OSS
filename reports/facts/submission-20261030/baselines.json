@@ -1,0 +1,105 @@
+{
+  "top_k": 5,
+  "candidate_limit": 100,
+  "file_universe": [
+    "README.md",
+    "docs/usage.md",
+    "src/dateparse/__init__.py",
+    "src/dateparse/formatter.py",
+    "src/dateparse/parser.py",
+    "src/dateparse/utils.py",
+    "src/dateparse/validator.py",
+    "tests/test_parser.py"
+  ],
+  "input_audit": {
+    "mode": "repository_audit_only",
+    "indexed_files": [
+      {
+        "path": "src/dateparse/__init__.py",
+        "sha256": "c13916f3a1eefe385e585daddff06929a18fc9dec24be8c35482cacb402dc360"
+      },
+      {
+        "path": "src/dateparse/formatter.py",
+        "sha256": "04d99dec99d4f6dc49cac47e3ee53d20180919e8e3b80042bac13c5e94dce3b6"
+      },
+      {
+        "path": "src/dateparse/parser.py",
+        "sha256": "7c25598931d6e17bdb2abf9799ca2ff31c9e738337807139a4971518695c31c3"
+      },
+      {
+        "path": "src/dateparse/utils.py",
+        "sha256": "592c99db8d6232bd8a638bab9a90f89703f25236ab6a60ea2b3a4b8aab46ad78"
+      },
+      {
+        "path": "src/dateparse/validator.py",
+        "sha256": "bc205b2233bea7ca1660d6d3b7902eb186cc8424ee0095b9fba9c49804a57048"
+      },
+      {
+        "path": "tests/test_parser.py",
+        "sha256": "afdde31ae84ccefebfae81f2058c3dce8b04b76223a2ed077406d52fd5fb7a98"
+      },
+      {
+        "path": "README.md",
+        "sha256": "8b2f258ec2626bfeffda770f27a268d0d4ad6d177e6c7b976f596830d5ca95e6"
+      },
+      {
+        "path": "docs/usage.md",
+        "sha256": "3acac61bc71f1b3d59797c255faec56ea51611e46048d31b2863121c018daa1f"
+      }
+    ],
+    "warning": "未提供冻结输入清单；本次仅记录索引材料，不认证答案隔离"
+  },
+  "rows": [
+    [
+      "random(5 seeds)",
+      {
+        "hit@1": 0.14,
+        "hit@5": 0.53,
+        "mrr@5": 0.2602,
+        "total_positive": 20,
+        "top_k": 5,
+        "counts": {
+          "hit1": 2.8000000000000003,
+          "hitk": 10.600000000000001,
+          "rr_sum": 5.203333333333333
+        },
+        "definition": "相同文件全集；文件先去重；MRR 与 hit 使用同一 k 截断"
+      }
+    ],
+    [
+      "grep(token count)",
+      {
+        "hit@1": 0.6,
+        "hit@5": 1.0,
+        "mrr@5": 0.725,
+        "total_positive": 20,
+        "top_k": 5,
+        "counts": {
+          "hit1": 12.0,
+          "hitk": 20.0,
+          "rr_sum": 14.5
+        },
+        "definition": "相同文件全集；文件先去重；MRR 与 hit 使用同一 k 截断"
+      }
+    ],
+    [
+      "RepoLens BM25",
+      {
+        "hit@1": 0.85,
+        "hit@5": 0.95,
+        "mrr@5": 0.8917,
+        "total_positive": 20,
+        "top_k": 5,
+        "counts": {
+          "hit1": 17.0,
+          "hitk": 19.0,
+          "rr_sum": 17.833333333333332
+        },
+        "definition": "相同文件全集；文件先去重；MRR 与 hit 使用同一 k 截断",
+        "retrieval_mode": "bm25_callgraph",
+        "candidate_limit": 100,
+        "requested_hybrid": false
+      }
+    ]
+  ]
+}

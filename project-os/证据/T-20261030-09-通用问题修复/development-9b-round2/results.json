@@ -1,0 +1,40 @@
+[
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "config_values",
+    "seconds": 42.247,
+    "exit_code": 2,
+    "repair_status": "NO_PATCH",
+    "blocked_reason": "当前问题的测试尚未形成可信失败复现：保留行为用例在原代码上不成立：__replens_task__/test_current_issue.py::TaskTests::test_preserve_03, __replens_task__/test_current_issue.py::TaskTests::test_preserve_04, __replens_task__/test_current_issue.py::TaskTests::test_preserve_05, __replens_task__/test_current_issue.py::TaskTests::test_preserve_06",
+    "reasons": [
+      "没有进入验收的补丁"
+    ],
+    "patch_note": "当前问题的测试尚未形成可信失败复现：保留行为用例在原代码上不成立：__replens_task__/test_current_issue.py::TaskTests::test_preserve_03, __replens_task__/test_current_issue.py::TaskTests::test_preserve_04, __replens_task__/test_current_issue.py::TaskTests::test_preserve_05, __replens_task__/test_current_issue.py::TaskTests::test_preserve_06",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "2f1f714124024bcfae06e944668d24c7.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "874807b4cf474798a9b3ef2c6c2c8b7a.json",
+        "purpose": "task_tests",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      },
+      {
+        "file": "c2b37450c75246d48e4dd3fca18327be.json",
+        "purpose": "plan",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": "qwen35-9b-unc:latest",
+        "status": "success"
+      }
+    ],
+    "pass": false
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "task": "config_values",
+      "adopted_patch_matches_raw_model_response": true,
+      "private_acceptance_class_in_model_input": false,
+      "source_unchanged": true
+    },
+    {
+      "task": "sequence_blocks",
+      "adopted_patch_matches_raw_model_response": true,
+      "private_acceptance_class_in_model_input": false,
+      "source_unchanged": true
+    },
+    {
+      "task": "numeric_interval",
+      "adopted_patch_matches_raw_model_response": true,
+      "private_acceptance_class_in_model_input": false,
+      "source_unchanged": true
+    },
+    {
+      "task": "stable_unique",
+      "adopted_patch_matches_raw_model_response": true,
+      "private_acceptance_class_in_model_input": false,
+      "source_unchanged": true
+    }
+  ],
+  "scenario_ids_in_engine": []
+}

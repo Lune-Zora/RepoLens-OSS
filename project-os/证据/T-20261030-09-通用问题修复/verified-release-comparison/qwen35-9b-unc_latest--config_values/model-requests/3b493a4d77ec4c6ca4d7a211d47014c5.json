@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T09:46:38.023329+00:00",
+  "purpose": "patch",
+  "context": {
+    "generation_round": 2,
+    "candidate_index": 2
+  },
+  "request": {
+    "model": "qwen35-9b-unc:latest",
+    "messages": [
+      {
+        "role": "system",
+        "content": "你是开源仓库修复专家。基于给定的代码证据与测试反馈，生成最小修改补丁。只允许修改标记为【可修改】的生产源码文件；标记为【仅供上下文，禁止修改】的测试文件只用于理解预期行为，绝不能出现在补丁里。from 字段必须是目标文件中逐字符一致的原文（含缩进与标点），且要包含足够上下文（可多行），保证在整个文件里唯一匹配。严格输出 JSON 对象，格式：{\"<相对路径>\": {\"from\": \"<原文>\", \"to\": \"<替换后>\"}}。若无法生成可靠补丁，输出 {\"reason\": \"<原因>\"}。不要输出任何多余文字。"
+      },
+      {
+        "role": "user",
+        "content": "问题描述：布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。\nExpected behavior: 解析器应能忽略布尔字面量前后的空白字符（如 ' true ', '\tfalse'），且对大小写不敏感，仅当内容非标准布尔值时报错。\nFrozen model-proposed test cases: [{\"args\": [\" true \"], \"expected\": true, \"intent\": \"issue\", \"kwargs\": {}, \"normalize\": \"identity\", \"path\": \"api.py\", \"raises\": \"\", \"symbol\": \"read_flag\"}, {\"args\": [\"\\tfalse\\n\"], \"expected\": false, \"intent\": \"issue\", \"kwargs\": {}, \"normalize\": \"identity\", \"path\": \"api.py\", \"raises\": \"\", \"symbol\": \"read_flag\"}, {\"args\": [\"unknown\"], \"expected\": null, \"intent\": \"issue\", \"kwargs\": {}, \"normalize\": \"identity\", \"path\": \"api.py\", \"raises\": \"ValueError\", \"symbol\": \"read_flag\"}]\n\n代码证据：\n【可修改】文件 api.py:1 function read_flag 证据来源: 用户核心需求是处理布尔值字符串（true/false）的边界情况（如前后空格、制表符、换行）及大小写不敏感，而候选函数 `read_flag` 恰好通过 `.lower()` 和 `in` 检查实现了这一逻辑。虽然原问题暗示需要处理‘前后空格’，但函数仅对 `value` 整体进行 `.lower()` 处理（若输入为 ' True'，转为 'true' 后匹配成功，符合‘解析’的宽泛定义），且保留了‘其他内容报 ValueError'的约束，因此属于同一功能范围。\n[代码开始]\ndef read_flag(value):\n    key = value.lower()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\"\n[代码结束]\n【仅供上下文，禁止修改】文件 api.py:8 function format_flag 证据来源: 符号名/文档命中关键词: flag, value\n[代码开始]\ndef format_flag(value):\n    return \"true\" if value else \"false\"\n[代码结束]\n【仅供上下文，禁止修改】文件 tests/test_public.py:4 class PublicTests 证据来源: 代码片段命中检索词（class @ tests/test_public.py:4）\n[代码开始]\nclass PublicTests(unittest.TestCase):\n    def test_true(self): self.assertIs(api.read_flag(\"true\"), True)\n    def test_false(self): self.assertIs(api.read_flag(\"FALSE\"), False)\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.read_flag(\"unknown\")\n    def test_format(self): self.assertEqual(api.format_flag(False), \"false\")\n[代码结束]\n【仅供上下文，禁止修改】文件 tests/test_public.py:5 method test_true 证据来源: 代码片段命中检索词（method @ tests/test_public.py:5）\n[代码开始]\ndef test_true(self): self.assertIs(api.read_flag(\"true\"), True)\n[代码结束]\n\n上一次补丁的测试反馈（失败日志节选）：\n候选验证失败（still_failing）：补丁应用成功（JSON 替换规则，共 1 处）。；目标未明确转为 PASS: __replens_task__/test_current_issue.py::TaskTests::test_issue_00 → FAIL；目标未明确转为 PASS: __replens_task__/test_current_issue.py::TaskTests::test_issue_01 → FAIL；当前问题或回归检查未通过: __replens_task__/test_current_issue.py::TaskTests::test_issue_00 → FAIL；当前问题或回归检查未通过: __replens_task__/test_current_issue.py::TaskTests::test_issue_01 → FAIL\n\n============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_33rej7_r\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 7 items\n\ntests\\test_public.py ....                                                [ 57%]\n__replens_task__\\test_current_issue.py FF.                               [100%]\n\n================================== FAILURES ===================================\n___________________________ TaskTests.test_issue_00 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_00>\n\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_33rej7_r/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n>       actual = _mod.read_flag(*[' true '], **{})\n\n__replens_task__\\test_current_issue.py:12: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = ' true '\n\n    def read_flag(value):\n        key = value.lower()\n        if key not in {\"true\", \"false\"}:\n>           raise ValueError(\"unsupported flag\")\nE           ValueError: unsupported flag\n\napi.py:4: ValueError\n___________________________ TaskTests.test_issue_01 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_01>\n\n    def test_issue_01(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_33rej7_r/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n>       actual = _mod.read_flag(*['\\tfalse\\n'], **{})\n\n__replens_task__\\test_current_issue.py:22: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = '\\tfalse\\n'\n\n    def read_flag(value):\n        key = value.lower()\n        if key not in {\"true\", \"false\"}:\n>           raise ValueError(\"unsupported flag\")\nE           ValueError: unsupported flag\n\napi.py:4: ValueError\n=========================== short test summary info ===\n请分析失败原因，修正补丁并重新输出 JSON。"
+      }
+    ],
+    "temperature": 0.35,
+    "max_tokens": 2200,
+    "reasoning_effort": "none",
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T09:46:42.235115+00:00",
+  "duration_seconds": 4.203,
+  "response_text": "{\"id\":\"chatcmpl-677\",\"object\":\"chat.completion\",\"created\":1793353602,\"model\":\"qwen35-9b-unc:latest\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n\\\"api.py\\\": {\\n\\\"from\\\": \\\"def read_flag(value):\\\\n    key = value.lower()\\\\n    if key not in {\\\\\\\"true\\\\\\\", \\\\\\\"false\\\\\\\"}:\\\\n        raise ValueError(\\\\\\\"unsupported flag\\\\\\\")\\\\n    return key == \\\\\\\"true\\\\\\\"\\\",\\n\\\"to\\\": \\\"def read_flag(value):\\\\n    key = value.strip().lower()\\\\n    if key not in {\\\\\\\"true\\\\\\\", \\\\\\\"false\\\\\\\"}:\\\\n        raise ValueError(\\\\\\\"unsupported flag\\\\\\\")\\\\n    return key == \\\\\\\"true\\\\\\\"\\\"}\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1745,\"prompt_tokens_details\":{\"cached_tokens\":1741},\"completion_tokens\":111,\"total_tokens\":1856}}\n",
+  "parsed": {
+    "api.py": {
+      "from": "def read_flag(value):\n    key = value.lower()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\"",
+      "to": "def read_flag(value):\n    key = value.strip().lower()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\""
+    }
+  },
+  "error": null,
+  "response_model": "qwen35-9b-unc:latest",
+  "usage": {
+    "prompt_tokens": 1745,
+    "prompt_tokens_details": {
+      "cached_tokens": 1741
+    },
+    "completion_tokens": 111,
+    "total_tokens": 1856
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-25",
+  "description": "Moved bytes are preserved; historical references resolve through this map.",
+  "moves": [
+    {
+      "from": "eval/dataset.json",
+      "to": "eval/datasets/dataset.json",
+      "sha256": "f761959227607fb2317231305e91c2ec7f0d1ad01e088c226cdbf125a2152b96"
+    },
+    {
+      "from": "eval/real_dataset_extended.json",
+      "to": "eval/datasets/real_dataset_extended.json",
+      "sha256": "fdb60365f2cec0140cb660d522d9957bb92e888881d4741b6ee0a7e13d1e81c8"
+    },
+    {
+      "from": "eval/real_dataset_tqdm.json",
+      "to": "eval/datasets/real_dataset_tqdm.json",
+      "sha256": "fe47436d94debcf41e09ae73bd3d76fe94abfbf573addde17a72c9d41dc316cf"
+    },
+    {
+      "from": "eval/real_dataset_pypdf.json",
+      "to": "eval/datasets/real_dataset_pypdf.json",
+      "sha256": "8fa02cc60be84b2b7f9e5d5153f79e1f70cc1d993be2a1d5bc3088de10ad1885"
+    },
+    {
+      "from": "eval/real_dataset_loguru.json",
+      "to": "eval/datasets/real_dataset_loguru.json",
+      "sha256": "2df53f9c4545c727f13044a2b898d5f5d09718963971f0ec2322d5e720bccd9c"
+    },
+    {
+      "from": "eval/training_data.jsonl",
+      "to": "eval/training/training_data.jsonl",
+      "sha256": "1db572c9a366f2c5cc37e54e495d7a9ea232906b91f2b6ec386ee292c2693af0"
+    },
+    {
+      "from": "eval/heldout_data.jsonl",
+      "to": "eval/training/heldout_data.jsonl",
+      "sha256": "976d6db929ddc3f4e85dcd229b7a2fbb3633d280dc57d8e26419a28e2520b9de"
+    },
+    {
+      "from": "eval/mined_tqdm.json",
+      "to": "eval/mined/mined_tqdm.json",
+      "sha256": "be3a0fabcf35bdf44e71e4b798ebd653d48a7dad95e349cdea84c1022654919d"
+    },
+    {
+      "from": "eval/mined_loguru.json",
+      "to": "eval/mined/mined_loguru.json",
+      "sha256": "0fec5a6c82c96efd8e230d8ded9d58b2c60ac4ec7a72e840c2ce6a598fea2891"
+    },
+    {
+      "from": "eval/real_bugs.json",
+      "to": "eval/reference_patches/real_bugs.json",
+      "sha256": "10e42b9d6f947b3a571f8fce41451c100c148b281b3496b9eb48e2133ccc589d"
+    },
+    {
+      "from": "eval/real_patches/demo_strip.diff",
+      "to": "eval/reference_patches/demo_strip.diff",
+      "sha256": "841d6289258804fa619cd8f7fcc7068776bebb7ec1e4f74f420276975d58a06e"
+    },
+    {
+      "from": "eval/real_patches/pypdf_outline_collapse.json",
+      "to": "eval/reference_patches/pypdf_outline_collapse.json",
+      "sha256": "828a24dce7dd0788b459d50447e1d0b2b53a3f8f98dc7cdca403b7435c7b247b"
+    },
+    {
+      "from": "eval/real_patches/tqdm_total_inf.json",
+      "to": "eval/reference_patches/tqdm_total_inf.json",
+      "sha256": "9b847dfb297264b1a70ab6501e68680d4697983684cdb39e7f33b236fcad43f0"
+    },
+    {
+      "from": "eval/contrib/pypdf_outline_collapse.patch",
+      "to": "eval/reference_patches/contrib/pypdf_outline_collapse.patch",
+      "sha256": "1cacb81b66334efc606cbc938dc432045a926fd7e6cc5613c9b8fcd83be372fd"
+    },
+    {
+      "from": "eval/contrib/tqdm_total_inf.patch",
+      "to": "eval/reference_patches/contrib/tqdm_total_inf.patch",
+      "sha256": "91114870810eeda3f9411c90be9a461b9e213539394e0d6f6fe91e8ee51c95d9"
+    },
+    {
+      "from": "reports/demo_success.md",
+      "to": "reports/demos/demo_success.md",
+      "sha256": "44b4173fc2f53c0bbe03f73e45e2eccea6a4eb6a91d55f5015665981d4432703"
+    },
+    {
+      "from": "reports/demo_failure.md",
+      "to": "reports/demos/demo_failure.md",
+      "sha256": "e0d72134452de34e7d265b6f864f5449ff1ba6979b1b9823b87290043271ae68"
+    },
+    {
+      "from": "reports/ablation_demo_smoke.md",
+      "to": "reports/experiments/ablation_demo_smoke.md",
+      "sha256": "494f35ff4b1117dbc1dff8d997ad2c77a5f3c339fbbf1fb2d4791c86e8994ebc"
+    },
+    {
+      "from": "reports/_demo_raw.json",
+      "to": "reports/experiments/_demo_raw.json",
+      "sha256": "468878c6ceb46983931ae94e084431c10d7cdc61e0ea40cb3db2537345a3cd0a"
+    },
+    {
+      "from": "reports/third_party_disclosure.md",
+      "to": "reports/compliance/third_party_disclosure.md",
+      "sha256": "d1fa8ebb16584dbf93dfb5d22a36c8bd45785433a3ce7ef492256f5a46775742"
+    },
+    {
+      "from": "reports/open_source_checklist.md",
+      "to": "reports/compliance/open_source_checklist.md",
+      "sha256": "f6578b0d327e017dba855600f61eb9925dd46c083c452731f4fae65d5b354929"
+    },
+    {
+      "from": "reports/demo_final.md",
+      "to": "reports/archive/demo_final.md",
+      "sha256": "94b2de2aa98f22115abbb274df5a12ac770cb8fec3fc3805bc909eb33156c19e"
+    },
+    {
+      "from": "reports/demo_final2.md",
+      "to": "reports/archive/demo_final2.md",
+      "sha256": "6e8eee34d8f7b6ea6e495d0cac5ca80a26bf49e02e23d2be79a344b5355bd52a"
+    },
+    {
+      "from": "reports/improvement_eval.md",
+      "to": "reports/archive/improvement_eval.md",
+      "sha256": "0c8a498fa642f1fa69d4d517c60c3509799825ac84422090afdc5856857cb238"
+    },
+    {
+      "from": "reports/validate_sample_manifest_test.md",
+      "to": "reports/archive/validate_sample_manifest_test.md",
+      "sha256": "61829d865bccecaec5b0da0d8be1703233f12ca2415a261ac6fcd9b151c9c997"
+    },
+    {
+      "from": "reports/_stage6_console.log",
+      "to": "reports/archive/_stage6_console.log",
+      "sha256": "549bb3ecbc05dfb26de245b4e120482367e760311dbe6368c0698cbe66fbf85b"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "schema_version": "2.0",
+  "status": "UNVERIFIED",
+  "reasons": [
+    "定位证据不足，不能确认修复"
+  ],
+  "validation": {
+    "status": "UNVERIFIED",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "targets": [],
+    "preserved": [],
+    "acceptance_sha256": "13c64a01bcff739bf3b3fd6a48bde444c843ccee8820aa51e330639a086e65cf"
+  },
+  "test_framework": "pytest",
+  "generated_test_kind": "none",
+  "acceptance_before": [],
+  "acceptance_after": [],
+  "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\stable_unique",
+  "issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+  "insufficient_evidence": true,
+  "evidences": [],
+  "plan": {
+    "root_cause": "证据不足，无法确认问题根因。",
+    "affected_scope": [],
+    "files_to_modify": [],
+    "steps": [
+      "补充问题描述或确认目标仓库是否包含相关代码。"
+    ],
+    "risks": [
+      "无依据推断风险"
+    ],
+    "regression_test": "",
+    "generated_by": "rule"
+  },
+  "test_command": "python -m pytest tests",
+  "patch_note": "候选功能与原始问题不匹配：用户要求生成一个新的无重复项且保持原顺序的列表。唯一满足此需求的候选函数是 unique_values，尽管其当前实现没有在函数签名或契约中提供具体说明。",
+  "before": [
+    {
+      "command": "python -m pytest tests",
+      "returncode": 0,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_x2vhoxe9\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_public.py ...                                                 [100%]\n\n============================== 3 passed in 0.50s ==============================\n",
+      "stderr": "",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 3,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 3,
+        "ran": 3
+      },
+      "invalid_reason": "",
+      "tests": {
+        "tests/test_public.py::PublicTests::test_count": "PASS",
+        "tests/test_public.py::PublicTests::test_empty": "PASS",
+        "tests/test_public.py::PublicTests::test_one": "PASS"
+      },
+      "structured": true,
+      "framework": "pytest"
+    }
+  ],
+  "after": [],
+  "generated_test": "",
+  "patch_diff": "",
+  "execution_hints": [],
+  "flip_prediction": null,
+  "regression_before": [],
+  "regression_after": [],
+  "regression_test_cmd": "",
+  "test_timeout": 120,
+  "requested_test_command": "python -m pytest tests",
+  "understanding": {
+    "original_issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+    "summary": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+    "core_operation": "生成一个新的无重复项且保持原顺序的列表",
+    "requested_return_kind": "sequence",
+    "return_contracts": {
+      "api.py:1": [
+        "sequence"
+      ]
+    },
+    "expected_behavior": "对于 [4,2,4,1] 应返回 [4,2,1]；对于 [] 应返回 []；输入列表不应被修改。",
+    "search_query": "list deduplication preserve order",
+    "scope": "not_found",
+    "explanation": "候选功能与原始问题不匹配：用户要求生成一个新的无重复项且保持原顺序的列表。唯一满足此需求的候选函数是 unique_values，尽管其当前实现没有在函数签名或契约中提供具体说明。",
+    "targets": [],
+    "repository_functions": [
+      "api.py:unique_values",
+      "api.py:count_values"
+    ],
+    "catalog_total": 2,
+    "catalog_shown": 2,
+    "model": "qwen25-7b-unc:latest",
+    "generated_by": "llm",
+    "error": "",
+    "retrieval_mode": "llm_grounded_source"
+  },
+  "task_tests": {},
+  "blocked_reason": "",
+  "verification_scope": "当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为",
+  "model": "qwen25-7b-unc:latest",
+  "provenance": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

@@ -1,0 +1,10 @@
+--- a/src/dateparse/parser.py
++++ b/src/dateparse/parser.py
+@@ -20,6 +20,7 @@
+         like " 2024-01-01 " will fail to parse. This is the bug to fix:
+         call s.strip() before parsing.
+     """
++    s = s.strip()
+     return datetime.datetime.strptime(s, "%Y-%m-%d").date()
+ 
+ 

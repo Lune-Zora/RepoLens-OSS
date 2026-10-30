@@ -1,0 +1,85 @@
+{
+  "request": {
+    "repo": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+    "issue": "1900 is incorrectly reported as a leap year",
+    "top_k": 5,
+    "hybrid": false
+  },
+  "http_status": 200,
+  "response": {
+    "insufficient_evidence": false,
+    "evidences": [
+      {
+        "ref": "src/dateparse/utils.py:40",
+        "type": "function",
+        "name": "is_leap_year",
+        "confidence": 1.0,
+        "reason": "符号名/文档命中关键词: 1900, reported, report, reporte, leap",
+        "source": "keyword_match",
+        "signature": "def is_leap_year(year)",
+        "code": "def is_leap_year(year):\n    \"\"\"Determine whether a year is a leap year.\n\n    Args:\n        year: integer year.\n\n    Returns:\n        True if the year is a leap year.\n\n    Note:\n        Century rule is wrong — treats every year divisible by 100 as a leap\n        year, so 1900 is wrongly reported as leap. This is the bug to fix.\n    \"\"\"\n    if year % 400 == 0:\n        return True\n    if year % 100 == 0:\n        return True\n    return year % 4 == 0"
+      },
+      {
+        "ref": "src/dateparse/utils.py:1",
+        "type": "module",
+        "name": "src/dateparse/utils.py",
+        "confidence": 0.85,
+        "reason": "代码片段命中检索词（module @ src/dateparse/utils.py:1）",
+        "source": "keyword_match",
+        "signature": "",
+        "code": "\"\"\"General date math utilities.\"\"\"\nimport datetime\n\n\ndef days_between(a, b):\n    \"\"\"Return the number of days between two date strings (absolute value).\n\n    Args:\n        a: start date string \"YYYY-MM-DD\".\n        b: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        Non-negative integer day count.\n\n    Note:\n        Subtraction order is reversed — returns a negative value when a < b.\n        This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    da = parse_date(a)\n    db = parse_date(b)\n    return (da - db).days\n\n\ndef add_days(s, n):\n    \"\"\"Add n days to a date string and return a date object.\n\n    Args:\n        s: date string \"YYYY-MM-DD\".\n        n: integer number of days (can be negative).\n\n    Returns:\n        datetime.date object.\n    \"\"\"\n    from .parser import parse_date\n    d = parse_date(s)\n    return d + datetime.timedelta(days=n)\n\n\ndef is_leap_year(year):\n    \"\"\"Determine whether a year is a leap year.\n\n    Args:\n        year: integer year.\n\n    Returns:\n        True if the year is a leap year.\n\n    Note:\n        Century rule is wrong — treats every year divisible by 100 as a leap\n        year, so 1900 is wrongly reported as leap. This is the bug to fix.\n    \"\"\"\n    if year % 400 == 0:\n        return True\n    if year % 100 == 0:\n        return True\n    return year % 4 == 0\n"
+      },
+      {
+        "ref": "src/dateparse/validator.py:8",
+        "type": "function",
+        "name": "is_valid_date",
+        "confidence": 0.7,
+        "reason": "符号名/文档命中关键词: reported, report, reporte",
+        "source": "keyword_match",
+        "signature": "def is_valid_date(s)",
+        "code": "def is_valid_date(s):\n    \"\"\"Check whether a date string is a valid YYYY-MM-DD date.\n\n    Args:\n        s: date string like \"2024-01-01\".\n\n    Returns:\n        True if the string parses to a valid date, False otherwise.\n\n    Note:\n        Delegates to parse_date, which does not strip surrounding whitespace,\n        so \" 2024-01-01 \" is wrongly reported as invalid.\n    \"\"\"\n    from .parser import parse_date\n    try:\n        parse_date(s)\n        return True\n    except ValueError:\n        return False"
+      },
+      {
+        "ref": "src/dateparse/formatter.py:5",
+        "type": "function",
+        "name": "format_date",
+        "confidence": 0.55,
+        "reason": "代码片段命中检索词（function @ src/dateparse/formatter.py:5）",
+        "source": "keyword_match",
+        "signature": "def format_date(d)",
+        "code": "def format_date(d):\n    \"\"\"Format a date object as YYYY-MM-DD with zero padding.\n\n    Args:\n        d: datetime.date object.\n\n    Returns:\n        String like \"2024-01-05\".\n\n    Note:\n        Uses plain attribute access without zero-padding, so single-digit\n        months/days render as \"2024-1-5\". This is the bug to fix.\n    \"\"\"\n    return f\"{d.year}-{d.month}-{d.day}\""
+      },
+      {
+        "ref": "src/dateparse/formatter.py:1",
+        "type": "module",
+        "name": "src/dateparse/formatter.py",
+        "confidence": 0.4,
+        "reason": "代码片段命中检索词（module @ src/dateparse/formatter.py:1）",
+        "source": "keyword_match",
+        "signature": "",
+        "code": "\"\"\"Date formatting utilities.\"\"\"\nimport datetime\n\n\ndef format_date(d):\n    \"\"\"Format a date object as YYYY-MM-DD with zero padding.\n\n    Args:\n        d: datetime.date object.\n\n    Returns:\n        String like \"2024-01-05\".\n\n    Note:\n        Uses plain attribute access without zero-padding, so single-digit\n        months/days render as \"2024-1-5\". This is the bug to fix.\n    \"\"\"\n    return f\"{d.year}-{d.month}-{d.day}\"\n\n\ndef format_iso(dt):\n    \"\"\"Format a datetime as an ISO 8601 string.\"\"\"\n    return dt.isoformat()\n"
+      }
+    ],
+    "plan": {
+      "root_cause": "The function `is_leap_year` in `src/dateparse/utils.py` incorrectly reports 1900 as a leap year due to the century rule.",
+      "affected_scope": [
+        "src/dateparse/utils.py"
+      ],
+      "files_to_modify": [
+        "src/dateparse/utils.py"
+      ],
+      "steps": [
+        "Identify the function `is_leap_year` in `src/dateparse/utils.py`.",
+        "Locate the line of code that checks if a year is a leap year.",
+        "Modify the line of code to correctly handle the century rule.",
+        "Test the modified function to ensure it correctly reports 1900 as not a leap year."
+      ],
+      "risks": [
+        "Potential regression in the date parsing and validation functions due to the incorrect century rule.",
+        "Impact on the accuracy of date calculations and formatting functions."
+      ],
+      "regression_test": "Create a regression test that checks if the `is_leap_year` function correctly reports 1900 as not a leap year.",
+      "generated_by": "llm"
+    }
+  }
+}

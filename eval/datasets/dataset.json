@@ -1,0 +1,217 @@
+[
+  {
+    "id": 1,
+    "category": "bug",
+    "issue": "a date with leading or trailing spaces cannot be parsed even though the date value itself is valid",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/parser.py:parse_date:9"
+    ]
+  },
+  {
+    "id": 2,
+    "category": "bug",
+    "issue": "the parser chokes on input like ' 2024-01-01 ' because of the surrounding whitespace",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/parser.py:parse_date:9"
+    ]
+  },
+  {
+    "id": 3,
+    "category": "feature",
+    "issue": "support parsing a timestamp string that includes both the date and the time of day",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/parser.py:parse_datetime:26"
+    ]
+  },
+  {
+    "id": 4,
+    "category": "feature",
+    "issue": "I need to turn a string like '2024-01-01 12:30:00' into a datetime object",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/parser.py:parse_datetime:26"
+    ]
+  },
+  {
+    "id": 5,
+    "category": "bug",
+    "issue": "a date with surrounding spaces is reported as invalid even though it is a real date",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/validator.py:is_valid_date:8"
+    ]
+  },
+  {
+    "id": 6,
+    "category": "bug",
+    "issue": "whitespace around the date makes the validity check return false",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/validator.py:is_valid_date:8"
+    ]
+  },
+  {
+    "id": 7,
+    "category": "bug",
+    "issue": "checking whether a date range is valid fails when the start and the end are the same day",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/validator.py:validate_range:29"
+    ]
+  },
+  {
+    "id": 8,
+    "category": "bug",
+    "issue": "a range that begins and ends on the same date should be accepted but is currently rejected",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/validator.py:validate_range:29"
+    ]
+  },
+  {
+    "id": 9,
+    "category": "feature",
+    "issue": "the tool cannot tell whether a given date falls on a Saturday or a Sunday",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/validator.py:is_weekend:49"
+    ]
+  },
+  {
+    "id": 10,
+    "category": "bug",
+    "issue": "detecting weekend days returns the wrong result for some dates",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/validator.py:is_weekend:49"
+    ]
+  },
+  {
+    "id": 11,
+    "category": "bug",
+    "issue": "computing the number of days between two dates returns a negative count when the earlier date is listed first",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/utils.py:days_between:5"
+    ]
+  },
+  {
+    "id": 12,
+    "category": "bug",
+    "issue": "the day count between two dates should always be non-negative regardless of argument order",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/utils.py:days_between:5"
+    ]
+  },
+  {
+    "id": 13,
+    "category": "feature",
+    "issue": "I need to shift a date forward or backward by a given number of days and get the resulting date back",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/utils.py:add_days:25"
+    ]
+  },
+  {
+    "id": 14,
+    "category": "bug",
+    "issue": "adding a positive number of days to a date string returns an incorrect date result",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/utils.py:add_days:25"
+    ]
+  },
+  {
+    "id": 15,
+    "category": "bug",
+    "issue": "the year 1900 is incorrectly treated as a leap year",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/utils.py:is_leap_year:40"
+    ]
+  },
+  {
+    "id": 16,
+    "category": "bug",
+    "issue": "century years that are not divisible by 400 should not be classified as leap years",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/utils.py:is_leap_year:40"
+    ]
+  },
+  {
+    "id": 17,
+    "category": "bug",
+    "issue": "formatting a date renders single-digit months and days without a leading zero",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/formatter.py:format_date:5"
+    ]
+  },
+  {
+    "id": 18,
+    "category": "bug",
+    "issue": "the rendered date looks like 2024-1-5 instead of the zero-padded 2024-01-05",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/formatter.py:format_date:5"
+    ]
+  },
+  {
+    "id": 19,
+    "category": "feature",
+    "issue": "I need an ISO 8601 formatted string from a datetime value",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/formatter.py:format_iso:21"
+    ]
+  },
+  {
+    "id": 20,
+    "category": "feature",
+    "issue": "convert a datetime to its standard ISO representation",
+    "project": "dateparse",
+    "expected": [
+      "src/dateparse/formatter.py:format_iso:21"
+    ]
+  },
+  {
+    "id": 21,
+    "category": "noise",
+    "issue": "how to configure a database connection pool for postgres",
+    "project": "dateparse",
+    "expected": []
+  },
+  {
+    "id": 22,
+    "category": "noise",
+    "issue": "set up a redis cluster for high availability with sentinel",
+    "project": "dateparse",
+    "expected": []
+  },
+  {
+    "id": 23,
+    "category": "noise",
+    "issue": "implement oauth2 login flow with jwt tokens",
+    "project": "dateparse",
+    "expected": []
+  },
+  {
+    "id": 24,
+    "category": "noise",
+    "issue": "optimize sql query performance with proper indexing",
+    "project": "dateparse",
+    "expected": []
+  },
+  {
+    "id": 25,
+    "category": "noise",
+    "issue": "dockerize the application for kubernetes deployment",
+    "project": "dateparse",
+    "expected": []
+  }
+]

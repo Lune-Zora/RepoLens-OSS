@@ -1,0 +1,72 @@
+{
+  "after": [
+    {
+      "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_mm32zs27\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 6 items\n\ntests\\test_public.py ...                                                 [ 50%]\n__replens_task__\\test_current_issue.py ...                               [100%]\n\n============================== 6 passed in 0.51s ==============================\n",
+      "structured": true,
+      "summary": {
+        "collected": 6,
+        "errors": 0,
+        "failed": 0,
+        "passed": 6,
+        "ran": 6,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS",
+        "tests/test_public.py::PublicTests::test_inside": "PASS",
+        "tests/test_public.py::PublicTests::test_outside": "PASS",
+        "tests/test_public.py::PublicTests::test_width": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "before": [
+    {
+      "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_3sxol54q\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 6 items\n\ntests\\test_public.py ...                                                 [ 50%]\n__replens_task__\\test_current_issue.py FF.                               [100%]\n\n================================== FAILURES ===================================\n___________________________ TaskTests.test_issue_00 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_00>\n\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_3sxol54q/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.contains(*[0, 10, 10], **{})\n>       self.assertIs(actual, True)\nE       AssertionError: False is not True\n\n__replens_task__\\test_current_issue.py:13: AssertionError\n___________________________ TaskTests.test_issue_01 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_01>\n\n    def test_issue_01(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_3sxol54q/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.contains(*[5, 5, 5], **{})\n>       self.assertIs(actual, True)\nE       AssertionError: False is not True\n\n__replens_task__\\test_current_issue.py:23: AssertionError\n=========================== short test summary info ===========================\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_00 - Ass...\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_01 - Ass...\n========================= 2 failed, 4 passed in 0.89s =========================\n",
+      "structured": true,
+      "summary": {
+        "collected": 6,
+        "errors": 0,
+        "failed": 2,
+        "passed": 4,
+        "ran": 6,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS",
+        "tests/test_public.py::PublicTests::test_inside": "PASS",
+        "tests/test_public.py::PublicTests::test_outside": "PASS",
+        "tests/test_public.py::PublicTests::test_width": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+  "enabled": true,
+  "files": {
+    "__replens_task__/test_current_issue.py": "# Model-proposed task tests, frozen before patch generation.\nimport unittest\n\nclass TaskTests(unittest.TestCase):\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.contains(*[0, 10, 10], **{})\n        self.assertIs(actual, True)\n\n    def test_issue_01(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.contains(*[5, 5, 5], **{})\n        self.assertIs(actual, True)\n\n    def test_issue_02(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.contains(*[0, 10, 20], **{})\n        self.assertIs(actual, False)\n\n"
+  },
+  "timeout": 120
+}

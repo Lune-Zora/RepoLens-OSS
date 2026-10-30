@@ -1,0 +1,98 @@
+[
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "config_values",
+    "seconds": 6.156,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "问题理解失败，尚未获得可靠目标。请检查模型服务或补充函数名/报错；没有把失败显示为成功。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "52bd3dfa5984449bae37ac172bde0bf2.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": null,
+        "status": "error"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "sequence_blocks",
+    "seconds": 6.712,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "问题理解失败，尚未获得可靠目标。请检查模型服务或补充函数名/报错；没有把失败显示为成功。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "7be28155a440445eb45b712b5c5abd82.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": null,
+        "status": "error"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "numeric_interval",
+    "seconds": 6.517,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "问题理解失败，尚未获得可靠目标。请检查模型服务或补充函数名/报错；没有把失败显示为成功。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "fb3671a2e026454dae264d41b15bb749.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": null,
+        "status": "error"
+      }
+    ],
+    "pass": false
+  },
+  {
+    "model": "qwen35-9b-unc:latest",
+    "task": "stable_unique",
+    "seconds": 6.106,
+    "exit_code": 2,
+    "repair_status": "UNVERIFIED",
+    "blocked_reason": "",
+    "reasons": [
+      "定位证据不足，不能确认修复"
+    ],
+    "patch_note": "问题理解失败，尚未获得可靠目标。请检查模型服务或补充函数名/报错；没有把失败显示为成功。",
+    "replay_status": null,
+    "source_unchanged": true,
+    "calls": [
+      {
+        "file": "5f0cdf1ef9d848f3b8623266424ce51a.json",
+        "purpose": "issue_understanding",
+        "requested_model": "qwen35-9b-unc:latest",
+        "response_model": null,
+        "status": "error"
+      }
+    ],
+    "pass": false
+  }
+]

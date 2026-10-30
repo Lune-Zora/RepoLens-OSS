@@ -1,0 +1,21 @@
+{
+  "tests_run": 19,
+  "failures": 0,
+  "errors": 0,
+  "skipped": [
+    [
+      "test_provenance.ProvenanceDemoTests.test_real_http_verification",
+      "FastAPI/HTTPX are optional and unavailable"
+    ]
+  ],
+  "success": true,
+  "python": "3.13.6 (tags/v3.13.6:4e66535, Aug  6 2025, 14:36:00) [MSC v.1944 64 bit (AMD64)]",
+  "scope": [
+    "test_provenance",
+    "test_validation.RepairAcceptanceIntegrationTests.test_real_unittest_demo_is_verified_and_honors_explicit_framework",
+    "test_validation.RepairAcceptanceIntegrationTests.test_generated_smoke_or_behavior_cannot_replace_independent_acceptance",
+    "test_validation.RepairAcceptanceIntegrationTests.test_cli_strict_writes_report_then_returns_nonzero_without_independent_suite",
+    "test_validation.RepairAcceptanceIntegrationTests.test_real_pytest_main_and_unittest_independent_suite_are_verified"
+  ],
+  "temporary_root": "C:\\Users\\56514\\Documents\\ChatGPT\\全球人工智能 2\\provenance_20261026\\temp"
+}

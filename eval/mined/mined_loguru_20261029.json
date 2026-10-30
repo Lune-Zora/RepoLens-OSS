@@ -1,0 +1,1128 @@
+[
+ {
+  "id": 1,
+  "category": "bug",
+  "issue": "thread/process info in standard handlers with `enqueue=True` (#1529)",
+  "expected": [
+   "loguru/_simple_sinks.py:write:96"
+  ],
+  "commit": "bce5dfd3b435b1d1658507d7e095ad7a9919bf1c",
+  "parent": "12b0479b86630d38a3fc42586a545c4e75e00b84",
+  "project": "loguru",
+  "buggy_parent": "12b0479b86630d38a3fc42586a545c4e75e00b84",
+  "fix_commit": "bce5dfd3b435b1d1658507d7e095ad7a9919bf1c",
+  "test_files": [
+   "tests/test_standard_handler.py"
+  ],
+  "src_files": [
+   "loguru/_simple_sinks.py"
+  ],
+  "validation": {
+   "id": 1,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_standard_handler.py::test_thread_info_with_enqueue",
+    "tests/test_standard_handler.py::test_process_info_with_enqueue_fork",
+    "tests/test_standard_handler.py::test_process_info_with_enqueue_spawn"
+   ]
+  }
+ },
+ {
+  "id": 2,
+  "category": "bug",
+  "issue": "\"@logger.catch()\" ignoring errors raised by \"athrow()\" (#1510)",
+  "expected": [
+   "loguru/_logger.py:athrow:1361"
+  ],
+  "commit": "48acf77ac2b3296acc67069511b99cc3ca3d0c41",
+  "parent": "d3c590573edb41884feb206823a47c3a9e14aa68",
+  "project": "loguru",
+  "buggy_parent": "d3c590573edb41884feb206823a47c3a9e14aa68",
+  "fix_commit": "48acf77ac2b3296acc67069511b99cc3ca3d0c41",
+  "test_files": [
+   "tests/exceptions/source/modern/decorate_async_generator.py",
+   "tests/exceptions/source/modern/exception_formatting_async_generator_throw.py",
+   "tests/test_exceptions_formatting.py"
+  ],
+  "src_files": [
+   "loguru/_logger.py"
+  ],
+  "validation": {
+   "id": 2,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/exceptions/source/modern/decorate_async_generator.py::test_decorate_async_generator_then_async_throw",
+    "tests/exceptions/source/modern/decorate_async_generator.py::test_decorate_async_generator_then_async_throw_with_handled_error",
+    "tests/test_exceptions_formatting.py::test_exception_modern"
+   ]
+  }
+ },
+ {
+  "id": 3,
+  "category": "bug",
+  "issue": "incorrect formatting of negative timestamps (#1508)",
+  "expected": [
+   "loguru/_datetime.py:_compile_format:111"
+  ],
+  "commit": "5672e7d0ad610d70c5e549939b049303edefda19",
+  "parent": "8052eff4c1ba86793a6f38ee890a898e902bc1ea",
+  "project": "loguru",
+  "buggy_parent": "8052eff4c1ba86793a6f38ee890a898e902bc1ea",
+  "fix_commit": "5672e7d0ad610d70c5e549939b049303edefda19",
+  "test_files": [
+   "tests/test_datetime.py"
+  ],
+  "src_files": [
+   "loguru/_datetime.py"
+  ],
+  "validation": {
+   "id": 3,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_datetime.py::test_formatting"
+   ]
+  }
+ },
+ {
+  "id": 4,
+  "category": "bug",
+  "issue": "incorrect formatting of negative timezone offsets (#1507)",
+  "expected": [
+   "loguru/_datetime.py:_format_timezone:44"
+  ],
+  "commit": "8052eff4c1ba86793a6f38ee890a898e902bc1ea",
+  "parent": "54c89d609fc98a63b5bf7f801119c5bc526e2016",
+  "project": "loguru",
+  "buggy_parent": "54c89d609fc98a63b5bf7f801119c5bc526e2016",
+  "fix_commit": "8052eff4c1ba86793a6f38ee890a898e902bc1ea",
+  "test_files": [
+   "tests/test_datetime.py"
+  ],
+  "src_files": [
+   "loguru/_datetime.py"
+  ],
+  "validation": {
+   "id": 4,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_datetime.py::test_formatting_timezone_offset_down_to_the_second"
+   ]
+  }
+ },
+ {
+  "id": 5,
+  "category": "bug",
+  "issue": "first rotation of \"<weekday> at <time>\" ignoring the weekday",
+  "expected": [
+   "loguru/_file_sink.py:__init__:109"
+  ],
+  "commit": "c71a057f123dcad06a369943b513c272615c53aa",
+  "parent": "2a17be730e111cf874d0bf967c4c5da15b7e4670",
+  "project": "loguru",
+  "buggy_parent": "2a17be730e111cf874d0bf967c4c5da15b7e4670",
+  "fix_commit": "c71a057f123dcad06a369943b513c272615c53aa",
+  "test_files": [
+   "tests/test_filesink_rotation.py"
+  ],
+  "src_files": [
+   "loguru/_file_sink.py"
+  ],
+  "validation": {
+   "id": 5,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_filesink_rotation.py::test_weekday_rotation_first_rotation_on_requested_weekday"
+   ]
+  }
+ },
+ {
+  "id": 6,
+  "category": "bug",
+  "issue": "parsing of 12-hour rotation times without seconds (#1474)",
+  "expected": [
+   "loguru/_string_parsers.py:parse_time:300"
+  ],
+  "commit": "7b30cd046a593f34696f6c574813b9727ae5c35e",
+  "parent": "97a50cf75faff7c141ffc93095ab905b4ef051b6",
+  "project": "loguru",
+  "buggy_parent": "97a50cf75faff7c141ffc93095ab905b4ef051b6",
+  "fix_commit": "7b30cd046a593f34696f6c574813b9727ae5c35e",
+  "test_files": [
+   "tests/test_filesink_rotation.py"
+  ],
+  "src_files": [
+   "loguru/_string_parsers.py"
+  ],
+  "validation": {
+   "id": 6,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_filesink_rotation.py::test_time_rotation"
+   ]
+  }
+ },
+ {
+  "id": 7,
+  "category": "bug",
+  "issue": "possible internal error if \"f_lineno\" is None (#1442)",
+  "expected": [
+   "loguru/_better_exceptions.py:get_info:211"
+  ],
+  "commit": "2feb8549807587da88f4d151492ab443d8c5c320",
+  "parent": "3caaa73ea6542751dcb5a17708033d6b15f9a72d",
+  "project": "loguru",
+  "buggy_parent": "3caaa73ea6542751dcb5a17708033d6b15f9a72d",
+  "fix_commit": "2feb8549807587da88f4d151492ab443d8c5c320",
+  "test_files": [
+   "tests/conftest.py",
+   "tests/exceptions/source/backtrace/missing_lineno_frame_objects.py",
+   "tests/test_exceptions_formatting.py"
+  ],
+  "src_files": [
+   "loguru/_better_exceptions.py",
+   "loguru/_logger.py"
+  ],
+  "validation": {
+   "id": 7,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_exceptions_formatting.py::test_backtrace"
+   ]
+  }
+ },
+ {
+  "id": 8,
+  "category": "bug",
+  "issue": "wrong formatting of microsecond timestamp (\"x\" token for time) (#1441)",
+  "expected": [
+   "loguru/_datetime.py:_compile_format:112"
+  ],
+  "commit": "e49d1539042e18ca17b96fd28727234a0705d22a",
+  "parent": "764cd30d4b285ca01718ab3162a9f1a022bc49c6",
+  "project": "loguru",
+  "buggy_parent": "764cd30d4b285ca01718ab3162a9f1a022bc49c6",
+  "fix_commit": "e49d1539042e18ca17b96fd28727234a0705d22a",
+  "test_files": [
+   "tests/test_datetime.py"
+  ],
+  "src_files": [
+   "loguru/_datetime.py"
+  ],
+  "validation": {
+   "id": 8,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_datetime.py::test_formatting"
+   ]
+  }
+ },
+ {
+  "id": 9,
+  "category": "bug",
+  "issue": "Trivial grammar fix (#1429)",
+  "expected": [
+   "loguru/_colorizer.py:feed:283"
+  ],
+  "commit": "764cd30d4b285ca01718ab3162a9f1a022bc49c6",
+  "parent": "48fff58c6b5dc26953da95f564815e66fbddd309",
+  "project": "loguru",
+  "buggy_parent": "48fff58c6b5dc26953da95f564815e66fbddd309",
+  "fix_commit": "764cd30d4b285ca01718ab3162a9f1a022bc49c6",
+  "test_files": [
+   "tests/test_ansimarkup_basic.py",
+   "tests/test_ansimarkup_extended.py",
+   "tests/test_levels.py"
+  ],
+  "src_files": [
+   "loguru/_colorizer.py"
+  ],
+  "validation": {
+   "id": 9,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_ansimarkup_basic.py::test_invalid_color",
+    "tests/test_ansimarkup_extended.py::test_invalid_color",
+    "tests/test_ansimarkup_extended.py::test_invalid_hex",
+    "tests/test_ansimarkup_extended.py::test_invalid_8bit",
+    "tests/test_ansimarkup_extended.py::test_invalid_rgb",
+    "tests/test_levels.py::test_add_level_unknown_color"
+   ]
+  }
+ },
+ {
+  "id": 10,
+  "category": "bug",
+  "issue": "hex color short code expansion (#1425)",
+  "expected": [
+   "loguru/_colorizer.py:_get_ansicode:319"
+  ],
+  "commit": "2a2c59e1c47d02c6f28e92cd0161e3f01fd74b31",
+  "parent": "36da8cca14457f6e1d1bbca25fb29ba42b2d70cb",
+  "project": "loguru",
+  "buggy_parent": "36da8cca14457f6e1d1bbca25fb29ba42b2d70cb",
+  "fix_commit": "2a2c59e1c47d02c6f28e92cd0161e3f01fd74b31",
+  "test_files": [
+   "tests/test_ansimarkup_extended.py"
+  ],
+  "src_files": [
+   "loguru/_colorizer.py"
+  ],
+  "validation": {
+   "id": 10,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_ansimarkup_extended.py::test_8bit_colors",
+    "tests/test_ansimarkup_extended.py::test_hex_colors",
+    "tests/test_ansimarkup_extended.py::test_hex_short_code_equals_long_code"
+   ]
+  }
+ },
+ {
+  "id": 11,
+  "category": "bug",
+  "issue": "the \".level\" of standard \"Handler\" previously ignored (#1410)",
+  "expected": [
+   "loguru/_simple_sinks.py:write:70"
+  ],
+  "commit": "ffe1617122cc6c56f6fdfb1715a006fbf85bea1c",
+  "parent": "62952bd97465db3b35999ac89b7acfde25f0a926",
+  "project": "loguru",
+  "buggy_parent": "62952bd97465db3b35999ac89b7acfde25f0a926",
+  "fix_commit": "ffe1617122cc6c56f6fdfb1715a006fbf85bea1c",
+  "test_files": [
+   "tests/test_standard_handler.py"
+  ],
+  "src_files": [
+   "loguru/_simple_sinks.py"
+  ],
+  "validation": {
+   "id": 11,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_standard_handler.py::test_standard_handler_with_configured_filter",
+    "tests/test_standard_handler.py::test_standard_handler_with_configured_level"
+   ]
+  }
+ },
+ {
+  "id": 12,
+  "category": "bug",
+  "issue": "\"NO_COLOR\" and \"FORCE_COLOR\" affecting non-standard streams",
+  "expected": [
+   "loguru/_colorama.py:should_colorize:10"
+  ],
+  "commit": "92952b912c6e32866f2ec3dd6bee2aa5403d418b",
+  "parent": "78f86ffcfeef1f194cb3ab2a59beed1e83af8312",
+  "project": "loguru",
+  "buggy_parent": "78f86ffcfeef1f194cb3ab2a59beed1e83af8312",
+  "fix_commit": "92952b912c6e32866f2ec3dd6bee2aa5403d418b",
+  "test_files": [
+   "tests/test_colorama.py"
+  ],
+  "src_files": [
+   "loguru/_colorama.py"
+  ],
+  "validation": {
+   "id": 12,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_colorama.py::test_honor_no_color_standard",
+    "tests/test_colorama.py::test_honor_force_color_standard"
+   ]
+  }
+ },
+ {
+  "id": 13,
+  "category": "bug",
+  "issue": "possible error when clock is far in the future on Windows (#1297)",
+  "expected": [
+   "loguru/_datetime.py:aware_now:144"
+  ],
+  "commit": "258326b747761a5c2430161b9f52b04bd7644014",
+  "parent": "e310e2029102b5d63a679a2b64501c045aa86336",
+  "project": "loguru",
+  "buggy_parent": "e310e2029102b5d63a679a2b64501c045aa86336",
+  "fix_commit": "258326b747761a5c2430161b9f52b04bd7644014",
+  "test_files": [
+   "tests/conftest.py",
+   "tests/test_datetime.py"
+  ],
+  "src_files": [
+   "loguru/_datetime.py"
+  ],
+  "validation": {
+   "id": 13,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_datetime.py::test_missing_struct_time_fields",
+    "tests/test_datetime.py::test_value_of_gmtoff_is_invalid",
+    "tests/test_datetime.py::test_localtime_raising_exception"
+   ]
+  }
+ },
+ {
+  "id": 14,
+  "category": "bug",
+  "issue": "\"ValueError\" when using Loguru with Cython (missing stack frame) (#1240)",
+  "expected": [
+   "loguru/_logger.py:_log:1959"
+  ],
+  "commit": "ab33cc0101129721cd024b8a63c4059cbc8844d1",
+  "parent": "fddcd4556c01bf7add84a265ee79a41be06647c7",
+  "project": "loguru",
+  "buggy_parent": "fddcd4556c01bf7add84a265ee79a41be06647c7",
+  "fix_commit": "ab33cc0101129721cd024b8a63c4059cbc8844d1",
+  "test_files": [
+   "tests/conftest.py",
+   "tests/test_activation.py",
+   "tests/test_add_option_filter.py"
+  ],
+  "src_files": [
+   "loguru/_logger.py"
+  ],
+  "validation": {
+   "id": 14,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_activation.py::test_log_before_enable_incomplete_frame_context",
+    "tests/test_activation.py::test_log_before_disable_incomplete_frame_context",
+    "tests/test_activation.py::test_incomplete_frame_context_with_others",
+    "tests/test_add_option_filter.py::test_filtered_in_incomplete_frame_context",
+    "tests/test_add_option_filter.py::test_filtered_out_incomplete_frame_context"
+   ]
+  }
+ },
+ {
+  "id": 15,
+  "category": "bug",
+  "issue": "repeated line not detected during exception formatting (#1239)",
+  "expected": [
+   "loguru/_better_exceptions.py:_format_list:537"
+  ],
+  "commit": "a486a6c00459ff9ece2cc3141646763f8e4c362a",
+  "parent": "65fe4a8db9a8f297ae3648f51b5e3050b30945a9",
+  "project": "loguru",
+  "buggy_parent": "65fe4a8db9a8f297ae3648f51b5e3050b30945a9",
+  "fix_commit": "a486a6c00459ff9ece2cc3141646763f8e4c362a",
+  "test_files": [
+   "tests/exceptions/source/others/one_liner_recursion.py",
+   "tests/exceptions/source/others/recursion_error.py",
+   "tests/exceptions/source/others/repeated_lines.py"
+  ],
+  "src_files": [
+   "loguru/_better_exceptions.py"
+  ],
+  "validation": {
+   "id": 15,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "file",
+   "targets": [
+    "tests/exceptions/source/others/one_liner_recursion.py",
+    "tests/exceptions/source/others/recursion_error.py",
+    "tests/exceptions/source/others/repeated_lines.py"
+   ]
+  }
+ },
+ {
+  "id": 16,
+  "category": "bug",
+  "issue": "possible infinite recursion with \"__repr__\" and \"logger.catch()\" (#1237)",
+  "expected": [
+   "loguru/_logger.py:__exit__:1245"
+  ],
+  "commit": "ed0daf8b6368c810fd53a3862fce05384cd15f6e",
+  "parent": "63a729a5ba8137b944ae43788de7ee860ba90431",
+  "project": "loguru",
+  "buggy_parent": "63a729a5ba8137b944ae43788de7ee860ba90431",
+  "fix_commit": "ed0daf8b6368c810fd53a3862fce05384cd15f6e",
+  "test_files": [
+   "tests/exceptions/source/others/broken_but_decorated_repr.py",
+   "tests/test_exceptions_catch.py",
+   "tests/test_exceptions_formatting.py"
+  ],
+  "src_files": [
+   "loguru/_logger.py"
+  ],
+  "validation": {
+   "id": 16,
+   "ok": false,
+   "reason": "测试超时"
+  }
+ },
+ {
+  "id": 17,
+  "category": "bug",
+  "issue": "inability to display '\\' before color markups (#1236)",
+  "expected": [
+   "loguru/_colorizer.py:AnsiParser:169"
+  ],
+  "commit": "8c3c8e45448bf55d233531c32cd583eff258e11d",
+  "parent": "37f44eda5555ffed3b4c581925650fb939e55b94",
+  "project": "loguru",
+  "buggy_parent": "37f44eda5555ffed3b4c581925650fb939e55b94",
+  "fix_commit": "8c3c8e45448bf55d233531c32cd583eff258e11d",
+  "test_files": [
+   "tests/test_ansimarkup_basic.py"
+  ],
+  "src_files": [
+   "loguru/_colorizer.py",
+   "loguru/_logger.py"
+  ],
+  "validation": {
+   "id": 17,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_ansimarkup_basic.py::test_escaping"
+   ]
+  }
+ },
+ {
+  "id": 18,
+  "category": "bug",
+  "issue": "tests for Python 3.14 dev (#1218)",
+  "expected": [
+   "loguru/_simple_sinks.py:StreamSink:8"
+  ],
+  "commit": "3a901de465b0dbb398f455dc3393d976fd0affbe",
+  "parent": "7f939454ac0c48e597b425d86b4b64cb017ea16c",
+  "project": "loguru",
+  "buggy_parent": "7f939454ac0c48e597b425d86b4b64cb017ea16c",
+  "fix_commit": "3a901de465b0dbb398f455dc3393d976fd0affbe",
+  "test_files": [
+   "tests/test_add_option_enqueue.py"
+  ],
+  "src_files": [
+   "loguru/_simple_sinks.py"
+  ],
+  "validation": {
+   "id": 18,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 19,
+  "category": "bug",
+  "issue": "\"remove()\" not thread-safe causing possible RuntimeError (#1183)",
+  "expected": [
+   "loguru/_logger.py:remove:1043"
+  ],
+  "commit": "91e3646e8c0f1384d375bce49a5fb313dad5f7d6",
+  "parent": "aa6fdd883d75ada646ce42ff7d8c29595ef1f252",
+  "project": "loguru",
+  "buggy_parent": "aa6fdd883d75ada646ce42ff7d8c29595ef1f252",
+  "fix_commit": "91e3646e8c0f1384d375bce49a5fb313dad5f7d6",
+  "test_files": [
+   "tests/test_threading.py"
+  ],
+  "src_files": [
+   "loguru/_logger.py"
+  ],
+  "validation": {
+   "id": 19,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_threading.py::test_safe_removing_all_while_logging",
+    "tests/test_threading.py::test_safe_slow_removing_all_while_logging"
+   ]
+  }
+ },
+ {
+  "id": 20,
+  "category": "bug",
+  "issue": "Enable \"RET\" linting rule of Ruff and fix newly reported errors (#1034)",
+  "expected": [
+   "loguru/_colorizer.py:feed:241"
+  ],
+  "commit": "dcf42d962567723c0195bb8b2bb6fd764ecf41ae",
+  "parent": "5d60a7ae801aebaad4e21eefe6a1dfcc44255bdc",
+  "project": "loguru",
+  "buggy_parent": "5d60a7ae801aebaad4e21eefe6a1dfcc44255bdc",
+  "fix_commit": "dcf42d962567723c0195bb8b2bb6fd764ecf41ae",
+  "test_files": [
+   "tests/conftest.py",
+   "tests/test_add_option_catch.py",
+   "tests/test_defaults.py"
+  ],
+  "src_files": [
+   "loguru/_colorizer.py",
+   "loguru/_ctime_functions.py",
+   "loguru/_defaults.py"
+  ],
+  "validation": {
+   "id": 20,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_add_option_catch.py::test_broken_sink_caught_keep_working",
+    "tests/test_defaults.py::test_invalid_type"
+   ]
+  }
+ },
+ {
+  "id": 21,
+  "category": "bug",
+  "issue": "error using \"set_start_method()\" after \"logger\" import (#974)",
+  "expected": [
+   "loguru/_handler.py:__init__:91"
+  ],
+  "commit": "086126fd8d0065336e40f7ea05546c5e62313e1b",
+  "parent": "14fa062bdb4388d77250b1f7224024fea3c84bbf",
+  "project": "loguru",
+  "buggy_parent": "14fa062bdb4388d77250b1f7224024fea3c84bbf",
+  "fix_commit": "086126fd8d0065336e40f7ea05546c5e62313e1b",
+  "test_files": [
+   "tests/test_add_option_context.py"
+  ],
+  "src_files": [
+   "loguru/_handler.py",
+   "loguru/_logger.py"
+  ],
+  "validation": {
+   "id": 21,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_add_option_context.py::test_using_multiprocessing_directly_if_context_is_none",
+    "tests/test_add_option_context.py::test_fork_context_as_string",
+    "tests/test_add_option_context.py::test_spawn_context_as_string",
+    "tests/test_add_option_context.py::test_fork_context_as_object",
+    "tests/test_add_option_context.py::test_spawn_context_as_object",
+    "tests/test_add_option_context.py::test_global_start_method_is_none_if_enqueue_is_false"
+   ]
+  }
+ },
+ {
+  "id": 22,
+  "category": "bug",
+  "issue": "f-string formatting in traceback of Python 3.12",
+  "expected": [
+   "loguru/_better_exceptions.py:highlight:59"
+  ],
+  "commit": "f1e94ab838df3f6cf84ccc72fad6bfbc4ae0d99c",
+  "parent": "22bccb728a83655594a9aba8b2c7e5145d28efe3",
+  "project": "loguru",
+  "buggy_parent": "22bccb728a83655594a9aba8b2c7e5145d28efe3",
+  "fix_commit": "f1e94ab838df3f6cf84ccc72fad6bfbc4ae0d99c",
+  "test_files": [
+   "tests/exceptions/source/modern/f_string.py",
+   "tests/test_exceptions_formatting.py"
+  ],
+  "src_files": [
+   "loguru/_better_exceptions.py"
+  ],
+  "validation": {
+   "id": 22,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_exceptions_formatting.py::test_exception_modern"
+   ]
+  }
+ },
+ {
+  "id": 23,
+  "category": "bug",
+  "issue": "formatting of possible notes added to an Exception (#980)",
+  "expected": [
+   "loguru/_better_exceptions.py:_format_exception:444"
+  ],
+  "commit": "0f9cdebfe84250e8fd73993a1ca0023ddc933de8",
+  "parent": "91351df436a14279fc226b70b126fb869152fc1b",
+  "project": "loguru",
+  "buggy_parent": "91351df436a14279fc226b70b126fb869152fc1b",
+  "fix_commit": "0f9cdebfe84250e8fd73993a1ca0023ddc933de8",
+  "test_files": [
+   "tests/exceptions/source/modern/notes.py",
+   "tests/test_exceptions_formatting.py"
+  ],
+  "src_files": [
+   "loguru/_better_exceptions.py"
+  ],
+  "validation": {
+   "id": 23,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_exceptions_formatting.py::test_exception_modern"
+   ]
+  }
+ },
+ {
+  "id": 24,
+  "category": "bug",
+  "issue": "possible deadlock with \"complete()\" and async sink (#906)",
+  "expected": [
+   "loguru/_file_sink.py:complete:214"
+  ],
+  "commit": "8c2044efdf0eae08745b6591a0be7cb80e9a51ff",
+  "parent": "2c585a1c186b4dadd05faa4c21363c9479e151b4",
+  "project": "loguru",
+  "buggy_parent": "2c585a1c186b4dadd05faa4c21363c9479e151b4",
+  "fix_commit": "8c2044efdf0eae08745b6591a0be7cb80e9a51ff",
+  "test_files": [
+   "tests/test_coroutine_sink.py"
+  ],
+  "src_files": [
+   "loguru/_file_sink.py",
+   "loguru/_handler.py",
+   "loguru/_logger.py"
+  ],
+  "validation": {
+   "id": 24,
+   "ok": false,
+   "reason": "测试超时"
+  }
+ },
+ {
+  "id": 25,
+  "category": "bug",
+  "issue": "errors due to non-unpicklable Exception when \"enqueue=True\" (#329)",
+  "expected": [
+   "loguru/_recattrs.py:__reduce__:67"
+  ],
+  "commit": "565a6f63bbbc39da8cca365fcf7ddf757f79b5e4",
+  "parent": "2718257fe1a393184e0e6e9222d93efa2193a95e",
+  "project": "loguru",
+  "buggy_parent": "2718257fe1a393184e0e6e9222d93efa2193a95e",
+  "fix_commit": "565a6f63bbbc39da8cca365fcf7ddf757f79b5e4",
+  "test_files": [
+   "tests/test_add_option_enqueue.py"
+  ],
+  "src_files": [
+   "loguru/_recattrs.py"
+  ],
+  "validation": {
+   "id": 25,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_add_option_enqueue.py::test_logging_not_picklable_exception",
+    "tests/test_add_option_enqueue.py::test_logging_not_unpicklable_exception"
+   ]
+  }
+ },
+ {
+  "id": 26,
+  "category": "bug",
+  "issue": "Revert \"Fix errors due to non-unpicklable Exception when \"enqueue=True\"\"",
+  "expected": [
+   "loguru/_recattrs.py:__reduce__:67"
+  ],
+  "commit": "2718257fe1a393184e0e6e9222d93efa2193a95e",
+  "parent": "4c8ebe267b82c4e97e2a2e7821b571199218e44d",
+  "project": "loguru",
+  "buggy_parent": "4c8ebe267b82c4e97e2a2e7821b571199218e44d",
+  "fix_commit": "2718257fe1a393184e0e6e9222d93efa2193a95e",
+  "test_files": [
+   "tests/test_add_option_enqueue.py"
+  ],
+  "src_files": [
+   "loguru/_recattrs.py"
+  ],
+  "validation": {
+   "id": 26,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 27,
+  "category": "bug",
+  "issue": "errors due to non-unpicklable Exception when \"enqueue=True\"",
+  "expected": [
+   "loguru/_recattrs.py:__reduce__:67"
+  ],
+  "commit": "4c8ebe267b82c4e97e2a2e7821b571199218e44d",
+  "parent": "de646c6ba64b1be484b6a77acb2e3a3dffaba35d",
+  "project": "loguru",
+  "buggy_parent": "de646c6ba64b1be484b6a77acb2e3a3dffaba35d",
+  "fix_commit": "4c8ebe267b82c4e97e2a2e7821b571199218e44d",
+  "test_files": [
+   "tests/test_add_option_enqueue.py"
+  ],
+  "src_files": [
+   "loguru/_recattrs.py"
+  ],
+  "validation": {
+   "id": 27,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_add_option_enqueue.py::test_logging_not_picklable_exception",
+    "tests/test_add_option_enqueue.py::test_logging_not_unpicklable_exception"
+   ]
+  }
+ },
+ {
+  "id": 28,
+  "category": "bug",
+  "issue": "missing seconds when formatting timezone offset (#961)",
+  "expected": [
+   "loguru/_datetime.py:__format__:39"
+  ],
+  "commit": "de646c6ba64b1be484b6a77acb2e3a3dffaba35d",
+  "parent": "2465fca6ca2e52b59845371d3d230367d5b45725",
+  "project": "loguru",
+  "buggy_parent": "2465fca6ca2e52b59845371d3d230367d5b45725",
+  "fix_commit": "de646c6ba64b1be484b6a77acb2e3a3dffaba35d",
+  "test_files": [
+   "tests/test_datetime.py"
+  ],
+  "src_files": [
+   "loguru/_datetime.py"
+  ],
+  "validation": {
+   "id": 28,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_datetime.py::test_formatting_timezone_offset_down_to_the_second"
+   ]
+  }
+ },
+ {
+  "id": 29,
+  "category": "bug",
+  "issue": "incorrect rotation when re-starting around midnight (#894)",
+  "expected": [
+   "loguru/_file_sink.py:__call__:131"
+  ],
+  "commit": "2465fca6ca2e52b59845371d3d230367d5b45725",
+  "parent": "e49dfa53cffc1116e25d58d727ff4eea34fafb64",
+  "project": "loguru",
+  "buggy_parent": "e49dfa53cffc1116e25d58d727ff4eea34fafb64",
+  "fix_commit": "2465fca6ca2e52b59845371d3d230367d5b45725",
+  "test_files": [
+   "tests/test_filesink_rotation.py"
+  ],
+  "src_files": [
+   "loguru/_file_sink.py"
+  ],
+  "validation": {
+   "id": 29,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_filesink_rotation.py::test_dont_rotate_earlier_when_utc_is_one_day_before",
+    "tests/test_filesink_rotation.py::test_dont_rotate_later_when_utc_is_one_day_after",
+    "tests/test_filesink_rotation.py::test_rotation_at_midnight_with_date_in_filename"
+   ]
+  }
+ },
+ {
+  "id": 30,
+  "category": "bug",
+  "issue": "errors caused by un-picklable Exception when \"enqueue=True\" (#905)",
+  "expected": [
+   "loguru/_recattrs.py:__reduce__:74"
+  ],
+  "commit": "c102e0a22b52d6c7be5e619f4d7025f0861f51df",
+  "parent": "2a35b87a71d2dee1fbd7729e7dc40ebe3818fc5f",
+  "project": "loguru",
+  "buggy_parent": "2a35b87a71d2dee1fbd7729e7dc40ebe3818fc5f",
+  "fix_commit": "c102e0a22b52d6c7be5e619f4d7025f0861f51df",
+  "test_files": [
+   "tests/test_add_option_enqueue.py"
+  ],
+  "src_files": [
+   "loguru/_recattrs.py"
+  ],
+  "validation": {
+   "id": 30,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 31,
+  "category": "bug",
+  "issue": "possible hang when \"complete()\" called twice and crashed thread",
+  "expected": [
+   "loguru/_handler.py:_queued_writer:309"
+  ],
+  "commit": "b9acbad0f6cf53354af223c3afa811b912d9e0e7",
+  "parent": "c926fd069dc9eadb04e48ca9692387b5e7372677",
+  "project": "loguru",
+  "buggy_parent": "c926fd069dc9eadb04e48ca9692387b5e7372677",
+  "fix_commit": "b9acbad0f6cf53354af223c3afa811b912d9e0e7",
+  "test_files": [
+   "tests/test_add_option_enqueue.py"
+  ],
+  "src_files": [
+   "loguru/_handler.py"
+  ],
+  "validation": {
+   "id": 31,
+   "ok": false,
+   "reason": "测试超时"
+  }
+ },
+ {
+  "id": 32,
+  "category": "bug",
+  "issue": "usage of aware \"datetime.time\" for file rotation (#697)",
+  "expected": [
+   "loguru/_file_sink.py:__call__:119"
+  ],
+  "commit": "20eb57f8728c64b95aa5fb1c5b34eedf1fb03024",
+  "parent": "a08cd5161d1f25c9f511faa5761f4ae51013cd88",
+  "project": "loguru",
+  "buggy_parent": "a08cd5161d1f25c9f511faa5761f4ae51013cd88",
+  "fix_commit": "20eb57f8728c64b95aa5fb1c5b34eedf1fb03024",
+  "test_files": [
+   "tests/test_filesink_rotation.py"
+  ],
+  "src_files": [
+   "loguru/_file_sink.py"
+  ],
+  "validation": {
+   "id": 32,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_filesink_rotation.py::test_time_rotation_with_tzinfo_diff_bigger",
+    "tests/test_filesink_rotation.py::test_time_rotation_with_tzinfo_diff_lower",
+    "tests/test_filesink_rotation.py::test_time_rotation_with_tzinfo_utc",
+    "tests/test_filesink_rotation.py::test_time_rotation_multiple_days_at_midnight_utc",
+    "tests/test_filesink_rotation.py::test_daily_rotation_with_different_timezone",
+    "tests/test_filesink_rotation.py::test_time_rotation_after_positive_timezone_changes_forward",
+    "tests/test_filesink_rotation.py::test_time_rotation_when_positive_timezone_changes_forward",
+    "tests/test_filesink_rotation.py::test_time_rotation_after_negative_timezone_changes_forward",
+    "tests/test_filesink_rotation.py::test_time_rotation_when_negative_timezone_changes_forward",
+    "tests/test_filesink_rotation.py::test_time_rotation_after_positive_timezone_changes_backward_aware",
+    "tests/test_filesink_rotation.py::test_time_rotation_after_positive_timezone_changes_backward_naive",
+    "tests/test_filesink_rotation.py::test_time_rotation_after_negative_timezone_changes_backward_aware",
+    "tests/test_filesink_rotation.py::test_time_rotation_after_negative_timezone_changes_backward_naive",
+    "tests/test_filesink_rotation.py::test_time_rotation_when_timezone_changes_backward_rename_file",
+    "tests/test_filesink_rotation.py::test_unknown_rotation"
+   ]
+  }
+ },
+ {
+  "id": 33,
+  "category": "bug",
+  "issue": "Apply pre-commit fixes to all files",
+  "expected": [
+   "loguru/_colorizer.py:prepare_message:362"
+  ],
+  "commit": "7ef57c3e6d8ad7dc2bcebf6d32465d306d3f0acb",
+  "parent": "ae3ed2cd54f3908bcf49d2b52253c07eae11e3b5",
+  "project": "loguru",
+  "buggy_parent": "ae3ed2cd54f3908bcf49d2b52253c07eae11e3b5",
+  "fix_commit": "7ef57c3e6d8ad7dc2bcebf6d32465d306d3f0acb",
+  "test_files": [
+   "tests/conftest.py",
+   "tests/exceptions/source/diagnose/attributes.py",
+   "tests/exceptions/source/diagnose/parenthesis.py"
+  ],
+  "src_files": [
+   "loguru/_colorizer.py",
+   "loguru/_datetime.py",
+   "loguru/_logger.py"
+  ],
+  "validation": {
+   "id": 33,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "file",
+   "targets": [
+    "tests/conftest.py",
+    "tests/exceptions/source/diagnose/attributes.py",
+    "tests/exceptions/source/diagnose/parenthesis.py"
+   ]
+  }
+ },
+ {
+  "id": 34,
+  "category": "bug",
+  "issue": "usage of \"pathlib\" in implementation breaking unit tests",
+  "expected": [
+   "loguru/_ctime_functions.py:get_ctime:8"
+  ],
+  "commit": "9a13a38cf084ff97f6ef5b43ec2e82f42b7b8f54",
+  "parent": "e040edee7c3c645fdf6f3f775d4ff0e8b4fd721b",
+  "project": "loguru",
+  "buggy_parent": "e040edee7c3c645fdf6f3f775d4ff0e8b4fd721b",
+  "fix_commit": "9a13a38cf084ff97f6ef5b43ec2e82f42b7b8f54",
+  "test_files": [
+   "tests/test_add_option_colorize.py",
+   "tests/test_filesink_rotation.py"
+  ],
+  "src_files": [
+   "loguru/_ctime_functions.py"
+  ],
+  "validation": {
+   "id": 34,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 35,
+  "category": "bug",
+  "issue": "incompatibility with \"freezegun\" library to simulate time (#600)",
+  "expected": [
+   "loguru/_datetime.py:aware_now:82"
+  ],
+  "commit": "21cc3a5f4beff25a25ecf74cf6c15bae767fd86e",
+  "parent": "4c9b7e08867604e2203744f424f641755c170b99",
+  "project": "loguru",
+  "buggy_parent": "4c9b7e08867604e2203744f424f641755c170b99",
+  "fix_commit": "21cc3a5f4beff25a25ecf74cf6c15bae767fd86e",
+  "test_files": [
+   "tests/conftest.py",
+   "tests/test_coroutine_sink.py",
+   "tests/test_datetime.py"
+  ],
+  "src_files": [
+   "loguru/_datetime.py",
+   "loguru/_file_sink.py",
+   "setup.py"
+  ],
+  "validation": {
+   "id": 35,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_datetime.py::test_formatting",
+    "tests/test_datetime.py::test_locale_formatting",
+    "tests/test_datetime.py::test_stdout_formatting",
+    "tests/test_datetime.py::test_file_formatting",
+    "tests/test_datetime.py::test_missing_struct_time_fields",
+    "tests/test_datetime.py::test_freezegun_mocking"
+   ]
+  }
+ },
+ {
+  "id": 36,
+  "category": "bug",
+  "issue": "\"complete()\" possibly hanging forever if \"enqueue=True\" (#647)",
+  "expected": [
+   "loguru/_handler.py:_queued_writer:289"
+  ],
+  "commit": "4c9b7e08867604e2203744f424f641755c170b99",
+  "parent": "1d9d58c763fdc747eaf0689f53f5270eea32f3f4",
+  "project": "loguru",
+  "buggy_parent": "1d9d58c763fdc747eaf0689f53f5270eea32f3f4",
+  "fix_commit": "4c9b7e08867604e2203744f424f641755c170b99",
+  "test_files": [
+   "tests/test_add_option_enqueue.py"
+  ],
+  "src_files": [
+   "loguru/_handler.py"
+  ],
+  "validation": {
+   "id": 36,
+   "ok": false,
+   "reason": "测试超时"
+  }
+ },
+ {
+  "id": 37,
+  "category": "bug",
+  "issue": "colors in Github Actions and others CI platforms (#604)",
+  "expected": [
+   "loguru/_colorama.py:should_colorize:9"
+  ],
+  "commit": "0f0b698f91cfd9aadff10aa750bfc8abb4b6a18a",
+  "parent": "2e36263c91921e3a0b6309d1f26a5fbc019f4502",
+  "project": "loguru",
+  "buggy_parent": "2e36263c91921e3a0b6309d1f26a5fbc019f4502",
+  "fix_commit": "0f0b698f91cfd9aadff10aa750bfc8abb4b6a18a",
+  "test_files": [
+   "tests/test_add_option_colorize.py"
+  ],
+  "src_files": [
+   "loguru/_colorama.py"
+  ],
+  "validation": {
+   "id": 37,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_add_option_colorize.py::test_jupyter_fixed",
+    "tests/test_add_option_colorize.py::test_jupyter_ignored",
+    "tests/test_add_option_colorize.py::test_github_actions_fixed",
+    "tests/test_add_option_colorize.py::test_github_actions_ignored"
+   ]
+  }
+ },
+ {
+  "id": 38,
+  "category": "bug",
+  "issue": "colors in Jupyter Notebook and Google Colab (#494)",
+  "expected": [
+   "loguru/_colorama.py:should_colorize:6"
+  ],
+  "commit": "0e54edffdff09b5fb87edbca301ec6407bf868c0",
+  "parent": "bd59ca4a8d47f2e7c026310a6525fb3f073248ba",
+  "project": "loguru",
+  "buggy_parent": "bd59ca4a8d47f2e7c026310a6525fb3f073248ba",
+  "fix_commit": "0e54edffdff09b5fb87edbca301ec6407bf868c0",
+  "test_files": [
+   "tests/test_add_option_colorize.py"
+  ],
+  "src_files": [
+   "loguru/_colorama.py"
+  ],
+  "validation": {
+   "id": 38,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_add_option_colorize.py::test_jupyter_fixed",
+    "tests/test_add_option_colorize.py::test_jupyter_ignored"
+   ]
+  }
+ }
+]

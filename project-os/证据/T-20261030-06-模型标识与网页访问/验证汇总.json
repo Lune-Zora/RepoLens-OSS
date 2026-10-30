@@ -1,0 +1,29 @@
+{
+  "formal_archived_model": "qwen2.5-coder:1.5b",
+  "local_id": "db848539a068",
+  "formal_archived_calls": 5,
+  "new_browser_plan_calls": [
+    {
+      "file": "00498f4b8f88424fae622f957c6a265f.json",
+      "purpose": "plan",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    }
+  ],
+  "browser_plan_generated_by": "llm",
+  "new_full_repair_experiment": false,
+  "local_origin_status": "待核验",
+  "frozen_historical_files": 42,
+  "test_result": {
+    "command": [
+      "python",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "exit_code": 0,
+    "seconds": 127.257,
+    "mode": "offline regression; model configuration removed"
+  }
+}

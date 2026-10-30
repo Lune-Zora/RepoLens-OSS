@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "20261029T182020Z",
+  "source_root": "E:\\osspj\\人工智能\\repo",
+  "git_commit": "eae5076f3bfded9c9c0439da00d678b42c136125",
+  "git_status_before": "M .env.example\n M README.md\n M replens/llm.py\n M replens/patchgen.py\n M replens/planner.py\n M reports/llm/README.md\n M scripts/run_llm_demo.py\n?? replens/llm_audit.py\n?? tests/test_llm_evidence.py",
+  "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+  "settings": {
+    "REPLENS_LLM_BASE_URL": "http://127.0.0.1:11434/v1",
+    "REPLENS_LLM_MODEL": "qwen2.5-coder:1.5b",
+    "REPLENS_LLM_N_CANDIDATES": "4",
+    "REPLENS_REQUIRE_LLM": "1"
+  },
+  "max_repair_rounds": 3,
+  "commands": [
+    {
+      "label": "run",
+      "argv": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "-m",
+        "replens",
+        "run",
+        "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+        "--issue",
+        "date string with surrounding whitespace fails to parse",
+        "--test-cmd",
+        "python -m pytest tests/test_parser.py",
+        "--auto-patch",
+        "--acceptance-suite",
+        "E:\\osspj\\人工智能\\repo\\examples\\acceptance\\demo.json",
+        "--require-verified",
+        "--format",
+        "json",
+        "--output",
+        "E:\\osspj\\参赛提交-20261030\\验证\\strict-cli-complete-20261030-022020\\report.json"
+      ],
+      "exit_code": 0,
+      "seconds": 24.937
+    },
+    {
+      "label": "verify",
+      "argv": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "-m",
+        "replens",
+        "verify",
+        "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+        "--provenance",
+        "E:\\osspj\\参赛提交-20261030\\验证\\strict-cli-complete-20261030-022020\\provenance",
+        "--require-verified",
+        "--format",
+        "json",
+        "--output",
+        "E:\\osspj\\参赛提交-20261030\\验证\\strict-cli-complete-20261030-022020\\replay.json"
+      ],
+      "exit_code": 0,
+      "seconds": 11.172
+    }
+  ],
+  "raw_llm_requests_recorded": true,
+  "endpoint_check": {
+    "ok": true,
+    "detail": "可连接；模型: qwen25-7b-unc:latest, qwen35-9b-unc:latest, qwen2.5-coder:1.5b"
+  },
+  "repair_status": "VERIFIED",
+  "plan_generated_by": "llm",
+  "patch_note": "LLM 生成 1 个有效候选。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）",
+  "replay": {
+    "status": "PASS",
+    "reasons": [
+      "材料、逐测试身份/状态及统一验收结论重放一致"
+    ],
+    "materials_status": "PASS",
+    "replay_status": "PASS",
+    "repair_status": "VERIFIED",
+    "schema_version": "2.0",
+    "recorded_repair_status": "VERIFIED",
+    "validation": {
+      "status": "VERIFIED",
+      "reasons": [
+        "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+      ],
+      "targets": [
+        "tests/test_parser.py::ParserTests::test_parse_date_with_whitespace"
+      ],
+      "preserved": [
+        "tests/test_parser.py::ParserTests::test_parse_date",
+        "tests/test_parser.py::ParserTests::test_parse_datetime"
+      ],
+      "acceptance_sha256": "1aacb96e419b642cacc224843609d7aab7fcad4da6266bdff2d87b80e9b7688d",
+      "acceptance_targets": [
+        "test_date_behavior.DateBehavior.test_tab_and_newline_padding"
+      ]
+    },
+    "phase_checks": {
+      "primary": {
+        "before": true,
+        "after": true
+      },
+      "auxiliary": {
+        "before": true,
+        "after": true
+      },
+      "acceptance": {
+        "before": true,
+        "after": true
+      }
+    },
+    "validation_matches": true
+  },
+  "model_calls": {
+    "call_attempts": 5,
+    "by_purpose": {
+      "plan": 1,
+      "patch": 4
+    },
+    "completed_json_calls": 5,
+    "error_calls": 0,
+    "incomplete_calls": 0,
+    "patch_generation_rounds": 1,
+    "actual_repair_rounds": 0,
+    "call_seconds_sum": 10.563,
+    "provider_usage_sum": {
+      "prompt_tokens": 8960,
+      "completion_tokens": 773,
+      "total_tokens": 9733
+    },
+    "provider_usage_available": true,
+    "response_models": [
+      "qwen2.5-coder:1.5b"
+    ]
+  },
+  "source_files_changed": [],
+  "finished_at": "2026-10-29T18:20:57.706680+00:00"
+}

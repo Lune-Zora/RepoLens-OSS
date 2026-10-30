@@ -1,0 +1,37 @@
+{
+  "sample_id": "tqdm-reset-total-infinity",
+  "repository": "tqdm",
+  "source": "upstream Git history; exact commits in run.json",
+  "license": {
+    "path": "LICENCE",
+    "sha256": "fcff87c3a47ce8028a8512aa182d4fcf0ad1c90544ee75cf9b343684cac194de",
+    "detected": "MPL-2.0 AND MIT",
+    "bytes": 1985,
+    "confidence": true,
+    "declared_expression": "MPL-2.0 AND MIT",
+    "components": [
+      "MPL-2.0",
+      "MIT"
+    ]
+  },
+  "buggy_commit": "5bf58c2d61410e5a17da3440df921fe34c6c38bf",
+  "fix_commit": "426a0988a1e9970041f5a649ae8a6376c5293fbe",
+  "issue_source": "upstream fix commit; wording frozen in run.json",
+  "issue": "When a progress bar's counters are cleared and re-initialized with an infinite total, the bar must treat it as unknown, as it does at construction.",
+  "environment_sha256": "27bcdc94a0f65be4422ff0a7e22ae2596129122f569f18992e44c39835c45514",
+  "regression_test": {
+    "path": "tests/tests_tqdm.py",
+    "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+    "target_state_before": "FAIL",
+    "target_state_after": "PASS"
+  },
+  "independent_test": {
+    "path": "independent-acceptance.json",
+    "sha256": "2096cd8cd007f74a60fc2b44f0d00867a064342599dcdbb940d2ff5195404e80",
+    "target_state_before": "FAIL",
+    "target_state_after": "PASS"
+  },
+  "evidence_bundle": "evidence_bundle",
+  "classification": "reference-patch validation; not autonomous model repair",
+  "control_materials_must_not_enter_model_input": true
+}

@@ -1,0 +1,198 @@
+[
+  {
+    "case": "chinese-existing",
+    "request": {
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+      "issue": "1900年被错误判断为闰年",
+      "model": "qwen35-9b-unc:latest",
+      "top_k": 5
+    },
+    "response": {
+      "insufficient_evidence": true,
+      "evidences": [],
+      "plan": {
+        "root_cause": "证据不足，无法确认问题根因。",
+        "affected_scope": [],
+        "files_to_modify": [],
+        "steps": [
+          "补充问题描述或确认目标仓库是否包含相关代码。"
+        ],
+        "risks": [
+          "无依据推断风险"
+        ],
+        "regression_test": "",
+        "generated_by": "rule"
+      },
+      "understanding": {
+        "original_issue": "1900年被错误判断为闰年",
+        "summary": "1900年被错误判断为闰年",
+        "expected_behavior": "",
+        "search_query": "1900年被错误判断为闰年",
+        "scope": "needs_clarification",
+        "explanation": "问题理解失败，尚未获得可靠目标。请检查模型服务或补充函数名/报错；没有把失败显示为成功。",
+        "targets": [],
+        "repository_functions": [
+          "src/dateparse/formatter.py:format_date",
+          "src/dateparse/formatter.py:format_iso",
+          "src/dateparse/parser.py:parse_date",
+          "src/dateparse/parser.py:parse_datetime",
+          "src/dateparse/utils.py:days_between",
+          "src/dateparse/utils.py:add_days",
+          "src/dateparse/utils.py:is_leap_year",
+          "src/dateparse/validator.py:is_valid_date",
+          "src/dateparse/validator.py:validate_range",
+          "src/dateparse/validator.py:is_weekend"
+        ],
+        "catalog_total": 10,
+        "catalog_shown": 10,
+        "model": "qwen35-9b-unc:latest",
+        "generated_by": "keyword",
+        "error": "unhashable type: 'dict'",
+        "retrieval_mode": "keyword"
+      }
+    }
+  },
+  {
+    "case": "absent-feature",
+    "request": {
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+      "issue": "布尔值字符串 true/false 前后有空格时解析失败",
+      "model": "qwen35-9b-unc:latest",
+      "top_k": 5
+    },
+    "response": {
+      "insufficient_evidence": false,
+      "evidences": [
+        {
+          "ref": "src/dateparse/parser.py:9",
+          "type": "function",
+          "name": "parse_date",
+          "confidence": 0.0,
+          "reason": "根据 catalog 描述，`parse_date` 函数直接对原始字符串 `s` 使用 `strptime`，而文档明确指出其 Bug 在于未调用 `s.strip()`。由于其他函数（如 `is_valid_date`）都委托给 `parse_date`，修复 `parse_date` 即可解决所有相关场景。",
+          "source": "intent_target",
+          "signature": "def parse_date(s)",
+          "code": "def parse_date(s):\n    \"\"\"Parse a date string in YYYY-MM-DD format.\n\n    Args:\n        s: the date string, e.g. \"2024-01-01\".\n\n    Returns:\n        datetime.date object.\n\n    Note:\n        The input is not stripped of surrounding whitespace, so a string\n        like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n        call s.strip() before parsing.\n    \"\"\"\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()"
+        },
+        {
+          "ref": "src/dateparse/validator.py:8",
+          "type": "function",
+          "name": "is_valid_date",
+          "confidence": 0.85,
+          "reason": "符号名/文档命中关键词: parse, date, strip, yyyy, mm",
+          "source": "keyword_match",
+          "signature": "def is_valid_date(s)",
+          "code": "def is_valid_date(s):\n    \"\"\"Check whether a date string is a valid YYYY-MM-DD date.\n\n    Args:\n        s: date string like \"2024-01-01\".\n\n    Returns:\n        True if the string parses to a valid date, False otherwise.\n\n    Note:\n        Delegates to parse_date, which does not strip surrounding whitespace,\n        so \" 2024-01-01 \" is wrongly reported as invalid.\n    \"\"\"\n    from .parser import parse_date\n    try:\n        parse_date(s)\n        return True\n    except ValueError:\n        return False"
+        },
+        {
+          "ref": "src/dateparse/utils.py:5",
+          "type": "function",
+          "name": "days_between",
+          "confidence": 0.7,
+          "reason": "符号名/文档命中关键词: date, yyyy, mm, dd",
+          "source": "keyword_match",
+          "signature": "def days_between(a, b)",
+          "code": "def days_between(a, b):\n    \"\"\"Return the number of days between two date strings (absolute value).\n\n    Args:\n        a: start date string \"YYYY-MM-DD\".\n        b: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        Non-negative integer day count.\n\n    Note:\n        Subtraction order is reversed — returns a negative value when a < b.\n        This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    da = parse_date(a)\n    db = parse_date(b)\n    return (da - db).days"
+        },
+        {
+          "ref": "src/dateparse/validator.py:29",
+          "type": "function",
+          "name": "validate_range",
+          "confidence": 0.55,
+          "reason": "符号名/文档命中关键词: date, yyyy, mm, dd",
+          "source": "keyword_match",
+          "signature": "def validate_range(start, end)",
+          "code": "def validate_range(start, end):\n    \"\"\"Validate that the start date is not after the end date.\n\n    Args:\n        start: start date string \"YYYY-MM-DD\".\n        end: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        True if start <= end, False otherwise.\n\n    Note:\n        Uses strict less-than instead of less-or-equal, so equal dates are\n        wrongly rejected. This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    s = parse_date(start)\n    e = parse_date(end)\n    return s < e"
+        },
+        {
+          "ref": "src/dateparse/utils.py:25",
+          "type": "function",
+          "name": "add_days",
+          "confidence": 0.4,
+          "reason": "符号名/文档命中关键词: date, yyyy, mm, dd",
+          "source": "keyword_match",
+          "signature": "def add_days(s, n)",
+          "code": "def add_days(s, n):\n    \"\"\"Add n days to a date string and return a date object.\n\n    Args:\n        s: date string \"YYYY-MM-DD\".\n        n: integer number of days (can be negative).\n\n    Returns:\n        datetime.date object.\n    \"\"\"\n    from .parser import parse_date\n    d = parse_date(s)\n    return d + datetime.timedelta(days=n)"
+        },
+        {
+          "ref": "tests/test_parser.py:8",
+          "type": "method",
+          "name": "test_parse_date",
+          "confidence": 0.6,
+          "reason": "与 parse_date 存在调用关系（调用图扩展）",
+          "source": "call_related",
+          "signature": "def test_parse_date(self)",
+          "code": "def test_parse_date(self):\n        self.assertEqual(parse_date(\"2024-01-01\"), datetime.date(2024, 1, 1))"
+        },
+        {
+          "ref": "tests/test_parser.py:17",
+          "type": "method",
+          "name": "test_parse_date_with_whitespace",
+          "confidence": 0.6,
+          "reason": "与 parse_date 存在调用关系（调用图扩展）",
+          "source": "call_related",
+          "signature": "def test_parse_date_with_whitespace(self)",
+          "code": "def test_parse_date_with_whitespace(self):\n        self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))"
+        }
+      ],
+      "plan": {
+        "root_cause": "The `parse_date` function in `src/dateparse/parser.py` directly passes the raw string `s` to `strptime` without stripping surrounding whitespace first. The docstring explicitly notes this as the bug, causing failures for inputs like ' 2024-01-01 '.",
+        "affected_scope": [
+          "src/dateparse/parser.py",
+          "src/dateparse/validator.py",
+          "src/dateparse/utils.py",
+          "tests/test_parser.py"
+        ],
+        "files_to_modify": [
+          "src/dateparse/parser.py"
+        ],
+        "steps": [
+          "Locate the `parse_date` function in `src/dateparse/parser.py`.",
+          "Modify line 23 to call `s.strip()` on the input string before passing it to `datetime.datetime.strptime`.",
+          "Ensure the return statement remains as `.date()` to maintain the expected return type.",
+          "Run tests to verify that both trimmed and untrimmed date strings parse correctly."
+        ],
+        "risks": [
+          "Potential edge case where `s` is `None` (though unlikely given current usage) causing an AttributeError on `.strip()`.",
+          "Minor performance overhead from the string method call, negligible for date parsing.",
+          "Documentation in other files (like `validator.py`) mentioning that `parse_date` doesn't strip might now be slightly misleading, though they delegate to it."
+        ],
+        "regression_test": "Run `tests/test_parser.py`, specifically the `test_parse_date_with_whitespace` method which asserts that ' 2024-01-01 ' parses correctly to `datetime.date(2024, 1, 1)`.",
+        "generated_by": "llm"
+      },
+      "understanding": {
+        "original_issue": "布尔值字符串 true/false 前后有空格时解析失败",
+        "summary": "解析日期字符串时，如果输入包含前后空格（如 ' 2024-01-01 '），会导致解析失败或校验错误。",
+        "expected_behavior": "函数应自动去除输入字符串首尾的空格后再进行日期格式匹配，从而正确解析带空格的日期。",
+        "search_query": "parse_date s.strip YYYY-MM-DD",
+        "scope": "matched",
+        "explanation": "根据 catalog 描述，`parse_date` 函数直接对原始字符串 `s` 使用 `strptime`，而文档明确指出其 Bug 在于未调用 `s.strip()`。由于其他函数（如 `is_valid_date`）都委托给 `parse_date`，修复 `parse_date` 即可解决所有相关场景。",
+        "targets": [
+          {
+            "ref": "src/dateparse/parser.py:9",
+            "path": "src/dateparse/parser.py",
+            "name": "parse_date",
+            "start_line": 9
+          }
+        ],
+        "repository_functions": [
+          "src/dateparse/formatter.py:format_date",
+          "src/dateparse/formatter.py:format_iso",
+          "src/dateparse/parser.py:parse_date",
+          "src/dateparse/parser.py:parse_datetime",
+          "src/dateparse/utils.py:days_between",
+          "src/dateparse/utils.py:add_days",
+          "src/dateparse/utils.py:is_leap_year",
+          "src/dateparse/validator.py:is_valid_date",
+          "src/dateparse/validator.py:validate_range",
+          "src/dateparse/validator.py:is_weekend"
+        ],
+        "catalog_total": 10,
+        "catalog_shown": 10,
+        "model": "qwen35-9b-unc:latest",
+        "generated_by": "llm",
+        "error": "",
+        "retrieval_mode": "llm_grounded_source"
+      }
+    }
+  }
+]

@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://replens-oss.local/eval/datasets/dataset.schema.json",
+  "title": "RepoLens 评测集样本",
+  "description": "所有 eval/datasets/*.json 的样本必须满足本 schema。文件级数据集种类（定位/修复）见 datasets.manifest.json。",
+  "type": "object",
+  "required": [
+    "id",
+    "category",
+    "issue",
+    "expected"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": [
+        "integer",
+        "string"
+      ],
+      "description": "样本唯一标识，同一文件内不得重复"
+    },
+    "category": {
+      "enum": [
+        "bug",
+        "feature",
+        "noise"
+      ],
+      "description": "bug/feature 为正向样本；noise 为干扰样本，expected 必须为空数组"
+    },
+    "issue": {
+      "type": "string",
+      "minLength": 1,
+      "description": "自然语言 Issue 描述，不得直接复刻函数名"
+    },
+    "expected": {
+      "type": "array",
+      "description": "标注目标，格式 path[:function[:line]]；干扰样本显式用 []",
+      "items": {
+        "type": "string",
+        "pattern": "^[^\\\\:]+(:[A-Za-z_][A-Za-z0-9_.]*)?(:[1-9][0-9]*)?$"
+      }
+    },
+    "project": {
+      "type": "string",
+      "minLength": 1,
+      "description": "上游项目名，如 tqdm / pypdf / loguru"
+    },
+    "buggy_parent": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$",
+      "description": "buggy 父提交，完整校验通过时至少 7 位十六进制"
+    },
+    "fix_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$",
+      "description": "上游修复提交"
+    },
+    "test_cmd": {
+      "type": "string",
+      "minLength": 1,
+      "description": "复现/验证该 bug 的测试命令"
+    },
+    "validation_scope": {
+      "enum": [
+        "targeted",
+        "file"
+      ],
+      "description": "验证命令口径：targeted=定向到补丁新增的测试；file=退回整个测试文件。定向口径更可信，file 口径可能受同文件无关用例影响。"
+    },
+    "issue_source": {
+      "enum": [
+        "commit_subject",
+        "commit_body",
+        "upstream_issue",
+        "upstream_pull"
+      ],
+      "description": "issue 文本的上游出处：提交标题 / 提交正文 / 关联 issue 标题 / PR 正文。全部是上游原文，不做改写；改换出处必须能回溯到 issue_upgrade.json。"
+    },
+    "issue_quality": {
+      "enum": [
+        "clear",
+        "weak"
+      ],
+      "description": "描述质量：weak 表示实词<=3 或含 misc/various/edge cases 等不指向行为的词。weak 样本保留在分母内，但引用指标时必须同时说明条数。"
+    },
+    "fail_pass": {
+      "type": "boolean",
+      "description": "该样本最近一次 fail→pass 重验是否通过。写入前必须为 true，false 的样本不得留在数据集中。"
+    },
+    "verified_at": {
+      "type": "string",
+      "minLength": 1,
+      "description": "最近一次 fail→pass 重验的时间（本地时间 ISO 秒级）"
+    },
+    "env_profile": {
+      "type": "string",
+      "minLength": 1,
+      "description": "验证所用环境画像：modern=当前解释器；urllib3-1=按时代建的环境（见 eval/envs/）"
+    }
+  }
+}

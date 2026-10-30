@@ -1,0 +1,46 @@
+{
+  "after": null,
+  "before": [
+    {
+      "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "t_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n>       actual = _mod.read_flag(*['1'], **{})\n\n__replens_task__\\test_current_issue.py:42: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = '1'\n\n    def read_flag(value):\n        key = value.lower()\n        if key not in {\"true\", \"false\"}:\n>           raise ValueError(\"unsupported flag\")\nE           ValueError: unsupported flag\n\napi.py:4: ValueError\n_________________________ TaskTests.test_preserve_04 __________________________\n\nself = <test_current_issue.TaskTests testMethod=test_preserve_04>\n\n    def test_preserve_04(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_iqw8t68o/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n>       actual = _mod.read_flag(*[' true '], **{})\n\n__replens_task__\\test_current_issue.py:52: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = ' true '\n\n    def read_flag(value):\n        key = value.lower()\n        if key not in {\"true\", \"false\"}:\n>           raise ValueError(\"unsupported flag\")\nE           ValueError: unsupported flag\n\napi.py:4: ValueError\n_________________________ TaskTests.test_preserve_05 __________________________\n\nself = <test_current_issue.TaskTests testMethod=test_preserve_05>\n\n    def test_preserve_05(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_iqw8t68o/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n>       actual = _mod.read_flag(*[' True '], **{})\n\n__replens_task__\\test_current_issue.py:63: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = ' True '\n\n    def read_flag(value):\n        key = value.lower()\n        if key not in {\"true\", \"false\"}:\n>           raise ValueError(\"unsupported flag\")\nE           ValueError: unsupported flag\n\napi.py:4: ValueError\n_________________________ TaskTests.test_preserve_06 __________________________\n\nself = <test_current_issue.TaskTests testMethod=test_preserve_06>\n\n    def test_preserve_06(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_iqw8t68o/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n>       actual = _mod.read_flag(*['\\tTRUE\\t'], **{})\n\n__replens_task__\\test_current_issue.py:73: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = '\\tTRUE\\t'\n\n    def read_flag(value):\n        key = value.lower()\n        if key not in {\"true\", \"false\"}:\n>           raise ValueError(\"unsupported flag\")\nE           ValueError: unsupported flag\n\napi.py:4: ValueError\n=========================== short test summary info ===========================\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_00 - Val...\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_01 - Val...\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_preserve_03 - ...\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_preserve_04 - ...\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_preserve_05 - ...\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_preserve_06 - ...\n========================= 6 failed, 5 passed in 0.81s =========================\n",
+      "structured": true,
+      "summary": {
+        "collected": 11,
+        "errors": 0,
+        "failed": 6,
+        "passed": 5,
+        "ran": 11,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_preserve_03": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_preserve_04": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_preserve_05": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_preserve_06": "FAIL",
+        "tests/test_public.py::PublicTests::test_false": "PASS",
+        "tests/test_public.py::PublicTests::test_format": "PASS",
+        "tests/test_public.py::PublicTests::test_invalid": "PASS",
+        "tests/test_public.py::PublicTests::test_true": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+  "enabled": true,
+  "files": {
+    "__replens_task__/test_current_issue.py": "# Model-proposed task tests, frozen before patch generation.\nimport unittest\n\nclass TaskTests(unittest.TestCase):\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.read_flag(*[' true '], **{})\n        self.assertIs(actual, True)\n\n    def test_issue_01(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.read_flag(*['\\tfalse\\n'], **{})\n        self.assertIs(actual, False)\n\n    def test_issue_02(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.read_flag(*['TRUE'], **{})\n        self.assertIs(actual, True)\n\n    def test_preserve_03(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.read_flag(*['1'], **{})\n        self.assertEqual(actual, 1)\n\n    def test_preserve_04(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.read_flag(*[' true '], **{})\n        actual = str(actual)\n        self.assertIs(actual, True)\n\n    def test_preserve_05(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.read_flag(*[' True '], **{})\n        self.assertIs(actual, True)\n\n    def test_preserve_06(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.read_flag(*['\\tTRUE\\t'], **{})\n        self.assertIs(actual, True)\n\n"
+  },
+  "timeout": 120
+}

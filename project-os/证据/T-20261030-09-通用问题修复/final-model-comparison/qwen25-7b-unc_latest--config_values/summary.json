@@ -1,0 +1,24 @@
+{
+  "model": "qwen25-7b-unc:latest",
+  "task": "config_values",
+  "seconds": 20.985,
+  "exit_code": 2,
+  "repair_status": "UNVERIFIED",
+  "blocked_reason": "",
+  "reasons": [
+    "定位证据不足，不能确认修复"
+  ],
+  "patch_note": "当前的实现仅检查 'true' 和 'false'，并且没有处理前导或尾随空白字符。此外，大小写敏感性需要解决。",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "9ca9318e01ff48aa80ce2f73db97ecba.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

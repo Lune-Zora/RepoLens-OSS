@@ -1,0 +1,42 @@
+From 1811db17d015354415b9da9d978ac41aa98b7b3c Mon Sep 17 00:00:00 2001
+From: RepoLens OSS <replens@example.com>
+Date: Sun, 27 Sep 2026 21:44:03 +0800
+Subject: [PATCH] fix: handle total=inf in format_meter to avoid OverflowError
+
+---
+ tests/tests_tqdm.py | 2 ++
+ tqdm/std.py         | 5 ++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/tests/tests_tqdm.py b/tests/tests_tqdm.py
+index 12648de..7c37640 100644
+--- a/tests/tests_tqdm.py
++++ b/tests/tests_tqdm.py
+@@ -213,6 +213,8 @@ def test_format_meter():
+     assert format_meter(231, 1000, 392) == (" 23%|" + unich(0x2588) * 2 + unich(0x258e) +
+                                             "       | 231/1000 [06:32<21:44,  1.70s/it]")
+     assert format_meter(10000, 1000, 13) == "10000it [00:13, 769.23it/s]"
++    # total=inf behaves the same as unknown total (#651) instead of crashing
++    assert format_meter(5, float("inf"), 1) == format_meter(5, None, 1)
+     assert format_meter(231, 1000, 392, ncols=56, ascii=True) == " 23%|" + '#' * 3 + '6' + (
+         "            | 231/1000 [06:32<21:44,  1.70s/it]")
+     assert format_meter(100000, 1000, 13, unit_scale=True,
+diff --git a/tqdm/std.py b/tqdm/std.py
+index 906727e..0e3a91c 100644
+--- a/tqdm/std.py
++++ b/tqdm/std.py
+@@ -530,7 +530,10 @@ class tqdm(Comparable):
+         """
+ 
+         # sanity check: total
+-        if total and n >= (total + 0.5):  # allow float imprecision (#849)
++        if total == float("inf"):
++            # infinite total: behave the same as unknown total (#651)
++            total = None
++        elif total and n >= (total + 0.5):  # allow float imprecision (#849)
+             total = None
+ 
+         # apply custom scale if necessary
+-- 
+2.55.0.windows.5
+

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "sample_id": "tqdm-reset-total-infinity",
+  "status": "FAILED",
+  "started_at_unix": 1793060890.822014,
+  "repository": "tqdm",
+  "issue": "When a progress bar's counters are cleared and re-initialized with an infinite total, the bar must treat it as unknown, as it does at construction.",
+  "buggy_parent": "5bf58c2d61410e5a17da3440df921fe34c6c38bf",
+  "fix_commit": "426a0988a1e9970041f5a649ae8a6376c5293fbe",
+  "control_artifact_directory": "C:\\Users\\56514\\Documents\\ChatGPT\\全球人工智能 2\\provenance_20261026\\final_preflight",
+  "steps": [],
+  "stage": "preflight",
+  "failed_stage": "preflight",
+  "failure": "本地 tqdm Git 仓库目录不存在；本脚本不会联网克隆",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\56514\\Documents\\ChatGPT\\全球人工智能 2\\task1_20261017\\repo\\scripts\\restore_tqdm_reset_inf.py\", line 354, in run\n    raise RestoreError('preflight', '本地 tqdm Git 仓库目录不存在；本脚本不会联网克隆')\nRestoreError: 本地 tqdm Git 仓库目录不存在；本脚本不会联网克隆\n",
+  "completed_at_unix": 1793060890.8310897,
+  "raw_log_manifest": []
+}

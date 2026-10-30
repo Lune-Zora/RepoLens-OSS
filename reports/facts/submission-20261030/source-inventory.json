@@ -1,0 +1,4823 @@
+[
+  {
+    "path": "replens/__init__.py",
+    "lines": 8,
+    "sha256": "d5e0634ce7edd31b451d064f9e2e03a4d2ced57be86bd941fe0a903fc8e082ae",
+    "definitions": []
+  },
+  {
+    "path": "replens/__main__.py",
+    "lines": 4,
+    "sha256": "3129adff95e0f38b87ab34cddfc27082c7892bcaec267ff5d40f160fdf55b44a",
+    "definitions": []
+  },
+  {
+    "path": "replens/cli.py",
+    "lines": 400,
+    "sha256": "307637bb8929b819899239c6ed184f4980a47347c300fcb686b303340cde76ef",
+    "definitions": [
+      {
+        "name": "_index_path",
+        "line": 25,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_default_test_command",
+        "line": 29,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_regression_test_command",
+        "line": 37,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_load_db",
+        "line": 44,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_do_retrieve",
+        "line": 52,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_init",
+        "line": 65,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_index",
+        "line": 80,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_search",
+        "line": 89,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_plan",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_run",
+        "line": 111,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_patch_target_paths",
+        "line": 149,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_mine",
+        "line": 172,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_era_env",
+        "line": 187,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_verify",
+        "line": 230,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_compliance",
+        "line": 246,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "cmd_eval",
+        "line": 256,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "build_parser",
+        "line": 271,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_configure_stdio",
+        "line": 378,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 392,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/compliance.py",
+    "lines": 351,
+    "sha256": "2f50704e1c602c19816c2e80749b1dbd379ea336abb5492a3a35835f6a778da3",
+    "definitions": [
+      {
+        "name": "ThirdPartyDep",
+        "line": 51,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_parse_requirements",
+        "line": 63,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_parse_pyproject",
+        "line": 81,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "collect_deps",
+        "line": 112,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "render_disclosure_markdown",
+        "line": 133,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "ResourceEntry",
+        "line": 158,
+        "type": "ClassDef"
+      },
+      {
+        "name": "render_official_checklist",
+        "line": 240,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "render_full_disclosure",
+        "line": 257,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_project_resources",
+        "line": 295,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_find_unregistered_deps",
+        "line": 312,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "build_disclosure",
+        "line": 330,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "to_dict",
+        "line": 58,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/era_env.py",
+    "lines": 414,
+    "sha256": "0c3c9575f267342c88ae8c9270ed90aeb72c075f58bf92ed1272604bd56b2749",
+    "definitions": [
+      {
+        "name": "EraEnvError",
+        "line": 69,
+        "type": "ClassDef"
+      },
+      {
+        "name": "env_root",
+        "line": 73,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_git_show",
+        "line": 89,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_version_tuple",
+        "line": 96,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "urllib3_specifiers",
+        "line": 103,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "urllib3_upper_bound",
+        "line": 114,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "runtime_specifiers",
+        "line": 141,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "legacy_test_imports",
+        "line": 175,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "select_profile",
+        "line": 187,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "lock_path",
+        "line": 204,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "load_lock",
+        "line": 208,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "current_tag",
+        "line": 220,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "interpreter_tag",
+        "line": 224,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "venv_dir",
+        "line": 242,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "venv_python",
+        "line": 249,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "python_for",
+        "line": 255,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "built_environments",
+        "line": 267,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_fingerprint",
+        "line": 289,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_packages",
+        "line": 295,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "recorded_fingerprint_mismatch",
+        "line": 308,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_package_name",
+        "line": 317,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "merge_requirements",
+        "line": 322,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_pip_install",
+        "line": 340,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "ensure",
+        "line": 349,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "reset",
+        "line": 398,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "describe",
+        "line": 407,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/eval_inputs.py",
+    "lines": 295,
+    "sha256": "9d6708f3160bdc607177fa55dc0a5b9c9a55f8480945442dcbe7ebc9fe82b6e9",
+    "definitions": [
+      {
+        "name": "InputManifestError",
+        "line": 30,
+        "type": "ClassDef"
+      },
+      {
+        "name": "sha256",
+        "line": 34,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_external",
+        "line": 38,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_resolve",
+        "line": 43,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_plain_file",
+        "line": 52,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_entry_bytes",
+        "line": 59,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_listed_files",
+        "line": 81,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "audit_sample",
+        "line": 95,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "read_samples",
+        "line": 172,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "validate_manifest",
+        "line": 182,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "pack_inputs",
+        "line": 203,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "evaluation_inputs",
+        "line": 249,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/eval_metrics.py",
+    "lines": 182,
+    "sha256": "2ae688de8ec42592a36eebb130190ba55a4fc71bbdfb8943ab6647ea917abf0d",
+    "definitions": [
+      {
+        "name": "validate_limits",
+        "line": 17,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "relative_path",
+        "line": 24,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "parse_expected",
+        "line": 34,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "validate_dataset",
+        "line": 52,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "load_dataset",
+        "line": 76,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "unique_paths",
+        "line": 83,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "file_scores",
+        "line": 87,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "hit_symbols",
+        "line": 94,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "score_predictions",
+        "line": 109,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/eval_runner.py",
+    "lines": 63,
+    "sha256": "c0c210927c1aef356ae550b03f7d4ec133af6e9ddf08e4fef23a94365f7f49fd",
+    "definitions": [
+      {
+        "name": "retrieve_predictions",
+        "line": 12,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "print_metrics",
+        "line": 28,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run_eval",
+        "line": 42,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/execution_evidence.py",
+    "lines": 149,
+    "sha256": "a13fb89e33a38ef19e50606ca230af010462a67acc63176f0f7e7379af8ea3a9",
+    "definitions": [
+      {
+        "name": "ExecutionHint",
+        "line": 25,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_rel_path",
+        "line": 40,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "parse_traceback_frames",
+        "line": 56,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "match_hint_to_symbols",
+        "line": 98,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "collect_execution_evidence",
+        "line": 134,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "ref",
+        "line": 33,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_add",
+        "line": 66,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/executor.py",
+    "lines": 560,
+    "sha256": "945883a87a916801fa9845a453cd1df40a6fadcbe596db86d8a358e11a03f06c",
+    "definitions": [
+      {
+        "name": "TestResult",
+        "line": 40,
+        "type": "ClassDef"
+      },
+      {
+        "name": "CommandNotAllowedError",
+        "line": 73,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_parse_test_summary",
+        "line": 101,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_compute_valid",
+        "line": 137,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_is_allowed",
+        "line": 165,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_read",
+        "line": 192,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_write",
+        "line": 197,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_safe_target",
+        "line": 203,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_apply_json_patch",
+        "line": 217,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_apply_unified_diff",
+        "line": 253,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_apply_patch",
+        "line": 340,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_write_extra_files",
+        "line": 346,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_resolve_command",
+        "line": 356,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_copytree",
+        "line": 373,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "render_patch_as_diff",
+        "line": 379,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_framework",
+        "line": 398,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_run_one",
+        "line": 407,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_prepare_tmp",
+        "line": 471,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run_tests",
+        "line": 483,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run_test_suite",
+        "line": 505,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "to_dict",
+        "line": 56,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_ignore",
+        "line": 374,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "protected",
+        "line": 522,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "timeout_text",
+        "line": 458,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/falsify.py",
+    "lines": 90,
+    "sha256": "2ab6a514d64f135aca44d098fa03438c23f0c2d3fe0375dda0f95c7bc9f45e31",
+    "definitions": [
+      {
+        "name": "rerank_evidences",
+        "line": 19,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/flip_predictor.py",
+    "lines": 150,
+    "sha256": "e8a5888f2a25e61c3f73acfc459ef51592a5edd23ebb5930712160e7ba132530",
+    "definitions": [
+      {
+        "name": "parse_failed_tests",
+        "line": 26,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "seed_names_from_patch",
+        "line": 46,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "predict_flips",
+        "line": 95,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "evaluate_flips",
+        "line": 128,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/indexer.py",
+    "lines": 383,
+    "sha256": "90d99d9d0760ee2dcda2ecf56e7beb31e811f85e9a8c36208aae3ab9bd5ee6ab",
+    "definitions": [
+      {
+        "name": "Symbol",
+        "line": 23,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_SymbolCollector",
+        "line": 40,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_collect_imports",
+        "line": 116,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "IndexDB",
+        "line": 131,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_src_fingerprint",
+        "line": 302,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "build_index",
+        "line": 315,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "ref",
+        "line": 35,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 43,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_code",
+        "line": 52,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_signature",
+        "line": 57,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "visit_ClassDef",
+        "line": 70,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "visit_FunctionDef",
+        "line": 82,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "visit_AsyncFunctionDef",
+        "line": 85,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_visit_func",
+        "line": 88,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "visit_Call",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_callee_name",
+        "line": 108,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 134,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_init_schema",
+        "line": 141,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "fts_available",
+        "line": 203,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "clear",
+        "line": 206,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "insert_symbols",
+        "line": 214,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "insert_imports",
+        "line": 227,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "insert_calls",
+        "line": 233,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "is_current",
+        "line": 241,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "set_fingerprint",
+        "line": 254,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "save_embedding",
+        "line": 263,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "load_embeddings",
+        "line": 272,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "all_symbol_ids",
+        "line": 291,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "close",
+        "line": 298,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/llm.py",
+    "lines": 154,
+    "sha256": "ea2fbb66c795d1fec4ae65e85cad1c0512c582358235ba77c37ad2adb0bd0297",
+    "definitions": [
+      {
+        "name": "LLMError",
+        "line": 17,
+        "type": "ClassDef"
+      },
+      {
+        "name": "OpenAICompatLLM",
+        "line": 21,
+        "type": "ClassDef"
+      },
+      {
+        "name": "TransformersLocalLLM",
+        "line": 104,
+        "type": "ClassDef"
+      },
+      {
+        "name": "__init__",
+        "line": 24,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "chat_json",
+        "line": 36,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_extract_json",
+        "line": 79,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 111,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "chat_json",
+        "line": 118,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_extract_json",
+        "line": 140,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/llm_audit.py",
+    "lines": 66,
+    "sha256": "cc0b96a8cd12c4cd6816ab02c8ce327d4179122ce0c3f4c1e324e25e770ee8ce",
+    "definitions": [
+      {
+        "name": "LLMTrace",
+        "line": 12,
+        "type": "ClassDef"
+      },
+      {
+        "name": "__init__",
+        "line": 13,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_redact",
+        "line": 33,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_write",
+        "line": 42,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "finish",
+        "line": 48,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/miner.py",
+    "lines": 734,
+    "sha256": "6203f27050b80ffc2514d4ca16116a22e359c753e55f4b52231ac16289c16b8f",
+    "definitions": [
+      {
+        "name": "_git",
+        "line": 26,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_clean_issue",
+        "line": 39,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_norm_space",
+        "line": 78,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_content_words",
+        "line": 82,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_is_weak_issue",
+        "line": 88,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_body_paragraphs",
+        "line": 101,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_first_sentence",
+        "line": 135,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_descriptive_line",
+        "line": 143,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "issue_from_subject",
+        "line": 156,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "issue_from_commit",
+        "line": 176,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_first_changed_old_line",
+        "line": 184,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_first_changed_new_line",
+        "line": 219,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_innermost_symbol",
+        "line": 239,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_enclosing_class",
+        "line": 254,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_module_symbols",
+        "line": 272,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "attribute_symbol",
+        "line": 288,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_symbol_at_line",
+        "line": 321,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_write_patch_files",
+        "line": 336,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_changed_right_lines",
+        "line": 351,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_test_node_spans",
+        "line": 376,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_enclosing_test_functions",
+        "line": 414,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_affected_test_nodes",
+        "line": 425,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_worktree_env",
+        "line": 465,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "patch_file_sets",
+        "line": 484,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "verify_item",
+        "line": 497,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_kill_tree",
+        "line": 561,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_run_pytest",
+        "line": 579,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_failure_tail",
+        "line": 597,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_verification_env",
+        "line": 603,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "mine_repo",
+        "line": 622,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "flush",
+        "line": 111,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/patchgen.py",
+    "lines": 541,
+    "sha256": "cbcd4e783227df5c3523ee78bdd2f9eb4631e78df04078034b48ea036b8ccfd6",
+    "definitions": [
+      {
+        "name": "_llm_required",
+        "line": 30,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "PatchGenError",
+        "line": 34,
+        "type": "ClassDef"
+      },
+      {
+        "name": "AttemptRecord",
+        "line": 39,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_failure_kind",
+        "line": 56,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_failed_test_count",
+        "line": 67,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_failed_attempt_rank",
+        "line": 86,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_compare_failed",
+        "line": 96,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_pick_best_failed",
+        "line": 105,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_rel_safe",
+        "line": 117,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "validate_rules",
+        "line": 132,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "write_patch",
+        "line": 172,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_first_body_anchor",
+        "line": 185,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "PatchGenerator",
+        "line": 214,
+        "type": "ClassDef"
+      },
+      {
+        "name": "RulePatchGenerator",
+        "line": 220,
+        "type": "ClassDef"
+      },
+      {
+        "name": "LLMPatchGenerator",
+        "line": 259,
+        "type": "ClassDef"
+      },
+      {
+        "name": "build_patch_generator",
+        "line": 347,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_failure_feedback",
+        "line": 372,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "auto_patch_loop",
+        "line": 382,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate",
+        "line": 215,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate",
+        "line": 229,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 262,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_build_prompts",
+        "line": 268,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate_candidates",
+        "line": 305,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate",
+        "line": 339,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_try_candidates",
+        "line": 408,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/planner.py",
+    "lines": 196,
+    "sha256": "39b663f71b0b2faddecb017a6aa1ee5562c9ecbcc6a881cdf23829a7bd2ce862",
+    "definitions": [
+      {
+        "name": "Plan",
+        "line": 21,
+        "type": "ClassDef"
+      },
+      {
+        "name": "Planner",
+        "line": 34,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_llm_required",
+        "line": 39,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "RulePlanner",
+        "line": 43,
+        "type": "ClassDef"
+      },
+      {
+        "name": "LLMPlanner",
+        "line": 113,
+        "type": "ClassDef"
+      },
+      {
+        "name": "build_planner",
+        "line": 177,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "to_dict",
+        "line": 30,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate",
+        "line": 35,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate",
+        "line": 46,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_build_test_hint",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 116,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_fail",
+        "line": 121,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate",
+        "line": 126,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/provenance.py",
+    "lines": 458,
+    "sha256": "19cf7dcc60fe0497a605b259f7139d7154f542f794f7ef574cf493e4592a9934",
+    "definitions": [
+      {
+        "name": "_json_text",
+        "line": 30,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_sha256",
+        "line": 34,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_sha256_of_file",
+        "line": 38,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_git_field",
+        "line": 46,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_relative_path",
+        "line": 55,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_inside",
+        "line": 63,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_tree_hash",
+        "line": 74,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "source_snapshot",
+        "line": 81,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_source_tree_digest",
+        "line": 100,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_environment",
+        "line": 104,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_file_map",
+        "line": 113,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_records",
+        "line": 124,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_results",
+        "line": 148,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_suite",
+        "line": 152,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "build_provenance",
+        "line": 157,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_read_json",
+        "line": 238,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_load_bundle",
+        "line": 252,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_same_results",
+        "line": 360,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_verification",
+        "line": 372,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "verify_provenance",
+        "line": 378,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "unique",
+        "line": 239,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/repo.py",
+    "lines": 207,
+    "sha256": "d1938c0d523435d56a8e8dbeed44da353454b6f5b7f68809291bff17677e72a5",
+    "definitions": [
+      {
+        "name": "RepoMeta",
+        "line": 44,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_detect_license",
+        "line": 62,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_find_license",
+        "line": 88,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_detect_test_framework",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_collect_dependencies",
+        "line": 151,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_collect_python_files",
+        "line": 155,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_collect_document_files",
+        "line": 168,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "import_repo",
+        "line": 182,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "to_dict",
+        "line": 58,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/report.py",
+    "lines": 283,
+    "sha256": "7038124057ceb2c10e874104ccc1e5819db24836f20bdc998823b91286a948ad",
+    "definitions": [
+      {
+        "name": "build_report",
+        "line": 14,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_failure_lines",
+        "line": 89,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "render_markdown",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "render_json",
+        "line": 264,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "render_verification_markdown",
+        "line": 268,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/retriever.py",
+    "lines": 327,
+    "sha256": "a5c06d0f75826e12afa161046132fbbd3655f119c11349c47280882e84c63b2b",
+    "definitions": [
+      {
+        "name": "Evidence",
+        "line": 29,
+        "type": "ClassDef"
+      },
+      {
+        "name": "tokenize",
+        "line": 39,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_is_test_path",
+        "line": 77,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_fts_search",
+        "line": 87,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_like_search",
+        "line": 104,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_row_to_symbol",
+        "line": 121,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_same_dir",
+        "line": 130,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_symbols_by_import",
+        "line": 136,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_expand_call_graph",
+        "line": 156,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_symbols_by_name",
+        "line": 194,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_symbol_by_ref",
+        "line": 206,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "retrieve",
+        "line": 216,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_matched_token_count",
+        "line": 316,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_build_reason",
+        "line": 322,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/retriever_hybrid.py",
+    "lines": 299,
+    "sha256": "a526f1f30393ebf840827e0339d8775083d268cc71d6c99e870038de348f87cc",
+    "definitions": [
+      {
+        "name": "EmbeddingSpec",
+        "line": 41,
+        "type": "ClassDef"
+      },
+      {
+        "name": "BaseEmbedder",
+        "line": 46,
+        "type": "ClassDef"
+      },
+      {
+        "name": "OpenAICompatEmbedder",
+        "line": 56,
+        "type": "ClassDef"
+      },
+      {
+        "name": "FastembedEmbedder",
+        "line": 81,
+        "type": "ClassDef"
+      },
+      {
+        "name": "SentenceTransformerEmbedder",
+        "line": 99,
+        "type": "ClassDef"
+      },
+      {
+        "name": "build_embedder",
+        "line": 116,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_cosine",
+        "line": 136,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_candidate_rows",
+        "line": 147,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_embed_symbol",
+        "line": 163,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "retrieve_hybrid",
+        "line": 174,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "embed",
+        "line": 49,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "spec",
+        "line": 52,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 61,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "embed",
+        "line": 66,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 86,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "embed",
+        "line": 91,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 104,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "embed",
+        "line": 109,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_bm25_key",
+        "line": 219,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_sem_key",
+        "line": 230,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/runner.py",
+    "lines": 303,
+    "sha256": "ae8c0fe31216bdeb972ae99bee98b43ed0c9c7a8db16ba739dd9e0ab11af80c4",
+    "definitions": [
+      {
+        "name": "RepairRequest",
+        "line": 44,
+        "type": "ClassDef"
+      },
+      {
+        "name": "RepairResult",
+        "line": 60,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_default_test_command",
+        "line": 89,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_regression_test_command",
+        "line": 97,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_do_retrieve",
+        "line": 103,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run_repair",
+        "line": 115,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_run_repair",
+        "line": 142,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/test_adapter.py",
+    "lines": 102,
+    "sha256": "764d66e2ca42b192d0812fee02dd29d2950db51167bfdb401017aa4e37715151",
+    "definitions": [
+      {
+        "name": "main",
+        "line": 15,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "record",
+        "line": 25,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "Result",
+        "line": 30,
+        "type": "ClassDef"
+      },
+      {
+        "name": "Runner",
+        "line": 62,
+        "type": "ClassDef"
+      },
+      {
+        "name": "PytestPlugin",
+        "line": 65,
+        "type": "ClassDef"
+      },
+      {
+        "name": "addSuccess",
+        "line": 31,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "addFailure",
+        "line": 35,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "addError",
+        "line": 39,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "addSkip",
+        "line": 45,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "addExpectedFailure",
+        "line": 49,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "addUnexpectedSuccess",
+        "line": 53,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "addSubTest",
+        "line": 57,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "pytest_collectreport",
+        "line": 66,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "pytest_runtest_logreport",
+        "line": 70,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "pytest_sessionfinish",
+        "line": 78,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/testgen.py",
+    "lines": 263,
+    "sha256": "9c23e4e50fcc861042642e66e02085d947b1e4673ecf9d1698cd317b2d375e54",
+    "definitions": [
+      {
+        "name": "_package_import_info",
+        "line": 30,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_find_method_owner",
+        "line": 43,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_module_loader_code",
+        "line": 57,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_parse_required_params",
+        "line": 85,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_issue_mentions_whitespace",
+        "line": 98,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_extract_example_input",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_whitespace_example",
+        "line": 118,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_behavioral_pytest",
+        "line": 125,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_behavioral_unittest",
+        "line": 134,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_smoke_pytest",
+        "line": 144,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate_regression_test",
+        "line": 175,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_generate_unittest_case",
+        "line": 226,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "replens/validation.py",
+    "lines": 130,
+    "sha256": "1032e56d3d063447506d472053e4f7a4717a93dd036825eb8a2e3c359c64f0ff",
+    "definitions": [
+      {
+        "name": "load_acceptance",
+        "line": 13,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "validate_acceptance",
+        "line": 26,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "inventory",
+        "line": 49,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "assess_primary",
+        "line": 59,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "assess_repair",
+        "line": 101,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "web/__init__.py",
+    "lines": 1,
+    "sha256": "4c02e5417dfc47a885cd74d8cc7495a3fb5297e231de05e3c800635aa4a0efd6",
+    "definitions": []
+  },
+  {
+    "path": "web/app.py",
+    "lines": 551,
+    "sha256": "0bf84e9380cafae7347259880631aff1d4e70bc8d517110e4e239f475e083877",
+    "definitions": [
+      {
+        "name": "_is_repo_dir",
+        "line": 52,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_system_proxy",
+        "line": 56,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_list_drives",
+        "line": 85,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_list_repos",
+        "line": 99,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_list_datasets",
+        "line": 132,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_env_status",
+        "line": 142,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_do_retrieve",
+        "line": 164,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_default_test_command",
+        "line": 175,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_evidences_to_json",
+        "line": 183,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "InitRequest",
+        "line": 200,
+        "type": "ClassDef"
+      },
+      {
+        "name": "IndexRequest",
+        "line": 204,
+        "type": "ClassDef"
+      },
+      {
+        "name": "SearchRequest",
+        "line": 209,
+        "type": "ClassDef"
+      },
+      {
+        "name": "PlanRequest",
+        "line": 216,
+        "type": "ClassDef"
+      },
+      {
+        "name": "RunRequest",
+        "line": 223,
+        "type": "ClassDef"
+      },
+      {
+        "name": "EvalRequest",
+        "line": 237,
+        "type": "ClassDef"
+      },
+      {
+        "name": "VerifyRequest",
+        "line": 247,
+        "type": "ClassDef"
+      },
+      {
+        "name": "ComplianceRequest",
+        "line": 254,
+        "type": "ClassDef"
+      },
+      {
+        "name": "MineRequest",
+        "line": 258,
+        "type": "ClassDef"
+      },
+      {
+        "name": "CloneRequest",
+        "line": 269,
+        "type": "ClassDef"
+      },
+      {
+        "name": "FsListRequest",
+        "line": 273,
+        "type": "ClassDef"
+      },
+      {
+        "name": "index",
+        "line": 282,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_env",
+        "line": 291,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_repos",
+        "line": 296,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_datasets",
+        "line": 301,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_init",
+        "line": 310,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_index",
+        "line": 319,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_search",
+        "line": 336,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_plan",
+        "line": 353,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_run",
+        "line": 373,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_verify",
+        "line": 406,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_eval",
+        "line": 412,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_compliance",
+        "line": 431,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_mine",
+        "line": 440,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_clone",
+        "line": 451,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "api_fs_list",
+        "line": 506,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "add",
+        "line": 105,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "web/static/app.js",
+    "lines": 575,
+    "sha256": "2608a8d897930456a83995190499d975144216f33e28606da7ca86ffb7fad544"
+  },
+  {
+    "path": "web/static/index.html",
+    "lines": 225,
+    "sha256": "97381b5088194b29a6fdaaa74f3c1a6ef9942baefd100111e4e9d67af5b19662"
+  },
+  {
+    "path": "web/static/style.css",
+    "lines": 255,
+    "sha256": "00dfc621e1b8e4dbc600b2a41d2ccc5d7b11f6cb0b05667ce79cd44096e04fde"
+  },
+  {
+    "path": "scripts/_docmap.py",
+    "lines": 25,
+    "sha256": "d4eec59b7b70d3aa37e82513decd9767c4b9c7cb54f09702c2aa9a304ce12ed6",
+    "definitions": []
+  },
+  {
+    "path": "scripts/_sim.py",
+    "lines": 6,
+    "sha256": "8da39f6254d88b243abc0ab24270787dad8124a4c5220070c9a7c620623fb07a",
+    "definitions": []
+  },
+  {
+    "path": "scripts/build_delivery.py",
+    "lines": 184,
+    "sha256": "6d7768edd9e2ba9b75dc91914a5b184cf56bc05e43105bad8fdc6d53df778934",
+    "definitions": [
+      {
+        "name": "_sha256",
+        "line": 72,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_check_control_run",
+        "line": 76,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_build_manifest",
+        "line": 89,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_build_summary",
+        "line": 120,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 137,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/build_training_data.py",
+    "lines": 113,
+    "sha256": "b1b7b4e54bc8274ac28ccba445faa9e9e0dccf2cd45121256c3eff033a4c0cb1",
+    "definitions": [
+      {
+        "name": "mk",
+        "line": 15,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "strip_patch",
+        "line": 19,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/check_env.py",
+    "lines": 103,
+    "sha256": "93dc17940cac1b41c2b2f4923d925fd4d5ad99581cc030e22b38654db54bee82",
+    "definitions": [
+      {
+        "name": "_parse_version",
+        "line": 39,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_check",
+        "line": 47,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 78,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/check_web.py",
+    "lines": 45,
+    "sha256": "fb7c7d34d1c9d053de084b41bd4c1645f23cfa7855e3323abb8e117c0523ad9e",
+    "definitions": [
+      {
+        "name": "main",
+        "line": 12,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/eval_finetune.py",
+    "lines": 65,
+    "sha256": "d514b5f6f8314bbf5cbc7a77a7e9d29a1c5326bd8a9aef28974c0deb6bab2aad",
+    "definitions": [
+      {
+        "name": "build_user",
+        "line": 22,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "eval_model",
+        "line": 27,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 43,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/finetune.py",
+    "lines": 103,
+    "sha256": "4067d213fd5e1d2b69331f2f52c15dd8ece335fd3e96b557050292a0addd2d09",
+    "definitions": [
+      {
+        "name": "load_items",
+        "line": 29,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "build_messages",
+        "line": 39,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 49,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "tokenize",
+        "line": 69,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/llm_env.py",
+    "lines": 146,
+    "sha256": "afa6d31ac3618c0fa1aafddbe0a6b1ba7c9e0e847725f1145b59135bc29c68f2",
+    "definitions": [
+      {
+        "name": "parse_env_file",
+        "line": 34,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "resolve_config",
+        "line": 58,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "apply_config",
+        "line": 72,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "mask",
+        "line": 80,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "check_endpoint",
+        "line": 89,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 119,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/prepare_loguru_eval.py",
+    "lines": 117,
+    "sha256": "067101e7639f32df611b52263ac57e184d4d4e83d70c2d298dea91d5a034ae72",
+    "definitions": [
+      {
+        "name": "git",
+        "line": 58,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 63,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/prepare_real_eval.py",
+    "lines": 131,
+    "sha256": "9a03e4564ad60657e28cafac90b62e1d2cad49228cc2c0f37cf99b1c6e0d34aa",
+    "definitions": [
+      {
+        "name": "load_bugs",
+        "line": 30,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "load_dataset",
+        "line": 36,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_test_file_of",
+        "line": 41,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "prepare_workspace",
+        "line": 49,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run_eval_one",
+        "line": 70,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 88,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/promote_mined.py",
+    "lines": 190,
+    "sha256": "8abd3cae1abe8ba59d19c4d373d2e44d490590ee4015ee4e996014e59d4e5863",
+    "definitions": [
+      {
+        "name": "_load_verdicts",
+        "line": 35,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_normalize_issue",
+        "line": 44,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_test_cmd",
+        "line": 48,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_same_commit",
+        "line": 53,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_load_existing",
+        "line": 70,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "promote",
+        "line": 87,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 154,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/realbug/__init__.py",
+    "lines": 83,
+    "sha256": "dc37d1877e45d5f21a836585578ddf1d607e77c7bef5ef68380e5150189cca07",
+    "definitions": []
+  },
+  {
+    "path": "scripts/realbug/cli.py",
+    "lines": 47,
+    "sha256": "2307ef0d63e3298af08c0cbb891aef85165256d507c6d4c0fbbbfb250cf00c49",
+    "definitions": [
+      {
+        "name": "main",
+        "line": 19,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/realbug/common.py",
+    "lines": 23,
+    "sha256": "15aee7aaa3968b9050a3545c03aa77a08cb9523a594b67b2f95e8e0a09532bcd",
+    "definitions": [
+      {
+        "name": "_sha",
+        "line": 8,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_is_within",
+        "line": 12,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_save",
+        "line": 20,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/realbug/constants.py",
+    "lines": 48,
+    "sha256": "82071db267169556339c01a72e53b9c32d9505f31af0ad098932537cb0c6ebdc",
+    "definitions": []
+  },
+  {
+    "path": "scripts/realbug/environment.py",
+    "lines": 50,
+    "sha256": "fa91a28b7895f5ca05bc44f678a30bc3ad0f231e178285d28b4c5ad4a8d79841",
+    "definitions": [
+      {
+        "name": "_freeze_environment",
+        "line": 13,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/realbug/errors.py",
+    "lines": 9,
+    "sha256": "9c28c8c2c86d6e282e0861446f8f43620f241e5655d753ce4456f545fa1ef20a",
+    "definitions": [
+      {
+        "name": "RestoreError",
+        "line": 6,
+        "type": "ClassDef"
+      },
+      {
+        "name": "__init__",
+        "line": 7,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/realbug/gitops.py",
+    "lines": 139,
+    "sha256": "232ac4828c8e80ed0ede428535f1646ee6c33fda1c9a8c74da8dc8e2059ca124",
+    "definitions": [
+      {
+        "name": "_repository_fingerprint",
+        "line": 17,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_git_command",
+        "line": 41,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_git",
+        "line": 51,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_parse_diff_paths",
+        "line": 63,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_git_bytes",
+        "line": 75,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_safe_remote_identity",
+        "line": 90,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_remove_managed_directory",
+        "line": 111,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_add_worktree",
+        "line": 123,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_apply_test_patch",
+        "line": 130,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "writable_retry",
+        "line": 115,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/realbug/pipeline.py",
+    "lines": 385,
+    "sha256": "0931fe6ad1b8bb4922b064722208af02e39778900f5baaa60ada270cf20d270c",
+    "definitions": [
+      {
+        "name": "_Context",
+        "line": 34,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_save_record",
+        "line": 75,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_stage_preflight",
+        "line": 80,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_stage_upstream_verification",
+        "line": 88,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_stage_environment",
+        "line": 95,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_stage_independent_acceptance",
+        "line": 101,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_stage_buggy_worktree",
+        "line": 111,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_stage_buggy_baseline",
+        "line": 139,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_stage_gold_validation",
+        "line": 154,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_stage_cross_worktree_replay",
+        "line": 226,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_stage_complete",
+        "line": 259,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_mark_failed",
+        "line": 289,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_finalize",
+        "line": 298,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run",
+        "line": 361,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 37,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/realbug/suites.py",
+    "lines": 60,
+    "sha256": "470cd3912e0f83ad97706e0f78c4792da9efb556cc11b899a1efb911ce859b13",
+    "definitions": [
+      {
+        "name": "_save_suite_logs",
+        "line": 9,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_capture_suite",
+        "line": 30,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_target_state",
+        "line": 40,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_same_test_states",
+        "line": 53,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_phase_summary",
+        "line": 57,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/realbug/upstream.py",
+    "lines": 96,
+    "sha256": "3d60c44fa20e3a21ac8adeda96077515e54947f3db9d70aa5579b7196aa1f29f",
+    "definitions": [
+      {
+        "name": "_license_info",
+        "line": 11,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_source_identity",
+        "line": 32,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_verify_upstream",
+        "line": 41,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/repair_annotations.py",
+    "lines": 302,
+    "sha256": "c081712b8610458bbe452f55a15880f61d9fd511c0b00897576d8a24e5ec2f01",
+    "definitions": [
+      {
+        "name": "_git",
+        "line": 48,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "load_upgrades",
+        "line": 53,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "load_verdicts",
+        "line": 61,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_commit_text",
+        "line": 69,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_issue_for",
+        "line": 75,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_expected_for",
+        "line": 93,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "repair",
+        "line": 113,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_verification_python",
+        "line": 137,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "verify",
+        "line": 146,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_apply_verification",
+        "line": 169,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 182,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "job",
+        "line": 247,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/restore_tqdm_reset_inf.py",
+    "lines": 88,
+    "sha256": "fa0f59762a38e07f2889f444d8ba3a52c130b00b3afd374f42d5b6b99f4b1689",
+    "definitions": []
+  },
+  {
+    "path": "scripts/review_mined.py",
+    "lines": 392,
+    "sha256": "34fe4963017994ef5947d61f87771ba83e0e4393790e169ca2e8fd7fbe67b8ef",
+    "definitions": [
+      {
+        "name": "_upgrade_index",
+        "line": 42,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_definition_lines",
+        "line": 49,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_git",
+        "line": 65,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_norm",
+        "line": 70,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_force_strip",
+        "line": 74,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_norm_issue",
+        "line": 83,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_changed_paths",
+        "line": 93,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_touched_lines",
+        "line": 98,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_function_spans",
+        "line": 121,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_is_test_path",
+        "line": 143,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_patch_hash",
+        "line": 149,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "review_item",
+        "line": 161,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_duplicate_groups",
+        "line": 277,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_parse_repos",
+        "line": 299,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 309,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "add",
+        "line": 173,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/run_ci.py",
+    "lines": 190,
+    "sha256": "5397457d37cdec4c5b6e1a587bef3e17c0005f3b818ccc91667df35c74c9a2cd",
+    "definitions": [
+      {
+        "name": "_run_step",
+        "line": 98,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 123,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/run_llm_demo.py",
+    "lines": 219,
+    "sha256": "df1ea24c30bd32b8e83b6080331777b6019e53e29ced5adfd758d02d9fb28fa8",
+    "definitions": [
+      {
+        "name": "_save",
+        "line": 25,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_git",
+        "line": 29,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_source_files",
+        "line": 35,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_run",
+        "line": 52,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_trace_summary",
+        "line": 71,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 94,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "decode",
+        "line": 60,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/validate_datasets.py",
+    "lines": 228,
+    "sha256": "bfb9be0452a4b2e530d16a94ee3edb7b8af17458171485ed9b773b805bbb48f1",
+    "definitions": [
+      {
+        "name": "_type_ok",
+        "line": 36,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "validate_schema",
+        "line": 48,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "validate_rules",
+        "line": 92,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 157,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "scripts/validate_sample_manifest.py",
+    "lines": 54,
+    "sha256": "1ff763ccdca4916faa05b1c63dd24a69fc76a1093970695a42e28c83d08fbec6",
+    "definitions": [
+      {
+        "name": "main",
+        "line": 11,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_core.py",
+    "lines": 163,
+    "sha256": "851e52a0e9343ac5e9e512be30bd62eb80b2f76aa89cc4e66cc6fd8a0977d981",
+    "definitions": [
+      {
+        "name": "CoreTests",
+        "line": 19,
+        "type": "ClassDef"
+      },
+      {
+        "name": "setUp",
+        "line": 20,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "tearDown",
+        "line": 23,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_documents_are_indexed_and_issue_is_located",
+        "line": 26,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_patch_validation_rejects_unsafe_rules",
+        "line": 38,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_json_patch_cannot_escape_and_replaces_once",
+        "line": 50,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_unified_diff_checks_deletions_and_supports_multiple_files",
+        "line": 61,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_demo_regression_is_fail_then_pass",
+        "line": 77,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_generated_test_supports_relative_import_and_method",
+        "line": 101,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_compliance_flags_unregistered_dependencies",
+        "line": 128,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_compliance_does_not_flag_already_registered_dependencies",
+        "line": 156,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_datasets.py",
+    "lines": 61,
+    "sha256": "ba3c7ebdd86c0606c6f3728f6f5ec13a7b58293ba37ed64e7301fc7f8332081d",
+    "definitions": [
+      {
+        "name": "DatasetValidatorTests",
+        "line": 18,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_all_datasets_pass_validation",
+        "line": 19,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_manifest_covers_every_dataset_file",
+        "line": 31,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_repair_datasets_have_complete_repair_block",
+        "line": 40,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_noise_items_have_empty_expected",
+        "line": 54,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_delivery_contract.py",
+    "lines": 98,
+    "sha256": "95f9a4325851b3f995af333ac47fe59277fc7112f8aeb976b5ac3e0376ddae10",
+    "definitions": [
+      {
+        "name": "CiEvidenceTests",
+        "line": 23,
+        "type": "ClassDef"
+      },
+      {
+        "name": "MinerPromotableTests",
+        "line": 51,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_ci_report_directory_is_tracked",
+        "line": 26,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_run_ci_writes_into_committed_directory",
+        "line": 34,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_latest_pointer_exists_after_run",
+        "line": 41,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_git",
+        "line": 54,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_commit",
+        "line": 58,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_mined_entries_are_promotable",
+        "line": 64,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_env_contract.py",
+    "lines": 54,
+    "sha256": "708e47097a51bce7e4fa40ab46ed0da0c2416e040c18bc6acfc3c66d6a4909f8",
+    "definitions": [
+      {
+        "name": "_version_tuple",
+        "line": 12,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_skip_if_missing",
+        "line": 20,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "TypingExtensionsContractTests",
+        "line": 27,
+        "type": "ClassDef"
+      },
+      {
+        "name": "WebImportContractTests",
+        "line": 45,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_typing_extensions_provides_sentinel",
+        "line": 28,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_typing_extensions_meets_anyio_requirement",
+        "line": 36,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_fastapi_importable",
+        "line": 46,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_web_app_importable",
+        "line": 50,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_era_env.py",
+    "lines": 227,
+    "sha256": "73402530a930d067d0ce2aee34e238d3c652833548aca61820bf1575aa9d62a3",
+    "definitions": [
+      {
+        "name": "SpecifierTests",
+        "line": 27,
+        "type": "ClassDef"
+      },
+      {
+        "name": "RuntimeSpecifierTests",
+        "line": 52,
+        "type": "ClassDef"
+      },
+      {
+        "name": "LegacyImportTests",
+        "line": 89,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_make_repo",
+        "line": 104,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "ProfileSelectionTests",
+        "line": 120,
+        "type": "ClassDef"
+      },
+      {
+        "name": "EnvironmentLayoutTests",
+        "line": 152,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_extracts_urllib3_requirement_strings",
+        "line": 28,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_upper_bound_from_range",
+        "line": 37,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_upper_bound_accepts_compatible_release",
+        "line": 40,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_no_upper_bound_when_only_lower",
+        "line": 43,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_tightest_bound_wins",
+        "line": 47,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_skips_extras_and_markers",
+        "line": 53,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_reads_variable_style_requires",
+        "line": 67,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_ignores_option_strings",
+        "line": 79,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_drops_environment_markers",
+        "line": 84,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_unguarded_import_means_legacy",
+        "line": 90,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_guarded_import_is_not_legacy",
+        "line": 94,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_old_range_selects_urllib3_one",
+        "line": 121,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_relaxed_range_stays_modern",
+        "line": 131,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_guarded_test_import_does_not_force_legacy",
+        "line": 139,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_modern_profile_uses_current_interpreter",
+        "line": 153,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_python_for_returns_none_when_not_built",
+        "line": 158,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_env_root_honours_override",
+        "line": 170,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_py_tag_override_selects_other_environment",
+        "line": 181,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_interpreter_tag_falls_back_when_python_missing",
+        "line": 193,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_stale_environment_is_detected",
+        "line": 198,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_builder_version_invalidates_old_fingerprints",
+        "line": 208,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_merge_requirements_lets_lock_win",
+        "line": 214,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_lock_file_ships_with_repository",
+        "line": 220,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_eval.py",
+    "lines": 227,
+    "sha256": "c2fece0daf09d48bca43cce64670b359f5a5ebd3b3d872dd4f33e6e4d45ac098",
+    "definitions": [
+      {
+        "name": "module",
+        "line": 21,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "symbol",
+        "line": 32,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "item",
+        "line": 36,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "MetricCounterexamples",
+        "line": 40,
+        "type": "ClassDef"
+      },
+      {
+        "name": "EvaluationIntegration",
+        "line": 126,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_file_duplicates_do_not_occupy_ranks",
+        "line": 41,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_all_mrr_is_truncated_at_same_k",
+        "line": 45,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_multiple_targets_cannot_form_a_cartesian_match",
+        "line": 53,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_line_match_requires_same_function_not_just_nearby_line",
+        "line": 59,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_denominators_depend_on_available_supported_annotations",
+        "line": 63,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_qualified_method_is_not_silently_matched_by_bare_name",
+        "line": 74,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_dynamic_keys_do_not_mislabel_top_two_as_top_five",
+        "line": 80,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_refusal_does_not_also_get_localization_credit",
+        "line": 89,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_noise_only_and_zero_granularity_return_none",
+        "line": 95,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_random_and_grep_handle_noise_only_without_division_by_zero",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_malformed_datasets_and_annotations_fail_with_value_error",
+        "line": 109,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_invalid_k_and_pool_budget_are_rejected",
+        "line": 120,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "setUp",
+        "line": 127,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "tearDown",
+        "line": 137,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_eval_baseline_and_ablation_share_file_dedup_and_budget",
+        "line": 140,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_baselines_use_same_python_and_document_universe",
+        "line": 156,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_bad_input_fails_before_building_index",
+        "line": 165,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_annotation_file_cannot_be_placed_inside_retrieval_root",
+        "line": 174,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_index_is_closed_on_retrieval_failure",
+        "line": 181,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_real_demo_runs_at_multiple_k_and_matches_baseline",
+        "line": 189,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_cli_bad_input_has_clear_exit_code_without_traceback",
+        "line": 202,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_real_web_eval_dynamic_metrics_and_invalid_input",
+        "line": 212,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_eval_inputs.py",
+    "lines": 279,
+    "sha256": "1a5019298abce04b2f74fe81890485ac757df88dbf0e2b2d138beb750b36f4d5",
+    "definitions": [
+      {
+        "name": "digest",
+        "line": 22,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "InputPackagingTests",
+        "line": 26,
+        "type": "ClassDef"
+      },
+      {
+        "name": "setUp",
+        "line": 27,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "tearDown",
+        "line": 55,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "save",
+        "line": 58,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "invalid",
+        "line": 61,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "add_input",
+        "line": 66,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_valid_top_list_and_object_are_audited",
+        "line": 73,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_malformed_samples_are_errors_not_attribute_errors",
+        "line": 82,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_missing_and_wrong_typed_required_metadata_are_rejected",
+        "line": 89,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_unknown_model_input_fields_cannot_carry_nested_or_bare_answers",
+        "line": 100,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_undeclared_files_including_hidden_files_cannot_enter_inputs",
+        "line": 110,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_hash_drift_and_missing_file_are_rejected",
+        "line": 120,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_absolute_traversal_and_windows_separator_paths_are_rejected",
+        "line": 126,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_unrecognized_kinds_and_unknown_entry_fields_are_rejected",
+        "line": 135,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_duplicate_casefold_paths_are_rejected",
+        "line": 144,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_hardlink_to_material_is_rejected",
+        "line": 149,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_references_must_exist_be_hashed_and_be_outside_input_root",
+        "line": 154,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_reference_renamed_as_allowed_text_is_still_rejected_by_bytes",
+        "line": 165,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_manifest_cannot_live_under_input_root",
+        "line": 169,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_duplicate_sample_and_same_fix_are_not_counted_as_independent_bugs",
+        "line": 177,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_pack_copies_exact_allowed_bytes_and_keeps_controller_outside_repo",
+        "line": 182,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_pack_refuses_existing_output_and_does_not_modify_input",
+        "line": 193,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_isolated_index_does_not_include_control_material_or_failure_log",
+        "line": 201,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_eval_and_all_baselines_use_isolated_package_with_audit",
+        "line": 219,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_sample_id_issue_and_repo_must_match_frozen_material",
+        "line": 235,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_missing_manifest_or_corrupt_json_are_normal_validation_errors",
+        "line": 249,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_cli_validation_and_packaging_have_honest_success_text",
+        "line": 255,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_llm_evidence.py",
+    "lines": 170,
+    "sha256": "d3c4b8bd5f6bf3f59e21b220a733594b7877855891e0bc474a2a56ce2fca3e0b",
+    "definitions": [
+      {
+        "name": "HTTPAuditTests",
+        "line": 23,
+        "type": "ClassDef"
+      },
+      {
+        "name": "DemoContractTests",
+        "line": 75,
+        "type": "ClassDef"
+      },
+      {
+        "name": "setUp",
+        "line": 24,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "response",
+        "line": 33,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "record",
+        "line": 38,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_records_response_usage_and_redacts_key",
+        "line": 43,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_network_error_is_a_recorded_call_attempt",
+        "line": 53,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_invalid_json_preserves_raw_response",
+        "line": 61,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_disabled_audit_preserves_normal_client_behavior",
+        "line": 68,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "setUp",
+        "line": 76,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "fake_cli",
+        "line": 85,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "execute",
+        "line": 114,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_success_requires_both_commands_and_complete_trace",
+        "line": 126,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_run_nonzero_is_not_success",
+        "line": 134,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_missing_bundle_is_not_success",
+        "line": 141,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_verify_nonzero_is_not_success",
+        "line": 146,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_zero_exit_with_mismatched_replay_is_not_success",
+        "line": 151,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_source_change_invalidates_result",
+        "line": 156,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_incomplete_trace_cannot_be_a_success",
+        "line": 161,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_miner_contract.py",
+    "lines": 323,
+    "sha256": "5b61d78a931933e127129d68c7a00f275ace7feb6022bc9e6093a0f915904019",
+    "definitions": [
+      {
+        "name": "AffectedTestNodeTests",
+        "line": 26,
+        "type": "ClassDef"
+      },
+      {
+        "name": "ChangePositionTests",
+        "line": 78,
+        "type": "ClassDef"
+      },
+      {
+        "name": "AttributionTests",
+        "line": 106,
+        "type": "ClassDef"
+      },
+      {
+        "name": "IssueCleaningTests",
+        "line": 179,
+        "type": "ClassDef"
+      },
+      {
+        "name": "IssueSourceTests",
+        "line": 197,
+        "type": "ClassDef"
+      },
+      {
+        "name": "TestNodeSpanTests",
+        "line": 242,
+        "type": "ClassDef"
+      },
+      {
+        "name": "WorktreeEnvTests",
+        "line": 273,
+        "type": "ClassDef"
+      },
+      {
+        "name": "ExpectedFormatTests",
+        "line": 309,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_extracts_new_test_from_diff",
+        "line": 29,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_ignores_removed_and_unchanged_lines",
+        "line": 42,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_multiple_files_and_dedup",
+        "line": 53,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_enclosing_function_covers_decorator_lines",
+        "line": 65,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_pure_insertion_skips_leading_context",
+        "line": 81,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_deletion_returns_that_line",
+        "line": 96,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_new_method_attributes_to_enclosing_class",
+        "line": 129,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_modified_existing_symbol_keeps_itself",
+        "line": 135,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_pure_deletion_falls_back_to_definition_line",
+        "line": 142,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_duplicate_name_prefers_the_touched_occurrence",
+        "line": 164,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_keeps_full_sentence_when_strip_would_dangle",
+        "line": 182,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_strips_type_tag",
+        "line": 186,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_does_not_truncate_word_starting_with_prefix",
+        "line": 190,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_keeps_release_as_body_word",
+        "line": 193,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_keeps_prefix_when_only_identifier_remains",
+        "line": 205,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_recognises_vague_titles",
+        "line": 208,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_subject_is_kept_unless_body_is_allowed",
+        "line": 213,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_body_paragraphs_join_hard_wrapped_lines",
+        "line": 219,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_numbered_list_is_not_treated_as_sentence_end",
+        "line": 226,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_wrapped_body_becomes_issue_when_allowed",
+        "line": 233,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_method_is_qualified_with_its_class",
+        "line": 254,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_module_level_function_keeps_bare_name",
+        "line": 257,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_affected_nodes_use_qualified_ids",
+        "line": 260,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_prepends_worktree_and_src",
+        "line": 281,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_flat_layout_prepends_worktree_only",
+        "line": 289,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_keeps_existing_pythonpath",
+        "line": 295,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_path_only_is_valid",
+        "line": 312,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_path_line_alone_is_invalid",
+        "line": 319,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_module_hygiene.py",
+    "lines": 166,
+    "sha256": "19ccb3dcecd7fd4ddad29acbb9f3dda969bb0eb7096ec7331290005e97c8a260",
+    "definitions": [
+      {
+        "name": "_module_level_names",
+        "line": 24,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_imported_names",
+        "line": 43,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "ShadowingTests",
+        "line": 57,
+        "type": "ClassDef"
+      },
+      {
+        "name": "UndefinedNameTests",
+        "line": 86,
+        "type": "ClassDef"
+      },
+      {
+        "name": "EntryContractTests",
+        "line": 133,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_no_import_name_shadowed_inside_functions",
+        "line": 60,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_no_undefined_names",
+        "line": 89,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_package_importable",
+        "line": 136,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_stage_functions_present",
+        "line": 146,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_patch_loop.py",
+    "lines": 292,
+    "sha256": "e3d0dfa1aa15909ef80db15783b750ff4066548f275962bcf2bd50b0146a4ab7",
+    "definitions": [
+      {
+        "name": "_result",
+        "line": 25,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "failed_attempt",
+        "line": 37,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "FailedCandidateSelectionTests",
+        "line": 43,
+        "type": "ClassDef"
+      },
+      {
+        "name": "PatchLoopTests",
+        "line": 80,
+        "type": "ClassDef"
+      },
+      {
+        "name": "RepairFailureIntegrationTests",
+        "line": 242,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_uses_test_failures_and_errors_instead_of_suite_count",
+        "line": 44,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_patch_apply_failure_never_beats_executed_valid_candidate",
+        "line": 49,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_invalid_execution_never_beats_valid_failure",
+        "line": 54,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_missing_failure_counts_are_not_treated_as_zero",
+        "line": 59,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_equal_summaries_do_not_depend_on_python_object_identity",
+        "line": 64,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_invalid_baseline_does_not_win_on_lower_after_failure_count",
+        "line": 73,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "setUp",
+        "line": 81,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "tearDown",
+        "line": 94,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "llm",
+        "line": 97,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "call_loop",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "suite",
+        "line": 110,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_no_evidence_returns_baseline_without_building_generator",
+        "line": 123,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_no_rule_candidate_returns_baseline_and_preserves_reason",
+        "line": 135,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_llm_with_no_candidates_keeps_four_item_contract",
+        "line": 147,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_all_failed_candidates_return_baseline_without_unaccepted_after",
+        "line": 157,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_feedback_uses_best_candidates_failure_and_its_patch",
+        "line": 168,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_failed_rule_fallback_does_not_overwrite_better_llm_feedback",
+        "line": 179,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_successful_rule_fallback_is_returned_with_matching_results",
+        "line": 190,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_stops_testing_candidates_as_soon_as_one_passes",
+        "line": 200,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_invalid_after_with_exit_zero_is_not_accepted",
+        "line": 207,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_patch_apply_failure_returns_baseline_and_reaches_retry_feedback",
+        "line": 214,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_offline_rule_failure_is_not_generated_or_tested_twice",
+        "line": 222,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_later_round_can_replace_best_feedback_without_mismatching_patch",
+        "line": 231,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "setUp",
+        "line": 244,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "tearDown",
+        "line": 255,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run_repair_offline",
+        "line": 258,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_failed_rule_patch_produces_report_instead_of_unpacking_error",
+        "line": 271,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_unsupported_issue_produces_baseline_report",
+        "line": 277,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_insufficient_evidence_produces_report",
+        "line": 282,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run",
+        "line": 111,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_provenance.py",
+    "lines": 318,
+    "sha256": "d36a76bb97855f780224184e84b77ab100ecf2ebbf061db356b2a5bb3c7e874e",
+    "definitions": [
+      {
+        "name": "offline",
+        "line": 34,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "ProvenanceDemoTests",
+        "line": 41,
+        "type": "ClassDef"
+      },
+      {
+        "name": "setUpClass",
+        "line": 43,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "tearDownClass",
+        "line": 54,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "repair",
+        "line": 58,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_json_bundle_contains_full_frozen_material_and_source_hashes",
+        "line": 64,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_replay_all_suites_without_loading_original_acceptance",
+        "line": 90,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_unverified_record_can_replay_pass_without_becoming_verified",
+        "line": 109,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_replay_log_write_failure_is_visible",
+        "line": 116,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_no_patch_is_a_replayable_record",
+        "line": 125,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_unmatched_production_patch_preserves_failed_conclusion",
+        "line": 132,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_frozen_material_is_only_sent_to_final_validator_and_packer",
+        "line": 143,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_source_can_be_relocated_with_same_content",
+        "line": 172,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_git_worktree_recreation_has_stable_source_hash",
+        "line": 180,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_repeated_packaging_creates_distinct_bundles",
+        "line": 221,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_packaging_io_failure_is_visible_and_keeps_repair_report",
+        "line": 228,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_no_packaging_reports_skipped",
+        "line": 237,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_cli_json_and_strict_replay_exit_codes",
+        "line": 242,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_cli_run_json_is_parseable_and_packing_failure_exits_two",
+        "line": 255,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_historical_schema_remains_legacy_without_execution",
+        "line": 270,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_actual_web_handlers_without_optional_http_dependencies",
+        "line": 280,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_real_http_verification",
+        "line": 307,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "unavailable",
+        "line": 117,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate",
+        "line": 147,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "pack",
+        "line": 152,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "unavailable",
+        "line": 229,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_repair_script.py",
+    "lines": 113,
+    "sha256": "524a2dfb9cb6d65a332299c2b01eb08f68059f3a001904bae4f81afb39662851",
+    "definitions": [
+      {
+        "name": "_repo",
+        "line": 25,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "IssuePrecedenceTests",
+        "line": 46,
+        "type": "ClassDef"
+      },
+      {
+        "name": "ExpectedLineTests",
+        "line": 84,
+        "type": "ClassDef"
+      },
+      {
+        "name": "VerificationWiringTests",
+        "line": 95,
+        "type": "ClassDef"
+      },
+      {
+        "name": "commit",
+        "line": 32,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_curation_entry_wins",
+        "line": 47,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_weak_verdict_switches_to_body",
+        "line": 56,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_clear_verdict_keeps_subject",
+        "line": 66,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_weak_without_better_text_stays_weak",
+        "line": 76,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_expected_points_at_definition_line",
+        "line": 85,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_verification_writeback_records_evidence",
+        "line": 96,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_dataset_repair_never_writes_on_failed_verification",
+        "line": 106,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_restore_sample.py",
+    "lines": 154,
+    "sha256": "8d5344c19b105b23df5386ab8d1df9d1cbf1357c393dcd7a6d0c3a1a9bab2559",
+    "definitions": [
+      {
+        "name": "RestoreControlTests",
+        "line": 23,
+        "type": "ClassDef"
+      },
+      {
+        "name": "CompatibilityLayerTests",
+        "line": 111,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_read_only_audit_includes_git_metadata_and_detects_changes",
+        "line": 24,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_british_license_filename_keeps_both_declared_components",
+        "line": 37,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_mirror_is_recorded_as_mirror_not_canonical_upstream",
+        "line": 47,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_cleanup_cannot_remove_parent_or_unrelated_directory",
+        "line": 54,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_complete_before_and_after_logs_are_both_preserved",
+        "line": 66,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_missing_clone_records_failure_without_starting_upstream_or_worktree",
+        "line": 82,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_timeout_keeps_partial_process_output",
+        "line": 97,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_all_original_symbols_still_exposed",
+        "line": 126,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_patchable_submodules_exposed",
+        "line": 131,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_patching_gitops_intercepts_license_lookup",
+        "line": 136,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_constants_unchanged",
+        "line": 145,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_review_contract.py",
+    "lines": 235,
+    "sha256": "381f3495766fc59a1b52228c6505a330c40e4d5fe727a7c8e197b0b86a95497d",
+    "definitions": [
+      {
+        "name": "IssueNormalizationTests",
+        "line": 23,
+        "type": "ClassDef"
+      },
+      {
+        "name": "RepoArgumentTests",
+        "line": 49,
+        "type": "ClassDef"
+      },
+      {
+        "name": "TestPathClassificationTests",
+        "line": 60,
+        "type": "ClassDef"
+      },
+      {
+        "name": "DuplicateGroupTests",
+        "line": 74,
+        "type": "ClassDef"
+      },
+      {
+        "name": "_make_fix_repo",
+        "line": 115,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_item",
+        "line": 141,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_check",
+        "line": 149,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "IssueSourceCheckTests",
+        "line": 153,
+        "type": "ClassDef"
+      },
+      {
+        "name": "DefinitionLineCheckTests",
+        "line": 202,
+        "type": "ClassDef"
+      },
+      {
+        "name": "DatasetShapeTests",
+        "line": 221,
+        "type": "ClassDef"
+      },
+      {
+        "name": "test_strips_fix_prefix",
+        "line": 26,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_strips_bug_prefix",
+        "line": 30,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_keeps_prefix_when_remainder_is_a_fragment",
+        "line": 34,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_keeps_genuinely_different_text",
+        "line": 40,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_ignores_backticks_and_asterisks",
+        "line": 44,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_parses_multiple",
+        "line": 52,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_ignores_empty_chunks",
+        "line": 56,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_recognises_test_paths",
+        "line": 63,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_source_paths_are_not_tests",
+        "line": 68,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_make_repo",
+        "line": 77,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_same_patch_detected",
+        "line": 94,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_groups_keep_first_and_flag_rest",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "commit",
+        "line": 122,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_subject_derived_issue_passes",
+        "line": 156,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_body_derived_issue_must_be_literal_body_text",
+        "line": 164,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_upstream_issue_requires_curation_entry",
+        "line": 178,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_definition_line_passes",
+        "line": 205,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_body_line_fails",
+        "line": 212,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_mined_dataset_has_reviewable_fields",
+        "line": 224,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "commit",
+        "line": 81,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_validation.py",
+    "lines": 380,
+    "sha256": "d67d3064b41e53514982c916c5131af942553019f233e9a1e04cf4a9c6ef831e",
+    "definitions": [
+      {
+        "name": "result",
+        "line": 25,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "AcceptancePolicyTests",
+        "line": 31,
+        "type": "ClassDef"
+      },
+      {
+        "name": "TemporaryRepo",
+        "line": 101,
+        "type": "ClassDef"
+      },
+      {
+        "name": "UnittestAdapterTests",
+        "line": 120,
+        "type": "ClassDef"
+      },
+      {
+        "name": "PytestAdapterTests",
+        "line": 201,
+        "type": "ClassDef"
+      },
+      {
+        "name": "RepairAcceptanceIntegrationTests",
+        "line": 233,
+        "type": "ClassDef"
+      },
+      {
+        "name": "setUp",
+        "line": 32,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "assess",
+        "line": 36,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_only_full_contract_is_verified",
+        "line": 39,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_primary_pass_without_independent_suite_is_unverified",
+        "line": 45,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_target_skip_xfail_xpass_and_disappearance_are_not_pass",
+        "line": 48,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_original_passing_test_must_still_explicitly_pass",
+        "line": 56,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_invalid_or_unstructured_baseline_cannot_verify",
+        "line": 64,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_baseline_must_reproduce_failure",
+        "line": 69,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_invalid_after_and_mismatched_command_are_rejected",
+        "line": 72,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_independent_failure_overrides_primary_pass",
+        "line": 76,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_independent_missing_results_and_invalid_execution_cannot_verify",
+        "line": 80,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_generated_checks_are_auxiliary_and_can_block_false_success",
+        "line": 85,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_duplicate_ids_cannot_hide_failures",
+        "line": 90,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_json_and_markdown_cannot_claim_verified_from_main_results",
+        "line": 93,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "setUp",
+        "line": 102,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "tearDown",
+        "line": 108,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "write_tests",
+        "line": 111,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "patch_file",
+        "line": 114,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_full_ids_distinguish_same_method_name_in_different_classes",
+        "line": 121,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_no_tests_and_all_skipped_are_invalid",
+        "line": 128,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_expected_failure_is_never_an_ordinary_pass",
+        "line": 135,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_subtest_failure_cannot_be_recorded_as_parent_pass",
+        "line": 145,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_missing_dependency_and_import_error_are_invalid",
+        "line": 152,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_timeout_is_invalid",
+        "line": 157,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_before_test_side_effects_do_not_contaminate_after_and_temps_are_cleaned",
+        "line": 163,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_manual_test_patch_and_config_patch_are_blocked",
+        "line": 183,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_extra_file_escape_is_rejected",
+        "line": 195,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_parametrized_nodes_and_teardown_error_are_preserved",
+        "line": 202,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_collect_only_zero_skipped_and_xfail_only_are_invalid",
+        "line": 213,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_xpass_and_collection_error_cannot_be_a_pass",
+        "line": 224,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "setUp",
+        "line": 234,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "offline",
+        "line": 244,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "repair",
+        "line": 250,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_real_unittest_demo_is_verified_and_honors_explicit_framework",
+        "line": 255,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_primary_pass_independent_failure_is_failed_in_all_reports",
+        "line": 266,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_generated_smoke_or_behavior_cannot_replace_independent_acceptance",
+        "line": 278,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_generated_failure_and_syntax_error_are_visible",
+        "line": 284,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_multiline_issue_generates_valid_code_for_both_frameworks",
+        "line": 292,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_acceptance_not_given_to_generator_and_frozen_before_generation",
+        "line": 304,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_acceptance_inside_repository_is_rejected_before_index",
+        "line": 317,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_bad_acceptance_paths_and_commands_are_rejected",
+        "line": 324,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_cli_strict_writes_report_then_returns_nonzero_without_independent_suite",
+        "line": 332,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_real_pytest_main_and_unittest_independent_suite_are_verified",
+        "line": 346,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "test_real_http_api_returns_same_verified_and_failed_status",
+        "line": 355,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "tracked_prepare",
+        "line": 170,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "generate",
+        "line": 307,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "eval/ablation.py",
+    "lines": 112,
+    "sha256": "10a69173a5c00b8c4870b6c0a145535c499c7adef34f896045cc87b4503d58fe",
+    "definitions": [
+      {
+        "name": "_metrics",
+        "line": 16,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_diff_lines",
+        "line": 31,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run_ablation",
+        "line": 52,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 78,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "eval/baselines.py",
+    "lines": 143,
+    "sha256": "9b85d14fae39dc881d4564128c5e30670cee3fdd53c3d7f17bd48c740cfce4bd",
+    "definitions": [
+      {
+        "name": "target_paths",
+        "line": 19,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "file_universe",
+        "line": 23,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "_aggregate",
+        "line": 27,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "random_baseline",
+        "line": 50,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "grep_baseline",
+        "line": 65,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "replens_baseline",
+        "line": 77,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "run_baselines",
+        "line": 96,
+        "type": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 112,
+        "type": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "eval/eval.py",
+    "lines": 29,
+    "sha256": "10c0f8a94929d5b67c31dcf0673596a80c2f92e60cd33ee4e66b1ed41d487efe",
+    "definitions": [
+      {
+        "name": "main",
+        "line": 10,
+        "type": "FunctionDef"
+      }
+    ]
+  }
+]

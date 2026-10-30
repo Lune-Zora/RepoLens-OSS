@@ -1,0 +1,125 @@
+{
+  "acceptance_after": [],
+  "acceptance_before": [],
+  "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "after": [],
+  "before": [
+    {
+      "command": "python -m pytest tests",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_6u9x6ljy\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_public.py ...                                                 [100%]\n\n============================== 3 passed in 0.48s ==============================\n",
+      "structured": true,
+      "summary": {
+        "collected": 3,
+        "errors": 0,
+        "failed": 0,
+        "passed": 3,
+        "ran": 3,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "tests/test_public.py::PublicTests::test_count": "PASS",
+        "tests/test_public.py::PublicTests::test_empty": "PASS",
+        "tests/test_public.py::PublicTests::test_one": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "blocked_reason": "模型计划生成失败：严格模式：禁止规则回退。LLM 调用异常: LLM 返回内容不含有效 JSON",
+  "evidences": [
+    {
+      "code": "def unique_values(values):\n    return list(set(values))",
+      "confidence": 0.0,
+      "name": "unique_values",
+      "reason": "在 `api.py` 中，`unique_values` 函数通过将输入列表转换为集合（`set`），然后将其转换回列表来实现去重。由于集合自动去重，但集合本身没有顺序，因此需要将集合转换回列表时，确保元素的顺序与原列表相同。",
+      "ref": "api.py:1",
+      "signature": "def unique_values(values)",
+      "source": "intent_target",
+      "type": "function"
+    }
+  ],
+  "execution_hints": [],
+  "flip_prediction": null,
+  "generated_test": "",
+  "generated_test_kind": "none",
+  "insufficient_evidence": false,
+  "issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+  "model": "qwen2.5-coder:1.5b",
+  "patch_diff": "",
+  "patch_note": "模型计划生成失败：严格模式：禁止规则回退。LLM 调用异常: LLM 返回内容不含有效 JSON",
+  "plan": {
+    "affected_scope": [],
+    "files_to_modify": [],
+    "generated_by": "error",
+    "regression_test": "",
+    "risks": [
+      "严格模式：禁止规则回退。LLM 调用异常: LLM 返回内容不含有效 JSON"
+    ],
+    "root_cause": "模型计划生成失败",
+    "steps": []
+  },
+  "provenance": {
+    "materials_status": "NOT_CHECKED",
+    "reasons": [],
+    "replay_status": "NOT_RUN",
+    "schema_version": "2.0",
+    "status": "WRITTEN"
+  },
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "regression_after": [],
+  "regression_before": [],
+  "regression_test_cmd": "",
+  "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\stable_unique",
+  "requested_test_command": "python -m pytest tests",
+  "schema_version": "2.0",
+  "status": "NO_PATCH",
+  "task_tests": {},
+  "test_command": "python -m pytest tests",
+  "test_framework": "pytest",
+  "test_timeout": 120,
+  "understanding": {
+    "catalog_shown": 2,
+    "catalog_total": 2,
+    "error": "",
+    "expected_behavior": "返回一个去重后的列表，其中每个元素的首次出现顺序与原列表相同。",
+    "explanation": "在 `api.py` 中，`unique_values` 函数通过将输入列表转换为集合（`set`），然后将其转换回列表来实现去重。由于集合自动去重，但集合本身没有顺序，因此需要将集合转换回列表时，确保元素的顺序与原列表相同。",
+    "generated_by": "llm",
+    "model": "qwen2.5-coder:1.5b",
+    "original_issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+    "repository_functions": [
+      "api.py:unique_values",
+      "api.py:count_values"
+    ],
+    "retrieval_mode": "llm_grounded_source",
+    "scope": "matched",
+    "search_query": "去重保持顺序",
+    "summary": "对列表去重时需要保持各元素首次出现的顺序。",
+    "targets": [
+      {
+        "name": "unique_values",
+        "path": "api.py",
+        "ref": "api.py:1",
+        "start_line": 1
+      }
+    ]
+  },
+  "validation": {
+    "acceptance_sha256": "13c64a01bcff739bf3b3fd6a48bde444c843ccee8820aa51e330639a086e65cf",
+    "preserved": [],
+    "reasons": [
+      "没有进入验收的补丁"
+    ],
+    "status": "NO_PATCH",
+    "targets": []
+  },
+  "verification_scope": "当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为"
+}

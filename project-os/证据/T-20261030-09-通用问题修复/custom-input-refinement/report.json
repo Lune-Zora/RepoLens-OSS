@@ -1,0 +1,588 @@
+{
+  "schema_version": "2.0",
+  "status": "NO_PATCH",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "validation": {
+    "status": "NO_PATCH",
+    "reasons": [
+      "没有进入验收的补丁"
+    ],
+    "targets": [],
+    "preserved": [],
+    "acceptance_sha256": "9e37c68f6fb4ecf155dd4912d8d9023aba434a2aea48c76bffbaf64144d3739c"
+  },
+  "test_framework": "pytest",
+  "generated_test_kind": "model_behavioral_cases",
+  "acceptance_before": [],
+  "acceptance_after": [],
+  "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "repo": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\custom-browser-inputs\\repo",
+  "issue": "把输入序列按给定容量分组，最后一组即使没有装满也不能丢掉元素。空序列返回空列表，容量小于等于0时应该报ValueError。",
+  "insufficient_evidence": false,
+  "evidences": [
+    {
+      "ref": "stream_ops.py:1",
+      "type": "function",
+      "name": "split_packets",
+      "confidence": 0.0,
+      "reason": "用户核心需求是将序列按固定容量分组（切片），且明确允许最后一组不满（即标准切片行为）。候选函数 `split_packets` 正是实现此逻辑：它处理了空序列和 `size <= 0` 的边界情况，且切片步长逻辑保证了末尾元素的保留。虽然用户提到‘给定容量’，而函数名为 `split_packets`，但这属于语义上的微小偏差，不影响核心功能匹配。",
+      "source": "intent_target",
+      "signature": "def split_packets(values, size)",
+      "code": "def split_packets(values, size):\n    if size <= 0:\n        raise ValueError(\"size must be positive\")\n    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]"
+    },
+    {
+      "ref": "stream_ops.py:7",
+      "type": "function",
+      "name": "flatten",
+      "confidence": 0.7,
+      "reason": "代码片段命中检索词（function @ stream_ops.py:7）",
+      "source": "keyword_match",
+      "signature": "def flatten(groups)",
+      "code": "def flatten(groups):\n    return [value for group in groups for value in group]"
+    },
+    {
+      "ref": "tests/test_public.py:6",
+      "type": "method",
+      "name": "test_empty",
+      "confidence": 0.55,
+      "reason": "代码片段命中检索词（method @ tests/test_public.py:6）",
+      "source": "keyword_match",
+      "signature": "def test_empty(self)",
+      "code": "def test_empty(self): self.assertEqual(api.split_packets([],2), [])"
+    },
+    {
+      "ref": "tests/test_public.py:4",
+      "type": "class",
+      "name": "PublicTests",
+      "confidence": 0.4,
+      "reason": "代码片段命中检索词（class @ tests/test_public.py:4）",
+      "source": "keyword_match",
+      "signature": "class PublicTests",
+      "code": "class PublicTests(unittest.TestCase):\n    def test_exact(self): self.assertEqual(api.split_packets([1,2,3,4],2), [[1,2],[3,4]])\n    def test_empty(self): self.assertEqual(api.split_packets([],2), [])\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.split_packets([1],0)\n    def test_flatten(self): self.assertEqual(api.flatten([[1],[2,3]]),[1,2,3])"
+    },
+    {
+      "ref": "tests/test_public.py:5",
+      "type": "method",
+      "name": "test_exact",
+      "confidence": 0.6,
+      "reason": "与 split_packets 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_exact(self)",
+      "code": "def test_exact(self): self.assertEqual(api.split_packets([1,2,3,4],2), [[1,2],[3,4]])"
+    },
+    {
+      "ref": "tests/test_public.py:7",
+      "type": "method",
+      "name": "test_invalid",
+      "confidence": 0.6,
+      "reason": "与 split_packets 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_invalid(self)",
+      "code": "def test_invalid(self):\n        with self.assertRaises(ValueError): api.split_packets([1],0)"
+    },
+    {
+      "ref": "tests/test_public.py:9",
+      "type": "method",
+      "name": "test_flatten",
+      "confidence": 0.42,
+      "reason": "与 flatten 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_flatten(self)",
+      "code": "def test_flatten(self): self.assertEqual(api.flatten([[1],[2,3]]),[1,2,3])"
+    }
+  ],
+  "plan": {
+    "root_cause": "The core requirement is to split a sequence into fixed-size chunks where the last chunk can be smaller. The candidate function `split_packets` in `stream_ops.py` implements this via list comprehension with a standard slice step (`range(0, len(values) - size + 1, size)`), which naturally preserves the tail elements. It also correctly guards against `size <= 0` and returns an empty list for an empty input, matching the test expectations in `tests/test_public.py`. The logic appears sound for 'given capacity' grouping.",
+    "affected_scope": [
+      "stream_ops.py",
+      "tests/test_public.py"
+    ],
+    "files_to_modify": [
+      "stream_ops.py"
+    ],
+    "steps": [
+      "1. Inspect `stream_ops.py` to confirm `split_packets` uses `len(values) - size + 1` as the stop index for the range loop, ensuring the last partial group is captured.",
+      "2. Verify that `tests/test_public.py` covers the 'partial last group' scenario (e.g., input length not a multiple of size).",
+      "3. If needed, rename `split_packets` to `chunk_sequence` or update docstrings to align semantic meaning with 'fixed capacity grouping'.",
+      "4. Run the existing test suite to ensure `test_empty`, `test_exact`, and `test_invalid` pass, confirming the boundary conditions are met."
+    ],
+    "risks": [
+      "Potential off-by-one error in slice range if 'size' logic is misinterpreted as strict full-groups only, though current implementation uses standard slicing which handles partial last groups naturally.",
+      "Confusion between 'packets' semantic and 'chunks' logic, requiring documentation update or renaming."
+    ],
+    "regression_test": "Verify that split_packets handles empty lists and size <= 0 correctly, and ensures the last group retains remaining elements (e.g., split_packets([1,2,3], 2) -> [[1,2],[3]])",
+    "generated_by": "llm"
+  },
+  "test_command": "python -m pytest tests __replens_task__/test_current_issue.py",
+  "patch_note": "LLM 生成 1 个有效候选。；未选出通过验证的补丁；最佳失败候选：still_failing，补丁应用成功（JSON 替换规则，共 1 处）。；目标未明确转为 PASS: __replens_task__/test_current_issue.py::TaskTests::test_issue_03 → FAIL；当前问题或回归检查未通过: __replens_task__/test_current_issue.py::TaskTests::test_issue_03 → FAIL；仅输出修复前基线。",
+  "before": [
+    {
+      "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+      "returncode": 1,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_sajurs8c\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 10 items\n\ntests\\test_public.py ....                                                [ 40%]\n__replens_task__\\test_current_issue.py ...FF.                            [100%]\n\n================================== FAILURES ===================================\n___________________________ TaskTests.test_issue_03 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_03>\n\n    def test_issue_03(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_sajurs8c/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[1, 2], 3], **{})\n>       self.assertEqual(actual, [[1, 2], [2]])\nE       AssertionError: Lists differ: [] != [[1, 2], [2]]\nE       \nE       Second list contains 2 additional elements.\nE       First extra element 0:\nE       [1, 2]\nE       \nE       - []\nE       + [[1, 2], [2]]\n\n__replens_task__\\test_current_issue.py:43: AssertionError\n___________________________ TaskTests.test_issue_04 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_04>\n\n    def test_issue_04(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_sajurs8c/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[1, 2, 3], 5], **{})\n>       self.assertEqual(actual, [[1, 2, 3]])\nE       AssertionError: Lists differ: [] != [[1, 2, 3]]\nE       \nE       Second list contains 1 additional elements.\nE       First extra element 0:\nE       [1, 2, 3]\nE       \nE       - []\nE       + [[1, 2, 3]]\n\n__replens_task__\\test_current_issue.py:53: AssertionError\n=========================== short test summary info ===========================\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_03 - Ass...\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_04 - Ass...\n========================= 2 failed, 8 passed in 0.77s =========================\n",
+      "stderr": "",
+      "timed_out": false,
+      "passed": false,
+      "valid": true,
+      "summary": {
+        "passed": 8,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 10,
+        "ran": 10
+      },
+      "invalid_reason": "",
+      "tests": {
+        "tests/test_public.py::PublicTests::test_empty": "PASS",
+        "tests/test_public.py::PublicTests::test_exact": "PASS",
+        "tests/test_public.py::PublicTests::test_flatten": "PASS",
+        "tests/test_public.py::PublicTests::test_invalid": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_03": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_04": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_05": "PASS"
+      },
+      "structured": true,
+      "framework": "pytest"
+    }
+  ],
+  "after": [],
+  "generated_test": "# Model-proposed task tests, frozen before patch generation.\nimport unittest\n\nclass TaskTests(unittest.TestCase):\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[1, 2, 3, 4], 2], **{})\n        self.assertEqual(actual, [[1, 2], [3, 4]])\n\n    def test_issue_01(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[], 2], **{})\n        self.assertEqual(actual, [])\n\n    def test_issue_02(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        with self.assertRaises(ValueError):\n            _mod.split_packets(*[[1], 0], **{})\n\n    def test_issue_03(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[1, 2], 3], **{})\n        self.assertEqual(actual, [[1, 2], [2]])\n\n    def test_issue_04(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[1, 2, 3], 5], **{})\n        self.assertEqual(actual, [[1, 2, 3]])\n\n    def test_issue_05(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[1, 2, 3], 1], **{})\n        self.assertEqual(actual, [[1], [2], [3]])\n\n",
+  "patch_diff": "",
+  "execution_hints": [],
+  "flip_prediction": null,
+  "regression_before": [],
+  "regression_after": [],
+  "regression_test_cmd": "",
+  "test_timeout": 120,
+  "requested_test_command": "python -m pytest tests",
+  "understanding": {
+    "original_issue": "把输入序列按给定容量分组，最后一组即使没有装满也不能丢掉元素。空序列返回空列表，容量小于等于0时应该报ValueError。",
+    "summary": "将输入序列按给定容量分组，要求最后一组即使未满也保留元素，且空序列或容量<=0时行为正确。",
+    "expected_behavior": "输入 [1,2,3,4] 容量 2 应得 [[1,2], [3,4]]；输入 [] 容量 2 应得 [[]]（或空列表，视具体需求，但核心是处理‘未满’的尾部）；容量 1 时每个元素独立一组。",
+    "search_query": "split_packets values size range len",
+    "scope": "matched",
+    "explanation": "用户核心需求是将序列按固定容量分组（切片），且明确允许最后一组不满（即标准切片行为）。候选函数 `split_packets` 正是实现此逻辑：它处理了空序列和 `size <= 0` 的边界情况，且切片步长逻辑保证了末尾元素的保留。虽然用户提到‘给定容量’，而函数名为 `split_packets`，但这属于语义上的微小偏差，不影响核心功能匹配。",
+    "targets": [
+      {
+        "ref": "stream_ops.py:1",
+        "path": "stream_ops.py",
+        "name": "split_packets",
+        "start_line": 1
+      }
+    ],
+    "repository_functions": [
+      "stream_ops.py:split_packets",
+      "stream_ops.py:flatten"
+    ],
+    "catalog_total": 2,
+    "catalog_shown": 2,
+    "model": "qwen35-9b-unc:latest",
+    "generated_by": "llm",
+    "error": "",
+    "retrieval_mode": "llm_grounded_source"
+  },
+  "task_tests": {
+    "kind": "model_behavioral_cases",
+    "model": "qwen35-9b-unc:latest",
+    "cases": [
+      {
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4
+          ],
+          2
+        ],
+        "expected": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "stream_ops.py",
+        "raises": "",
+        "symbol": "split_packets"
+      },
+      {
+        "args": [
+          [],
+          2
+        ],
+        "expected": [],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "stream_ops.py",
+        "raises": "",
+        "symbol": "split_packets"
+      },
+      {
+        "args": [
+          [
+            1
+          ],
+          0
+        ],
+        "expected": null,
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "stream_ops.py",
+        "raises": "ValueError",
+        "symbol": "split_packets"
+      },
+      {
+        "args": [
+          [
+            1,
+            2
+          ],
+          3
+        ],
+        "expected": [
+          [
+            1,
+            2
+          ],
+          [
+            2
+          ]
+        ],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "stream_ops.py",
+        "raises": "",
+        "symbol": "split_packets"
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            3
+          ],
+          5
+        ],
+        "expected": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "stream_ops.py",
+        "raises": "",
+        "symbol": "split_packets"
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            3
+          ],
+          1
+        ],
+        "expected": [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "stream_ops.py",
+        "raises": "",
+        "symbol": "split_packets"
+      }
+    ],
+    "review": {
+      "approved": true,
+      "changes": [
+        "Validated that 'test_exact' correctly handles the core requirement: splitting a list of length 4 into chunks of size 2, resulting in two groups.",
+        "Confirmed 'test_empty' adheres to the contract where an empty sequence returns an empty list regardless of capacity (assuming capacity > 0).",
+        "Verified 'test_invalid' correctly asserts ValueError for a non-empty list with capacity 0, matching the 'capacity <= 0' rule.",
+        "Checked 'test_flatten' as a sanity check on the input structure (nested lists) to ensure the function handles 2D inputs if intended, or at least doesn't crash unexpectedly."
+      ],
+      "independent": false
+    },
+    "sha256": "1abb88517c29055b139412774db677c49ea59402da840e76f594ee1370270d8f",
+    "independent": false,
+    "frozen_before_patch": true,
+    "retained_passing_cases": 3,
+    "baseline_tests": {
+      "tests/test_public.py::PublicTests::test_empty": "PASS",
+      "tests/test_public.py::PublicTests::test_exact": "PASS",
+      "tests/test_public.py::PublicTests::test_flatten": "PASS",
+      "tests/test_public.py::PublicTests::test_invalid": "PASS",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "PASS",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_03": "FAIL",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_04": "FAIL",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_05": "PASS"
+    },
+    "reproduced_issue_tests": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_03",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_04"
+    ],
+    "design_attempts": [
+      {
+        "round": 1,
+        "sha256": "76a6217b16a85f10a31aef60f3c4f89f7ce00c7f57d5c77fe0478e8779e0918d",
+        "cases": [
+          {
+            "args": [
+              [
+                1,
+                2,
+                3,
+                4
+              ],
+              2
+            ],
+            "expected": [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ]
+            ],
+            "intent": "issue",
+            "kwargs": {},
+            "normalize": "identity",
+            "path": "stream_ops.py",
+            "raises": "",
+            "symbol": "split_packets"
+          },
+          {
+            "args": [
+              [],
+              2
+            ],
+            "expected": [],
+            "intent": "issue",
+            "kwargs": {},
+            "normalize": "identity",
+            "path": "stream_ops.py",
+            "raises": "",
+            "symbol": "split_packets"
+          },
+          {
+            "args": [
+              [
+                1
+              ],
+              0
+            ],
+            "expected": null,
+            "intent": "issue",
+            "kwargs": {},
+            "normalize": "identity",
+            "path": "stream_ops.py",
+            "raises": "ValueError",
+            "symbol": "split_packets"
+          }
+        ],
+        "baseline_tests": {
+          "tests/test_public.py::PublicTests::test_empty": "PASS",
+          "tests/test_public.py::PublicTests::test_exact": "PASS",
+          "tests/test_public.py::PublicTests::test_flatten": "PASS",
+          "tests/test_public.py::PublicTests::test_invalid": "PASS",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "PASS",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS"
+        },
+        "execution_valid": true
+      },
+      {
+        "round": 2,
+        "sha256": "1abb88517c29055b139412774db677c49ea59402da840e76f594ee1370270d8f",
+        "cases": [
+          {
+            "args": [
+              [
+                1,
+                2,
+                3,
+                4
+              ],
+              2
+            ],
+            "expected": [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                4
+              ]
+            ],
+            "intent": "issue",
+            "kwargs": {},
+            "normalize": "identity",
+            "path": "stream_ops.py",
+            "raises": "",
+            "symbol": "split_packets"
+          },
+          {
+            "args": [
+              [],
+              2
+            ],
+            "expected": [],
+            "intent": "issue",
+            "kwargs": {},
+            "normalize": "identity",
+            "path": "stream_ops.py",
+            "raises": "",
+            "symbol": "split_packets"
+          },
+          {
+            "args": [
+              [
+                1
+              ],
+              0
+            ],
+            "expected": null,
+            "intent": "issue",
+            "kwargs": {},
+            "normalize": "identity",
+            "path": "stream_ops.py",
+            "raises": "ValueError",
+            "symbol": "split_packets"
+          },
+          {
+            "args": [
+              [
+                1,
+                2
+              ],
+              3
+            ],
+            "expected": [
+              [
+                1,
+                2
+              ],
+              [
+                2
+              ]
+            ],
+            "intent": "issue",
+            "kwargs": {},
+            "normalize": "identity",
+            "path": "stream_ops.py",
+            "raises": "",
+            "symbol": "split_packets"
+          },
+          {
+            "args": [
+              [
+                1,
+                2,
+                3
+              ],
+              5
+            ],
+            "expected": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "intent": "issue",
+            "kwargs": {},
+            "normalize": "identity",
+            "path": "stream_ops.py",
+            "raises": "",
+            "symbol": "split_packets"
+          },
+          {
+            "args": [
+              [
+                1,
+                2,
+                3
+              ],
+              1
+            ],
+            "expected": [
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            "intent": "issue",
+            "kwargs": {},
+            "normalize": "identity",
+            "path": "stream_ops.py",
+            "raises": "",
+            "symbol": "split_packets"
+          }
+        ],
+        "baseline_tests": {
+          "tests/test_public.py::PublicTests::test_empty": "PASS",
+          "tests/test_public.py::PublicTests::test_exact": "PASS",
+          "tests/test_public.py::PublicTests::test_flatten": "PASS",
+          "tests/test_public.py::PublicTests::test_invalid": "PASS",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "PASS",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_03": "FAIL",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_04": "FAIL",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_05": "PASS"
+        },
+        "execution_valid": true
+      }
+    ]
+  },
+  "blocked_reason": "",
+  "verification_scope": "当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为",
+  "model": "qwen35-9b-unc:latest",
+  "provenance": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

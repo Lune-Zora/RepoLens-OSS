@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scope": "actual frontend functions with DOM/fetch stubs; no browser/HTTP test",
+  "checks": [
+    "render initial replay state",
+    "request frozen repo/bundle",
+    "keep UNVERIFIED separate from replay PASS",
+    "retain controls with insufficient evidence",
+    "show skipped/failed packaging"
+  ]
+}

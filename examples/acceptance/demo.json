@@ -1,0 +1,6 @@
+{
+  "command": "python -m unittest discover -s __replens_acceptance__ -p test_date_behavior.py",
+  "files": {
+    "__replens_acceptance__/test_date_behavior.py": "import datetime\nimport unittest\nfrom src.dateparse.parser import parse_date\n\nclass DateBehavior(unittest.TestCase):\n    def test_tab_and_newline_padding(self):\n        self.assertEqual(parse_date('\\t2024-02-29\\n'), datetime.date(2024, 2, 29))\n\n    def test_invalid_date_stays_invalid(self):\n        with self.assertRaises(ValueError):\n            parse_date('2024-02-30')\n\n    def test_unpadded_date(self):\n        self.assertEqual(parse_date('2025-12-31'), datetime.date(2025, 12, 31))\n"
+  }
+}

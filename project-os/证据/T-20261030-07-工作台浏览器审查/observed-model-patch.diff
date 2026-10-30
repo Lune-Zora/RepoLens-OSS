@@ -1,0 +1,33 @@
+--- a/src/dateparse/parser.py
++++ b/src/dateparse/parser.py
+@@ -20,7 +20,7 @@
+         like " 2024-01-01 " will fail to parse. This is the bug to fix:
+         call s.strip() before parsing.
+     """
+-    return datetime.datetime.strptime(s, "%Y-%m-%d").date()
++    return datetime.datetime.strptime(s.strip(), "%Y-%m-%d").date()
+ 
+ 
+ def parse_datetime(s):
+--- a/src/dateparse/validator.py
++++ b/src/dateparse/validator.py
+@@ -41,7 +41,7 @@
+         wrongly rejected. This is the bug to fix.
+     """
+     from .parser import parse_date
+-    s = parse_date(start)
++    s = parse_date(start).strip()
+     e = parse_date(end)
+     return s < e
+ 
+--- a/src/dateparse/utils.py
++++ b/src/dateparse/utils.py
+@@ -17,7 +17,7 @@
+         This is the bug to fix.
+     """
+     from .parser import parse_date
+-    da = parse_date(a)
++    da = parse_date(a).strip()
+     db = parse_date(b)
+     return (da - db).days
+ 

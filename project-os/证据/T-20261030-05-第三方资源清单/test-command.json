@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-m",
+    "pytest",
+    "tests/",
+    "-q",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "exit_code": 0,
+  "seconds": 122.328
+}

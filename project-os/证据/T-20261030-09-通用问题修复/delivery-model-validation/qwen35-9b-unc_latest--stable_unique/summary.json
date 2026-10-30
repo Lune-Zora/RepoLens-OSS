@@ -1,0 +1,73 @@
+{
+  "model": "qwen35-9b-unc:latest",
+  "task": "stable_unique",
+  "seconds": 64.93,
+  "exit_code": 0,
+  "repair_status": "VERIFIED",
+  "blocked_reason": "",
+  "reasons": [
+    "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+  ],
+  "patch_note": "LLM 生成 1 个有效候选。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）",
+  "replay_status": "PASS",
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "54316380ae8143b6b8c1ed9c0149568c.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "56a70bfac9884be5aadf7e25eadc503f.json",
+      "purpose": "patch",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "57dd087e709d4740aa6db156aa1129c8.json",
+      "purpose": "scope_validation",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "611246856cb941d0b2286573832f0e38.json",
+      "purpose": "test_review",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "628e88a1dc3e452a89efd04e21aac052.json",
+      "purpose": "intent",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "6e8db8d8cdbc424f9ba2d1c0a58bb367.json",
+      "purpose": "task_tests",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "79a8b5199e1f4b4b870f63f640ed2812.json",
+      "purpose": "patch",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "d023a503b86e4b01b9f7b03a0701ce51.json",
+      "purpose": "plan",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": true
+}

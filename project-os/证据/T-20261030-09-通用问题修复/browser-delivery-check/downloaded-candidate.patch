@@ -1,0 +1,11 @@
+--- a/stream_ops.py
++++ b/stream_ops.py
+@@ -1,7 +1,7 @@
+ def split_packets(values, size):
+     if size <= 0:
+         raise ValueError("size must be positive")
+-    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]
++    return [values[i:i + size] for i in range(0, len(values), size)]
+ 
+ 
+ def flatten(groups):

@@ -1,0 +1,66 @@
+{
+  "model": "qwen35-9b-unc:latest",
+  "task": "stable_unique",
+  "seconds": 84.687,
+  "exit_code": 0,
+  "repair_status": "VERIFIED",
+  "blocked_reason": "",
+  "reasons": [
+    "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+  ],
+  "patch_note": "LLM 生成 1 个有效候选。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）",
+  "replay_status": "PASS",
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "1249eff55fc04db694f0b5a08fbc6f20.json",
+      "purpose": "task_tests",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "76aafc9a9b224ac7bd7d7f15003c795f.json",
+      "purpose": "patch",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "822a0ece98aa4c2e8200192fdb0b09ed.json",
+      "purpose": "test_review",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "83619a2d66f44ab4a7af7c1a67d8863a.json",
+      "purpose": "scope_validation",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "a66f479d771e4dc0a21bccf8e1fa92f6.json",
+      "purpose": "patch",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "ec83dd5eacb74c168fe641b2bf237b18.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "f877fc4b4ea548bda66bb799b006259f.json",
+      "purpose": "plan",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,19 @@
+{
+  "eligible_files": 492,
+  "eligible_bytes": 3365794,
+  "secret_pattern_hits": [],
+  "files_over_20MiB": [],
+  "nested_git": false,
+  "core_wheel_new_venv": "PASS",
+  "hosted_ci": "NOT_RUN",
+  "current_changes_committed": false,
+  "published_github_link_verified": false,
+  "scope": "不包含.git、忽略项或同级上游仓库；有限模式检查，不是完整安全与许可认证",
+  "configured_remote_hosts": [
+    {
+      "remote": "origin",
+      "host": "gitee.com"
+    }
+  ],
+  "github_remote_present": false
+}

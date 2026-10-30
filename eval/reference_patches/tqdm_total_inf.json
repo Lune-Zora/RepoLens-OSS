@@ -1,0 +1,6 @@
+{
+  "tqdm/std.py": {
+    "from": "        if total and n >= (total + 0.5):  # allow float imprecision (#849)",
+    "to": "        if total == float(\"inf\"):\n            # infinite total: behave the same as unknown total (#651)\n            total = None\n        elif total and n >= (total + 0.5):  # allow float imprecision (#849)"
+  }
+}

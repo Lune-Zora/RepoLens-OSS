@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T07:25:02.455848+00:00",
+  "purpose": "patch",
+  "context": {
+    "generation_round": 1,
+    "candidate_index": 3
+  },
+  "request": {
+    "model": "qwen2.5-coder:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "你是开源仓库修复专家。基于给定的代码证据与测试反馈，生成最小修改补丁。只允许修改标记为【可修改】的生产源码文件；标记为【仅供上下文，禁止修改】的测试文件只用于理解预期行为，绝不能出现在补丁里。from 字段必须是目标文件中逐字符一致的原文（含缩进与标点），且要包含足够上下文（可多行），保证在整个文件里唯一匹配。严格输出 JSON 对象，格式：{\"<相对路径>\": {\"from\": \"<原文>\", \"to\": \"<替换后>\"}}。若无法生成可靠补丁，输出 {\"reason\": \"<原因>\"}。不要输出任何多余文字。"
+      },
+      {
+        "role": "user",
+        "content": "问题描述：日期字符串(date string)首尾有空白(whitespace)时解析(parse)失败\n\n代码证据：\n【可修改】文件 src/dateparse/parser.py:9 function parse_date 证据来源: 失败轨迹 1 帧命中 src/dateparse/parser.py:9（累计权重 1.00）→ 未被执行证伪\n[代码开始]\n   1 | def parse_date(s):\n   2 |     \"\"\"Parse a date string in YYYY-MM-DD format.\n   3 | \n   4 |     Args:\n   5 |         s: the date string, e.g. \"2024-01-01\".\n   6 | \n   7 |     Returns:\n   8 |         datetime.date object.\n   9 | \n  10 |     Note:\n  11 |         The input is not stripped of surrounding whitespace, so a string\n  12 |         like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n  13 |         call s.strip() before parsing.\n  14 |     \"\"\"\n  15 |     return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n[代码结束]\n【可修改】文件 src/dateparse/parser.py:9 function parse_date 证据来源: 失败轨迹 1 帧命中 src/dateparse/parser.py:9（累计权重 1.00）→ 未被执行证伪\n[代码开始]\n   1 | def parse_date(s):\n   2 |     \"\"\"Parse a date string in YYYY-MM-DD format.\n   3 | \n   4 |     Args:\n   5 |         s: the date string, e.g. \"2024-01-01\".\n   6 | \n   7 |     Returns:\n   8 |         datetime.date object.\n   9 | \n  10 |     Note:\n  11 |         The input is not stripped of surrounding whitespace, so a string\n  12 |         like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n  13 |         call s.strip() before parsing.\n  14 |     \"\"\"\n  15 |     return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n[代码结束]\n【可修改】文件 src/dateparse/validator.py:29 function validate_range 证据来源: 与 parse_date 存在调用关系（调用图扩展）\n[代码开始]\n   1 | def validate_range(start, end):\n   2 |     \"\"\"Validate that the start date is not after the end date.\n   3 | \n   4 |     Args:\n   5 |         start: start date string \"YYYY-MM-DD\".\n   6 |         end: end date string \"YYYY-MM-DD\".\n   7 | \n   8 |     Returns:\n   9 |         True if start <= end, False otherwise.\n  10 | \n  11 |     Note:\n  12 |         Uses strict less-than instead of less-or-equal, so equal dates are\n  13 |         wrongly rejected. This is the bug to fix.\n  14 |     \"\"\"\n  15 |     from .parser import parse_date\n  16 |     s = parse_date(start)\n  17 |     e = parse_date(end)\n  18 |     return s < e\n[代码结束]\n【可修改】文件 src/dateparse/validator.py:8 function is_valid_date 证据来源: BM25+语义 RRF 融合命中（bm25_rank=3, sem_rank=6）\n[代码开始]\n   1 | def is_valid_date(s):\n   2 |     \"\"\"Check whether a date string is a valid YYYY-MM-DD date.\n   3 | \n   4 |     Args:\n   5 |         s: date string like \"2024-01-01\".\n   6 | \n   7 |     Returns:\n   8 |         True if the string parses to a valid date, False otherwise.\n   9 | \n  10 |     Note:\n  11 |         Delegates to parse_date, which does not strip surrounding whitespace,\n  12 |         so \" 2024-01-01 \" is wrongly reported as invalid.\n  13 |     \"\"\"\n  14 |     from .parser import parse_date\n  15 |     try:\n  16 |         parse_date(s)\n  17 |         return True\n  18 |     except ValueError:\n  19 |         return False\n[代码结束]\n【可修改】文件 src/dateparse/parser.py:26 function parse_datetime 证据来源: BM25+语义 RRF 融合命中（bm25_rank=8, sem_rank=5）\n[代码开始]\n   1 | def parse_datetime(s):\n   2 |     \"\"\"Parse a datetime string in YYYY-MM-DD HH:MM:SS format.\"\"\"\n   3 |     return datetime.datetime.strptime(s, \"%Y-%m-%d %H:%M:%S\")\n[代码结束]\n【可修改】文件 src/dateparse/utils.py:25 function add_days 证据来源: BM25+语义 RRF 融合命中（bm25_rank=5, sem_rank=10）\n[代码开始]\n   1 | def add_days(s, n):\n   2 |     \"\"\"Add n days to a date string and return a date object.\n   3 | \n   4 |     Args:\n   5 |         s: date string \"YYYY-MM-DD\".\n   6 |         n: integer number of days (can be negative).\n   7 | \n   8 |     Returns:\n   9 |         datetime.date object.\n  10 |     \"\"\"\n  11 |     from .parser import parse_date\n  12 |     d = parse_date(s)\n  13 |     return d + datetime.timedelta(days=n)\n[代码结束]\n【可修改】文件 src/dateparse/utils.py:5 function days_between 证据来源: BM25+语义 RRF 融合命中（bm25_rank=6, sem_rank=9）\n[代码开始]\n   1 | def days_between(a, b):\n   2 |     \"\"\"Return the number of days between two date strings (absolute value).\n   3 | \n   4 |     Args:\n   5 |         a: start date string \"YYYY-MM-DD\".\n   6 |         b: end date string \"YYYY-MM-DD\".\n   7 | \n   8 |     Returns:\n   9 |         Non-negative integer day count.\n  10 | \n  11 |     Note:\n  12 |         Subtraction order is reversed — returns a negative value when a < b.\n  13 |         This is the bug to fix.\n  14 |     \"\"\"\n  15 |     from .parser import parse_date\n  16 |     da = parse_date(a)\n  17 |     db = parse_date(b)\n  18 |     return (da - db).days\n[代码结束]\n【仅供上下文，禁止修改】文件 tests/test_parser.py:8 method test_parse_date 证据来源: 证伪：位于测试文件，不是源码证据（降权）\n[代码开始]\n   1 | def test_parse_date(self):\n   2 |         self.assertEqual(parse_date(\"2024-01-01\"), datetime.date(2024, 1, 1))\n[代码结束]\n【仅供上下文，禁止修改】文件 tests/test_parser.py:17 method test_parse_date_with_whitespace 证据来源: 证伪：位于测试文件，不是源码证据（降权）\n[代码开始]\n   1 | def test_parse_date_with_whitespace(self):\n   2 |         self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))\n[代码结束]"
+      }
+    ],
+    "temperature": 0.5,
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T07:25:02.913961+00:00",
+  "duration_seconds": 0.453,
+  "response_text": "{\"id\":\"chatcmpl-439\",\"object\":\"chat.completion\",\"created\":1793345102,\"model\":\"qwen2.5-coder:1.5b\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"src/dateparse/parser.py\\\": {\\n    \\\"from\\\": \\\"s.strip() before parsing.\\\",\\n    \\\"to\\\": \\\"s.strip() before parsing.\\\"\\n  }\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1955,\"prompt_tokens_details\":{\"cached_tokens\":1954},\"completion_tokens\":40,\"total_tokens\":1995}}\n",
+  "parsed": {
+    "src/dateparse/parser.py": {
+      "from": "s.strip() before parsing.",
+      "to": "s.strip() before parsing."
+    }
+  },
+  "error": null,
+  "response_model": "qwen2.5-coder:1.5b",
+  "usage": {
+    "prompt_tokens": 1955,
+    "prompt_tokens_details": {
+      "cached_tokens": 1954
+    },
+    "completion_tokens": 40,
+    "total_tokens": 1995
+  }
+}

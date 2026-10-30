@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-m",
+    "replens",
+    "verify",
+    "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\config_values",
+    "--provenance",
+    "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\delivery-model-validation\\qwen35-9b-unc_latest--config_values\\provenance",
+    "--require-verified",
+    "--format",
+    "json",
+    "--output",
+    "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\delivery-model-validation\\qwen35-9b-unc_latest--config_values\\replay.json"
+  ],
+  "exit_code": 0,
+  "seconds": 7.371
+}

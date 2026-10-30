@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "reasons": [
+    "材料、逐测试身份/状态及统一验收结论重放一致"
+  ],
+  "materials_status": "PASS",
+  "replay_status": "PASS",
+  "repair_status": "VERIFIED",
+  "schema_version": "2.0",
+  "recorded_repair_status": "VERIFIED",
+  "validation": {
+    "status": "VERIFIED",
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "targets": [
+      "tests/test_parser.py::ParserTests::test_parse_date_with_whitespace"
+    ],
+    "preserved": [
+      "tests/test_parser.py::ParserTests::test_parse_date",
+      "tests/test_parser.py::ParserTests::test_parse_datetime"
+    ],
+    "acceptance_sha256": "1aacb96e419b642cacc224843609d7aab7fcad4da6266bdff2d87b80e9b7688d",
+    "acceptance_targets": [
+      "test_date_behavior.DateBehavior.test_tab_and_newline_padding"
+    ]
+  },
+  "phase_checks": {
+    "primary": {
+      "before": true,
+      "after": true
+    },
+    "auxiliary": {
+      "before": true,
+      "after": true
+    },
+    "acceptance": {
+      "before": true,
+      "after": true
+    }
+  },
+  "validation_matches": true,
+  "markdown": "# RepoLens-OSS 证据包重放报告\n\n| 检查 | 结论 |\n|---|---|\n| 材料核验 | PASS |\n| 重放一致性 | PASS |\n| 修复结论 | VERIFIED |\n\n重放 PASS 表示结果与记录一致；只有修复结论 VERIFIED 表示通过独立验收。\n\n- 材料、逐测试身份/状态及统一验收结论重放一致\n\n| 测试套件 | 修复前一致 | 修复后一致 |\n|---|---|---|\n| primary | True | True |\n| auxiliary | True | True |\n| acceptance | True | True |\n"
+}

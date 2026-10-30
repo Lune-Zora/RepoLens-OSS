@@ -1,0 +1,83 @@
+{
+  "time": "2026-10-30T17:43:11.448583",
+  "status": "listening",
+  "host": "127.0.0.1:11434",
+  "models_directory": "E:/fqdeepseek/ollama/models",
+  "parallel": 1,
+  "max_loaded_models": 1,
+  "tags": {
+    "models": [
+      {
+        "name": "qwen25-7b-unc:latest",
+        "model": "qwen25-7b-unc:latest",
+        "modified_at": "2026-10-19T22:22:19.0762076+08:00",
+        "size": 4683075011,
+        "digest": "01a50ec662e7c0116334f50049d8e15217975a795439cca9676c95047064d986",
+        "details": {
+          "parent_model": "Qwen2.5-7B-Instruct-abliterated.Q4_K_M.gguf",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 3584
+        },
+        "capabilities": [
+          "tools",
+          "completion"
+        ]
+      },
+      {
+        "name": "qwen35-9b-unc:latest",
+        "model": "qwen35-9b-unc:latest",
+        "modified_at": "2026-10-19T22:15:32.6990991+08:00",
+        "size": 5627045745,
+        "digest": "1b2602fd5481b95570fd362e57d83849a271059df71e3475c5a73f164d5e116f",
+        "details": {
+          "parent_model": "Huihui-Qwen3.5-9B-abliterated.Q4_K_M.gguf",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "9.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 4096
+        },
+        "capabilities": [
+          "tools",
+          "thinking",
+          "completion"
+        ]
+      },
+      {
+        "name": "qwen2.5-coder:1.5b",
+        "model": "qwen2.5-coder:1.5b",
+        "modified_at": "2026-09-29T00:21:22.5027329+08:00",
+        "size": 1117320883,
+        "digest": "db848539a06863d0fa29f5bab36c26a8b441bb4bf34fee35d8d2a5fb4762a47b",
+        "details": {
+          "parent_model": "qwen2.5-coder-1.5b-q4_k_m.gguf",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "1.8B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 1536
+        },
+        "capabilities": [
+          "tools",
+          "completion"
+        ]
+      }
+    ]
+  },
+  "note": "此前端口无监听、进程退出，未确定退出原因；连接拒绝记录不是模型能力结果。"
+}

@@ -1,0 +1,14 @@
+{
+  "src/dateparse/parser.py": {
+    "from": "return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()",
+    "to": "return datetime.datetime.strptime(s.strip(), \"%Y-%m-%d\").date()"
+  },
+  "src/dateparse/validator.py": {
+    "from": "s = parse_date(start)",
+    "to": "s = parse_date(start).strip()"
+  },
+  "src/dateparse/utils.py": {
+    "from": "da = parse_date(a)",
+    "to": "da = parse_date(a).strip()"
+  }
+}

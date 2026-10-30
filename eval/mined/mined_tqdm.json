@@ -1,0 +1,145 @@
+[
+ {
+  "id": 1,
+  "category": "bug",
+  "issue": "handle total=inf in format_meter to avoid OverflowError",
+  "expected": [
+   "tqdm/std.py:format_meter:533"
+  ],
+  "validation": {
+   "id": 1,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ },
+ {
+  "id": 2,
+  "category": "bug",
+  "issue": "length detection in contrib.concurrent",
+  "expected": [
+   "tqdm/contrib/concurrent.py:_executor_map:42"
+  ],
+  "validation": {
+   "id": 2,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ },
+ {
+  "id": 3,
+  "category": "bug",
+  "issue": "rich: misc fixes",
+  "expected": [
+   "tqdm/rich.py:render:31"
+  ],
+  "validation": {
+   "id": 3,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ },
+ {
+  "id": 4,
+  "category": "bug",
+  "issue": "handle total=inf in format_meter to avoid OverflowError",
+  "expected": [
+   "tqdm/std.py:format_meter:533"
+  ],
+  "validation": {
+   "id": 4,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ },
+ {
+  "id": 5,
+  "category": "bug",
+  "issue": "prevent tqdm.write from crashing when sys.stdout is none",
+  "expected": [
+   "tqdm/std.py:external_write_mode:730"
+  ],
+  "validation": {
+   "id": 5,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ },
+ {
+  "id": 6,
+  "category": "bug",
+  "issue": "Merge pull requests #1717 and #1767 (fixes #1658)",
+  "expected": [
+   "tqdm/std.py:format_meter:630"
+  ],
+  "validation": {
+   "id": 6,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ },
+ {
+  "id": 7,
+  "category": "bug",
+  "issue": "apply disp_trim to all format_meter return paths (#1658)",
+  "expected": [
+   "tqdm/std.py:format_meter:632"
+  ],
+  "validation": {
+   "id": 7,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ },
+ {
+  "id": 8,
+  "category": "bug",
+  "issue": "Merge pull request #1751 from jaltmayerpizzorno/fix-atexit-monitor-deadlock",
+  "expected": [
+   "tqdm/_monitor.py:TqdmSynchronisationWarning:10"
+  ],
+  "validation": {
+   "id": 8,
+   "ok": false,
+   "reason": "修复前测试未失败"
+  }
+ },
+ {
+  "id": 9,
+  "category": "bug",
+  "issue": "TMonitor deadlock at interpreter shutdown",
+  "expected": [
+   "tqdm/_monitor.py:__init__:38"
+  ],
+  "validation": {
+   "id": 9,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ },
+ {
+  "id": 10,
+  "category": "bug",
+  "issue": "apply disp_trim to all format_meter return paths",
+  "expected": [
+   "tqdm/std.py:format_meter:633"
+  ],
+  "validation": {
+   "id": 10,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ },
+ {
+  "id": 11,
+  "category": "bug",
+  "issue": "pandas>=3 & negative format_interval",
+  "expected": [
+   "tqdm/std.py:format_interval:414"
+  ],
+  "validation": {
+   "id": 11,
+   "ok": true,
+   "reason": "fail→pass"
+  }
+ }
+]

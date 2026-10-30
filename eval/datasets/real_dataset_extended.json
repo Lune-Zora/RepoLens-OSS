@@ -1,0 +1,144 @@
+[
+  {
+    "id": 1,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "74ff9929dfec128972eb68f9ff27ae40fae6a21c",
+    "buggy_parent": "3757d0d13ec86d73a838b55fc35ef89bc42a3461",
+    "test_cmd": "pytest tests/tests_tqdm.py::test_write_stdout_none",
+    "issue": "Calling the utility that prints a message through the progress bar raises an AttributeError when the process's standard output stream is set to None, instead of silently doing nothing.",
+    "expected": [
+      "tqdm/std.py:write:717"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:21:05",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 2,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "55156ce4bed3457956d0557558b9bfb1c2de8a33",
+    "buggy_parent": "9aff6090b6fa98c88a2dbff8bd9e2a68d9a99c1b",
+    "test_cmd": "pytest tests/tests_tqdm.py::test_format_meter",
+    "issue": "When a progress bar is rendered with a custom format string that contains no bar placeholder, the output is not trimmed to the terminal width, so a long description can overflow and wrap the display.",
+    "expected": [
+      "tqdm/std.py:format_meter:463"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:21:05",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 3,
+    "project": "tqdm",
+    "category": "bug",
+    "fix_commit": "426a0988a1e9970041f5a649ae8a6376c5293fbe",
+    "buggy_parent": "5bf58c2d61410e5a17da3440df921fe34c6c38bf",
+    "test_cmd": "pytest tests/tests_tqdm.py::test_reset_inf",
+    "issue": "When a progress bar's counters are cleared and re-initialized with an infinite total, the bar keeps the infinite total instead of treating it as unknown, so subsequent updates render incorrect progress information.",
+    "expected": [
+      "tqdm/std.py:reset:1369"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:21:05",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 4,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "c6f073a5223cc37fcd6d298e93baa8abdc733cd8",
+    "buggy_parent": "ea00497a849f17f1dfb926d7268077fc92ea0c0a",
+    "test_cmd": "pytest tests/test_pagerange.py::test_addition_none_bounds tests/test_pagerange.py::test_addition_gap_with_none_start",
+    "issue": "Combining two page ranges raises a TypeError whenever either range has an unbounded start or stop (for example ':5' or '5:'); such open-ended ranges should merge into the correct union instead of crashing.",
+    "expected": [
+      "pypdf/pagerange.py:__add__:140"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:21:05",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 5,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "1dfd7397cc124595ccd07e2673a34db20379dde7",
+    "buggy_parent": "d0b135a2fb3740ae80739f361f5d263403142e41",
+    "test_cmd": "pytest tests/generic/test_data_structures.py::test_tree_object__insert_child_without_next_key tests/generic/test_data_structures.py::test_tree_object__insert_child_in_first_position_with_next",
+    "issue": "Inserting a fresh child node at the first position of a tree structure raises a KeyError for a '/Next' key, because the code assumes the new child already carries that key even though a brand-new node does not.",
+    "expected": [
+      "pypdf/generic/_data_structures.py:insert_child:766"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:21:05",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 6,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "23d6683d5183ee0814300946b346f313f225483f",
+    "buggy_parent": "da867f4961e4ac5ac9d751cba3131c5a1a8777f3",
+    "test_cmd": "pytest tests/generic/test_link.py::test_extract_links_ignores_non_link_annotation_offsets tests/generic/test_link.py::test_extract_links_ignores_uri_annotation_offsets",
+    "issue": "When matching links between two versions of a page, the presence of non-link annotations on one page shifts the position-based pairing so that valid links are dropped or mismatched; non-link annotations should be skipped before pairing.",
+    "expected": [
+      "pypdf/generic/_link.py:extract_links:79"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:21:05",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 7,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "c38feda0edff9ed2646ed87ddb731fc210b81c10",
+    "buggy_parent": "3f7bc193bcc0a917e53b1e505e3f5ce55d43e841",
+    "test_cmd": "pytest tests/test_page_labels.py::test_number2lowercase_letter tests/test_page_labels.py::test_number2uppercase_letter__repeats_the_same_letter tests/test_page_labels.py::test_get_label_from_nums__letter_style_past_z",
+    "issue": "Page labels using letter style are numbered incorrectly past the 27th page: the PDF specification requires the same letter repeated (AA, BB, ..., ZZ), but the 28th page is labeled 'AB' instead of 'BB'.",
+    "expected": [
+      "pypdf/_page_labels.py:number2uppercase_letter:115"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:21:05",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 8,
+    "project": "pypdf",
+    "category": "bug",
+    "fix_commit": "295594900e35f8d7628c13c05f5d28d9b29ef990",
+    "buggy_parent": "b0ec95d9392232b3873bf2dd8d9179095734ca16",
+    "test_cmd": "pytest tests/test_writer.py::test_num_copies_rejects_negative tests/test_writer.py::test_num_copies_accepts_zero_and_above",
+    "issue": "Setting the number of copies in the viewer preferences to a negative value is silently accepted and written into the document, even though a negative copy count is meaningless and should be rejected.",
+    "expected": [
+      "pypdf/generic/_viewerpref.py:_set_int:101"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:21:05",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 9,
+    "project": "tqdm",
+    "category": "noise",
+    "issue": "add GPU acceleration support to the progress bar",
+    "expected": []
+  },
+  {
+    "id": 10,
+    "project": "pypdf",
+    "category": "noise",
+    "issue": "translate the whole documentation into French",
+    "expected": []
+  }
+]

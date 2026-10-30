@@ -1,0 +1,10 @@
+{
+  "history_objects": 954,
+  "max_historical_blob_bytes": 90252,
+  "historical_blobs_over_20MiB": [],
+  "tracked_ignored_files": [],
+  "git_commit": "eae5076f3bfded9c9c0439da00d678b42c136125",
+  "current_changes_uncommitted": true,
+  "hosted_ci_verified": false,
+  "scope": "历史仅核对对象大小；当前待上传文本的密钥模式另行检查，不宣称完整安全认证"
+}

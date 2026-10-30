@@ -1,0 +1,186 @@
+{
+  "schema_version": "2.0",
+  "status": "NO_PATCH",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "validation": {
+    "status": "NO_PATCH",
+    "reasons": [
+      "没有进入验收的补丁"
+    ],
+    "targets": [],
+    "preserved": [],
+    "acceptance_sha256": "13c64a01bcff739bf3b3fd6a48bde444c843ccee8820aa51e330639a086e65cf"
+  },
+  "test_framework": "pytest",
+  "generated_test_kind": "none",
+  "acceptance_before": [],
+  "acceptance_after": [],
+  "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\stable_unique",
+  "issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+  "insufficient_evidence": false,
+  "evidences": [
+    {
+      "ref": "api.py:1",
+      "type": "function",
+      "name": "unique_values",
+      "confidence": 0.0,
+      "reason": "当前 unique_values 函数通过将列表转换为集合来去重，这会破坏元素的原始顺序。需要使用其他方法来保持顺序并去除重复项。",
+      "source": "intent_target",
+      "signature": "def unique_values(values)",
+      "code": "def unique_values(values):\n    return list(set(values))"
+    },
+    {
+      "ref": "api.py:5",
+      "type": "function",
+      "name": "count_values",
+      "confidence": 0.85,
+      "reason": "符号名/文档命中关键词: values, value",
+      "source": "keyword_match",
+      "signature": "def count_values(values)",
+      "code": "def count_values(values):\n    return len(values)"
+    },
+    {
+      "ref": "README.md:1",
+      "type": "document",
+      "name": "README.md",
+      "confidence": 0.55,
+      "reason": "代码片段命中检索词（document @ README.md:1）",
+      "source": "keyword_match",
+      "signature": "document",
+      "code": "# stable_unique\n\nA small Python utility package. API is defined in api.py.\n"
+    },
+    {
+      "ref": "tests/test_public.py:6",
+      "type": "method",
+      "name": "test_empty",
+      "confidence": 0.4,
+      "reason": "代码片段命中检索词（method @ tests/test_public.py:6）",
+      "source": "keyword_match",
+      "signature": "def test_empty(self)",
+      "code": "def test_empty(self): self.assertEqual(api.unique_values([]),[])"
+    },
+    {
+      "ref": "tests/test_public.py:5",
+      "type": "method",
+      "name": "test_one",
+      "confidence": 0.6,
+      "reason": "与 unique_values 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_one(self)",
+      "code": "def test_one(self): self.assertEqual(api.unique_values([2,2]),[2])"
+    },
+    {
+      "ref": "tests/test_public.py:7",
+      "type": "method",
+      "name": "test_count",
+      "confidence": 0.51,
+      "reason": "与 count_values 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_count(self)",
+      "code": "def test_count(self): self.assertEqual(api.count_values([1,1,2]),3)"
+    }
+  ],
+  "plan": {
+    "root_cause": "unique_values 函数通过将列表转换为集合来去重，这会破坏元素的原始顺序。",
+    "affected_scope": [
+      "api.py"
+    ],
+    "files_to_modify": [
+      "api.py"
+    ],
+    "steps": [
+      "在 unique_values 函数中实现一个方法来保持元素的原始顺序并去除重复项。",
+      "测试新的 unique_values 实现是否满足要求，即 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表。",
+      "确保 new_unique_values 不修改输入列表。"
+    ],
+    "risks": [
+      "新实现的 unique_values 函数可能与现有的依赖于其行为的测试不兼容，特别是那些依赖于元素顺序的测试。",
+      "可能会引入新的 bug 或性能问题，如果实现不当。"
+    ],
+    "regression_test": "api.unique_values([4,2,4,1]) 应返回 [4,2,1]；api.unique_values([]) 应返回 []。",
+    "generated_by": "llm"
+  },
+  "test_command": "python -m pytest tests",
+  "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'path': 'api.py', 'symbol': 'unique_values', 'args': [[1, 2, 3, 2, 4]], 'kwargs': {}, 'expected': [1, 2, 3, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[4, 2, 4, 1]], 'kwargs': {}, 'expected': [1, 2, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[], [1, 2, 3]], 'kwargs': {}, 'expected': [], 'raises': ''}], 'changes': ['当前实现会破坏输入列表的顺序，这与需求不符。正确的去重方法应保持元素首次出现时的顺序。', '对于 [4, 2, 4, 1] 的测试用例，预期结果应该是 [4, 2, 1] 而不是 [1, 2, 4]。']}",
+  "before": [
+    {
+      "command": "python -m pytest tests",
+      "returncode": 0,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_guaffru9\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_public.py ...                                                 [100%]\n\n============================== 3 passed in 0.49s ==============================\n",
+      "stderr": "",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 3,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 3,
+        "ran": 3
+      },
+      "invalid_reason": "",
+      "tests": {
+        "tests/test_public.py::PublicTests::test_count": "PASS",
+        "tests/test_public.py::PublicTests::test_empty": "PASS",
+        "tests/test_public.py::PublicTests::test_one": "PASS"
+      },
+      "structured": true,
+      "framework": "pytest"
+    }
+  ],
+  "after": [],
+  "generated_test": "",
+  "patch_diff": "",
+  "execution_hints": [],
+  "flip_prediction": null,
+  "regression_before": [],
+  "regression_after": [],
+  "regression_test_cmd": "",
+  "test_timeout": 120,
+  "requested_test_command": "python -m pytest tests",
+  "understanding": {
+    "original_issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+    "summary": "unique_values 函数去重时未保持元素的原始顺序。",
+    "expected_behavior": "对于 [4,2,4,1] 应返回 [4,2,1]，而不是 [1,2,4] 等其他结果。",
+    "search_query": "unique_values order preserving",
+    "scope": "matched",
+    "explanation": "当前 unique_values 函数通过将列表转换为集合来去重，这会破坏元素的原始顺序。需要使用其他方法来保持顺序并去除重复项。",
+    "targets": [
+      {
+        "ref": "api.py:1",
+        "path": "api.py",
+        "name": "unique_values",
+        "start_line": 1
+      }
+    ],
+    "repository_functions": [
+      "api.py:unique_values",
+      "api.py:count_values"
+    ],
+    "catalog_total": 2,
+    "catalog_shown": 2,
+    "model": "qwen25-7b-unc:latest",
+    "generated_by": "llm",
+    "error": "",
+    "retrieval_mode": "llm_grounded_source"
+  },
+  "task_tests": {
+    "error": "模型测试审核未通过：{'approved': False, 'cases': [{'path': 'api.py', 'symbol': 'unique_values', 'args': [[1, 2, 3, 2, 4]], 'kwargs': {}, 'expected': [1, 2, 3, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[4, 2, 4, 1]], 'kwargs': {}, 'expected': [1, 2, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[], [1, 2, 3]], 'kwargs': {}, 'expected': [], 'raises': ''}], 'changes': ['当前实现会破坏输入列表的顺序，这与需求不符。正确的去重方法应保持元素首次出现时的顺序。', '对于 [4, 2, 4, 1] 的测试用例，预期结果应该是 [4, 2, 1] 而不是 [1, 2, 4]。']}"
+  },
+  "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'path': 'api.py', 'symbol': 'unique_values', 'args': [[1, 2, 3, 2, 4]], 'kwargs': {}, 'expected': [1, 2, 3, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[4, 2, 4, 1]], 'kwargs': {}, 'expected': [1, 2, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[], [1, 2, 3]], 'kwargs': {}, 'expected': [], 'raises': ''}], 'changes': ['当前实现会破坏输入列表的顺序，这与需求不符。正确的去重方法应保持元素首次出现时的顺序。', '对于 [4, 2, 4, 1] 的测试用例，预期结果应该是 [4, 2, 1] 而不是 [1, 2, 4]。']}",
+  "verification_scope": "当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为",
+  "model": "qwen25-7b-unc:latest",
+  "provenance": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

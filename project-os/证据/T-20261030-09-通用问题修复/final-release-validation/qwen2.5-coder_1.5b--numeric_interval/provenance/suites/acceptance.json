@@ -1,0 +1,11 @@
+{
+  "after": null,
+  "before": null,
+  "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "enabled": true,
+  "files": {
+    "__replens_acceptance__/test_behavior.py": "import unittest\nimport api\n\nclass IndependentBehavior(unittest.TestCase):\n    def test_left(self): self.assertTrue(api.contains(-3,8,-3))\n    def test_right(self): self.assertTrue(api.contains(-3,8,8))\n    def test_single(self): self.assertTrue(api.contains(4,4,4))\n    def test_outside(self): self.assertFalse(api.contains(-3,8,-4))\n    def test_inside(self): self.assertTrue(api.contains(-3,8,0))\n    def test_helper(self): self.assertEqual(api.interval_width(2,9),7)\n"
+  },
+  "sha256": "f55d5137ae18423eaeec746b0a5452961e401a2c28b60acd814575efb64d8990",
+  "timeout": 120
+}

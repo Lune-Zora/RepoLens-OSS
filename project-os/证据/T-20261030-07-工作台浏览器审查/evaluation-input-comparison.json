@@ -1,0 +1,16 @@
+[
+  {
+    "variant": "frozen-eight-files",
+    "indexed_file_count": 8,
+    "hit@1": 0.85,
+    "hit@5": 0.95,
+    "mrr@5": 0.8917
+  },
+  {
+    "variant": "same-eight-plus-current-compliance",
+    "indexed_file_count": 10,
+    "hit@1": 0.8,
+    "hit@5": 0.95,
+    "mrr@5": 0.8667
+  }
+]

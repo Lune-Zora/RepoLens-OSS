@@ -1,0 +1,23 @@
+{
+  "models": [
+    "qwen25-7b-unc:latest",
+    "qwen35-9b-unc:latest",
+    "qwen2.5-coder:1.5b"
+  ],
+  "selected_model": "qwen35-9b-unc:latest",
+  "issue": "布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。",
+  "acceptance": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\validation\\config_values.json",
+  "datasets": [
+    "dataset.json",
+    "real_dataset_extended.json",
+    "real_dataset_loguru.json",
+    "real_dataset_mined.json",
+    "real_dataset_pypdf.json",
+    "real_dataset_tqdm.json"
+  ],
+  "errors": [],
+  "narrow": {
+    "viewport": 390,
+    "document": 390
+  }
+}

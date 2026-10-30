@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-m",
+    "replens",
+    "run",
+    "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\numeric_interval",
+    "--issue",
+    "判断数字是否位于闭区间时，应当包含左右端点；上下界相同且值等于该边界时也应该返回真。区间外返回假。",
+    "--auto-patch",
+    "--test-cmd",
+    "python -m pytest tests",
+    "--acceptance-suite",
+    "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\validation\\numeric_interval.json",
+    "--require-verified",
+    "--format",
+    "json",
+    "--output",
+    "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\final-release-validation\\qwen35-9b-unc_latest--numeric_interval\\report.json"
+  ],
+  "exit_code": 0,
+  "seconds": 56.184
+}

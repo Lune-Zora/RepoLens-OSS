@@ -1,0 +1,83 @@
+{
+  "pages": [
+    {
+      "page": 1,
+      "characters": 154,
+      "landscape": false,
+      "appendix_b": false
+    },
+    {
+      "page": 2,
+      "characters": 1080,
+      "landscape": false,
+      "appendix_b": true
+    },
+    {
+      "page": 3,
+      "characters": 297,
+      "landscape": false,
+      "appendix_b": false
+    },
+    {
+      "page": 4,
+      "characters": 1186,
+      "landscape": false,
+      "appendix_b": false
+    },
+    {
+      "page": 5,
+      "characters": 996,
+      "landscape": false,
+      "appendix_b": false
+    },
+    {
+      "page": 6,
+      "characters": 1440,
+      "landscape": false,
+      "appendix_b": false
+    },
+    {
+      "page": 7,
+      "characters": 921,
+      "landscape": false,
+      "appendix_b": false
+    },
+    {
+      "page": 8,
+      "characters": 1029,
+      "landscape": false,
+      "appendix_b": false
+    },
+    {
+      "page": 9,
+      "characters": 1784,
+      "landscape": true,
+      "appendix_b": true
+    },
+    {
+      "page": 10,
+      "characters": 2111,
+      "landscape": true,
+      "appendix_b": false
+    },
+    {
+      "page": 11,
+      "characters": 2061,
+      "landscape": true,
+      "appendix_b": false
+    },
+    {
+      "page": 12,
+      "characters": 1954,
+      "landscape": true,
+      "appendix_b": false
+    },
+    {
+      "page": 13,
+      "characters": 1072,
+      "landscape": true,
+      "appendix_b": false
+    }
+  ],
+  "body_and_annex_total": 13
+}

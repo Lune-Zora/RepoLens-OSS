@@ -1,0 +1,64 @@
+[
+  {
+    "name": "ollama-license",
+    "url": "https://raw.githubusercontent.com/ollama/ollama/main/LICENSE",
+    "resolved_url": "https://raw.githubusercontent.com/ollama/ollama/main/LICENSE",
+    "path": "official-sources/ollama-license.txt",
+    "sha256": "5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226",
+    "ok": true
+  },
+  {
+    "name": "qwen15-license",
+    "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct/raw/main/LICENSE",
+    "resolved_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct/raw/main/LICENSE",
+    "path": "official-sources/qwen15-license.txt",
+    "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+    "ok": true
+  },
+  {
+    "name": "qwen05-license",
+    "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct/raw/main/LICENSE",
+    "resolved_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct/raw/main/LICENSE",
+    "path": "official-sources/qwen05-license.txt",
+    "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+    "ok": true
+  },
+  {
+    "name": "bge-license",
+    "url": "https://huggingface.co/BAAI/bge-small-en-v1.5/raw/main/README.md",
+    "resolved_url": "https://huggingface.co/BAAI/bge-small-en-v1.5/raw/main/README.md",
+    "path": "official-sources/bge-license.txt",
+    "sha256": "ddb964361a55c6e5dfca6361615854b260c9c960205d04c7520151aaa1d75837",
+    "ok": true
+  },
+  {
+    "name": "sqlite-copyright",
+    "url": "https://www.sqlite.org/copyright.html",
+    "resolved_url": "https://www.sqlite.org/copyright.html",
+    "path": "official-sources/sqlite-copyright.txt",
+    "sha256": "44ca9f793055c8e32fc65f65a4f5bcf813a33f5bdaaa084067dd617a4ed3cc70",
+    "ok": true
+  },
+  {
+    "name": "python-license",
+    "url": "https://docs.python.org/3.10/license.html",
+    "resolved_url": "https://docs.python.org/3.10/license.html",
+    "path": "official-sources/python-license.txt",
+    "sha256": "4739090651d2d6d5c0e428251f412a550bb14c1e10277e0825ea3a845882aa2a",
+    "ok": true
+  },
+  {
+    "name": "openai-terms",
+    "url": "https://openai.com/policies/terms-of-use/",
+    "ok": false,
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "name": "openai-services",
+    "url": "https://openai.com/policies/services-agreement/",
+    "resolved_url": "https://openai.com/policies/services-agreement/",
+    "path": "official-sources/openai-services.txt",
+    "sha256": "645db4e648a93e5aa7f5bda4cb3fc1cae576d0bc5fc1c493ff5d6e15a1f916ed",
+    "ok": true
+  }
+]

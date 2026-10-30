@@ -1,0 +1,886 @@
+[
+  {
+    "project": "tqdm",
+    "commit": "3757d0d13ec86d73a838b55fc35ef89bc42a3461",
+    "licenses": [
+      "historical-licenses/tqdm/3757d0d13ec86d73a838b55fc35ef89bc42a3461/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "9aff6090b6fa98c88a2dbff8bd9e2a68d9a99c1b",
+    "licenses": [
+      "historical-licenses/tqdm/9aff6090b6fa98c88a2dbff8bd9e2a68d9a99c1b/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "5bf58c2d61410e5a17da3440df921fe34c6c38bf",
+    "licenses": [
+      "historical-licenses/tqdm/5bf58c2d61410e5a17da3440df921fe34c6c38bf/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "ea00497a849f17f1dfb926d7268077fc92ea0c0a",
+    "licenses": [
+      "historical-licenses/pypdf/ea00497a849f17f1dfb926d7268077fc92ea0c0a/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "d0b135a2fb3740ae80739f361f5d263403142e41",
+    "licenses": [
+      "historical-licenses/pypdf/d0b135a2fb3740ae80739f361f5d263403142e41/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "da867f4961e4ac5ac9d751cba3131c5a1a8777f3",
+    "licenses": [
+      "historical-licenses/pypdf/da867f4961e4ac5ac9d751cba3131c5a1a8777f3/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "3f7bc193bcc0a917e53b1e505e3f5ce55d43e841",
+    "licenses": [
+      "historical-licenses/pypdf/3f7bc193bcc0a917e53b1e505e3f5ce55d43e841/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "b0ec95d9392232b3873bf2dd8d9179095734ca16",
+    "licenses": [
+      "historical-licenses/pypdf/b0ec95d9392232b3873bf2dd8d9179095734ca16/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "2a17be730e11",
+    "licenses": [
+      "historical-licenses/loguru/2a17be730e11/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "36da8cca1445",
+    "licenses": [
+      "historical-licenses/loguru/36da8cca1445/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "62952bd97465",
+    "licenses": [
+      "historical-licenses/loguru/62952bd97465/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "97a50cf75faf",
+    "licenses": [
+      "historical-licenses/loguru/97a50cf75faf/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "8d6ff8de5a9066de77d0a9df3e80a022a3dcf146",
+    "licenses": [
+      "historical-licenses/tqdm/8d6ff8de5a9066de77d0a9df3e80a022a3dcf146/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "4a7f422734a765d3df89ad7dbfec3ef1baf53b30",
+    "licenses": [
+      "historical-licenses/tqdm/4a7f422734a765d3df89ad7dbfec3ef1baf53b30/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "6ab24dcc5df910044f1f6e0685f95dbf9cd424f3",
+    "licenses": [
+      "historical-licenses/tqdm/6ab24dcc5df910044f1f6e0685f95dbf9cd424f3/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "59029c37ad6af57df7b49d31c0f48728280ae824",
+    "licenses": [
+      "historical-licenses/tqdm/59029c37ad6af57df7b49d31c0f48728280ae824/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "75bdb6c379bcfc6c592b6342dc791a092b5d6ae0",
+    "licenses": [
+      "historical-licenses/tqdm/75bdb6c379bcfc6c592b6342dc791a092b5d6ae0/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "8c175ea97fdf586a10b21def09c27c0218b17bad",
+    "licenses": [
+      "historical-licenses/tqdm/8c175ea97fdf586a10b21def09c27c0218b17bad/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "9a11b2e591d77d5ff2dc1e27fb469f27e78b6dbf",
+    "licenses": [
+      "historical-licenses/tqdm/9a11b2e591d77d5ff2dc1e27fb469f27e78b6dbf/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "f12b8bc907b5f333147d538deaf30686ed5cb99f",
+    "licenses": [
+      "historical-licenses/tqdm/f12b8bc907b5f333147d538deaf30686ed5cb99f/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "fff3bf5f3ead77e493cad1ce29d8adf1b72da33c",
+    "licenses": [
+      "historical-licenses/tqdm/fff3bf5f3ead77e493cad1ce29d8adf1b72da33c/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "fc69d5dcf578f7c7986fa76841a6b793f813df35",
+    "licenses": [
+      "historical-licenses/tqdm/fc69d5dcf578f7c7986fa76841a6b793f813df35/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "tqdm",
+    "commit": "bcce20f771a16cb8e4ac5cc5b2307374a2c0e535",
+    "licenses": [
+      "historical-licenses/tqdm/bcce20f771a16cb8e4ac5cc5b2307374a2c0e535/LICENCE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "82b91951dc74496bb3efe6465434f041bb6a5e6b",
+    "licenses": [
+      "historical-licenses/pypdf/82b91951dc74496bb3efe6465434f041bb6a5e6b/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "b891fef37000cd86baa6e9848a3387d080b3b03e",
+    "licenses": [
+      "historical-licenses/pypdf/b891fef37000cd86baa6e9848a3387d080b3b03e/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "6d804f0058751343c9b42bf07e2d34133b754e4f",
+    "licenses": [
+      "historical-licenses/pypdf/6d804f0058751343c9b42bf07e2d34133b754e4f/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "885e7430cdf96b55b4ebaf2515e6efe46c396834",
+    "licenses": [
+      "historical-licenses/pypdf/885e7430cdf96b55b4ebaf2515e6efe46c396834/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "b32df1d4cad45ce58fdddcbf9ebcbe166c0a822d",
+    "licenses": [
+      "historical-licenses/pypdf/b32df1d4cad45ce58fdddcbf9ebcbe166c0a822d/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "32fd5fbbce7616ff5a6a506c69ea986fd2861692",
+    "licenses": [
+      "historical-licenses/pypdf/32fd5fbbce7616ff5a6a506c69ea986fd2861692/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "4a296e43c59fde5efeafc2d057581155d9558268",
+    "licenses": [
+      "historical-licenses/pypdf/4a296e43c59fde5efeafc2d057581155d9558268/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "b29ac76fcd890db1b2f1ba5f387241a776520b1b",
+    "licenses": [
+      "historical-licenses/pypdf/b29ac76fcd890db1b2f1ba5f387241a776520b1b/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "55ffd5013ad08eedb4c09727815762eb1f1eb62a",
+    "licenses": [
+      "historical-licenses/pypdf/55ffd5013ad08eedb4c09727815762eb1f1eb62a/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "628c06057308b76a21cc9779df601c7a321399fb",
+    "licenses": [
+      "historical-licenses/pypdf/628c06057308b76a21cc9779df601c7a321399fb/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "b3f28fa8e1184aa319f62339dfeaaf7c3422eb0c",
+    "licenses": [
+      "historical-licenses/pypdf/b3f28fa8e1184aa319f62339dfeaaf7c3422eb0c/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "ece7730074487ef647dcaa941a5b10177fab7a15",
+    "licenses": [
+      "historical-licenses/pypdf/ece7730074487ef647dcaa941a5b10177fab7a15/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "93d357106d70d00ecb6376bd1d976ea2a1cfdd07",
+    "licenses": [
+      "historical-licenses/pypdf/93d357106d70d00ecb6376bd1d976ea2a1cfdd07/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "8c7d4441954d2ada4a9d5d08fca02926bfad5a00",
+    "licenses": [
+      "historical-licenses/pypdf/8c7d4441954d2ada4a9d5d08fca02926bfad5a00/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "ca99aa42994b2ef8355e2dae674190a858b06395",
+    "licenses": [
+      "historical-licenses/pypdf/ca99aa42994b2ef8355e2dae674190a858b06395/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "1fdc10f2ce45469400c2af045f4c2e6e552c17b7",
+    "licenses": [
+      "historical-licenses/pypdf/1fdc10f2ce45469400c2af045f4c2e6e552c17b7/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "1758ef5fd95140597316dad06a6bc7f1fc452759",
+    "licenses": [
+      "historical-licenses/pypdf/1758ef5fd95140597316dad06a6bc7f1fc452759/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "a776b495063520400f5a77681b07c9b10f73f920",
+    "licenses": [
+      "historical-licenses/pypdf/a776b495063520400f5a77681b07c9b10f73f920/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "d92bbcfbe9c4128b9d9b21aa92b87f400bbb6626",
+    "licenses": [
+      "historical-licenses/pypdf/d92bbcfbe9c4128b9d9b21aa92b87f400bbb6626/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "2c536fc1d2eeea63581d5d13dad60c53eda53761",
+    "licenses": [
+      "historical-licenses/pypdf/2c536fc1d2eeea63581d5d13dad60c53eda53761/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "df5397d680b11619ed2c9498eb4ad9d1cc245aaa",
+    "licenses": [
+      "historical-licenses/pypdf/df5397d680b11619ed2c9498eb4ad9d1cc245aaa/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "095d5af1dacc6c5fcfe7cde1dca0d33e56c7810e",
+    "licenses": [
+      "historical-licenses/pypdf/095d5af1dacc6c5fcfe7cde1dca0d33e56c7810e/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "8202d2a2ba4703e7afad13b994dc92c20f7eb726",
+    "licenses": [
+      "historical-licenses/pypdf/8202d2a2ba4703e7afad13b994dc92c20f7eb726/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "6eb7ca2e7bc129944163609c37c339c4a679e56d",
+    "licenses": [
+      "historical-licenses/pypdf/6eb7ca2e7bc129944163609c37c339c4a679e56d/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "96d81f05ba4b3ec9ff1b3c3e52bc71a3cdd702c7",
+    "licenses": [
+      "historical-licenses/pypdf/96d81f05ba4b3ec9ff1b3c3e52bc71a3cdd702c7/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "2d219015b4cf92edcfd6d28c564295f0704fd204",
+    "licenses": [
+      "historical-licenses/pypdf/2d219015b4cf92edcfd6d28c564295f0704fd204/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "d26df365f60c63802aa743c7b7c61b7223a71da3",
+    "licenses": [
+      "historical-licenses/pypdf/d26df365f60c63802aa743c7b7c61b7223a71da3/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "7bb71dd911553eeb27b149aa00804234a7f0eeae",
+    "licenses": [
+      "historical-licenses/pypdf/7bb71dd911553eeb27b149aa00804234a7f0eeae/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "d8fe3e733bfda007aafc609378920e554ea5c092",
+    "licenses": [
+      "historical-licenses/pypdf/d8fe3e733bfda007aafc609378920e554ea5c092/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "5c2ec34dca41fa246ed1ab41f7ce671504e7f61b",
+    "licenses": [
+      "historical-licenses/pypdf/5c2ec34dca41fa246ed1ab41f7ce671504e7f61b/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "a1f510c940ed653bfe60e08263359675cc2ba7a6",
+    "licenses": [
+      "historical-licenses/pypdf/a1f510c940ed653bfe60e08263359675cc2ba7a6/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "d85ef0faf7853d242ef200ed6e475b80267b5664",
+    "licenses": [
+      "historical-licenses/pypdf/d85ef0faf7853d242ef200ed6e475b80267b5664/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "38170a2be6516e41ee2edf34f61257750dd179ab",
+    "licenses": [
+      "historical-licenses/pypdf/38170a2be6516e41ee2edf34f61257750dd179ab/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "8687d2504d09887c8e0e252dad5f9c0fb02c1bb7",
+    "licenses": [
+      "historical-licenses/pypdf/8687d2504d09887c8e0e252dad5f9c0fb02c1bb7/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "29f389c4fc8a45d3f0cef48065e22d3fbecf4757",
+    "licenses": [
+      "historical-licenses/pypdf/29f389c4fc8a45d3f0cef48065e22d3fbecf4757/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "9344ad6517daa1b7564b3777946df004120fadc0",
+    "licenses": [
+      "historical-licenses/pypdf/9344ad6517daa1b7564b3777946df004120fadc0/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "db93ea6554a394dbfac25ac2d5c8f3d1e10609dd",
+    "licenses": [
+      "historical-licenses/pypdf/db93ea6554a394dbfac25ac2d5c8f3d1e10609dd/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "bc1a49f75af9783ee08f09e9e281c163749678c2",
+    "licenses": [
+      "historical-licenses/pypdf/bc1a49f75af9783ee08f09e9e281c163749678c2/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "c6d38af1c561c629cd6965f611e8afad9b445ab0",
+    "licenses": [
+      "historical-licenses/pypdf/c6d38af1c561c629cd6965f611e8afad9b445ab0/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "ddbfea942cadd1594cb3902a27289a53ca637204",
+    "licenses": [
+      "historical-licenses/pypdf/ddbfea942cadd1594cb3902a27289a53ca637204/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "c646ef24857f152afdf84f8b5f8a9d4097bae258",
+    "licenses": [
+      "historical-licenses/pypdf/c646ef24857f152afdf84f8b5f8a9d4097bae258/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "7595da3201604309ab8d96afdc6f2e8bc661b3cd",
+    "licenses": [
+      "historical-licenses/pypdf/7595da3201604309ab8d96afdc6f2e8bc661b3cd/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "a548e4126ddd96711e05c6017d97f393d45e3765",
+    "licenses": [
+      "historical-licenses/pypdf/a548e4126ddd96711e05c6017d97f393d45e3765/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "b45aeba7b1ffd93d3a2414d1ce8c5115370be965",
+    "licenses": [
+      "historical-licenses/pypdf/b45aeba7b1ffd93d3a2414d1ce8c5115370be965/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "bb62d06b993cb3d3e90c031c35f399f48b3b3c3e",
+    "licenses": [
+      "historical-licenses/pypdf/bb62d06b993cb3d3e90c031c35f399f48b3b3c3e/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "pypdf",
+    "commit": "1856f9e02e615506ed3f6a27d3203b87379211b2",
+    "licenses": [
+      "historical-licenses/pypdf/1856f9e02e615506ed3f6a27d3203b87379211b2/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "bb695aaecdef95832d167fc1d508921745aa824e",
+    "licenses": [
+      "historical-licenses/click/bb695aaecdef95832d167fc1d508921745aa824e/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "6d5bac5c712195cbfa9666ba0ecbf0573cdea356",
+    "licenses": [
+      "historical-licenses/click/6d5bac5c712195cbfa9666ba0ecbf0573cdea356/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "08a7bc6d2a2af02268b09b3b5fd8079546c81c03",
+    "licenses": [
+      "historical-licenses/click/08a7bc6d2a2af02268b09b3b5fd8079546c81c03/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "420c8fb44eeadb537cae69d2fee3796e808558dd",
+    "licenses": [
+      "historical-licenses/click/420c8fb44eeadb537cae69d2fee3796e808558dd/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "7925a3410d7098c28cfca3b2baa6c852666bbd14",
+    "licenses": [
+      "historical-licenses/click/7925a3410d7098c28cfca3b2baa6c852666bbd14/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "648d7c403829013ade629d63ddbfe808f6b2b770",
+    "licenses": [
+      "historical-licenses/click/648d7c403829013ade629d63ddbfe808f6b2b770/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "5b1aba82745cbde04c75e0bab995e5ddf0804196",
+    "licenses": [
+      "historical-licenses/click/5b1aba82745cbde04c75e0bab995e5ddf0804196/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "4b24a6c8f6658ef89fd6db4dcaf8ee88eef75dfa",
+    "licenses": [
+      "historical-licenses/click/4b24a6c8f6658ef89fd6db4dcaf8ee88eef75dfa/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "e0d1678ebc10cc663f2bc1973e0399b31415f8db",
+    "licenses": [
+      "historical-licenses/click/e0d1678ebc10cc663f2bc1973e0399b31415f8db/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "7c99ebe23b931f27562d926814423cce85fd9766",
+    "licenses": [
+      "historical-licenses/click/7c99ebe23b931f27562d926814423cce85fd9766/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "c943271a269e6941fcc51e3506ead074b9dda6be",
+    "licenses": [
+      "historical-licenses/click/c943271a269e6941fcc51e3506ead074b9dda6be/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "fc6c7c47edd6110b6bd5a1a5297b2035214b0cd1",
+    "licenses": [
+      "historical-licenses/click/fc6c7c47edd6110b6bd5a1a5297b2035214b0cd1/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "c69643b60cf971cd5d8e5d3902632807ceab9b8f",
+    "licenses": [
+      "historical-licenses/click/c69643b60cf971cd5d8e5d3902632807ceab9b8f/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "04ef3a6f473deb2499721a8d11f92a7d2c0912f2",
+    "licenses": [
+      "historical-licenses/click/04ef3a6f473deb2499721a8d11f92a7d2c0912f2/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "ae46cfd6bc997804893adc799589248eadcdbc29",
+    "licenses": [
+      "historical-licenses/click/ae46cfd6bc997804893adc799589248eadcdbc29/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "7f7bbe4569ea68e8dabee232eade069ef3310aea",
+    "licenses": [
+      "historical-licenses/click/7f7bbe4569ea68e8dabee232eade069ef3310aea/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "6a1c0d077311f180b356965914e2de5b9e0fdb44",
+    "licenses": [
+      "historical-licenses/click/6a1c0d077311f180b356965914e2de5b9e0fdb44/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "3be1f33c8e0b13295853f6aa64d1f7412b5312df",
+    "licenses": [
+      "historical-licenses/click/3be1f33c8e0b13295853f6aa64d1f7412b5312df/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "565f36d5bc4a15d304337b749e113fb4477b1843",
+    "licenses": [
+      "historical-licenses/click/565f36d5bc4a15d304337b749e113fb4477b1843/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "884af5c20fdc95c9c7352df35c37273391464fb9",
+    "licenses": [
+      "historical-licenses/click/884af5c20fdc95c9c7352df35c37273391464fb9/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "click",
+    "commit": "9ce34f20d2370f2e298268227edf0ffce6b9725f",
+    "licenses": [
+      "historical-licenses/click/9ce34f20d2370f2e298268227edf0ffce6b9725f/LICENSE.txt"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "requests",
+    "commit": "96b22fa18c00831656ee4b286bf1c9062459b00a",
+    "licenses": [
+      "historical-licenses/requests/96b22fa18c00831656ee4b286bf1c9062459b00a/LICENSE",
+      "historical-licenses/requests/96b22fa18c00831656ee4b286bf1c9062459b00a/NOTICE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "12b0479b86630d38a3fc42586a545c4e75e00b84",
+    "licenses": [
+      "historical-licenses/loguru/12b0479b86630d38a3fc42586a545c4e75e00b84/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "8052eff4c1ba86793a6f38ee890a898e902bc1ea",
+    "licenses": [
+      "historical-licenses/loguru/8052eff4c1ba86793a6f38ee890a898e902bc1ea/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "54c89d609fc98a63b5bf7f801119c5bc526e2016",
+    "licenses": [
+      "historical-licenses/loguru/54c89d609fc98a63b5bf7f801119c5bc526e2016/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "764cd30d4b285ca01718ab3162a9f1a022bc49c6",
+    "licenses": [
+      "historical-licenses/loguru/764cd30d4b285ca01718ab3162a9f1a022bc49c6/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "78f86ffcfeef1f194cb3ab2a59beed1e83af8312",
+    "licenses": [
+      "historical-licenses/loguru/78f86ffcfeef1f194cb3ab2a59beed1e83af8312/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "37f44eda5555ffed3b4c581925650fb939e55b94",
+    "licenses": [
+      "historical-licenses/loguru/37f44eda5555ffed3b4c581925650fb939e55b94/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "aa6fdd883d75ada646ce42ff7d8c29595ef1f252",
+    "licenses": [
+      "historical-licenses/loguru/aa6fdd883d75ada646ce42ff7d8c29595ef1f252/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "14fa062bdb4388d77250b1f7224024fea3c84bbf",
+    "licenses": [
+      "historical-licenses/loguru/14fa062bdb4388d77250b1f7224024fea3c84bbf/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "2718257fe1a393184e0e6e9222d93efa2193a95e",
+    "licenses": [
+      "historical-licenses/loguru/2718257fe1a393184e0e6e9222d93efa2193a95e/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "2465fca6ca2e52b59845371d3d230367d5b45725",
+    "licenses": [
+      "historical-licenses/loguru/2465fca6ca2e52b59845371d3d230367d5b45725/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "e49dfa53cffc1116e25d58d727ff4eea34fafb64",
+    "licenses": [
+      "historical-licenses/loguru/e49dfa53cffc1116e25d58d727ff4eea34fafb64/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "a08cd5161d1f25c9f511faa5761f4ae51013cd88",
+    "licenses": [
+      "historical-licenses/loguru/a08cd5161d1f25c9f511faa5761f4ae51013cd88/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "4c9b7e08867604e2203744f424f641755c170b99",
+    "licenses": [
+      "historical-licenses/loguru/4c9b7e08867604e2203744f424f641755c170b99/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "2e36263c91921e3a0b6309d1f26a5fbc019f4502",
+    "licenses": [
+      "historical-licenses/loguru/2e36263c91921e3a0b6309d1f26a5fbc019f4502/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "loguru",
+    "commit": "bd59ca4a8d47f2e7c026310a6525fb3f073248ba",
+    "licenses": [
+      "historical-licenses/loguru/bd59ca4a8d47f2e7c026310a6525fb3f073248ba/LICENSE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "requests",
+    "commit": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+    "licenses": [
+      "historical-licenses/requests/8bce583b9547c7b82d44c8e97f37cf9a16cbe758/LICENSE",
+      "historical-licenses/requests/8bce583b9547c7b82d44c8e97f37cf9a16cbe758/NOTICE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "requests",
+    "commit": "5e749546a26ce62e53d0a14ae1455f8b066fe19f",
+    "licenses": [
+      "historical-licenses/requests/5e749546a26ce62e53d0a14ae1455f8b066fe19f/LICENSE",
+      "historical-licenses/requests/5e749546a26ce62e53d0a14ae1455f8b066fe19f/NOTICE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "requests",
+    "commit": "0192aac24123735b3eaf9b08df46429bb770c283",
+    "licenses": [
+      "historical-licenses/requests/0192aac24123735b3eaf9b08df46429bb770c283/LICENSE",
+      "historical-licenses/requests/0192aac24123735b3eaf9b08df46429bb770c283/NOTICE"
+    ],
+    "objects_present": true
+  },
+  {
+    "project": "requests",
+    "commit": "d91fe00983f1c66b9a428fe1ad15bf6ea8238972",
+    "licenses": [
+      "historical-licenses/requests/d91fe00983f1c66b9a428fe1ad15bf6ea8238972/LICENSE"
+    ],
+    "objects_present": true
+  }
+]

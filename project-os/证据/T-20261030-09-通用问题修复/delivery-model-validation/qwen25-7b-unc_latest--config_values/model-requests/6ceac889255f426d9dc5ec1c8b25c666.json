@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T10:27:52.139887+00:00",
+  "purpose": "intent",
+  "context": {},
+  "request": {
+    "model": "qwen25-7b-unc:latest",
+    "messages": [
+      {
+        "role": "system",
+        "content": "只阅读用户的问题，不假设任何仓库实现。输出JSON：summary（简短中文）、core_operation（简短英文）、search_query（英文检索词）、expected_behavior（简短中文）。core_operation只保留要做的业务操作及具体数据对象，不包含失败现象或待修正的边界条件。预期边界与改进放在expected_behavior里。不要把用户问题替换成另一个领域的问题，不要给修复代码。"
+      },
+      {
+        "role": "user",
+        "content": "布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 2200,
+    "reasoning_effort": "none",
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "replens_response",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "summary": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "core_operation": {
+              "type": "string",
+              "maxLength": 140
+            },
+            "search_query": {
+              "type": "string",
+              "maxLength": 180
+            },
+            "expected_behavior": {
+              "type": "string",
+              "maxLength": 260
+            }
+          },
+          "required": [
+            "summary",
+            "core_operation",
+            "search_query",
+            "expected_behavior"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T10:28:00.498874+00:00",
+  "duration_seconds": 8.36,
+  "response_text": "{\"id\":\"chatcmpl-981\",\"object\":\"chat.completion\",\"created\":1793356080,\"model\":\"qwen25-7b-unc:latest\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"core_operation\\\": \\\"解析布尔值字符串\\\",\\n  \\\"expected_behavior\\\": \\\"忽略前导和尾随的空白字符，大小写不敏感地解析 true/false，其他情况引发 ValueError。\\\",\\n  \\\"search_query\\\": \\\"python parse boolean with whitespace\\\",\\n  \\\"summary\\\": \\\"布尔值字符串解析时应忽略前后空白符且大小写不敏感\\\"\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":138,\"prompt_tokens_details\":{\"cached_tokens\":0},\"completion_tokens\":77,\"total_tokens\":215}}\n",
+  "parsed": {
+    "core_operation": "解析布尔值字符串",
+    "expected_behavior": "忽略前导和尾随的空白字符，大小写不敏感地解析 true/false，其他情况引发 ValueError。",
+    "search_query": "python parse boolean with whitespace",
+    "summary": "布尔值字符串解析时应忽略前后空白符且大小写不敏感"
+  },
+  "error": null,
+  "response_model": "qwen25-7b-unc:latest",
+  "usage": {
+    "prompt_tokens": 138,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens": 77,
+    "total_tokens": 215
+  }
+}

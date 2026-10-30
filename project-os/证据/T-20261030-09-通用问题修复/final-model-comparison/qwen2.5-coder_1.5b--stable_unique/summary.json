@@ -1,0 +1,31 @@
+{
+  "model": "qwen2.5-coder:1.5b",
+  "task": "stable_unique",
+  "seconds": 28.381,
+  "exit_code": 2,
+  "repair_status": "NO_PATCH",
+  "blocked_reason": "模型计划生成失败：严格模式：禁止规则回退。LLM 调用异常: LLM 返回内容不含有效 JSON",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "patch_note": "模型计划生成失败：严格模式：禁止规则回退。LLM 调用异常: LLM 返回内容不含有效 JSON",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "85ef5064db074da0afa75d740755fa33.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    },
+    {
+      "file": "ac6b31dd7a7e4cc9a5ea79fa1eae666d.json",
+      "purpose": "plan",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "error"
+    }
+  ],
+  "pass": false
+}

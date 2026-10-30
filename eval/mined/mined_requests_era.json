@@ -1,0 +1,423 @@
+[
+ {
+  "id": 1,
+  "category": "bug",
+  "issue": "#6628 - JSONDecodeError are not deserializable",
+  "issue_source": "commit_subject",
+  "expected": [
+   "src/requests/exceptions.py:JSONDecodeError:31"
+  ],
+  "commit": "3ff3ff21dd45957c9e143cd500291959bb15f690",
+  "parent": "96b22fa18c00831656ee4b286bf1c9062459b00a",
+  "project": "requests",
+  "buggy_parent": "96b22fa18c00831656ee4b286bf1c9062459b00a",
+  "fix_commit": "3ff3ff21dd45957c9e143cd500291959bb15f690",
+  "test_files": [
+   "tests/test_requests.py"
+  ],
+  "src_files": [
+   "src/requests/exceptions.py"
+  ],
+  "validation": {
+   "id": 1,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_requests.py::test_json_decode_errors_are_serializable_deserializable"
+   ],
+   "env": {
+    "profile": "modern",
+    "python": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": null,
+    "pytest": null
+   },
+   "env_note": "依赖未限制 urllib3<2，使用当前解释器"
+  },
+  "env_profile": "modern"
+ },
+ {
+  "id": 2,
+  "category": "bug",
+  "issue": "Fix linting issues",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/sessions.py:rebuild_proxies:303"
+  ],
+  "commit": "6e5b15d542a4e85945fd72066bb6cecbc3a82191",
+  "parent": "147c8511ddbfa5e8f71bbf5c18ede0c4ceb3bba4",
+  "project": "requests",
+  "buggy_parent": "147c8511ddbfa5e8f71bbf5c18ede0c4ceb3bba4",
+  "fix_commit": "6e5b15d542a4e85945fd72066bb6cecbc3a82191",
+  "test_files": [
+   "tests/test_requests.py"
+  ],
+  "src_files": [
+   "requests/sessions.py"
+  ],
+  "validation": {
+   "id": 2,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_requests.py::TestRequests::test_proxy_authorization_not_appended_to_https_request"
+   ],
+   "env": {
+    "profile": "modern",
+    "python": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": null,
+    "pytest": null
+   },
+   "env_note": "依赖未限制 urllib3<2，使用当前解释器"
+  },
+  "env_profile": "modern"
+ },
+ {
+  "id": 3,
+  "category": "bug",
+  "issue": "inconsistent exception for JSONDecode error (#6097)",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/models.py:json:878"
+  ],
+  "commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+  "parent": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+  "project": "requests",
+  "buggy_parent": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+  "fix_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+  "test_files": [
+   "tests/test_lowlevel.py"
+  ],
+  "src_files": [
+   "requests/models.py"
+  ],
+  "validation": {
+   "id": 3,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_lowlevel.py::test_json_decode_compatibility_for_alt_utf_encodings"
+   ],
+   "env": {
+    "profile": "urllib3-1",
+    "python": "C:\\Users\\19248\\AppData\\Local\\.miner_envs\\urllib3-1-py310\\Scripts\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": "1.26.20",
+    "pytest": "7.4.4"
+   },
+   "env_note": "父提交声明 urllib3<2（urllib3>=1.21.1,<1.27）"
+  },
+  "env_profile": "urllib3-1"
+ },
+ {
+  "id": 4,
+  "category": "bug",
+  "issue": "environment CA Bundle resolution",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/sessions.py:merge_environment_settings:691"
+  ],
+  "commit": "79c4a017fe341fb989d3a7876cf4e44b87601b58",
+  "parent": "5e749546a26ce62e53d0a14ae1455f8b066fe19f",
+  "project": "requests",
+  "buggy_parent": "5e749546a26ce62e53d0a14ae1455f8b066fe19f",
+  "fix_commit": "79c4a017fe341fb989d3a7876cf4e44b87601b58",
+  "test_files": [
+   "tests/test_requests.py"
+  ],
+  "src_files": [
+   "requests/sessions.py"
+  ],
+  "validation": {
+   "id": 4,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_requests.py::TestRequests::test_env_cert_bundles"
+   ],
+   "env": {
+    "profile": "urllib3-1",
+    "python": "C:\\Users\\19248\\AppData\\Local\\.miner_envs\\urllib3-1-py310\\Scripts\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": "1.26.20",
+    "pytest": "7.4.4"
+   },
+   "env_note": "父提交声明 urllib3<2（urllib3>=1.21.1,<1.27）"
+  },
+  "env_profile": "urllib3-1"
+ },
+ {
+  "id": 5,
+  "category": "bug",
+  "issue": "auth parsing for proxies",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/utils.py:prepend_scheme_if_needed:960"
+  ],
+  "commit": "38f3f8ecb93cadfac03a6b7b3173018ac829d0cf",
+  "parent": "0192aac24123735b3eaf9b08df46429bb770c283",
+  "project": "requests",
+  "buggy_parent": "0192aac24123735b3eaf9b08df46429bb770c283",
+  "fix_commit": "38f3f8ecb93cadfac03a6b7b3173018ac829d0cf",
+  "test_files": [
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "requests/utils.py"
+  ],
+  "validation": {
+   "id": 5,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_utils.py::test_prepend_scheme_if_needed"
+   ],
+   "env": {
+    "profile": "urllib3-1",
+    "python": "C:\\Users\\19248\\AppData\\Local\\.miner_envs\\urllib3-1-py310\\Scripts\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": "1.26.20",
+    "pytest": "7.4.4"
+   },
+   "env_note": "父提交声明 urllib3<2（urllib3>=1.21.1,<1.27）"
+  },
+  "env_profile": "urllib3-1"
+ },
+ {
+  "id": 6,
+  "category": "bug",
+  "issue": "extract_zipped_paths infinite loop when provided invalid unc path (#5851)",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/utils.py:extract_zipped_paths:240"
+  ],
+  "commit": "d8829f9f242149174e50f45e021ffb81fbbced70",
+  "parent": "b227e3cb82c8d42ea27790d615ecafe12528d3bc",
+  "project": "requests",
+  "buggy_parent": "b227e3cb82c8d42ea27790d615ecafe12528d3bc",
+  "fix_commit": "d8829f9f242149174e50f45e021ffb81fbbced70",
+  "test_files": [
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "requests/utils.py"
+  ],
+  "validation": {
+   "id": 6,
+   "ok": false,
+   "reason": "测试超时",
+   "env": {
+    "profile": "urllib3-1",
+    "python": "C:\\Users\\19248\\AppData\\Local\\.miner_envs\\urllib3-1-py310\\Scripts\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": "1.26.20",
+    "pytest": "7.4.4"
+   },
+   "env_note": "父提交声明 urllib3<2（urllib3>=1.21.1,<1.27）"
+  },
+  "env_profile": "urllib3-1"
+ },
+ {
+  "id": 7,
+  "category": "bug",
+  "issue": "inconsistent exception type in response.json() method (#5856)",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/__init__.py"
+  ],
+  "commit": "db575eeedcfdb03bf31285afd3033e301df8b685",
+  "parent": "941a77f2b86a801aff9bda17c65b9f7e56f2c68a",
+  "project": "requests",
+  "buggy_parent": "941a77f2b86a801aff9bda17c65b9f7e56f2c68a",
+  "fix_commit": "db575eeedcfdb03bf31285afd3033e301df8b685",
+  "test_files": [
+   "tests/test_requests.py"
+  ],
+  "src_files": [
+   "requests/__init__.py",
+   "requests/compat.py",
+   "requests/exceptions.py"
+  ],
+  "validation": {
+   "id": 7,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_requests.py::TestPreparingURLs::test_post_json_nan",
+    "tests/test_requests.py::TestPreparingURLs::test_json_decode_compatibility"
+   ],
+   "detail": "=========================== short test summary info =========================== / FAILED tests/test_requests.py::TestPreparingURLs::test_json_decode_compatibility - json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0) / 1 failed, 1 passed in 0.55s",
+   "env": {
+    "profile": "urllib3-1",
+    "python": "C:\\Users\\19248\\AppData\\Local\\.miner_envs\\urllib3-1-py310\\Scripts\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": "1.26.20",
+    "pytest": "7.4.4"
+   },
+   "env_note": "父提交声明 urllib3<2（urllib3>=1.21.1,<1.27）"
+  },
+  "env_profile": "urllib3-1"
+ },
+ {
+  "id": 8,
+  "category": "bug",
+  "issue": "Revert \"Fix for response with UTF-8 BOM #4976\"",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/models.py:text:859"
+  ],
+  "commit": "fd13816d015c4c90ee65297fa996caea6a094ed1",
+  "parent": "24bcb9eab60d2db5e71979ea391b3e5675daff1f",
+  "project": "requests",
+  "buggy_parent": "24bcb9eab60d2db5e71979ea391b3e5675daff1f",
+  "fix_commit": "fd13816d015c4c90ee65297fa996caea6a094ed1",
+  "test_files": [
+   "tests/test_testserver.py",
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "requests/models.py"
+  ],
+  "validation": {
+   "id": 8,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "file",
+   "targets": [
+    "tests/test_testserver.py",
+    "tests/test_utils.py"
+   ],
+   "env": {
+    "profile": "urllib3-1",
+    "python": "C:\\Users\\19248\\AppData\\Local\\.miner_envs\\urllib3-1-py310\\Scripts\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": "1.26.20",
+    "pytest": "7.4.4"
+   },
+   "env_note": "父提交声明 urllib3<2（urllib3>=1.21.1,<1.26,!=1.25.0,!=1.25.1）"
+  },
+  "env_profile": "urllib3-1"
+ },
+ {
+  "id": 9,
+  "category": "bug",
+  "issue": "Revert \"#4965 fix: Accessing response.content twice removes forgets read error.\"",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/models.py:generate:751"
+  ],
+  "commit": "b15056d1d3c4ca3546c88b9fe390f0721b198c2e",
+  "parent": "80011a7917afe2cd6a5fa8359e7ea90203880b3c",
+  "project": "requests",
+  "buggy_parent": "80011a7917afe2cd6a5fa8359e7ea90203880b3c",
+  "fix_commit": "b15056d1d3c4ca3546c88b9fe390f0721b198c2e",
+  "test_files": [
+   "tests/test_lowlevel.py"
+  ],
+  "src_files": [
+   "requests/models.py"
+  ],
+  "validation": {
+   "id": 9,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "file",
+   "targets": [
+    "tests/test_lowlevel.py"
+   ],
+   "env": {
+    "profile": "urllib3-1",
+    "python": "C:\\Users\\19248\\AppData\\Local\\.miner_envs\\urllib3-1-py310\\Scripts\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": "1.26.20",
+    "pytest": "7.4.4"
+   },
+   "env_note": "父提交声明 urllib3<2（urllib3>=1.21.1,<1.26,!=1.25.0,!=1.25.1）"
+  },
+  "env_profile": "urllib3-1"
+ },
+ {
+  "id": 10,
+  "category": "bug",
+  "issue": "#4965 fix: Accessing response.content twice removes forgets read error.",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/models.py:__init__:226"
+  ],
+  "commit": "bd100472443dcf4189630f6b1ed3ec0a61259dd8",
+  "parent": "d91fe00983f1c66b9a428fe1ad15bf6ea8238972",
+  "project": "requests",
+  "buggy_parent": "d91fe00983f1c66b9a428fe1ad15bf6ea8238972",
+  "fix_commit": "bd100472443dcf4189630f6b1ed3ec0a61259dd8",
+  "test_files": [
+   "tests/test_lowlevel.py"
+  ],
+  "src_files": [
+   "requests/models.py"
+  ],
+  "validation": {
+   "id": 10,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_lowlevel.py::test_response_content_retains_error"
+   ],
+   "env": {
+    "profile": "urllib3-1",
+    "python": "C:\\Users\\19248\\AppData\\Local\\.miner_envs\\urllib3-1-py310\\Scripts\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": "1.26.20",
+    "pytest": "7.4.4"
+   },
+   "env_note": "父提交声明 urllib3<2（urllib3>=1.21.1,<1.25）"
+  },
+  "env_profile": "urllib3-1"
+ },
+ {
+  "id": 11,
+  "category": "bug",
+  "issue": "assumed hostname when using a 'file' URI scheme adapter",
+  "issue_source": "commit_subject",
+  "expected": [
+   "requests/utils.py:should_bypass_proxies:692"
+  ],
+  "commit": "8023a01dba6f7d6c2ae0336c59a368929ef26ac3",
+  "parent": "dffd5d435e2d51958af1ccc9fd5e0f8f9df2fdfe",
+  "project": "requests",
+  "buggy_parent": "dffd5d435e2d51958af1ccc9fd5e0f8f9df2fdfe",
+  "fix_commit": "8023a01dba6f7d6c2ae0336c59a368929ef26ac3",
+  "test_files": [
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "requests/utils.py"
+  ],
+  "validation": {
+   "id": 11,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_utils.py::test_should_bypass_proxies"
+   ],
+   "detail": "..\\..\\.miner_envs\\urllib3-1-py310\\lib\\site-packages\\OpenSSL\\crypto.py:787: in X509Extension / _lib.GEN_EMAIL: \"email\", / E   AttributeError: module 'lib' has no attribute 'GEN_EMAIL'",
+   "env": {
+    "profile": "urllib3-1",
+    "python": "C:\\Users\\19248\\AppData\\Local\\.miner_envs\\urllib3-1-py310\\Scripts\\python.exe",
+    "python_version": "3.10.11",
+    "urllib3": "1.26.20",
+    "pytest": "7.4.4"
+   },
+   "env_note": "父提交声明 urllib3<2（urllib3>=1.21.1,<1.24）"
+  },
+  "env_profile": "urllib3-1"
+ }
+]

@@ -1,0 +1,984 @@
+[
+ {
+  "id": 1,
+  "category": "bug",
+  "issue": "`show_envvar` output for a sequence or an empty `envvar`",
+  "expected": [
+   "src/click/core.py:get_error_hint:3273"
+  ],
+  "commit": "c53d3732b98c764932e146c007146ad402acb229",
+  "parent": "bb695aaecdef95832d167fc1d508921745aa824e",
+  "project": "click",
+  "buggy_parent": "bb695aaecdef95832d167fc1d508921745aa824e",
+  "fix_commit": "c53d3732b98c764932e146c007146ad402acb229",
+  "test_files": [
+   "tests/test_options.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 1,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_options.py::test_show_envvar_empty",
+    "tests/test_options.py::test_missing_envvar_sequence"
+   ]
+  }
+ },
+ {
+  "id": 2,
+  "category": "bug",
+  "issue": "short help abbreviation",
+  "expected": [
+   "src/click/utils.py:_make_default_short_help:67"
+  ],
+  "commit": "f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e",
+  "parent": "6d5bac5c712195cbfa9666ba0ecbf0573cdea356",
+  "project": "click",
+  "buggy_parent": "6d5bac5c712195cbfa9666ba0ecbf0573cdea356",
+  "fix_commit": "f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e",
+  "test_files": [
+   "tests/test_utils/test_make_default_short_help.py"
+  ],
+  "src_files": [
+   "src/click/utils.py"
+  ],
+  "validation": {
+   "id": 2,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_utils/test_make_default_short_help.py::test_make_default_short_help"
+   ]
+  }
+ },
+ {
+  "id": 3,
+  "category": "bug",
+  "issue": "race condition on `KeyboardInterrupt` arriving in `Command.main()`",
+  "expected": [
+   "src/click/core.py:main:1565"
+  ],
+  "commit": "fc518e41218b447e875fe27244ae692c269bcb77",
+  "parent": "08a7bc6d2a2af02268b09b3b5fd8079546c81c03",
+  "project": "click",
+  "buggy_parent": "08a7bc6d2a2af02268b09b3b5fd8079546c81c03",
+  "fix_commit": "fc518e41218b447e875fe27244ae692c269bcb77",
+  "test_files": [
+   "tests/test_abort_interrupt.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 3,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_abort_interrupt.py::test_interrupt_while_reporting_abort",
+    "tests/test_abort_interrupt.py::test_interrupt_while_reporting_error",
+    "tests/test_abort_interrupt.py::test_late_interrupt_with_disabled_standalone_mode",
+    "tests/test_abort_interrupt.py::test_interrupt_while_exiting_after_success"
+   ]
+  }
+ },
+ {
+  "id": 4,
+  "category": "bug",
+  "issue": "`copy`, `deepcopy` and `pickle` of `Sentinel` members",
+  "expected": [
+   "src/click/_utils.py:__repr__:18"
+  ],
+  "commit": "f58ca3e81424a35626c8a475eb59ab95589008ce",
+  "parent": "420c8fb44eeadb537cae69d2fee3796e808558dd",
+  "project": "click",
+  "buggy_parent": "420c8fb44eeadb537cae69d2fee3796e808558dd",
+  "fix_commit": "f58ca3e81424a35626c8a475eb59ab95589008ce",
+  "test_files": [
+   "tests/test_utils/test_sentinel.py"
+  ],
+  "src_files": [
+   "src/click/_utils.py"
+  ],
+  "validation": {
+   "id": 4,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_utils/test_sentinel.py::test_sentinel_duplication_preserves_identity",
+    "tests/test_utils/test_sentinel.py::test_parameter_duplication"
+   ]
+  }
+ },
+ {
+  "id": 5,
+  "category": "bug",
+  "issue": "Validate style() color arguments, fix explicit black color argument",
+  "expected": [
+   "src/click/termui.py:_interpret_color:573"
+  ],
+  "commit": "07c909f23f0f83b5ca137c167b9a134d66201f67",
+  "parent": "7925a3410d7098c28cfca3b2baa6c852666bbd14",
+  "project": "click",
+  "buggy_parent": "7925a3410d7098c28cfca3b2baa6c852666bbd14",
+  "fix_commit": "07c909f23f0f83b5ca137c167b9a134d66201f67",
+  "test_files": [
+   "tests/test_utils/test_style.py"
+  ],
+  "src_files": [
+   "src/click/termui.py"
+  ],
+  "validation": {
+   "id": 5,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_utils/test_style.py::test_styling",
+    "tests/test_utils/test_style.py::test_styling_invalid_color"
+   ]
+  }
+ },
+ {
+  "id": 6,
+  "category": "bug",
+  "issue": "`package_name` resolution when top-level module differs from distribution name",
+  "expected": [
+   "src/click/decorators.py:version_option:437"
+  ],
+  "commit": "bec59289d8cf9b9b4010642b2fee483e5f8eeefc",
+  "parent": "916883afad450c0c9bbc4212817900949131adbd",
+  "project": "click",
+  "buggy_parent": "916883afad450c0c9bbc4212817900949131adbd",
+  "fix_commit": "bec59289d8cf9b9b4010642b2fee483e5f8eeefc",
+  "test_files": [
+   "tests/test_basic.py"
+  ],
+  "src_files": [
+   "src/click/decorators.py"
+  ],
+  "validation": {
+   "id": 6,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_basic.py::test_version_option_resolves_import_name_to_distribution",
+    "tests/test_basic.py::test_version_option_ambiguous_import_name_errors",
+    "tests/test_basic.py::test_version_option_unknown_package_errors"
+   ]
+  }
+ },
+ {
+  "id": 7,
+  "category": "bug",
+  "issue": "double-bracketing of choices in synopsis",
+  "expected": [
+   "src/click/core.py:make_metavar:3576"
+  ],
+  "commit": "762c97eef7c1b3779678992f26a553a2a8c80793",
+  "parent": "8929d392781c8113bc569f388c15c47b94f86581",
+  "project": "click",
+  "buggy_parent": "8929d392781c8113bc569f388c15c47b94f86581",
+  "fix_commit": "762c97eef7c1b3779678992f26a553a2a8c80793",
+  "test_files": [
+   "tests/test_basic.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 7,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_basic.py::test_choice_argument_optional_metavar",
+    "tests/test_basic.py::test_datetime_argument_optional_metavar"
+   ]
+  }
+ },
+ {
+  "id": 8,
+  "category": "bug",
+  "issue": "pager test race by raising before yield",
+  "expected": [
+   "src/click/_compat.py:_make_text_stream:20"
+  ],
+  "commit": "7eb57cff7cd292fbd526eaf861c8f945ddeb07a3",
+  "parent": "1050d955ea5a219c72467ad832934ea80682b5fb",
+  "project": "click",
+  "buggy_parent": "1050d955ea5a219c72467ad832934ea80682b5fb",
+  "fix_commit": "7eb57cff7cd292fbd526eaf861c8f945ddeb07a3",
+  "test_files": [
+   "tests/test_stream_lifecycle.py",
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "src/click/_compat.py"
+  ],
+  "validation": {
+   "id": 8,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 9,
+  "category": "bug",
+  "issue": "deprecated label formatting",
+  "expected": [
+   "src/click/core.py:format_help_text:1192"
+  ],
+  "commit": "82f377c547e1867d073f02bb8f476214d07e245b",
+  "parent": "648d7c403829013ade629d63ddbfe808f6b2b770",
+  "project": "click",
+  "buggy_parent": "648d7c403829013ade629d63ddbfe808f6b2b770",
+  "fix_commit": "82f377c547e1867d073f02bb8f476214d07e245b",
+  "test_files": [
+   "tests/test_commands.py",
+   "tests/test_options.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 9,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_commands.py::test_deprecated_empty_help_no_leading_space",
+    "tests/test_options.py::test_deprecated_empty_help_no_leading_space"
+   ]
+  }
+ },
+ {
+  "id": 10,
+  "category": "bug",
+  "issue": "Add changelog entry, fix admonition and add test",
+  "expected": [
+   "src/click/shell_completion.py:format_completion:422"
+  ],
+  "commit": "ddf20d0673788ebe8ec28b6031a24a36cba92115",
+  "parent": "b7e5fd4cc7de70280eccd39f2bb956df617e5519",
+  "project": "click",
+  "buggy_parent": "b7e5fd4cc7de70280eccd39f2bb956df617e5519",
+  "fix_commit": "ddf20d0673788ebe8ec28b6031a24a36cba92115",
+  "test_files": [
+   "tests/test_shell_completion.py"
+  ],
+  "src_files": [
+   "src/click/shell_completion.py"
+  ],
+  "validation": {
+   "id": 10,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 11,
+  "category": "bug",
+  "issue": "broken fish completion and multiline help string",
+  "expected": [
+   "src/click/shell_completion.py"
+  ],
+  "commit": "b7e5fd4cc7de70280eccd39f2bb956df617e5519",
+  "parent": "5b1aba82745cbde04c75e0bab995e5ddf0804196",
+  "project": "click",
+  "buggy_parent": "5b1aba82745cbde04c75e0bab995e5ddf0804196",
+  "fix_commit": "b7e5fd4cc7de70280eccd39f2bb956df617e5519",
+  "test_files": [
+   "tests/test_shell_completion.py"
+  ],
+  "src_files": [
+   "src/click/shell_completion.py"
+  ],
+  "validation": {
+   "id": 11,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_shell_completion.py::test_full_complete"
+   ]
+  }
+ },
+ {
+  "id": 12,
+  "category": "bug",
+  "issue": "broken fish completion and multiline help string",
+  "expected": [
+   "src/click/shell_completion.py"
+  ],
+  "commit": "c3535905c77a29afc84861b29d3ad366ce5451bd",
+  "parent": "bc36cd1a2b3bc18f401a98476154dbc5a2d212c9",
+  "project": "click",
+  "buggy_parent": "bc36cd1a2b3bc18f401a98476154dbc5a2d212c9",
+  "fix_commit": "c3535905c77a29afc84861b29d3ad366ce5451bd",
+  "test_files": [
+   "tests/test_shell_completion.py"
+  ],
+  "src_files": [
+   "src/click/shell_completion.py"
+  ],
+  "validation": {
+   "id": 12,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_shell_completion.py::test_full_complete"
+   ]
+  }
+ },
+ {
+  "id": 13,
+  "category": "bug",
+  "issue": "get_parameter_source() during type conversion and eager callbacks",
+  "expected": [
+   "src/click/core.py:handle_parse_result:2657"
+  ],
+  "commit": "7d05a59b9d46a415d85937630d1d812cf477f60a",
+  "parent": "4b24a6c8f6658ef89fd6db4dcaf8ee88eef75dfa",
+  "project": "click",
+  "buggy_parent": "4b24a6c8f6658ef89fd6db4dcaf8ee88eef75dfa",
+  "fix_commit": "7d05a59b9d46a415d85937630d1d812cf477f60a",
+  "test_files": [
+   "tests/test_defaults.py",
+   "tests/test_options.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 13,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_defaults.py::test_parameter_source_during_paramtype_convert",
+    "tests/test_defaults.py::test_parameter_source_during_eager_callback",
+    "tests/test_defaults.py::test_flask_debug_env_not_stomped_by_default_flag",
+    "tests/test_options.py::test_bool_flag_group_parameter_source"
+   ]
+  }
+ },
+ {
+  "id": 14,
+  "category": "bug",
+  "issue": "Skip flaky pager test on macOS with free-threaded Python 3.14t",
+  "expected": [
+   "src/click/_compat.py:_make_text_stream:19"
+  ],
+  "commit": "d15f3c23a177e80c324e1ee9681c9449c31ac965",
+  "parent": "e0d1678ebc10cc663f2bc1973e0399b31415f8db",
+  "project": "click",
+  "buggy_parent": "e0d1678ebc10cc663f2bc1973e0399b31415f8db",
+  "fix_commit": "d15f3c23a177e80c324e1ee9681c9449c31ac965",
+  "test_files": [
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "src/click/_compat.py"
+  ],
+  "validation": {
+   "id": 14,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_utils.py::test_echo_via_pager"
+   ]
+  }
+ },
+ {
+  "id": 15,
+  "category": "bug",
+  "issue": "`HelpFormatter.write_usage` producing spurious characters",
+  "expected": [
+   "src/click/formatting.py:write_usage:164"
+  ],
+  "commit": "0551bf53588ae87f462d336f24f853a156fefe3a",
+  "parent": "7c99ebe23b931f27562d926814423cce85fd9766",
+  "project": "click",
+  "buggy_parent": "7c99ebe23b931f27562d926814423cce85fd9766",
+  "fix_commit": "0551bf53588ae87f462d336f24f853a156fefe3a",
+  "test_files": [
+   "tests/test_formatting.py"
+  ],
+  "src_files": [
+   "src/click/formatting.py"
+  ],
+  "validation": {
+   "id": 15,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_formatting.py::test_help_formatter_write_usage",
+    "tests/test_formatting.py::test_help_formatter_write_usage_without_args_styled_prefix",
+    "tests/test_formatting.py::test_command_write_usage_no_args"
+   ]
+  }
+ },
+ {
+  "id": 16,
+  "category": "bug",
+  "issue": "dual-option arbitration to respect explicit defaults",
+  "expected": [
+   "src/click/core.py:handle_parse_result:2587"
+  ],
+  "commit": "0f71fe771ceefd5715b3b375c9b2e3a701c0648e",
+  "parent": "c943271a269e6941fcc51e3506ead074b9dda6be",
+  "project": "click",
+  "buggy_parent": "c943271a269e6941fcc51e3506ead074b9dda6be",
+  "fix_commit": "0f71fe771ceefd5715b3b375c9b2e3a701c0648e",
+  "test_files": [
+   "tests/test_options.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 16,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_options.py::test_bool_flag_group_competition",
+    "tests/test_options.py::test_bool_flag_group_competition_with_envvar",
+    "tests/test_options.py::test_bool_flag_group_competition_with_default_map",
+    "tests/test_options.py::test_flag_group_competition_non_boolean",
+    "tests/test_options.py::test_flag_group_unset_vs_none_vs_explicit",
+    "tests/test_options.py::test_flag_group_competition_duplicate_option_name",
+    "tests/test_options.py::test_flag_group_competition_repeated_cmdline",
+    "tests/test_options.py::test_flag_group_competition_four_flags",
+    "tests/test_options.py::test_flag_group_competition_envvar_prefix_and_unset_default_map"
+   ]
+  }
+ },
+ {
+  "id": 17,
+  "category": "bug",
+  "issue": "show custom error message in prompt with hide_input=True",
+  "expected": [
+   "src/click/termui.py:prompt:206"
+  ],
+  "commit": "a09c1c655eef3d43181eb46036b66cf058d72df4",
+  "parent": "fc6c7c47edd6110b6bd5a1a5297b2035214b0cd1",
+  "project": "click",
+  "buggy_parent": "fc6c7c47edd6110b6bd5a1a5297b2035214b0cd1",
+  "fix_commit": "a09c1c655eef3d43181eb46036b66cf058d72df4",
+  "test_files": [
+   "tests/test_termui.py"
+  ],
+  "src_files": [
+   "src/click/termui.py"
+  ],
+  "validation": {
+   "id": 17,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_termui.py::test_hide_input_error_message"
+   ]
+  }
+ },
+ {
+  "id": 18,
+  "category": "bug",
+  "issue": "Ensure fish completion handles multiline help strings correctly (#3126)",
+  "expected": [
+   "src/click/shell_completion.py"
+  ],
+  "commit": "19fd4d6e18bc9fce451f92f422696b11169faa57",
+  "parent": "c69643b60cf971cd5d8e5d3902632807ceab9b8f",
+  "project": "click",
+  "buggy_parent": "c69643b60cf971cd5d8e5d3902632807ceab9b8f",
+  "fix_commit": "19fd4d6e18bc9fce451f92f422696b11169faa57",
+  "test_files": [
+   "tests/test_shell_completion.py"
+  ],
+  "src_files": [
+   "src/click/shell_completion.py"
+  ],
+  "validation": {
+   "id": 18,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_shell_completion.py::test_full_complete",
+    "tests/test_shell_completion.py::test_fish_multiline_help_complete"
+   ]
+  }
+ },
+ {
+  "id": 19,
+  "category": "bug",
+  "issue": "readline backspace/line-wrapping on linux (#2969)",
+  "expected": [
+   "src/click/termui.py:prompt_func:150"
+  ],
+  "commit": "2468b70997a6ec27ced4b4867954c90da3f92075",
+  "parent": "ddede2147c9370ab8275f81db4826b6895d2e7dc",
+  "project": "click",
+  "buggy_parent": "ddede2147c9370ab8275f81db4826b6895d2e7dc",
+  "fix_commit": "2468b70997a6ec27ced4b4867954c90da3f92075",
+  "test_files": [
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "src/click/termui.py"
+  ],
+  "validation": {
+   "id": 19,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 20,
+  "category": "bug",
+  "issue": "Patch `pdb` in `CliRunner` to allow debugger interactions in tests",
+  "expected": [
+   "src/click/testing.py:isolation:426"
+  ],
+  "commit": "4f9086bf8fd98aca1d804bf742f4f1ceb6c12295",
+  "parent": "1339fd3323357119a9c7a6326c788f80295954ce",
+  "project": "click",
+  "buggy_parent": "1339fd3323357119a9c7a6326c788f80295954ce",
+  "fix_commit": "4f9086bf8fd98aca1d804bf742f4f1ceb6c12295",
+  "test_files": [
+   "tests/test_testing.py"
+  ],
+  "src_files": [
+   "src/click/testing.py"
+  ],
+  "validation": {
+   "id": 20,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_testing.py::test_pdb_uses_real_streams",
+    "tests/test_testing.py::test_pdb_explicit_streams_honored",
+    "tests/test_testing.py::test_pdb_init_restored_after_invoke"
+   ]
+  }
+ },
+ {
+  "id": 21,
+  "category": "bug",
+  "issue": "Document and fix command string sanitizing with `shlex.split`",
+  "expected": [
+   "src/click/_termui_impl.py:pager:370"
+  ],
+  "commit": "b96c2601af4e01341b4d2c0db494ebee4aef8f42",
+  "parent": "04ef3a6f473deb2499721a8d11f92a7d2c0912f2",
+  "project": "click",
+  "buggy_parent": "04ef3a6f473deb2499721a8d11f92a7d2c0912f2",
+  "fix_commit": "b96c2601af4e01341b4d2c0db494ebee4aef8f42",
+  "test_files": [
+   "tests/test_termui.py"
+  ],
+  "src_files": [
+   "src/click/_termui_impl.py"
+  ],
+  "validation": {
+   "id": 21,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_termui.py::test_editor_path_normalization",
+    "tests/test_termui.py::test_editor_windows_path_normalization",
+    "tests/test_termui.py::test_editor_env_passed_through",
+    "tests/test_termui.py::test_editor_failure_exception",
+    "tests/test_termui.py::test_editor_nonexistent_exception"
+   ]
+  }
+ },
+ {
+  "id": 22,
+  "category": "bug",
+  "issue": "speculative speculative empty string check",
+  "expected": [
+   "src/click/core.py:get_help_extra:3113"
+  ],
+  "commit": "d340b0c1202284a1b9d0ca892549208527d586ce",
+  "parent": "04ef3a6f473deb2499721a8d11f92a7d2c0912f2",
+  "project": "click",
+  "buggy_parent": "04ef3a6f473deb2499721a8d11f92a7d2c0912f2",
+  "fix_commit": "d340b0c1202284a1b9d0ca892549208527d586ce",
+  "test_files": [
+   "tests/test_options.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 22,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_options.py::test_show_default_with_empty_string"
+   ]
+  }
+ },
+ {
+  "id": 23,
+  "category": "bug",
+  "issue": "callable ``flag_value`` being instantiated when used as a default",
+  "expected": [
+   "src/click/core.py:__init__:2822"
+  ],
+  "commit": "546f2851f414b07413777ebcae89b2c21a685252",
+  "parent": "ae46cfd6bc997804893adc799589248eadcdbc29",
+  "project": "click",
+  "buggy_parent": "ae46cfd6bc997804893adc799589248eadcdbc29",
+  "fix_commit": "546f2851f414b07413777ebcae89b2c21a685252",
+  "test_files": [
+   "tests/test_defaults.py",
+   "tests/test_options.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 23,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_defaults.py::test_default_map_with_callable_flag_value",
+    "tests/test_options.py::test_custom_type_flag_value_dual_options",
+    "tests/test_options.py::test_callable_flag_value_not_instantiated",
+    "tests/test_options.py::test_callable_flag_value_default_map",
+    "tests/test_options.py::test_callable_flag_value_show_default",
+    "tests/test_options.py::test_callable_flag_value_get_default_override"
+   ]
+  }
+ },
+ {
+  "id": 24,
+  "category": "bug",
+  "issue": "Cleanup changes to fix flag_value bug",
+  "expected": [
+   "src/click/core.py:Option:2687"
+  ],
+  "commit": "955ca492a6b9e8de0660dae1c415568ca6f9c4b3",
+  "parent": "91de59c6c8abc8251e7af551cd4546cc964288af",
+  "project": "click",
+  "buggy_parent": "91de59c6c8abc8251e7af551cd4546cc964288af",
+  "fix_commit": "955ca492a6b9e8de0660dae1c415568ca6f9c4b3",
+  "test_files": [
+   "tests/test_options.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 24,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 25,
+  "category": "bug",
+  "issue": "#3084: Correct flag optional value behavior and add comprehensive tests",
+  "expected": [
+   "src/click/core.py:__init__:2780"
+  ],
+  "commit": "91de59c6c8abc8251e7af551cd4546cc964288af",
+  "parent": "7f7bbe4569ea68e8dabee232eade069ef3310aea",
+  "project": "click",
+  "buggy_parent": "7f7bbe4569ea68e8dabee232eade069ef3310aea",
+  "fix_commit": "91de59c6c8abc8251e7af551cd4546cc964288af",
+  "test_files": [
+   "tests/test_options.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 25,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_options.py::test_flag_value_optional_behavior",
+    "tests/test_options.py::test_flag_value_with_type_conversion"
+   ]
+  }
+ },
+ {
+  "id": 26,
+  "category": "bug",
+  "issue": "default handling to defer UNSET normalization",
+  "expected": [
+   "src/click/core.py:handle_parse_result:2541"
+  ],
+  "commit": "1c20dc6e724cd5625faaa17b715ba928d44c08bf",
+  "parent": "6a1c0d077311f180b356965914e2de5b9e0fdb44",
+  "project": "click",
+  "buggy_parent": "6a1c0d077311f180b356965914e2de5b9e0fdb44",
+  "fix_commit": "1c20dc6e724cd5625faaa17b715ba928d44c08bf",
+  "test_files": [
+   "tests/test_defaults.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 26,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_defaults.py::test_shared_param_prefers_first_default"
+   ]
+  }
+ },
+ {
+  "id": 27,
+  "category": "bug",
+  "issue": "completions for quoted/escaped parameters in Fish (#3013)",
+  "expected": [
+   "src/click/shell_completion.py:get_completion_args:405"
+  ],
+  "commit": "701b313160be12752e49b3f7cea32402c0969a69",
+  "parent": "3be1f33c8e0b13295853f6aa64d1f7412b5312df",
+  "project": "click",
+  "buggy_parent": "3be1f33c8e0b13295853f6aa64d1f7412b5312df",
+  "fix_commit": "701b313160be12752e49b3f7cea32402c0969a69",
+  "test_files": [
+   "tests/test_shell_completion.py"
+  ],
+  "src_files": [
+   "src/click/shell_completion.py"
+  ],
+  "validation": {
+   "id": 27,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_shell_completion.py::test_full_complete"
+   ]
+  }
+ },
+ {
+  "id": 28,
+  "category": "bug",
+  "issue": "Merge branch 'stable' into bugfix/OptionsAutoCompletion",
+  "expected": [
+   "src/click/shell_completion.py:_check_version:308"
+  ],
+  "commit": "11f48e2cd1812692ec118cf14dbf2866b83db10a",
+  "parent": "7fc377138a1d61c71c5bec2048ec6bb6de1015aa",
+  "project": "click",
+  "buggy_parent": "7fc377138a1d61c71c5bec2048ec6bb6de1015aa",
+  "fix_commit": "11f48e2cd1812692ec118cf14dbf2866b83db10a",
+  "test_files": [
+   "tests/test_shell_completion.py"
+  ],
+  "src_files": [
+   "src/click/shell_completion.py"
+  ],
+  "validation": {
+   "id": 28,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_shell_completion.py::test_nested_group",
+    "tests/test_shell_completion.py::test_zsh_full_complete_with_colons"
+   ]
+  }
+ },
+ {
+  "id": 29,
+  "category": "bug",
+  "issue": "rendering when `prompt_suffix` is empty",
+  "expected": [
+   "src/click/termui.py:prompt_func:141"
+  ],
+  "commit": "812b8000f79c1fbb747a2de5114fc74515558857",
+  "parent": "a8b41c077b225c30921a78190507a463a20ebb1b",
+  "project": "click",
+  "buggy_parent": "a8b41c077b225c30921a78190507a463a20ebb1b",
+  "fix_commit": "812b8000f79c1fbb747a2de5114fc74515558857",
+  "test_files": [
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "src/click/termui.py"
+  ],
+  "validation": {
+   "id": 29,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 30,
+  "category": "bug",
+  "issue": "Zsh completions with colons (#2846)",
+  "expected": [
+   "src/click/shell_completion.py:format_completion:376"
+  ],
+  "commit": "a1235aacb1be55dc66ddcfefbf64dec44b6ab54d",
+  "parent": "565f36d5bc4a15d304337b749e113fb4477b1843",
+  "project": "click",
+  "buggy_parent": "565f36d5bc4a15d304337b749e113fb4477b1843",
+  "fix_commit": "a1235aacb1be55dc66ddcfefbf64dec44b6ab54d",
+  "test_files": [
+   "tests/test_shell_completion.py"
+  ],
+  "src_files": [
+   "src/click/shell_completion.py"
+  ],
+  "validation": {
+   "id": 30,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_shell_completion.py::test_zsh_full_complete_with_colons"
+   ]
+  }
+ },
+ {
+  "id": 31,
+  "category": "bug",
+  "issue": "reconciliation of envvar with default, flag_value and type parameters for flag options",
+  "expected": [
+   "src/click/core.py:__init__:2557"
+  ],
+  "commit": "9caedb9206103dfb5465e1916bc2f13b9c10c0e4",
+  "parent": "5c1239b0116b66492cdd0848144ab3c78a04495a",
+  "project": "click",
+  "buggy_parent": "5c1239b0116b66492cdd0848144ab3c78a04495a",
+  "fix_commit": "9caedb9206103dfb5465e1916bc2f13b9c10c0e4",
+  "test_files": [
+   "tests/test_arguments.py",
+   "tests/test_basic.py",
+   "tests/test_imports.py"
+  ],
+  "src_files": [
+   "src/click/core.py",
+   "src/click/types.py"
+  ],
+  "validation": {
+   "id": 31,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_basic.py::test_boolean_flag"
+   ]
+  }
+ },
+ {
+  "id": 32,
+  "category": "bug",
+  "issue": "testing/CliRunner: Fix regression related to EOF introduced in 262bdf0",
+  "expected": [
+   "src/click/testing.py:__next__:119"
+  ],
+  "commit": "93c6966eb3a575c2b600434d1cc9f4b3aee505ac",
+  "parent": "b63239d657aab7c4e04667a62e7177f617b37230",
+  "project": "click",
+  "buggy_parent": "b63239d657aab7c4e04667a62e7177f617b37230",
+  "fix_commit": "93c6966eb3a575c2b600434d1cc9f4b3aee505ac",
+  "test_files": [
+   "tests/test_chain.py"
+  ],
+  "src_files": [
+   "src/click/testing.py"
+  ],
+  "validation": {
+   "id": 32,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_chain.py::test_pipeline"
+   ]
+  }
+ },
+ {
+  "id": 33,
+  "category": "bug",
+  "issue": "shell completion for nested groups",
+  "expected": [
+   "src/click/shell_completion.py:_resolve_context:570"
+  ],
+  "commit": "ac6a2acfdb4550c35ce69ce54db502ba96c96324",
+  "parent": "884af5c20fdc95c9c7352df35c37273391464fb9",
+  "project": "click",
+  "buggy_parent": "884af5c20fdc95c9c7352df35c37273391464fb9",
+  "fix_commit": "ac6a2acfdb4550c35ce69ce54db502ba96c96324",
+  "test_files": [
+   "tests/test_shell_completion.py"
+  ],
+  "src_files": [
+   "src/click/shell_completion.py"
+  ],
+  "validation": {
+   "id": 33,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_shell_completion.py::test_nested_group"
+   ]
+  }
+ },
+ {
+  "id": 34,
+  "category": "bug",
+  "issue": "condition for setting flag value when type is provided",
+  "expected": [
+   "src/click/core.py:__init__:2615"
+  ],
+  "commit": "4fd2fea0db423d242aedcae0a5f664efe0a93484",
+  "parent": "9ce34f20d2370f2e298268227edf0ffce6b9725f",
+  "project": "click",
+  "buggy_parent": "9ce34f20d2370f2e298268227edf0ffce6b9725f",
+  "fix_commit": "4fd2fea0db423d242aedcae0a5f664efe0a93484",
+  "test_files": [
+   "tests/test_options.py"
+  ],
+  "src_files": [
+   "src/click/core.py"
+  ],
+  "validation": {
+   "id": 34,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_options.py::test_flag_value_is_correctly_set",
+    "tests/test_options.py::test_non_flag_with_non_negatable_default"
+   ]
+  }
+ }
+]

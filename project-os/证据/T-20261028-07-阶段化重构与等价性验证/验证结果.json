@@ -1,0 +1,95 @@
+{
+  "生成时间": "2026-10-28",
+  "任务": "T-20261028-07-阶段化重构与等价性验证",
+  "重构前": {
+    "pipeline.py": "257 行",
+    "run()": "256 行（单函数）",
+    "阶段边界": "隐含在 record['stage'] 赋值中"
+  },
+  "重构后": {
+    "pipeline.py": "339 行",
+    "函数数": 10,
+    "最长函数": "_stage_gold_validation 约 90 行",
+    "阶段函数": [
+      "_stage_preflight",
+      "_stage_upstream_verification",
+      "_stage_environment",
+      "_stage_independent_acceptance",
+      "_stage_buggy_worktree",
+      "_stage_buggy_baseline",
+      "_stage_gold_validation",
+      "_stage_cross_worktree_replay",
+      "_stage_complete"
+    ],
+    "状态载体": "_Context 上下文对象"
+  },
+  "发现并修复的回归": [
+    {
+      "编号": 1,
+      "缺陷": "pipeline.py 中 upstream = upstream._verify_upstream(...)，导入名被局部赋值",
+      "后果": "UnboundLocalError，控制端完全无法运行",
+      "单元测试是否发现": false,
+      "引入提交": "4b47d49"
+    },
+    {
+      "编号": 2,
+      "缺陷": "gitops.py 漏导入 urlsplit",
+      "后果": "运行到该分支才 NameError",
+      "单元测试是否发现": false,
+      "引入提交": "4b47d49"
+    }
+  ],
+  "等价性验证": {
+    "方法": "单变量对照：只替换 pipeline.py，其余不动，各跑一次完整流程；内容级归一化后比对 92 个产物",
+    "归一化处理": [
+      "pytest 耗时 in X.XXs → in <T>s",
+      "随机临时目录 tqdm_reset_inf_xxxx → <TMP>",
+      "输出路径 → <OUT>",
+      "时间字段 → <TIME>"
+    ],
+    "固有方差": {
+      "同一重构代码两次运行": "16 / 92 文件不同"
+    },
+    "重构前后": {
+      "不同文件数": "17 / 92"
+    },
+    "差异内容": "全部落在 stdout_sha256、随机临时目录名、输出路径、时间戳及其级联哈希",
+    "语义字段": "材料核验 / 重放一致性 / 修复结论 / 各阶段测试状态 / 补丁内容 / 环境记录 全部一致",
+    "结论": "重构等价"
+  },
+  "真实流程结果": {
+    "命令": "python scripts/restore_tqdm_reset_inf.py --repo <本地 tqdm> --work-dir <临时> --output <控制目录>",
+    "重构前": {
+      "status": "PASS",
+      "materials_status": "PASS",
+      "replay_status": "PASS",
+      "repair_status": "VERIFIED",
+      "model_repair_credit": false
+    },
+    "重构后": {
+      "status": "PASS",
+      "materials_status": "PASS",
+      "replay_status": "PASS",
+      "repair_status": "VERIFIED",
+      "model_repair_credit": false
+    }
+  },
+  "新增静态防线": {
+    "文件": "tests/test_module_hygiene.py",
+    "用例数": 4,
+    "检查项": [
+      "导入名不得在函数内被赋值为同名局部变量",
+      "不得存在未定义名字",
+      "包可导入且入口符号齐全",
+      "9 个阶段函数与 STAGES 齐全"
+    ],
+    "负向验证": "两类真实缺陷均被捕获；正确写法不误报"
+  },
+  "回归": {
+    "全量测试": "145 passed / 0 failed / 81 subtests",
+    "此前": "141 passed",
+    "增量": "+4 模块卫生测试",
+    "本地CI": "8/8 通过"
+  },
+  "清理": "临时对照目录与脚本均已删除，未进入仓库"
+}

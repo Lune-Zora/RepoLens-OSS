@@ -1,0 +1,217 @@
+[
+  {
+    "case": "截图日期问题",
+    "issue": "日期字符串(date string)首尾有空白(whitespace)时解析(parse)失败",
+    "tokens": [
+      "日期字符串",
+      "date",
+      "string",
+      "str",
+      "stre",
+      "首尾有空白",
+      "whitespace",
+      "时解析",
+      "parse",
+      "失败"
+    ],
+    "insufficient_evidence": false,
+    "evidences": [
+      {
+        "ref": "src/dateparse/parser.py:9",
+        "name": "parse_date",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/validator.py:8",
+        "name": "is_valid_date",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/utils.py:25",
+        "name": "add_days",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/utils.py:5",
+        "name": "days_between",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/validator.py:29",
+        "name": "validate_range",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "tests/test_parser.py:8",
+        "name": "test_parse_date",
+        "source": "call_related"
+      },
+      {
+        "ref": "tests/test_parser.py:17",
+        "name": "test_parse_date_with_whitespace",
+        "source": "call_related"
+      }
+    ]
+  },
+  {
+    "case": "截图布尔问题",
+    "issue": "布尔值字符串（true/false）前后有空格时解析失败",
+    "tokens": [
+      "布尔值字符串",
+      "true",
+      "false",
+      "前后有空格时解析失败"
+    ],
+    "insufficient_evidence": true,
+    "evidences": []
+  },
+  {
+    "case": "其他真实问题-闰年",
+    "issue": "1900 is incorrectly reported as a leap year",
+    "tokens": [
+      "1900",
+      "incorrectly",
+      "reported",
+      "report",
+      "reporte",
+      "leap",
+      "year"
+    ],
+    "insufficient_evidence": false,
+    "evidences": [
+      {
+        "ref": "src/dateparse/utils.py:40",
+        "name": "is_leap_year",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/utils.py:1",
+        "name": "src/dateparse/utils.py",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/validator.py:8",
+        "name": "is_valid_date",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/formatter.py:5",
+        "name": "format_date",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/formatter.py:1",
+        "name": "src/dateparse/formatter.py",
+        "source": "keyword_match"
+      }
+    ]
+  },
+  {
+    "case": "其他真实问题-区间",
+    "issue": "validate_range rejects equal start and end dates",
+    "tokens": [
+      "validate",
+      "range",
+      "rejects",
+      "reject",
+      "equal",
+      "start",
+      "end",
+      "dates",
+      "date"
+    ],
+    "insufficient_evidence": false,
+    "evidences": [
+      {
+        "ref": "src/dateparse/validator.py:29",
+        "name": "validate_range",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/validator.py:1",
+        "name": "src/dateparse/validator.py",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/utils.py:5",
+        "name": "days_between",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/validator.py:8",
+        "name": "is_valid_date",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/utils.py:25",
+        "name": "add_days",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/parser.py:9",
+        "name": "parse_date",
+        "source": "call_related"
+      }
+    ]
+  },
+  {
+    "case": "其他真实问题-天数",
+    "issue": "days_between returns negative for ascending dates",
+    "tokens": [
+      "days",
+      "day",
+      "between",
+      "returns",
+      "return",
+      "negative",
+      "ascending",
+      "ascend",
+      "ascende",
+      "dates",
+      "date"
+    ],
+    "insufficient_evidence": false,
+    "evidences": [
+      {
+        "ref": "src/dateparse/utils.py:5",
+        "name": "days_between",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/utils.py:25",
+        "name": "add_days",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/utils.py:1",
+        "name": "src/dateparse/utils.py",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/formatter.py:5",
+        "name": "format_date",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/validator.py:29",
+        "name": "validate_range",
+        "source": "keyword_match"
+      },
+      {
+        "ref": "src/dateparse/parser.py:9",
+        "name": "parse_date",
+        "source": "call_related"
+      }
+    ]
+  },
+  {
+    "case": "同一闰年问题-纯中文",
+    "issue": "1900年被错误判断为闰年",
+    "tokens": [
+      "1900",
+      "年被错误判断为闰年"
+    ],
+    "insufficient_evidence": true,
+    "evidences": []
+  }
+]

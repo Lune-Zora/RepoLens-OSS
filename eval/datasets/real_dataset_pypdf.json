@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "category": "bug",
+    "issue": "Make is_open=False collapse outline items",
+    "project": "pypdf",
+    "expected": [
+      "pypdf/_writer.py:add_outline_item_destination:1779"
+    ]
+  },
+  {
+    "id": 2,
+    "category": "bug",
+    "issue": "Check the page label style and type it as the strings it accepts",
+    "project": "pypdf",
+    "expected": [
+      "pypdf/_writer.py:set_page_label:3242"
+    ]
+  },
+  {
+    "id": 3,
+    "category": "noise",
+    "issue": "add GPU acceleration to PDF rendering",
+    "project": "pypdf",
+    "expected": []
+  },
+  {
+    "id": 4,
+    "category": "noise",
+    "issue": "translate documentation to French",
+    "project": "pypdf",
+    "expected": []
+  },
+  {
+    "id": 5,
+    "category": "noise",
+    "issue": "implement an HTTP server",
+    "project": "pypdf",
+    "expected": []
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "adopted_patch": "provenance/patch/patch.json",
+  "matching_response_records": [
+    "b7068c74f7ce429dac9f570d939c623f.json",
+    "f39a645f25464aa7910ffd6f6223f2a6.json"
+  ],
+  "description": "采用的补丁 JSON 与保存的模型解析响应逐字段相等"
+}

@@ -1,0 +1,73 @@
+{
+  "after": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "framework": "unittest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n",
+      "stdout": "",
+      "structured": true,
+      "summary": {
+        "collected": 6,
+        "errors": 0,
+        "failed": 0,
+        "passed": 6,
+        "ran": 6,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "test_behavior.IndependentBehavior.test_controls": "PASS",
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_original": "PASS",
+        "test_behavior.IndependentBehavior.test_other_function": "PASS",
+        "test_behavior.IndependentBehavior.test_padding": "PASS",
+        "test_behavior.IndependentBehavior.test_unknown": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "before": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "framework": "unittest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "E...E.\n======================================================================\nERROR: test_controls (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_g9073zwd\\__replens_acceptance__\\test_behavior.py\", line 6, in test_controls\n    def test_controls(self): self.assertIs(api.read_flag(\"\\tFaLsE\\n\"), False)\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_g9073zwd\\api.py\", line 4, in read_flag\n    raise ValueError(\"unsupported flag\")\nValueError: unsupported flag\n\n======================================================================\nERROR: test_padding (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_g9073zwd\\__replens_acceptance__\\test_behavior.py\", line 5, in test_padding\n    def test_padding(self): self.assertIs(api.read_flag(\"  true  \"), True)\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_g9073zwd\\api.py\", line 4, in read_flag\n    raise ValueError(\"unsupported flag\")\nValueError: unsupported flag\n\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nFAILED (errors=2)\n",
+      "stdout": "",
+      "structured": true,
+      "summary": {
+        "collected": 6,
+        "errors": 2,
+        "failed": 0,
+        "passed": 4,
+        "ran": 6,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "test_behavior.IndependentBehavior.test_controls": "ERROR",
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_original": "PASS",
+        "test_behavior.IndependentBehavior.test_other_function": "PASS",
+        "test_behavior.IndependentBehavior.test_padding": "ERROR",
+        "test_behavior.IndependentBehavior.test_unknown": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "enabled": true,
+  "files": {
+    "__replens_acceptance__/test_behavior.py": "import unittest\nimport api\n\nclass IndependentBehavior(unittest.TestCase):\n    def test_padding(self): self.assertIs(api.read_flag(\"  true  \"), True)\n    def test_controls(self): self.assertIs(api.read_flag(\"\\tFaLsE\\n\"), False)\n    def test_original(self): self.assertIs(api.read_flag(\"TRUE\"), True)\n    def test_unknown(self):\n        with self.assertRaises(ValueError): api.read_flag(\"perhaps\")\n    def test_empty(self):\n        with self.assertRaises(ValueError): api.read_flag(\"   \")\n    def test_other_function(self): self.assertEqual(api.format_flag(True), \"true\")\n"
+  },
+  "sha256": "a14a0e673614ed519e38085771b2378d1472a9c556493170422ad4f71ec1f022",
+  "timeout": 120
+}

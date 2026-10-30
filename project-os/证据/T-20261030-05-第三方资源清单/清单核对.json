@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "resources": 49,
+  "statuses": {
+    "已核验": 42,
+    "待核验": 4,
+    "不适用": 3
+  },
+  "official_columns": 8,
+  "license_parent_commits": 110,
+  "docs": [
+    {
+      "file": "docs/02_架构/技术报告.pdf",
+      "pages": 13,
+      "bytes": 263871,
+      "text_outside_pages": []
+    },
+    {
+      "file": "reports/compliance/开源及第三方资源使用清单.pdf",
+      "pages": 5,
+      "bytes": 149370,
+      "text_outside_pages": []
+    }
+  ],
+  "body_font": "宋体12pt",
+  "portrait_body_margins_cm": {
+    "top": 2.5,
+    "bottom": 2.5,
+    "left": 3,
+    "right": 3
+  },
+  "appendix_orientation": "landscape for readable 8-column table",
+  "model_origin_match": false,
+  "team_roles_source": "user supplied; no percentages",
+  "unregistered_dependencies": []
+}

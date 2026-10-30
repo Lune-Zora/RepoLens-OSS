@@ -1,0 +1,52 @@
+{
+  "model": "qwen35-9b-unc:latest",
+  "task": "numeric_interval",
+  "seconds": 54.032,
+  "exit_code": 2,
+  "repair_status": "NO_PATCH",
+  "blocked_reason": "当前问题行为测试生成失败：用例参数与函数签名不符；一个列表参数必须嵌套为args:[[...]]：missing a required argument: 'high'",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "patch_note": "当前问题行为测试生成失败：用例参数与函数签名不符；一个列表参数必须嵌套为args:[[...]]：missing a required argument: 'high'",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "03f1025597f24f6e842642e7b558d384.json",
+      "purpose": "test_review",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "143b37c06dfc48d7bf9e4e0a88593a76.json",
+      "purpose": "plan",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "99b7e85cc7c64cd981b1181cb9ec2c11.json",
+      "purpose": "task_tests",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "dafaefeb17404e18a8539e65da7dc693.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "dfa4776d74a44c6c917d5ff14975e6c6.json",
+      "purpose": "scope_validation",
+      "requested_model": "qwen35-9b-unc:latest",
+      "response_model": "qwen35-9b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

@@ -1,0 +1,9 @@
+{
+  "configured_remote_hosts": [
+    {
+      "remote": "origin",
+      "host": "gitee.com"
+    }
+  ],
+  "github_remote_present": false
+}

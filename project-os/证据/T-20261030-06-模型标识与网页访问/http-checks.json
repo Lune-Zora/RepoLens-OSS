@@ -1,0 +1,66 @@
+[
+  {
+    "url": "http://127.0.0.1:8000/",
+    "status": 200,
+    "bytes": 11066,
+    "content_type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8000/static/app.js",
+    "status": 200,
+    "bytes": 26467,
+    "content_type": "application/javascript"
+  },
+  {
+    "url": "http://127.0.0.1:8000/static/style.css",
+    "status": 200,
+    "bytes": 11423,
+    "content_type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/env",
+    "status": 200,
+    "bytes": 156,
+    "content_type": "application/json",
+    "json": {
+      "python": "3.10.11",
+      "llm": {
+        "base_url": "http://127.0.0.1:11434/v1",
+        "model": "qwen2.5-coder:1.5b",
+        "configured": true
+      },
+      "embedding": {
+        "remote": false,
+        "local": true
+      }
+    }
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/repos",
+    "status": 200,
+    "bytes": 185,
+    "content_type": "application/json"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/datasets",
+    "status": 200,
+    "bytes": 1010,
+    "content_type": "application/json"
+  },
+  {
+    "url": "http://127.0.0.1:11434/v1",
+    "status": 404,
+    "body": "404 page not found"
+  },
+  {
+    "url": "http://127.0.0.1:11434/v1/models",
+    "status": 200,
+    "bytes": 292,
+    "content_type": "application/json",
+    "models": [
+      "qwen25-7b-unc:latest",
+      "qwen35-9b-unc:latest",
+      "qwen2.5-coder:1.5b"
+    ]
+  }
+]

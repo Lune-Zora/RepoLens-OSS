@@ -1,0 +1,31 @@
+{
+  "model": "qwen25-7b-unc:latest",
+  "task": "stable_unique",
+  "seconds": 13.768,
+  "exit_code": 2,
+  "repair_status": "UNVERIFIED",
+  "blocked_reason": "",
+  "reasons": [
+    "定位证据不足，不能确认修复"
+  ],
+  "patch_note": "候选功能与原始问题不匹配：用户需求是保持元素首次出现的顺序去重，而候选函数 unique_values 是直接使用 set 转换为无序的唯一值，无法保证顺序。",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "50ed73afe2d64a0999b08350999be261.json",
+      "purpose": "scope_validation",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "b9d7ed3ad5644c4c8f72e9a11ff2a2ee.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

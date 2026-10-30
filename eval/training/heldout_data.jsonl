@@ -1,0 +1,2 @@
+{"issue": "format_date renders single-digit months as 2024-1-5", "evidence": "src/dateparse/formatter.py:5 function format_date", "output": "{\"src/dateparse/formatter.py\": {\"from\": \"    return f\\\"{d.year}-{d.month}-{d.day}\\\"\", \"to\": \"    return f\\\"{d.year:04d}-{d.month:02d}-{d.day:02d}\\\"\"}}"}
+{"issue": "validate_range rejects equal start and end dates", "evidence": "src/dateparse/validator.py:29 function validate_range", "output": "{\"src/dateparse/validator.py\": {\"from\": \"    return s < e\", \"to\": \"    return s <= e\"}}"}

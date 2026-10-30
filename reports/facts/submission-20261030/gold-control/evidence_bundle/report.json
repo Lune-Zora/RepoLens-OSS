@@ -1,0 +1,163 @@
+{
+  "acceptance_after": [
+    {
+      "command": "python -m pytest -o addopts= __replens_acceptance__/test_reset_infinity_contract.py -q",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "..                                                                       [100%]\n2 passed in 0.28s\n",
+      "structured": true,
+      "summary": {
+        "collected": 2,
+        "errors": 0,
+        "failed": 0,
+        "passed": 2,
+        "ran": 2,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_finite_total_keeps_normal_counting": "PASS",
+        "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "acceptance_before": [
+    {
+      "command": "python -m pytest -o addopts= __replens_acceptance__/test_reset_infinity_contract.py -q",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "",
+      "stdout": ".F                                                                       [100%]\n================================== FAILURES ===================================\n_ ResetInfiniteTotalContract.test_reset_infinity_matches_unknown_total_behavior _\n\nself = <test_reset_infinity_contract.ResetInfiniteTotalContract testMethod=test_reset_infinity_matches_unknown_total_behavior>\n\n    def test_reset_infinity_matches_unknown_total_behavior(self):\n        with closing(StringIO()) as output:\n            with tqdm(total=8, file=output, miniters=1, mininterval=0, maxinterval=0) as bar:\n                bar.update(3)\n                bar.reset(total=math.inf)\n                bar.update(1)\n                rendered = bar.format_meter(bar.n, bar.total, 0)\n>               self.assertIsNone(bar.total)\nE               AssertionError: inf is not None\n\n__replens_acceptance__\\test_reset_infinity_contract.py:17: AssertionError\n=========================== short test summary info ===========================\nFAILED __replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior - AssertionError: inf is not None\n1 failed, 1 passed in 0.42s\n",
+      "structured": true,
+      "summary": {
+        "collected": 2,
+        "errors": 0,
+        "failed": 1,
+        "passed": 1,
+        "ran": 2,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_finite_total_keeps_normal_counting": "PASS",
+        "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior": "FAIL"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "acceptance_test_cmd": "python -m pytest -o addopts= __replens_acceptance__/test_reset_infinity_contract.py -q",
+  "after": [
+    {
+      "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\execution-temp\\replens_c550barl\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function\ntimeout: 30.0s\ntimeout method: thread\ntimeout func_only: False\ncollected 72 items / 69 deselected / 3 selected\n\ntests\\tests_tqdm.py ...                                                  [100%]\n\n====================== 3 passed, 69 deselected in 0.46s =======================\n",
+      "structured": true,
+      "summary": {
+        "collected": 3,
+        "errors": 0,
+        "failed": 0,
+        "passed": 3,
+        "ran": 3,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "tests/tests_tqdm.py::test_disabled_reset": "PASS",
+        "tests/tests_tqdm.py::test_reset": "PASS",
+        "tests/tests_tqdm.py::test_reset_inf": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "before": [
+    {
+      "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\execution-temp\\replens_n_p2v_b9\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function\ntimeout: 30.0s\ntimeout method: thread\ntimeout func_only: False\ncollected 72 items / 69 deselected / 3 selected\n\ntests\\tests_tqdm.py .F.                                                  [100%]\n\n================================== FAILURES ===================================\n_______________________________ test_reset_inf ________________________________\n\n    def test_reset_inf():\n        \"\"\"Test resetting a bar to an infinite total (#651)\"\"\"\n        with closing(StringIO()) as our_file:\n            with tqdm(total=10, file=our_file,\n                      miniters=1, mininterval=0, maxinterval=0) as t:\n                t.update(5)\n                t.reset(total=float(\"inf\"))\n                t.update()\n                # same as tqdm(total=float(\"inf\")): treated as unknown\n>               assert t.total is None\nE               assert inf is None\nE                +  where inf = <tqdm.std.tqdm object at 0x000002952D7F3BE0>.total\n\ntests\\tests_tqdm.py:1156: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/tests_tqdm.py::test_reset_inf - assert inf is None\n +  where inf = <tqdm.std.tqdm object at 0x000002952D7F3BE0>.total\n================= 1 failed, 2 passed, 69 deselected in 0.47s ==================\n",
+      "structured": true,
+      "summary": {
+        "collected": 3,
+        "errors": 0,
+        "failed": 1,
+        "passed": 2,
+        "ran": 3,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "tests/tests_tqdm.py::test_disabled_reset": "PASS",
+        "tests/tests_tqdm.py::test_reset": "PASS",
+        "tests/tests_tqdm.py::test_reset_inf": "FAIL"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "evidences": [],
+  "execution_hints": [],
+  "flip_prediction": null,
+  "generated_test": "",
+  "generated_test_kind": "none",
+  "insufficient_evidence": false,
+  "issue": "When a progress bar's counters are cleared and re-initialized with an infinite total, the bar must treat it as unknown, as it does at construction.",
+  "patch_diff": "diff --git a/tqdm/std.py b/tqdm/std.py\nindex 17eb825..1d04b90 100644\n--- a/tqdm/std.py\n+++ b/tqdm/std.py\n@@ -1378,7 +1378,8 @@ class tqdm(Comparable):\n         \"\"\"\n         self.n = 0\n         if total is not None:\n-            self.total = total\n+            # infinite total behaves the same as unknown (#651), as in __init__\n+            self.total = None if total == float(\"inf\") else total\n         if self.disable:\n             return\n         self.last_print_n = 0\n",
+  "patch_note": "补丁应用成功（unified diff，共 1 个文件）。",
+  "plan": null,
+  "provenance": {
+    "materials_status": "NOT_CHECKED",
+    "reasons": [],
+    "replay_status": "NOT_RUN",
+    "schema_version": "2.0",
+    "status": "WRITTEN"
+  },
+  "reasons": [
+    "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+  ],
+  "regression_after": [],
+  "regression_before": [],
+  "regression_test_cmd": "",
+  "repo": "E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\buggy",
+  "schema_version": "2.0",
+  "status": "VERIFIED",
+  "test_command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+  "test_framework": "pytest",
+  "test_timeout": 300,
+  "validation": {
+    "acceptance_sha256": "2096cd8cd007f74a60fc2b44f0d00867a064342599dcdbb940d2ff5195404e80",
+    "acceptance_targets": [
+      "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior"
+    ],
+    "preserved": [
+      "tests/tests_tqdm.py::test_disabled_reset",
+      "tests/tests_tqdm.py::test_reset"
+    ],
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "status": "VERIFIED",
+    "targets": [
+      "tests/tests_tqdm.py::test_reset_inf"
+    ]
+  }
+}

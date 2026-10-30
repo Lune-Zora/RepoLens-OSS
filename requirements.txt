@@ -1,0 +1,6 @@
+# 核心运行时：零第三方依赖（纯 Python 标准库）
+# 可选 Web 层依赖：
+#   fastapi>=0.110
+#   uvicorn>=0.29
+# 可选 LLM 层（若不用 RulePlanner 兜底、要接 OpenAI 兼容 API）：
+#   无需额外依赖，用标准库 urllib 即可

@@ -1,0 +1,64 @@
+{
+  "after": [
+    {
+      "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\execution-temp\\replens_c550barl\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function\ntimeout: 30.0s\ntimeout method: thread\ntimeout func_only: False\ncollected 72 items / 69 deselected / 3 selected\n\ntests\\tests_tqdm.py ...                                                  [100%]\n\n====================== 3 passed, 69 deselected in 0.46s =======================\n",
+      "structured": true,
+      "summary": {
+        "collected": 3,
+        "errors": 0,
+        "failed": 0,
+        "passed": 3,
+        "ran": 3,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "tests/tests_tqdm.py::test_disabled_reset": "PASS",
+        "tests/tests_tqdm.py::test_reset": "PASS",
+        "tests/tests_tqdm.py::test_reset_inf": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "before": [
+    {
+      "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\execution-temp\\replens_n_p2v_b9\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function\ntimeout: 30.0s\ntimeout method: thread\ntimeout func_only: False\ncollected 72 items / 69 deselected / 3 selected\n\ntests\\tests_tqdm.py .F.                                                  [100%]\n\n================================== FAILURES ===================================\n_______________________________ test_reset_inf ________________________________\n\n    def test_reset_inf():\n        \"\"\"Test resetting a bar to an infinite total (#651)\"\"\"\n        with closing(StringIO()) as our_file:\n            with tqdm(total=10, file=our_file,\n                      miniters=1, mininterval=0, maxinterval=0) as t:\n                t.update(5)\n                t.reset(total=float(\"inf\"))\n                t.update()\n                # same as tqdm(total=float(\"inf\")): treated as unknown\n>               assert t.total is None\nE               assert inf is None\nE                +  where inf = <tqdm.std.tqdm object at 0x000002952D7F3BE0>.total\n\ntests\\tests_tqdm.py:1156: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/tests_tqdm.py::test_reset_inf - assert inf is None\n +  where inf = <tqdm.std.tqdm object at 0x000002952D7F3BE0>.total\n================= 1 failed, 2 passed, 69 deselected in 0.47s ==================\n",
+      "structured": true,
+      "summary": {
+        "collected": 3,
+        "errors": 0,
+        "failed": 1,
+        "passed": 2,
+        "ran": 3,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "tests/tests_tqdm.py::test_disabled_reset": "PASS",
+        "tests/tests_tqdm.py::test_reset": "PASS",
+        "tests/tests_tqdm.py::test_reset_inf": "FAIL"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+  "enabled": true,
+  "files": {},
+  "timeout": 300
+}

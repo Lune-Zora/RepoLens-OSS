@@ -1,0 +1,409 @@
+{
+  "report": {
+    "schema_version": "2.0",
+    "status": "VERIFIED",
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "validation": {
+      "status": "VERIFIED",
+      "reasons": [
+        "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+      ],
+      "targets": [
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00"
+      ],
+      "preserved": [
+        "tests/test_public.py::PublicTests::test_empty",
+        "tests/test_public.py::PublicTests::test_exact",
+        "tests/test_public.py::PublicTests::test_flatten",
+        "tests/test_public.py::PublicTests::test_invalid"
+      ],
+      "preexisting_failures": [],
+      "scope": "current_issue_and_preserved_tests",
+      "acceptance_sha256": "9e37c68f6fb4ecf155dd4912d8d9023aba434a2aea48c76bffbaf64144d3739c",
+      "acceptance_targets": [
+        "test_behavior.IndependentBehavior.test_short",
+        "test_behavior.IndependentBehavior.test_tail"
+      ]
+    },
+    "test_framework": "pytest",
+    "generated_test_kind": "user_behavioral_examples",
+    "acceptance_before": [
+      {
+        "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "...FF.\n======================================================================\nFAIL: test_short (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_ndgm_ukv\\__replens_acceptance__\\test_behavior.py\", line 6, in test_short\n    def test_short(self): self.assertEqual(api.split_packets([7],4),[[7]])\nAssertionError: Lists differ: [] != [[7]]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n[7]\n\n- []\n+ [[7]]\n\n======================================================================\nFAIL: test_tail (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_ndgm_ukv\\__replens_acceptance__\\test_behavior.py\", line 5, in test_tail\n    def test_tail(self): self.assertEqual(api.split_packets([0,1,2,3,4,5,6],3),[[0,1,2],[3,4,5],[6]])\nAssertionError: Lists differ: [[0, 1, 2], [3, 4, 5]] != [[0, 1, 2], [3, 4, 5], [6]]\n\nSecond list contains 1 additional elements.\nFirst extra element 2:\n[6]\n\n- [[0, 1, 2], [3, 4, 5]]\n+ [[0, 1, 2], [3, 4, 5], [6]]\n?                      ++++ +\n\n\n----------------------------------------------------------------------\nRan 6 tests in 0.002s\n\nFAILED (failures=2)\n",
+        "timed_out": false,
+        "passed": false,
+        "valid": true,
+        "summary": {
+          "passed": 4,
+          "failed": 2,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 6,
+          "ran": 6
+        },
+        "invalid_reason": "",
+        "tests": {
+          "test_behavior.IndependentBehavior.test_empty": "PASS",
+          "test_behavior.IndependentBehavior.test_helper": "PASS",
+          "test_behavior.IndependentBehavior.test_invalid": "PASS",
+          "test_behavior.IndependentBehavior.test_short": "FAIL",
+          "test_behavior.IndependentBehavior.test_tail": "FAIL",
+          "test_behavior.IndependentBehavior.test_unit": "PASS"
+        },
+        "structured": true,
+        "framework": "unittest"
+      }
+    ],
+    "acceptance_after": [
+      {
+        "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n",
+        "timed_out": false,
+        "passed": true,
+        "valid": true,
+        "summary": {
+          "passed": 6,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 6,
+          "ran": 6
+        },
+        "invalid_reason": "",
+        "tests": {
+          "test_behavior.IndependentBehavior.test_empty": "PASS",
+          "test_behavior.IndependentBehavior.test_helper": "PASS",
+          "test_behavior.IndependentBehavior.test_invalid": "PASS",
+          "test_behavior.IndependentBehavior.test_short": "PASS",
+          "test_behavior.IndependentBehavior.test_tail": "PASS",
+          "test_behavior.IndependentBehavior.test_unit": "PASS"
+        },
+        "structured": true,
+        "framework": "unittest"
+      }
+    ],
+    "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+    "repo": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\custom-browser-inputs\\repo",
+    "issue": "把输入序列按给定容量分组，最后一组即使没有装满也不能丢掉元素。空序列返回空列表，容量小于等于0时应该报ValueError。",
+    "insufficient_evidence": false,
+    "evidences": [
+      {
+        "ref": "stream_ops.py:1",
+        "type": "function",
+        "name": "split_packets",
+        "confidence": 0.0,
+        "reason": "The function takes a flat list of values and a size parameter, then slices the list to produce a new list where each element is a sub-segment containing exactly 'size' items. It handles the edge case where the total length isn't a perfect multiple of 'size' by including the remainder as the final (p",
+        "source": "intent_target",
+        "signature": "def split_packets(values, size)",
+        "code": "def split_packets(values, size):\n    if size <= 0:\n        raise ValueError(\"size must be positive\")\n    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]"
+      },
+      {
+        "ref": "tests/test_public.py:6",
+        "type": "method",
+        "name": "test_empty",
+        "confidence": 0.7,
+        "reason": "代码片段命中检索词（method @ tests/test_public.py:6）",
+        "source": "keyword_match",
+        "signature": "def test_empty(self)",
+        "code": "def test_empty(self): self.assertEqual(api.split_packets([],2), [])"
+      },
+      {
+        "ref": "tests/test_public.py:4",
+        "type": "class",
+        "name": "PublicTests",
+        "confidence": 0.55,
+        "reason": "代码片段命中检索词（class @ tests/test_public.py:4）",
+        "source": "keyword_match",
+        "signature": "class PublicTests",
+        "code": "class PublicTests(unittest.TestCase):\n    def test_exact(self): self.assertEqual(api.split_packets([1,2,3,4],2), [[1,2],[3,4]])\n    def test_empty(self): self.assertEqual(api.split_packets([],2), [])\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.split_packets([1],0)\n    def test_flatten(self): self.assertEqual(api.flatten([[1],[2,3]]),[1,2,3])"
+      },
+      {
+        "ref": "tests/test_public.py:7",
+        "type": "method",
+        "name": "test_invalid",
+        "confidence": 0.4,
+        "reason": "代码片段命中检索词（method @ tests/test_public.py:7）",
+        "source": "keyword_match",
+        "signature": "def test_invalid(self)",
+        "code": "def test_invalid(self):\n        with self.assertRaises(ValueError): api.split_packets([1],0)"
+      },
+      {
+        "ref": "tests/test_public.py:5",
+        "type": "method",
+        "name": "test_exact",
+        "confidence": 0.6,
+        "reason": "与 split_packets 存在调用关系（调用图扩展）",
+        "source": "call_related",
+        "signature": "def test_exact(self)",
+        "code": "def test_exact(self): self.assertEqual(api.split_packets([1,2,3,4],2), [[1,2],[3,4]])"
+      },
+      {
+        "ref": "README.md:1",
+        "type": "document",
+        "name": "README.md",
+        "confidence": 0.605,
+        "reason": "代码片段命中检索词（document @ README.md:1）",
+        "source": "keyword_match",
+        "signature": "document",
+        "code": "# stream-utilities\n\nPython utilities for grouping sequences.\n"
+      },
+      {
+        "ref": "tests/test_public.py:1",
+        "type": "module",
+        "name": "tests/test_public.py",
+        "confidence": 0.1,
+        "reason": "代码片段命中检索词（module @ tests/test_public.py:1）",
+        "source": "keyword_match",
+        "signature": "",
+        "code": "import unittest\nimport stream_ops as api\n\nclass PublicTests(unittest.TestCase):\n    def test_exact(self): self.assertEqual(api.split_packets([1,2,3,4],2), [[1,2],[3,4]])\n    def test_empty(self): self.assertEqual(api.split_packets([],2), [])\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.split_packets([1],0)\n    def test_flatten(self): self.assertEqual(api.flatten([[1],[2,3]]),[1,2,3])\n"
+      }
+    ],
+    "plan": {
+      "root_cause": "The current implementation uses `range(0, len(values) - size + 1, size)` which stops slicing before including the remainder elements when the total length isn't a perfect multiple of 'size'.",
+      "affected_scope": [
+        "stream_ops.py",
+        "tests/test_public.py"
+      ],
+      "files_to_modify": [
+        "stream_ops.py"
+      ],
+      "steps": [
+        "Update the slice range in `stream_ops.py` from `len(values) - size + 1` to `len(values) + 1` (or use `min`) to ensure it"
+      ],
+      "risks": [
+        "Potential off-by-one error in slicing logic if 'size' is larger than remaining elements, causing the"
+      ],
+      "regression_test": "Run test suite to verify split_packets handles remainder elements correctly and edge cases for size.",
+      "generated_by": "llm"
+    },
+    "test_command": "python -m pytest tests __replens_task__/test_current_issue.py",
+    "patch_note": "LLM 生成 2 个有效候选。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）",
+    "before": [
+      {
+        "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+        "returncode": 1,
+        "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_ij73f3sx\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 5 items\n\ntests\\test_public.py ....                                                [ 80%]\n__replens_task__\\test_current_issue.py F                                 [100%]\n\n================================== FAILURES ===================================\n___________________________ TaskTests.test_issue_00 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_00>\n\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_ij73f3sx/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[11, 12, 13], 2], **{})\n>       self.assertEqual(actual, [[11, 12], [13]])\nE       AssertionError: Lists differ: [[11, 12]] != [[11, 12], [13]]\nE       \nE       Second list contains 1 additional elements.\nE       First extra element 1:\nE       [13]\nE       \nE       - [[11, 12]]\nE       + [[11, 12], [13]]\nE       ?          +++++ +\n\n__replens_task__\\test_current_issue.py:13: AssertionError\n=========================== short test summary info ===========================\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_00 - Ass...\n========================= 1 failed, 4 passed in 0.95s =========================\n",
+        "stderr": "",
+        "timed_out": false,
+        "passed": false,
+        "valid": true,
+        "summary": {
+          "passed": 4,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 5,
+          "ran": 5
+        },
+        "invalid_reason": "",
+        "tests": {
+          "tests/test_public.py::PublicTests::test_empty": "PASS",
+          "tests/test_public.py::PublicTests::test_exact": "PASS",
+          "tests/test_public.py::PublicTests::test_flatten": "PASS",
+          "tests/test_public.py::PublicTests::test_invalid": "PASS",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "FAIL"
+        },
+        "structured": true,
+        "framework": "pytest"
+      }
+    ],
+    "after": [
+      {
+        "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+        "returncode": 0,
+        "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_vsee70nt\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 5 items\n\ntests\\test_public.py ....                                                [ 80%]\n__replens_task__\\test_current_issue.py .                                 [100%]\n\n============================== 5 passed in 0.58s ==============================\n",
+        "stderr": "",
+        "timed_out": false,
+        "passed": true,
+        "valid": true,
+        "summary": {
+          "passed": 5,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 5,
+          "ran": 5
+        },
+        "invalid_reason": "",
+        "tests": {
+          "tests/test_public.py::PublicTests::test_empty": "PASS",
+          "tests/test_public.py::PublicTests::test_exact": "PASS",
+          "tests/test_public.py::PublicTests::test_flatten": "PASS",
+          "tests/test_public.py::PublicTests::test_invalid": "PASS",
+          "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS"
+        },
+        "structured": true,
+        "framework": "pytest"
+      }
+    ],
+    "generated_test": "# Model-proposed task tests, frozen before patch generation.\nimport unittest\n\nclass TaskTests(unittest.TestCase):\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[11, 12, 13], 2], **{})\n        self.assertEqual(actual, [[11, 12], [13]])\n\n",
+    "patch_diff": "--- a/stream_ops.py\n+++ b/stream_ops.py\n@@ -1,7 +1,9 @@\n def split_packets(values, size):\n     if size <= 0:\n         raise ValueError(\"size must be positive\")\n-    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]\n+    if not values:\n+        return []\n+    return [values[i:i + size] for i in range(0, len(values), size)]\n \n \n def flatten(groups):",
+    "execution_hints": [],
+    "flip_prediction": {
+      "predicted": [
+        "test_empty",
+        "test_exact",
+        "test_invalid"
+      ],
+      "actual_flips": [
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00"
+      ],
+      "hit": [],
+      "precision": 0.0,
+      "recall": 0.0,
+      "identity": "full_test_id; prediction matching uses method names"
+    },
+    "regression_before": [],
+    "regression_after": [],
+    "regression_test_cmd": "",
+    "test_timeout": 120,
+    "requested_test_command": "python -m pytest tests",
+    "understanding": {
+      "original_issue": "把输入序列按给定容量分组，最后一组即使没有装满也不能丢掉元素。空序列返回空列表，容量小于等于0时应该报ValueError。",
+      "summary": "将输入序列按给定容量分组，确保最后一组即使未满也保留元素，处理空序列及非正容量的边界情况。",
+      "core_operation": "chunk the input sequence into groups of a specific size",
+      "expected_behavior": "Return an empty list for an empty input; raise ValueError if capacity is <= 0; ensure the last group retains its elements even if not full.",
+      "search_query": "split_packets",
+      "scope": "matched",
+      "explanation": "The function takes a flat list of values and a size parameter, then slices the list to produce a new list where each element is a sub-segment containing exactly 'size' items. It handles the edge case where the total length isn't a perfect multiple of 'size' by including the remainder as the final (p",
+      "targets": [
+        {
+          "ref": "stream_ops.py:1",
+          "path": "stream_ops.py",
+          "name": "split_packets",
+          "start_line": 1
+        }
+      ],
+      "repository_functions": [
+        "stream_ops.py:split_packets",
+        "stream_ops.py:flatten"
+      ],
+      "catalog_total": 2,
+      "catalog_shown": 2,
+      "model": "qwen35-9b-unc:latest",
+      "generated_by": "llm",
+      "error": "",
+      "retrieval_mode": "llm_grounded_source"
+    },
+    "task_tests": {
+      "kind": "user_behavioral_examples",
+      "cases": [
+        {
+          "args": [
+            [
+              11,
+              12,
+              13
+            ],
+            2
+          ],
+          "expected": [
+            [
+              11,
+              12
+            ],
+            [
+              13
+            ]
+          ],
+          "path": "stream_ops.py",
+          "symbol": "split_packets",
+          "kwargs": {},
+          "intent": "issue",
+          "normalize": "identity"
+        }
+      ],
+      "independent": false,
+      "frozen_before_patch": true,
+      "sha256": "94b9095baad3544f743e84b20eb8859e39389a868abba2328427e1a203de248f",
+      "baseline_tests": {
+        "tests/test_public.py::PublicTests::test_empty": "PASS",
+        "tests/test_public.py::PublicTests::test_exact": "PASS",
+        "tests/test_public.py::PublicTests::test_flatten": "PASS",
+        "tests/test_public.py::PublicTests::test_invalid": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "FAIL"
+      },
+      "reproduced_issue_tests": [
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00"
+      ],
+      "design_attempts": [
+        {
+          "round": 1,
+          "sha256": "94b9095baad3544f743e84b20eb8859e39389a868abba2328427e1a203de248f",
+          "cases": [
+            {
+              "args": [
+                [
+                  11,
+                  12,
+                  13
+                ],
+                2
+              ],
+              "expected": [
+                [
+                  11,
+                  12
+                ],
+                [
+                  13
+                ]
+              ],
+              "path": "stream_ops.py",
+              "symbol": "split_packets",
+              "kwargs": {},
+              "intent": "issue",
+              "normalize": "identity"
+            }
+          ],
+          "baseline_tests": {
+            "tests/test_public.py::PublicTests::test_empty": "PASS",
+            "tests/test_public.py::PublicTests::test_exact": "PASS",
+            "tests/test_public.py::PublicTests::test_flatten": "PASS",
+            "tests/test_public.py::PublicTests::test_invalid": "PASS",
+            "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "FAIL"
+          },
+          "execution_valid": true
+        }
+      ]
+    },
+    "blocked_reason": "",
+    "verification_scope": "当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为",
+    "model": "qwen35-9b-unc:latest",
+    "provenance": {
+      "status": "WRITTEN",
+      "schema_version": "2.0",
+      "materials_status": "NOT_CHECKED",
+      "replay_status": "NOT_RUN",
+      "reasons": []
+    }
+  },
+  "status": "VERIFIED",
+  "reasons": [
+    "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+  ],
+  "markdown": "# RepoLens-OSS 分析报告\n\n## 问题\n\n> 把输入序列按给定容量分组，最后一组即使没有装满也不能丢掉元素。空序列返回空列表，容量小于等于0时应该报ValueError。\n\n## 修复结论\n\n**VERIFIED — 独立验收通过**\n\n- 目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过\n\n## 证据包与重放\n\n打包状态：`WRITTEN`；Schema：`2.0`。\n\n材料核验：`NOT_CHECKED`；重放一致性：`NOT_RUN`。\n\n生成证据包后需单独执行 verify；重放一致不等于修复通过。\n\n\n## 问题理解与检索说明\n\n- 理解：将输入序列按给定容量分组，确保最后一组即使未满也保留元素，处理空序列及非正容量的边界情况。\n- 预期行为：Return an empty list for an empty input; raise ValueError if capacity is <= 0; ensure the last group retains its elements even if not full.\n- 检索表达：split_packets\n- 范围判断：The function takes a flat list of values and a size parameter, then slices the list to produce a new list where each element is a sub-segment containing exactly 'size' items. It handles the edge case where the total length isn't a perfect multiple of 'size' by including the remainder as the final (p\n- 模型：qwen35-9b-unc:latest\n- 已检查目录：2/2\n## 当前问题测试\n\n用户明确提供并保持原样、补丁前冻结；不是独立验收。SHA-256：94b9095baad3544f743e84b20eb8859e39389a868abba2328427e1a203de248f\n用例数量：1\n当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为\n## 代码定位（证据）\n\n| 文件:行号 | 类型 | 符号 | 置信度 | 来源 | 判断依据 |\n|---|---|---|---|---|---|\n| `stream_ops.py:1` | function | split_packets | 0.0 | intent_target | The function takes a flat list of values and a size parameter, then slices the list to produce a new list where each element is a sub-segment containing exactly 'size' items. It handles the edge case where the total length isn't a perfect multiple of 'size' by including the remainder as the final (p |\n| `tests/test_public.py:6` | method | test_empty | 0.7 | keyword_match | 代码片段命中检索词（method @ tests/test_public.py:6） |\n| `tests/test_public.py:4` | class | PublicTests | 0.55 | keyword_match | 代码片段命中检索词（class @ tests/test_public.py:4） |\n| `tests/test_public.py:7` | method | test_invalid | 0.4 | keyword_match | 代码片段命中检索词（method @ tests/test_public.py:7） |\n| `tests/test_public.py:5` | method | test_exact | 0.6 | call_related | 与 split_packets 存在调用关系（调用图扩展） |\n| `README.md:1` | document | README.md | 0.605 | keyword_match | 代码片段命中检索词（document @ README.md:1） |\n| `tests/test_public.py:1` | module | tests/test_public.py | 0.1 | keyword_match | 代码片段命中检索词（module @ tests/test_public.py:1） |\n\n## 关键证据代码\n\n**`stream_ops.py:1` — split_packets**\n```python\ndef split_packets(values, size):\n    if size <= 0:\n        raise ValueError(\"size must be positive\")\n    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]\n```\n\n**`tests/test_public.py:6` — test_empty**\n```python\ndef test_empty(self): self.assertEqual(api.split_packets([],2), [])\n```\n\n**`tests/test_public.py:4` — PublicTests**\n```python\nclass PublicTests(unittest.TestCase):\n    def test_exact(self): self.assertEqual(api.split_packets([1,2,3,4],2), [[1,2],[3,4]])\n    def test_empty(self): self.assertEqual(api.split_packets([],2), [])\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.split_packets([1],0)\n    def test_flatten(self): self.assertEqual(api.flatten([[1],[2,3]]),[1,2,3])\n```\n\n## 修改计划\n\n- **根因分析**：The current implementation uses `range(0, len(values) - size + 1, size)` which stops slicing before including the remainder elements when the total length isn't a perfect multiple of 'size'.\n- **影响范围**：stream_ops.py, tests/test_public.py\n- **修改文件**：stream_ops.py\n- **修改步骤**：\n  - Update the slice range in `stream_ops.py` from `len(values) - size + 1` to `len(values) + 1` (or use `min`) to ensure it\n- **风险提示**：\n  - Potential off-by-one error in slicing logic if 'size' is larger than remaining elements, causing the\n\n计划生成方式：`llm`\n\n## 测试验证\n\n测试命令：`python -m pytest tests __replens_task__/test_current_issue.py`\n\n补丁：LLM 生成 2 个有效候选。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）\n\n### 修复前\n\n- 命令 `python -m pytest tests __replens_task__/test_current_issue.py` → exit 1（未通过；有效）\n  - 摘要：passed=4, failed=1, errors=0, skipped=0, collected=5\n  - ❌ ================================== FAILURES ===================================\n  - ❌ E       AssertionError: Lists differ: [[11, 12]] != [[11, 12], [13]]\n  - ❌ __replens_task__\\test_current_issue.py:13: AssertionError\n  - ❌ =========================== short test summary info ===========================\n  - ❌ FAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_00 - Ass...\n\n### 修复后\n\n- 命令 `python -m pytest tests __replens_task__/test_current_issue.py` → exit 0（通过；有效）\n  - 摘要：passed=5, failed=0, errors=0, skipped=0, collected=5\n\n## 测试翻转统计（补丁测试后计算）\n\n- 预测会翻转的测试：test_empty, test_exact, test_invalid\n- 实际翻转的测试：__replens_task__/test_current_issue.py::TaskTests::test_issue_00\n- 命中：无\n- 预测准确率 precision=0.0，召回率 recall=0.0\n\n\n## 补丁内容（diff）\n\n```diff\n--- a/stream_ops.py\n+++ b/stream_ops.py\n@@ -1,7 +1,9 @@\n def split_packets(values, size):\n     if size <= 0:\n         raise ValueError(\"size must be positive\")\n-    return [values[i:i + size] for i in range(0, len(values) - size + 1, size)]\n+    if not values:\n+        return []\n+    return [values[i:i + size] for i in range(0, len(values), size)]\n \n \n def flatten(groups):\n```\n\n## 自动生成的辅助回归测试（不作为独立验收）\n\n```python\n# Model-proposed task tests, frozen before patch generation.\nimport unittest\n\nclass TaskTests(unittest.TestCase):\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/stream_ops.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.split_packets(*[[11, 12, 13], 2], **{})\n        self.assertEqual(actual, [[11, 12], [13]])\n\n\n```\n\n## 冻结的独立行为验收\n\n命令：`python -m unittest discover -s __replens_acceptance__ -p test_behavior.py`\n\nSHA-256：`9e37c68f6fb4ecf155dd4912d8d9023aba434a2aea48c76bffbaf64144d3739c`\n\n### 修复前\n\n- 未通过（exit 1）\n  - `test_behavior.IndependentBehavior.test_empty`: PASS\n  - `test_behavior.IndependentBehavior.test_helper`: PASS\n  - `test_behavior.IndependentBehavior.test_invalid`: PASS\n  - `test_behavior.IndependentBehavior.test_short`: FAIL\n  - `test_behavior.IndependentBehavior.test_tail`: FAIL\n  - `test_behavior.IndependentBehavior.test_unit`: PASS\n\n### 修复后\n\n- 通过（exit 0）\n  - `test_behavior.IndependentBehavior.test_empty`: PASS\n  - `test_behavior.IndependentBehavior.test_helper`: PASS\n  - `test_behavior.IndependentBehavior.test_invalid`: PASS\n  - `test_behavior.IndependentBehavior.test_short`: PASS\n  - `test_behavior.IndependentBehavior.test_tail`: PASS\n  - `test_behavior.IndependentBehavior.test_unit`: PASS\n",
+  "provenance": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\custom-browser-inputs\\repo\\.replens\\provenance\\20261030T103752.119320Z-41ae6645",
+  "provenance_status": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

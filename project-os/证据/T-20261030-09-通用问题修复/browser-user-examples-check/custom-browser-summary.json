@@ -1,0 +1,31 @@
+{
+  "http_status": 200,
+  "status": "NO_PATCH",
+  "model": "qwen35-9b-unc:latest",
+  "button_disabled_while_running": true,
+  "scenario_selection": "",
+  "test_source": "user_behavioral_examples",
+  "explicit_example": {
+    "args": [
+      [
+        11,
+        12,
+        13
+      ],
+      2
+    ],
+    "expected": [
+      [
+        11,
+        12
+      ],
+      [
+        13
+      ]
+    ]
+  },
+  "source_unchanged": true,
+  "errors": [],
+  "replay_status": "PASS",
+  "repair_status": "NO_PATCH"
+}

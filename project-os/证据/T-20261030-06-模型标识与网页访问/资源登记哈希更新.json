@@ -1,0 +1,6 @@
+{
+  "path": "reports/compliance/verification-20261030/resource-register.json",
+  "before": "53cebe7d2822b118f8c68cbb404806b382044f2c2fa73f8ecc7b6b68949c5b68",
+  "after": "c89f27e4991d32e958fc4fb11eee1a26b8c8ec927f664fb00d1ca3da379e82a8",
+  "reason": "补充实际模型标签、ID及大小，许可待核验状态不变"
+}

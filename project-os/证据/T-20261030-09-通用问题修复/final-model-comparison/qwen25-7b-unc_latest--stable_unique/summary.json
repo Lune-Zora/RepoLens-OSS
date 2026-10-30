@@ -1,0 +1,45 @@
+{
+  "model": "qwen25-7b-unc:latest",
+  "task": "stable_unique",
+  "seconds": 32.791,
+  "exit_code": 2,
+  "repair_status": "NO_PATCH",
+  "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'path': 'api.py', 'symbol': 'unique_values', 'args': [[1, 2, 3, 2, 4]], 'kwargs': {}, 'expected': [1, 2, 3, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[4, 2, 4, 1]], 'kwargs': {}, 'expected': [1, 2, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[], [1, 2, 3]], 'kwargs': {}, 'expected': [], 'raises': ''}], 'changes': ['当前实现会破坏输入列表的顺序，这与需求不符。正确的去重方法应保持元素首次出现时的顺序。', '对于 [4, 2, 4, 1] 的测试用例，预期结果应该是 [4, 2, 1] 而不是 [1, 2, 4]。']}",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'path': 'api.py', 'symbol': 'unique_values', 'args': [[1, 2, 3, 2, 4]], 'kwargs': {}, 'expected': [1, 2, 3, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[4, 2, 4, 1]], 'kwargs': {}, 'expected': [1, 2, 4], 'raises': ''}, {'path': 'api.py', 'symbol': 'unique_values', 'args': [[], [1, 2, 3]], 'kwargs': {}, 'expected': [], 'raises': ''}], 'changes': ['当前实现会破坏输入列表的顺序，这与需求不符。正确的去重方法应保持元素首次出现时的顺序。', '对于 [4, 2, 4, 1] 的测试用例，预期结果应该是 [4, 2, 1] 而不是 [1, 2, 4]。']}",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "420870bda80b4e38a2c0879dd3c0a2dd.json",
+      "purpose": "test_review",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "75b83894f2a3488f934f36283cfdbb78.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "7cdd497a9026440bab42c17e6c72000c.json",
+      "purpose": "task_tests",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "b96dc92ab8bc498f9ba8e0412d7e2fa4.json",
+      "purpose": "plan",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

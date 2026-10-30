@@ -1,0 +1,387 @@
+{
+  "schema_version": "2.0",
+  "status": "VERIFIED",
+  "reasons": [
+    "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+  ],
+  "validation": {
+    "status": "VERIFIED",
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "targets": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_00",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01"
+    ],
+    "preserved": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_02",
+      "tests/test_public.py::PublicTests::test_false",
+      "tests/test_public.py::PublicTests::test_format",
+      "tests/test_public.py::PublicTests::test_invalid",
+      "tests/test_public.py::PublicTests::test_true"
+    ],
+    "preexisting_failures": [],
+    "scope": "current_issue_and_preserved_tests",
+    "acceptance_sha256": "a14a0e673614ed519e38085771b2378d1472a9c556493170422ad4f71ec1f022",
+    "acceptance_targets": [
+      "test_behavior.IndependentBehavior.test_controls",
+      "test_behavior.IndependentBehavior.test_padding"
+    ]
+  },
+  "test_framework": "pytest",
+  "generated_test_kind": "model_behavioral_cases",
+  "acceptance_before": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "E...E.\n======================================================================\nERROR: test_controls (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_n8uo11ld\\__replens_acceptance__\\test_behavior.py\", line 6, in test_controls\n    def test_controls(self): self.assertIs(api.read_flag(\"\\tFaLsE\\n\"), False)\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_n8uo11ld\\api.py\", line 4, in read_flag\n    raise ValueError(\"unsupported flag\")\nValueError: unsupported flag\n\n======================================================================\nERROR: test_padding (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_n8uo11ld\\__replens_acceptance__\\test_behavior.py\", line 5, in test_padding\n    def test_padding(self): self.assertIs(api.read_flag(\"  true  \"), True)\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_n8uo11ld\\api.py\", line 4, in read_flag\n    raise ValueError(\"unsupported flag\")\nValueError: unsupported flag\n\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nFAILED (errors=2)\n",
+      "timed_out": false,
+      "passed": false,
+      "valid": true,
+      "summary": {
+        "passed": 4,
+        "failed": 0,
+        "errors": 2,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 6,
+        "ran": 6
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_behavior.IndependentBehavior.test_controls": "ERROR",
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_original": "PASS",
+        "test_behavior.IndependentBehavior.test_other_function": "PASS",
+        "test_behavior.IndependentBehavior.test_padding": "ERROR",
+        "test_behavior.IndependentBehavior.test_unknown": "PASS"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "acceptance_after": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 6,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 6,
+        "ran": 6
+      },
+      "invalid_reason": "",
+      "tests": {
+        "test_behavior.IndependentBehavior.test_controls": "PASS",
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_original": "PASS",
+        "test_behavior.IndependentBehavior.test_other_function": "PASS",
+        "test_behavior.IndependentBehavior.test_padding": "PASS",
+        "test_behavior.IndependentBehavior.test_unknown": "PASS"
+      },
+      "structured": true,
+      "framework": "unittest"
+    }
+  ],
+  "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\config_values",
+  "issue": "布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。",
+  "insufficient_evidence": false,
+  "evidences": [
+    {
+      "ref": "api.py:1",
+      "type": "function",
+      "name": "read_flag",
+      "confidence": 0.0,
+      "reason": "用户核心需求是处理布尔值字符串（true/false）的边界情况（如前后空格、制表符、换行）及大小写不敏感，而候选函数 `read_flag` 恰好通过 `.lower()` 和 `in` 检查实现了这一逻辑。虽然原问题暗示需要处理‘前后空格’，但函数仅对 `value` 整体进行 `.lower()` 处理（若输入为 ' True'，转为 'true' 后匹配成功，符合‘解析’的宽泛定义），且保留了‘其他内容报 ValueError'的约束，因此属于同一功能范围。",
+      "source": "intent_target",
+      "signature": "def read_flag(value)",
+      "code": "def read_flag(value):\n    key = value.lower()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\""
+    },
+    {
+      "ref": "api.py:8",
+      "type": "function",
+      "name": "format_flag",
+      "confidence": 0.85,
+      "reason": "符号名/文档命中关键词: flag, value",
+      "source": "keyword_match",
+      "signature": "def format_flag(value)",
+      "code": "def format_flag(value):\n    return \"true\" if value else \"false\""
+    },
+    {
+      "ref": "tests/test_public.py:4",
+      "type": "class",
+      "name": "PublicTests",
+      "confidence": 0.55,
+      "reason": "代码片段命中检索词（class @ tests/test_public.py:4）",
+      "source": "keyword_match",
+      "signature": "class PublicTests",
+      "code": "class PublicTests(unittest.TestCase):\n    def test_true(self): self.assertIs(api.read_flag(\"true\"), True)\n    def test_false(self): self.assertIs(api.read_flag(\"FALSE\"), False)\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.read_flag(\"unknown\")\n    def test_format(self): self.assertEqual(api.format_flag(False), \"false\")"
+    },
+    {
+      "ref": "tests/test_public.py:5",
+      "type": "method",
+      "name": "test_true",
+      "confidence": 0.4,
+      "reason": "代码片段命中检索词（method @ tests/test_public.py:5）",
+      "source": "keyword_match",
+      "signature": "def test_true(self)",
+      "code": "def test_true(self): self.assertIs(api.read_flag(\"true\"), True)"
+    },
+    {
+      "ref": "tests/test_public.py:6",
+      "type": "method",
+      "name": "test_false",
+      "confidence": 0.6,
+      "reason": "与 read_flag 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_false(self)",
+      "code": "def test_false(self): self.assertIs(api.read_flag(\"FALSE\"), False)"
+    },
+    {
+      "ref": "tests/test_public.py:7",
+      "type": "method",
+      "name": "test_invalid",
+      "confidence": 0.6,
+      "reason": "与 read_flag 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_invalid(self)",
+      "code": "def test_invalid(self):\n        with self.assertRaises(ValueError): api.read_flag(\"unknown\")"
+    },
+    {
+      "ref": "tests/test_public.py:9",
+      "type": "method",
+      "name": "test_format",
+      "confidence": 0.51,
+      "reason": "与 format_flag 存在调用关系（调用图扩展）",
+      "source": "call_related",
+      "signature": "def test_format(self)",
+      "code": "def test_format(self): self.assertEqual(api.format_flag(False), \"false\")"
+    }
+  ],
+  "plan": {
+    "root_cause": "布尔值字符串 true/false 在解析时，若前后存在空格、制表符或换行，直接进行 `.lower()` 后可能无法精确匹配 `{",
+    "affected_scope": [
+      "api.py"
+    ],
+    "files_to_modify": [
+      "api.py"
+    ],
+    "steps": [
+      "在 api.py 的 read_flag 函数中，先对 input value 进行 strip() 去除前后空白字符（空格、制表符、换行）。",
+      "接着调用 .lower() 实现大小写不敏感。",
+      "使用 in 操作符检查处理后的 key 是否在 {'true', 'false'} 集合中。",
+      "若匹配成功返回布尔值，否则抛出 ValueError('unsupported flag')。",
+      "更新 tests/test_public.py 中的 test_true 和 test_false 用例，增加带空格的输入（如 ' True', 'TRUE'）以验证边界情况。"
+    ],
+    "risks": [
+      "若 strip() 处理过度（如输入为 'true ' 但预期保留尾部空格），需确认需求定义；根据证据描述，'前后空格'暗示 strip 是合理选择。",
+      "若原代码逻辑依赖 value 本身而非副本，strip() 会直接修改原对象（Python 字符串不可变，故风险较低）。"
+    ],
+    "regression_test": "运行 tests/test_public.py，重点验证 test_true（输入'true'）、test_false（输入'FALSE'）及新增的带空格测试用例（如 ' True', ' TRUE'），确保 ValueError 仅在非 true/false 时抛出。",
+    "generated_by": "llm"
+  },
+  "test_command": "python -m pytest tests __replens_task__/test_current_issue.py",
+  "patch_note": "LLM 生成 2 个有效候选。；补丁应用成功（JSON 替换规则，共 1 处）。（主测试筛选通过，待最终验收）",
+  "before": [
+    {
+      "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+      "returncode": 1,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_suv836mo\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 7 items\n\ntests\\test_public.py ....                                                [ 57%]\n__replens_task__\\test_current_issue.py FF.                               [100%]\n\n================================== FAILURES ===================================\n___________________________ TaskTests.test_issue_00 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_00>\n\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_suv836mo/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n>       actual = _mod.read_flag(*[' true '], **{})\n\n__replens_task__\\test_current_issue.py:12: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = ' true '\n\n    def read_flag(value):\n        key = value.lower()\n        if key not in {\"true\", \"false\"}:\n>           raise ValueError(\"unsupported flag\")\nE           ValueError: unsupported flag\n\napi.py:4: ValueError\n___________________________ TaskTests.test_issue_01 ___________________________\n\nself = <test_current_issue.TaskTests testMethod=test_issue_01>\n\n    def test_issue_01(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('C:/Users/19248/AppData/Local/Temp/replens_suv836mo/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n>       actual = _mod.read_flag(*['\\tfalse\\n'], **{})\n\n__replens_task__\\test_current_issue.py:22: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = '\\tfalse\\n'\n\n    def read_flag(value):\n        key = value.lower()\n        if key not in {\"true\", \"false\"}:\n>           raise ValueError(\"unsupported flag\")\nE           ValueError: unsupported flag\n\napi.py:4: ValueError\n=========================== short test summary info ===========================\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_00 - Val...\nFAILED __replens_task__/test_current_issue.py::TaskTests::test_issue_01 - Val...\n========================= 2 failed, 5 passed in 0.97s =========================\n",
+      "stderr": "",
+      "timed_out": false,
+      "passed": false,
+      "valid": true,
+      "summary": {
+        "passed": 5,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 7,
+        "ran": 7
+      },
+      "invalid_reason": "",
+      "tests": {
+        "tests/test_public.py::PublicTests::test_false": "PASS",
+        "tests/test_public.py::PublicTests::test_format": "PASS",
+        "tests/test_public.py::PublicTests::test_invalid": "PASS",
+        "tests/test_public.py::PublicTests::test_true": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "FAIL",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS"
+      },
+      "structured": true,
+      "framework": "pytest"
+    }
+  ],
+  "after": [
+    {
+      "command": "python -m pytest tests __replens_task__/test_current_issue.py",
+      "returncode": 0,
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens__e50z8f4\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 7 items\n\ntests\\test_public.py ....                                                [ 57%]\n__replens_task__\\test_current_issue.py ...                               [100%]\n\n============================== 7 passed in 0.49s ==============================\n",
+      "stderr": "",
+      "timed_out": false,
+      "passed": true,
+      "valid": true,
+      "summary": {
+        "passed": 7,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "collected": 7,
+        "ran": 7
+      },
+      "invalid_reason": "",
+      "tests": {
+        "tests/test_public.py::PublicTests::test_false": "PASS",
+        "tests/test_public.py::PublicTests::test_format": "PASS",
+        "tests/test_public.py::PublicTests::test_invalid": "PASS",
+        "tests/test_public.py::PublicTests::test_true": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "PASS",
+        "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS"
+      },
+      "structured": true,
+      "framework": "pytest"
+    }
+  ],
+  "generated_test": "# Model-proposed task tests, frozen before patch generation.\nimport unittest\n\nclass TaskTests(unittest.TestCase):\n    def test_issue_00(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.read_flag(*[' true '], **{})\n        self.assertIs(actual, True)\n\n    def test_issue_01(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        actual = _mod.read_flag(*['\\tfalse\\n'], **{})\n        self.assertIs(actual, False)\n\n    def test_issue_02(self):\n        import importlib.util, sys, pathlib\n        _path = pathlib.Path('__TMP_REPO__/api.py')\n        _spec = importlib.util.spec_from_file_location('_target_module', _path)\n        _mod = importlib.util.module_from_spec(_spec)\n        sys.modules['_target_module'] = _mod\n        _spec.loader.exec_module(_mod)\n        with self.assertRaises(ValueError):\n            _mod.read_flag(*['unknown'], **{})\n\n",
+  "patch_diff": "--- a/api.py\n+++ b/api.py\n@@ -1,5 +1,5 @@\n def read_flag(value):\n-    key = value.lower()\n+    key = value.lower().strip()\n     if key not in {\"true\", \"false\"}:\n         raise ValueError(\"unsupported flag\")\n     return key == \"true\"",
+  "execution_hints": [],
+  "flip_prediction": {
+    "predicted": [
+      "test_false",
+      "test_invalid",
+      "test_true"
+    ],
+    "actual_flips": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_00",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01"
+    ],
+    "hit": [],
+    "precision": 0.0,
+    "recall": 0.0,
+    "identity": "full_test_id; prediction matching uses method names"
+  },
+  "regression_before": [],
+  "regression_after": [],
+  "regression_test_cmd": "",
+  "test_timeout": 120,
+  "requested_test_command": "python -m pytest tests",
+  "understanding": {
+    "original_issue": "布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。",
+    "summary": "当布尔值字符串 'true'/'false' 前后包含空格、制表符或换行时，`read_flag` 因直接调用 `.lower()` 导致键名不匹配，从而抛出 `ValueError`。",
+    "expected_behavior": "解析器应能忽略布尔字面量前后的空白字符（如 ' true ', '\tfalse'），且对大小写不敏感，仅当内容非标准布尔值时报错。",
+    "search_query": "read_flag value.lower key not in",
+    "scope": "matched",
+    "explanation": "用户核心需求是处理布尔值字符串（true/false）的边界情况（如前后空格、制表符、换行）及大小写不敏感，而候选函数 `read_flag` 恰好通过 `.lower()` 和 `in` 检查实现了这一逻辑。虽然原问题暗示需要处理‘前后空格’，但函数仅对 `value` 整体进行 `.lower()` 处理（若输入为 ' True'，转为 'true' 后匹配成功，符合‘解析’的宽泛定义），且保留了‘其他内容报 ValueError'的约束，因此属于同一功能范围。",
+    "targets": [
+      {
+        "ref": "api.py:1",
+        "path": "api.py",
+        "name": "read_flag",
+        "start_line": 1
+      }
+    ],
+    "repository_functions": [
+      "api.py:read_flag",
+      "api.py:format_flag"
+    ],
+    "catalog_total": 2,
+    "catalog_shown": 2,
+    "model": "qwen35-9b-unc:latest",
+    "generated_by": "llm",
+    "error": "",
+    "retrieval_mode": "llm_grounded_source"
+  },
+  "task_tests": {
+    "kind": "model_behavioral_cases",
+    "model": "qwen35-9b-unc:latest",
+    "cases": [
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          " true "
+        ],
+        "kwargs": {},
+        "intent": "issue",
+        "normalize": "identity",
+        "expected": true
+      },
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          "\tfalse\n"
+        ],
+        "kwargs": {},
+        "intent": "issue",
+        "normalize": "identity",
+        "expected": false
+      },
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          "unknown"
+        ],
+        "kwargs": {},
+        "intent": "issue",
+        "normalize": "identity",
+        "raises": "ValueError"
+      }
+    ],
+    "review": {
+      "approved": true,
+      "changes": [
+        "Validated that 'true' and 'false' with surrounding whitespace (spaces, tabs, newlines) are correctly parsed as boolean equivalents.",
+        "Confirmed case-insensitivity by checking 'FALSE' maps to False.",
+        "Verified that 'unknown' still triggers ValueError, ensuring the core contract holds despite the normalization changes.",
+        "Ensured args structure matches the function signature taking a single list element (e.g., args:[\" true \"])."
+      ],
+      "independent": false
+    },
+    "sha256": "a93f46e1d37cf3f116d5e92e9ca91f4100180cdcbd8da11a24f986119bb78a7f",
+    "independent": false,
+    "frozen_before_patch": true,
+    "baseline_tests": {
+      "tests/test_public.py::PublicTests::test_false": "PASS",
+      "tests/test_public.py::PublicTests::test_format": "PASS",
+      "tests/test_public.py::PublicTests::test_invalid": "PASS",
+      "tests/test_public.py::PublicTests::test_true": "PASS",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_00": "FAIL",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01": "FAIL",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_02": "PASS"
+    },
+    "reproduced_issue_tests": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_00",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01"
+    ]
+  },
+  "blocked_reason": "",
+  "verification_scope": "当前问题的冻结用例、原有通过测试保持及独立验收；不保证未覆盖行为",
+  "model": "qwen35-9b-unc:latest",
+  "provenance": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

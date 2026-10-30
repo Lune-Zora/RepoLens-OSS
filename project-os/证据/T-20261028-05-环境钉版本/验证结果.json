@@ -1,0 +1,46 @@
+{
+  "生成时间": "2026-10-28",
+  "任务": "T-20261028-05-环境钉版本",
+  "根本原因": {
+    "anyio版本": "4.15.1",
+    "anyio声明依赖": "typing_extensions>=4.16.0; python_version < \"3.15\"",
+    "故障时typing_extensions": "4.11.0",
+    "sentinel存在": false,
+    "故障链": "anyio -> typing_extensions.sentinel 缺失 -> anyio._core._typedattr 导入失败 -> fastapi 导入失败 -> web 不可用 + 3 条 HTTP 用例失败",
+    "结论": "环境版本漂移，anyio 元数据声明正确，不是 anyio 缺陷"
+  },
+  "修复": {
+    "动作": "pip install --upgrade 'typing_extensions>=4.16.0'",
+    "修复后版本": "4.16.0",
+    "sentinel存在": true
+  },
+  "新增文件": [
+    "constraints.txt",
+    "requirements-lock.txt",
+    "scripts/check_env.py",
+    "tests/test_env_contract.py"
+  ],
+  "修改文件": [
+    "pyproject.toml",
+    ".github/workflows/ci.yml"
+  ],
+  "测试结果": {
+    "修复前": "126 passed / 3 failed / 81 subtests",
+    "修复后": "133 passed / 0 failed / 81 subtests",
+    "新增用例": 4,
+    "说明": "3 条失败转绿 + 新增 4 条契约测试 = 133"
+  },
+  "Web实测": {
+    "导入": "OK",
+    "路由数": 20,
+    "端点": {
+      "/api/env": 200,
+      "/api/repos": 200,
+      "/api/datasets": 200
+    }
+  },
+  "环境自检": {
+    "正向": "python scripts/check_env.py --with-web -> exit 0，8 项通过",
+    "负向": "传入最低版本 99.0 时正确报出 'typing_extensions: 当前 4.16.0，要求 >= 99.0'"
+  }
+}

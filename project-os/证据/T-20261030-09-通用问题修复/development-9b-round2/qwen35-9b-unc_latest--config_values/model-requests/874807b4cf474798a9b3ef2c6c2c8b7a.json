@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T08:21:14.381113+00:00",
+  "purpose": "task_tests",
+  "context": {},
+  "request": {
+    "model": "qwen35-9b-unc:latest",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Design behavioral tests for this bug report BEFORE any patch exists. Return JSON {cases:[...]}. Each case has path, symbol (EXACT function name in evidence), args (JSON array), kwargs (object), intent ('issue' or 'preserve'), expected (literal correct return value), normalize ('identity','str','list','sorted'), and optionally raises (builtin exception name instead of expected). Provide 4-8 simple deterministic cases. At least one issue case must expose the reported behavior in a primary target, not an unrelated defect. Preserve cases cover already-correct nearby behavior, normal inputs and invalid-input contracts. Derive expected results from the requirement and public contract, NOT the buggy expression. Use only functions shown; do not invent imports or helper functions. JSON null/true/false are literals. For date-like results use normalize=str with the exact expected representation. Do not provide patches or Python test source. If the behavior cannot be specified return {reason:...}."
+      },
+      {
+        "role": "user",
+        "content": "{\"issue\": \"布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。\", \"understanding\": {\"original_issue\": \"布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。\", \"summary\": \"当布尔值字符串 'true' 或 'false' 前后包含空格、制表符或换行时，`read_flag` 函数因直接比较 `lower()` 后的结果而报错，未像 `format_flag` 那样先去除空白。\", \"expected_behavior\": \"解析前应先去除字符串首尾空白（strip），再转为小写进行不敏感匹配；若去除后仍非 'true'/'false' 则抛错。\", \"search_query\": \"read_flag value lower strip true false\", \"scope\": \"matched\", \"explanation\": \"catalog 中 `format_flag` (api.py:8) 仅返回字符串，未涉及空白处理；而 `read_flag` (api.py:1) 却直接对 `value.lower()` 做集合匹配。若传入 `' true '`，`lower()` 得 `' true '`，不在 `{'true', 'false'}` 中，导致 ValueError。应模仿 `format_flag` 的逻辑（或引入 strip），先处理空白再比较。\", \"targets\": [{\"ref\": \"api.py:1\", \"path\": \"api.py\", \"name\": \"read_flag\", \"start_line\": 1}], \"repository_functions\": [\"api.py:read_flag\", \"api.py:format_flag\"], \"catalog_total\": 2, \"catalog_shown\": 2, \"model\": \"qwen35-9b-unc:latest\", \"generated_by\": \"llm\", \"error\": \"\", \"retrieval_mode\": \"llm_grounded_source\"}, \"functions\": [{\"path\": \"api.py\", \"symbol\": \"read_flag\", \"type\": \"function\", \"is_target\": true, \"code\": \"def read_flag(value):\\n    key = value.lower()\\n    if key not in {\\\"true\\\", \\\"false\\\"}:\\n        raise ValueError(\\\"unsupported flag\\\")\\n    return key == \\\"true\\\"\"}, {\"path\": \"api.py\", \"symbol\": \"format_flag\", \"type\": \"function\", \"is_target\": false, \"code\": \"def format_flag(value):\\n    return \\\"true\\\" if value else \\\"false\\\"\"}]}"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 2200,
+    "reasoning_effort": "none",
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T08:21:31.872287+00:00",
+  "duration_seconds": 17.485,
+  "response_text": "{\"id\":\"chatcmpl-58\",\"object\":\"chat.completion\",\"created\":1793348491,\"model\":\"qwen35-9b-unc:latest\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"cases\\\": [\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"read_flag\\\",\\n      \\\"args\\\": [\\\" true \\\"],\\n      \\\"kwargs\\\": {},\\n      \\\"intent\\\": \\\"issue\\\",\\n      \\\"expected\\\": true,\\n      \\\"normalize\\\": \\\"identity\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"read_flag\\\",\\n      \\\"args\\\": [\\\"\\\\tfalse\\\\n\\\"],\\n      \\\"kwargs\\\": {},\\n      \\\"intent\\\": \\\"issue\\\",\\n      \\\"expected\\\": false,\\n      \\\"normalize\\\": \\\"identity\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"read_flag\\\",\\n      \\\"args\\\": [\\\"TRUE\\\"],\\n      \\\"kwargs\\\": {},\\n      \\\"intent\\\": \\\"issue\\\",\\n      \\\"expected\\\": true,\\n      \\\"normalize\\\": \\\"identity\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"read_flag\\\",\\n      \\\"args\\\": [\\\"1\\\"],\\n      \\\"kwargs\\\": {},\\n      \\\"intent\\\": \\\"preserve\\\",\\n      \\\"expected\\\": 1,\\n      \\\"normalize\\\": \\\"identity\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"read_flag\\\",\\n      \\\"args\\\": [\\\" true \\\"],\\n      \\\"kwargs\\\": {},\\n      \\\"intent\\\": \\\"preserve\\\",\\n      \\\"expected\\\": true,\\n      \\\"normalize\\\": \\\"str\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"read_flag\\\",\\n      \\\"args\\\": [\\\" True \\\"],\\n      \\\"kwargs\\\": {},\\n      \\\"intent\\\": \\\"preserve\\\",\\n      \\\"expected\\\": true,\\n      \\\"normalize\\\": \\\"identity\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"read_flag\\\",\\n      \\\"args\\\": [\\\"\\\\tTRUE\\\\t\\\"],\\n      \\\"kwargs\\\": {},\\n      \\\"intent\\\": \\\"preserve\\\",\\n      \\\"expected\\\": true,\\n      \\\"normalize\\\": \\\"identity\\\"\\n    }\\n  ]\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":748,\"prompt_tokens_details\":{\"cached_tokens\":0},\"completion_tokens\":450,\"total_tokens\":1198}}\n",
+  "parsed": {
+    "cases": [
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          " true "
+        ],
+        "kwargs": {},
+        "intent": "issue",
+        "expected": true,
+        "normalize": "identity"
+      },
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          "\tfalse\n"
+        ],
+        "kwargs": {},
+        "intent": "issue",
+        "expected": false,
+        "normalize": "identity"
+      },
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          "TRUE"
+        ],
+        "kwargs": {},
+        "intent": "issue",
+        "expected": true,
+        "normalize": "identity"
+      },
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          "1"
+        ],
+        "kwargs": {},
+        "intent": "preserve",
+        "expected": 1,
+        "normalize": "identity"
+      },
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          " true "
+        ],
+        "kwargs": {},
+        "intent": "preserve",
+        "expected": true,
+        "normalize": "str"
+      },
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          " True "
+        ],
+        "kwargs": {},
+        "intent": "preserve",
+        "expected": true,
+        "normalize": "identity"
+      },
+      {
+        "path": "api.py",
+        "symbol": "read_flag",
+        "args": [
+          "\tTRUE\t"
+        ],
+        "kwargs": {},
+        "intent": "preserve",
+        "expected": true,
+        "normalize": "identity"
+      }
+    ]
+  },
+  "error": null,
+  "response_model": "qwen35-9b-unc:latest",
+  "usage": {
+    "prompt_tokens": 748,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens": 450,
+    "total_tokens": 1198
+  }
+}

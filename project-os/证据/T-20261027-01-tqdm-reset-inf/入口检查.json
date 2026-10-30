@@ -1,0 +1,15 @@
+{
+  "help_exitcode": 0,
+  "help_stdout": "usage: restore_tqdm_reset_inf.py [-h] --repo REPO --output OUTPUT\r\n                                 --work-dir WORK_DIR [--timeout TIMEOUT]\r\n\r\nValidate one known tqdm fix before it is used in any model experiment. The\r\nsupplied repository must already contain both upstream commits. Gold patches,\r\nindependent tests, raw logs and the resulting provenance package belong to the\r\nexternal control output directory, never to the repository supplied to a\r\nmodel.\r\n\r\noptions:\r\n  -h, --help           show this help message and exit\r\n  --repo REPO          已包含样本两个完整提交的本地 tqdm Git 仓库\r\n  --output OUTPUT      仓库外、尚不存在的控制材料与证据输出目录\r\n  --work-dir WORK_DIR  仓库外、已存在的临时 worktree 父目录\r\n  --timeout TIMEOUT    每个隔离测试阶段的超时秒数（默认 180）\r\n",
+  "frontend_syntax_exitcode": 0,
+  "schema_json_parsing": "PASS",
+  "changed_python_syntax": "PASS",
+  "real_entry_exitcode": 0,
+  "real_entry_status": "PASS",
+  "raw_log_manifest_verification": "PASS",
+  "raw_log_files_checked": 74,
+  "bundle_manifest_verification": "PASS",
+  "input_repository_unchanged": true,
+  "managed_temp_cleaned": true,
+  "scope": "targeted checks and one historical Gold validation; not full suite or model repair"
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "git",
+    "--no-optional-locks",
+    "-c",
+    "safe.directory=E:/osspj/人工智能/tqdm",
+    "-c",
+    "safe.directory=E:/osspj/人工智能/tqdm/.git",
+    "-C",
+    "E:\\osspj\\人工智能\\tqdm",
+    "ls-tree",
+    "-r",
+    "--name-only",
+    "5bf58c2d61410e5a17da3440df921fe34c6c38bf"
+  ],
+  "returncode": 0,
+  "stdout": ".gitattributes\n.github/CODEOWNERS\n.github/FUNDING.yml\n.github/ISSUE_TEMPLATE/bug.md\n.github/ISSUE_TEMPLATE/config.yml\n.github/ISSUE_TEMPLATE/enhancement.md\n.github/PULL_REQUEST_TEMPLATE/pr.md\n.github/SECURITY.md\n.github/codecov.yml\n.github/workflows/check.yml\n.github/workflows/comment-bot.yml\n.github/workflows/post-release.yml\n.github/workflows/test.yml\n.gitignore\n.mailmap\n.meta/.readme.rst\n.meta/.tqdm.1.md\n.meta/mkcompletion.py\n.meta/mkdocs.py\n.meta/mksnap.py\n.meta/nbval.ini\n.meta/requirements-build.txt\n.meta/requirements-test.txt\n.pre-commit-config.yaml\n.prospector.yml\n.zenodo.json\nCODE_OF_CONDUCT.md\nCONTRIBUTING.md\nDEMO.ipynb\nLICENCE\nMakefile\nREADME.rst\nasv.conf.json\nbenchmarks/README.md\nbenchmarks/__init__.py\nbenchmarks/benchmarks.py\nenvironment.yml\nexamples/7zx.py\nexamples/async_coroutines.py\nexamples/coroutine_pipe.py\nexamples/include_no_requirements.py\nexamples/pandas_progress_apply.py\nexamples/paper.bib\nexamples/paper.md\nexamples/parallel_bars.py\nexamples/redirect_print.py\nexamples/simple_examples.py\nexamples/tqdm_requests.py\nexamples/tqdm_wget.py\nexamples/wrapping_generators.py\nimages/logo.gif\nimages/tqdm.gif\nlogo.png\npyproject.toml\ntests/__init__.py\ntests/conftest.py\ntests/tests_asyncio.py\ntests/tests_concurrent.py\ntests/tests_contrib.py\ntests/tests_contrib_logging.py\ntests/tests_dask.py\ntests/tests_gui.py\ntests/tests_itertools.py\ntests/tests_keras.py\ntests/tests_main.py\ntests/tests_notebook.py\ntests/tests_pandas.py\ntests/tests_perf.py\ntests/tests_rich.py\ntests/tests_rlock.py\ntests/tests_synchronisation.py\ntests/tests_tk.py\ntests/tests_tqdm.py\ntests/tests_utils.py\ntests/tests_version.py\ntests_notebook.ipynb\ntqdm/__init__.py\ntqdm/__main__.py\ntqdm/_main.py\ntqdm/_monitor.py\ntqdm/_tqdm.py\ntqdm/_tqdm_gui.py\ntqdm/_tqdm_notebook.py\ntqdm/_tqdm_pandas.py\ntqdm/_utils.py\ntqdm/asyncio.py\ntqdm/auto.py\ntqdm/autonotebook.py\ntqdm/cli.py\ntqdm/completion.sh\ntqdm/contrib/__init__.py\ntqdm/contrib/bells.py\ntqdm/contrib/concurrent.py\ntqdm/contrib/discord.py\ntqdm/contrib/itertools.py\ntqdm/contrib/logging.py\ntqdm/contrib/slack.py\ntqdm/contrib/telegram.py\ntqdm/contrib/utils_worker.py\ntqdm/dask.py\ntqdm/gui.py\ntqdm/keras.py\ntqdm/notebook.py\ntqdm/rich.py\ntqdm/std.py\ntqdm/tk.py\ntqdm/tqdm.1\ntqdm/utils.py\ntqdm/version.py\n",
+  "stderr": ""
+}

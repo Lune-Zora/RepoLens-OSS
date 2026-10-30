@@ -1,0 +1,89 @@
+{
+  "生成时间": "2026-10-29",
+  "任务": "T-20261029-04-人工通读与样本定稿",
+  "对象": 62,
+  "方法": "逐条调出提交标题/issue/改动文件/diff 增删行，判定 合格 / 弱描述 / 剔除；结果落 人工复核判定.json 由 promote_mined.py 执行",
+  "判定": {
+    "合格": 53,
+    "弱描述保留": 5,
+    "剔除": 4
+  },
+  "剔除明细": [
+    {
+      "project": "tqdm",
+      "fix_commit": "3757d0d13ec86d73a838b55fc35ef89bc42a3461",
+      "类别": "非缺陷描述",
+      "理由": "合并提交标题，且改动与 b557cb03b6 重叠"
+    },
+    {
+      "project": "loguru",
+      "fix_commit": "764cd30d4b285ca01718ab3162a9f1a022bc49c6",
+      "类别": "非行为修复",
+      "理由": "Trivial grammar fix 只改报错文案"
+    },
+    {
+      "project": "loguru",
+      "fix_commit": "dcf42d962567723c0195bb8b2bb6fd764ecf41ae",
+      "类别": "非行为修复",
+      "理由": "Enable RET linting rule 属风格调整"
+    },
+    {
+      "project": "loguru",
+      "fix_commit": "4c8ebe267b82c4e97e2a2e7821b571199218e44d",
+      "类别": "重复样本",
+      "理由": "与 565a6f63bb 的 tree 哈希与 diff 完全一致"
+    }
+  ],
+  "弱描述明细": [
+    {
+      "project": "tqdm",
+      "fix_commit": "164ef7302b4c8c9dd455b523d8e8c38c61e68d50",
+      "问题": "rich: misc fixes 过于笼统"
+    },
+    {
+      "project": "tqdm",
+      "fix_commit": "b38a9221c4b2723a82d8b186c0fd8e7b05771a12",
+      "问题": "format_num 只是函数名"
+    },
+    {
+      "project": "tqdm",
+      "fix_commit": "84546d6be86810915b868078efb4d426dbac9d6c",
+      "问题": "edge cases & windows tests 过于笼统"
+    },
+    {
+      "project": "tqdm",
+      "fix_commit": "ea92a0b5fba1ac7438a976184e41247a0c476d29",
+      "问题": "剥 Fix 前缀后以 that 开头，句子不完整"
+    },
+    {
+      "project": "pypdf",
+      "fix_commit": "d80ccfc79d94ae48035b4ecef1e605ff532a99b8",
+      "问题": "ROB 前缀未被剥离"
+    }
+  ],
+  "分母变化": {
+    "挖掘样本": {
+      "前": 62,
+      "后": 58
+    },
+    "端到端修复": {
+      "前": 74,
+      "后": 70
+    },
+    "定位正向": {
+      "前": 98,
+      "后": 94
+    }
+  },
+  "统计": {
+    "n": 70,
+    "95%CI宽_p0.5": 0.228,
+    "达到0.20所需n": 93,
+    "缺口": 23
+  },
+  "回归": {
+    "全量测试": "163 passed / 0 failed / 81 subtests",
+    "数据集校验": "6 份通过",
+    "本地CI": "8/8"
+  }
+}

@@ -1,0 +1,16 @@
+# 时代锁：urllib3 1.x（requests <= 2.27 及同代测试代码）
+#
+# 触发条件（见 replens/era_env.py::select_profile）：
+#   候选父提交的 setup.py / requirements*.txt 声明 urllib3<2，或
+#   测试代码未加守卫地导入 SNIMissingWarning / InsecurePlatformWarning。
+#
+# 为什么锁 pytest 7.4.4 而不是该时代的 6.2.5：
+#   6.2.5 与本机 py3.10 的插件生态（pytest-httpbin 2.0 / pytest-mock）组合不稳定；
+#   而真正定义这个时代、导致 conftest 导入失败的约束是 urllib3 的 API，不是 pytest。
+#   若要完全复刻，应同时换解释器（见 docs/05_测试/请求库挖掘受限说明.md）。
+urllib3==1.26.20
+pytest==7.4.4
+pytest-mock~=3.12
+pytest-httpbin==2.0.0
+httpbin~=0.10.0
+trustme

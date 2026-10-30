@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T07:54:16.205358+00:00",
+  "purpose": "plan",
+  "context": {},
+  "request": {
+    "model": "qwen2.5-coder:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "你是开源贡献辅助工具。基于给定的代码证据生成结构化修改计划。只允许引用提供的证据，不得编造不存在的文件或行号。严格输出 JSON，字段：root_cause(字符串)、affected_scope(数组)、files_to_modify(数组)、steps(数组)、risks(数组)、regression_test(字符串)。"
+      },
+      {
+        "role": "user",
+        "content": "问题描述：1900 is incorrectly reported as a leap year\n\n检索到的代码证据：\n- evidence=src/dateparse/utils.py:40 (function is_leap_year): 符号名/文档命中关键词: 1900, reported, report, reporte, leap\n[代码]\n0040 | def is_leap_year(year):\n0041 |     \"\"\"Determine whether a year is a leap year.\n0042 | \n0043 |     Args:\n0044 |         year: integer year.\n0045 | \n0046 |     Returns:\n0047 |         True if the year is a leap year.\n0048 | \n0049 |     Note:\n0050 |         Century rule is wrong — treats every year divisible by 100 as a leap\n0051 |         year, so 1900 is wrongly reported as leap. This is the bug to fix.\n0052 |     \"\"\"\n0053 |     if year % 400 == 0:\n0054 |         return True\n0055 |     if year % 100 == 0:\n0056 |         return True\n0057 |     return year % 4 == 0\n[/代码]\n- evidence=src/dateparse/utils.py:1 (module src/dateparse/utils.py): 代码片段命中检索词（module @ src/dateparse/utils.py:1）\n[代码]\n0001 | \"\"\"General date math utilities.\"\"\"\n0002 | import datetime\n0003 | \n0004 | \n0005 | def days_between(a, b):\n0006 |     \"\"\"Return the number of days between two date strings (absolute value).\n0007 | \n0008 |     Args:\n0009 |         a: start date string \"YYYY-MM-DD\".\n0010 |         b: end date string \"YYYY-MM-DD\".\n0011 | \n0012 |     Returns:\n0013 |         Non-negative integer day count.\n0014 | \n0015 |     Note:\n0016 |         Subtraction order is reversed — returns a negative value when a < b.\n0017 |         This is the bug to fix.\n0018 |     \"\"\"\n0019 |     from .parser import parse_date\n0020 |     da = parse_date(a)\n0021 |     db = parse_date(b)\n0022 |     return (da - db).days\n0023 | \n0024 | \n0025 | def add_days(s, n):\n0026 |     \"\"\"Add n days to a date string and return a date object.\n0027 | \n0028 |     Args:\n0029 |         s: date string \"YYYY-MM-DD\".\n0030 |         n: integer number of days (can be negative).\n0031 | \n0032 |     Returns:\n0033 |         datetime.date object.\n0034 |     \"\"\"\n0035 |     from .parser import parse_date\n0036 |     d = parse_date(s)\n0037 |     return d + datetime.timedelta(days=n)\n0038 | \n0039 | \n0040 | def is_leap_year(year):\n0041 |     \"\"\"Determine whether a year is a leap year.\n0042 | \n0043 |     Args:\n0044 |         year: integer year.\n0045 | \n0046 |     Returns:\n0047 |         True if the year is a leap year.\n0048 | \n0049 |     Note:\n0050 |         Century rule is wrong — treats every year divisible by 100 as a leap\n0051 |         year, so 1900 is wrongly reported as leap. This is the bug to fix.\n0052 |     \"\"\"\n0053 |     if year % 400 == 0:\n0054 |         return True\n0055 |     if year % 100 == 0:\n0056 |         return True\n0057 |     return year % 4 == 0\n[/代码]\n- evidence=src/dateparse/validator.py:8 (function is_valid_date): 符号名/文档命中关键词: reported, report, reporte\n[代码]\n0008 | def is_valid_date(s):\n0009 |     \"\"\"Check whether a date string is a valid YYYY-MM-DD date.\n0010 | \n0011 |     Args:\n0012 |         s: date string like \"2024-01-01\".\n0013 | \n0014 |     Returns:\n0015 |         True if the string parses to a valid date, False otherwise.\n0016 | \n0017 |     Note:\n0018 |         Delegates to parse_date, which does not strip surrounding whitespace,\n0019 |         so \" 2024-01-01 \" is wrongly reported as invalid.\n0020 |     \"\"\"\n0021 |     from .parser import parse_date\n0022 |     try:\n0023 |         parse_date(s)\n0024 |         return True\n0025 |     except ValueError:\n0026 |         return False\n[/代码]\n- evidence=src/dateparse/formatter.py:5 (function format_date): 代码片段命中检索词（function @ src/dateparse/formatter.py:5）\n[代码]\n0005 | def format_date(d):\n0006 |     \"\"\"Format a date object as YYYY-MM-DD with zero padding.\n0007 | \n0008 |     Args:\n0009 |         d: datetime.date object.\n0010 | \n0011 |     Returns:\n0012 |         String like \"2024-01-05\".\n0013 | \n0014 |     Note:\n0015 |         Uses plain attribute access without zero-padding, so single-digit\n0016 |         months/days render as \"2024-1-5\". This is the bug to fix.\n0017 |     \"\"\"\n0018 |     return f\"{d.year}-{d.month}-{d.day}\"\n[/代码]\n- evidence=src/dateparse/formatter.py:1 (module src/dateparse/formatter.py): 代码片段命中检索词（module @ src/dateparse/formatter.py:1）\n[代码]\n0001 | \"\"\"Date formatting utilities.\"\"\"\n0002 | import datetime\n0003 | \n0004 | \n0005 | def format_date(d):\n0006 |     \"\"\"Format a date object as YYYY-MM-DD with zero padding.\n0007 | \n0008 |     Args:\n0009 |         d: datetime.date object.\n0010 | \n0011 |     Returns:\n0012 |         String like \"2024-01-05\".\n0013 | \n0014 |     Note:\n0015 |         Uses plain attribute access without zero-padding, so single-digit\n0016 |         months/days render as \"2024-1-5\". This is the bug to fix.\n0017 |     \"\"\"\n0018 |     return f\"{d.year}-{d.month}-{d.day}\"\n0019 | \n0020 | \n0021 | def format_iso(dt):\n0022 |     \"\"\"Format a datetime as an ISO 8601 string.\"\"\"\n0023 |     return dt.isoformat()\n[/代码]"
+      }
+    ],
+    "temperature": 0.2,
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T07:54:21.414633+00:00",
+  "duration_seconds": 5.203,
+  "response_text": "{\"id\":\"chatcmpl-31\",\"object\":\"chat.completion\",\"created\":1793346861,\"model\":\"qwen2.5-coder:1.5b\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"root_cause\\\": \\\"The function `is_leap_year` in `src/dateparse/utils.py` incorrectly reports 1900 as a leap year due to the century rule.\\\",\\n  \\\"affected_scope\\\": [\\\"src/dateparse/utils.py\\\"],\\n  \\\"files_to_modify\\\": [\\\"src/dateparse/utils.py\\\"],\\n  \\\"steps\\\": [\\n    \\\"Identify the function `is_leap_year` in `src/dateparse/utils.py`.\\\",\\n    \\\"Locate the line of code that checks if a year is a leap year.\\\",\\n    \\\"Modify the line of code to correctly handle the century rule.\\\",\\n    \\\"Test the modified function to ensure it correctly reports 1900 as not a leap year.\\\"\\n  ],\\n  \\\"risks\\\": [\\\"Potential regression in the date parsing and validation functions due to the incorrect century rule.\\\", \\\"Impact on the accuracy of date calculations and formatting functions.\\\"],\\n  \\\"regression_test\\\": \\\"Create a regression test that checks if the `is_leap_year` function correctly reports 1900 as not a leap year.\\\"\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1837,\"prompt_tokens_details\":{\"cached_tokens\":0},\"completion_tokens\":224,\"total_tokens\":2061}}\n",
+  "parsed": {
+    "root_cause": "The function `is_leap_year` in `src/dateparse/utils.py` incorrectly reports 1900 as a leap year due to the century rule.",
+    "affected_scope": [
+      "src/dateparse/utils.py"
+    ],
+    "files_to_modify": [
+      "src/dateparse/utils.py"
+    ],
+    "steps": [
+      "Identify the function `is_leap_year` in `src/dateparse/utils.py`.",
+      "Locate the line of code that checks if a year is a leap year.",
+      "Modify the line of code to correctly handle the century rule.",
+      "Test the modified function to ensure it correctly reports 1900 as not a leap year."
+    ],
+    "risks": [
+      "Potential regression in the date parsing and validation functions due to the incorrect century rule.",
+      "Impact on the accuracy of date calculations and formatting functions."
+    ],
+    "regression_test": "Create a regression test that checks if the `is_leap_year` function correctly reports 1900 as not a leap year."
+  },
+  "error": null,
+  "response_model": "qwen2.5-coder:1.5b",
+  "usage": {
+    "prompt_tokens": 1837,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens": 224,
+    "total_tokens": 2061
+  }
+}

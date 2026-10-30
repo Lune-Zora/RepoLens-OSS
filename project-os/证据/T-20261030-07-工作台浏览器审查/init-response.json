@@ -1,0 +1,29 @@
+{
+  "path": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+  "name": "demo_repo",
+  "license": "MIT",
+  "license_file": "LICENSE",
+  "license_confident": true,
+  "dependency_files": [
+    "pyproject.toml"
+  ],
+  "test_framework": "pytest",
+  "test_dirs": [
+    "tests"
+  ],
+  "python_files": [
+    "src/dateparse/__init__.py",
+    "src/dateparse/formatter.py",
+    "src/dateparse/parser.py",
+    "src/dateparse/utils.py",
+    "src/dateparse/validator.py",
+    "tests/test_parser.py"
+  ],
+  "document_files": [
+    "README.md",
+    "docs/usage.md",
+    "reports/compliance/open_source_checklist.md",
+    "reports/compliance/third_party_disclosure.md"
+  ],
+  "readme": "README.md"
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "label": "unit-tests",
+    "argv": [
+      "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "-m",
+      "pytest",
+      "tests/",
+      "-q"
+    ],
+    "exit_code": 0,
+    "seconds": 124.578
+  },
+  {
+    "label": "datasets",
+    "argv": [
+      "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "scripts/validate_datasets.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.235
+  },
+  {
+    "label": "localization",
+    "argv": [
+      "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "-m",
+      "replens",
+      "eval",
+      "examples/demo_repo",
+      "--dataset",
+      "eval/datasets/dataset.json",
+      "--top-k",
+      "5",
+      "--candidate-limit",
+      "100",
+      "--output",
+      "E:\\osspj\\人工智能\\repo\\reports\\facts\\submission-20261030\\localization.json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.531
+  },
+  {
+    "label": "baselines",
+    "argv": [
+      "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "eval/baselines.py",
+      "examples/demo_repo",
+      "--dataset",
+      "eval/datasets/dataset.json",
+      "--top-k",
+      "5",
+      "--candidate-limit",
+      "100",
+      "--output",
+      "E:\\osspj\\人工智能\\repo\\reports\\facts\\submission-20261030\\baselines.md"
+    ],
+    "exit_code": 0,
+    "seconds": 0.453
+  },
+  {
+    "label": "ablation",
+    "argv": [
+      "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "eval/ablation.py",
+      "examples/demo_repo",
+      "--dataset",
+      "eval/datasets/dataset.json",
+      "--top-k",
+      "5",
+      "--candidate-limit",
+      "100",
+      "--name",
+      "submission-20261030",
+      "--output",
+      "E:\\osspj\\人工智能\\repo\\reports\\facts\\submission-20261030\\ablation.md"
+    ],
+    "exit_code": 0,
+    "seconds": 0.453
+  },
+  {
+    "label": "datasets-final",
+    "argv": [
+      "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "scripts/validate_datasets.py"
+    ],
+    "exit_code": 0,
+    "note": "数据清单描述校正后复核；未改样本内容"
+  }
+]

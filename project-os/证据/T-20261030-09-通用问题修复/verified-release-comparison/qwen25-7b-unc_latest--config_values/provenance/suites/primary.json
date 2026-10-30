@@ -1,0 +1,37 @@
+{
+  "after": null,
+  "before": [
+    {
+      "command": "python -m pytest tests",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_luae6fhp\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 4 items\n\ntests\\test_public.py ....                                                [100%]\n\n============================== 4 passed in 0.50s ==============================\n",
+      "structured": true,
+      "summary": {
+        "collected": 4,
+        "errors": 0,
+        "failed": 0,
+        "passed": 4,
+        "ran": 4,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "tests/test_public.py::PublicTests::test_false": "PASS",
+        "tests/test_public.py::PublicTests::test_format": "PASS",
+        "tests/test_public.py::PublicTests::test_invalid": "PASS",
+        "tests/test_public.py::PublicTests::test_true": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m pytest tests",
+  "enabled": true,
+  "files": {},
+  "timeout": 120
+}

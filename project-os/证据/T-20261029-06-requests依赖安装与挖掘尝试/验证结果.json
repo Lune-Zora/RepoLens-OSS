@@ -1,0 +1,75 @@
+{
+  "生成时间": "2026-10-29",
+  "任务": "T-20261029-06-requests依赖安装与挖掘尝试",
+  "安装": {
+    "包": [
+      "pytest-httpbin==2.0.0",
+      "httpbin==0.10.4",
+      "trustme==1.2.1"
+    ],
+    "结果": "成功；项目 check_env 通过、170 条测试全绿"
+  },
+  "安装副作用": {
+    "greenlet": "3.5.6 -> 2.0.2（httpbin 依赖链导致）",
+    "新增": [
+      "httpbin",
+      "pytest-httpbin",
+      "trustme",
+      "brotlicffi"
+    ],
+    "pip 冲突告警": [
+      "playwright 需 greenlet>=3.1.1",
+      "androguard 需 cryptography>=46（未被改动）"
+    ]
+  },
+  "挖掘对比": {
+    "装依赖前": {
+      "全历史 --max 100": {
+        "候选": 11,
+        "通过": 1
+      }
+    },
+    "装依赖后": {
+      "全历史 --max 100": {
+        "候选": 11,
+        "通过": 1
+      },
+      "结论": "无变化，依赖不是瓶颈"
+    },
+    "浅克隆 2023-01-22 之后": {
+      "提交数": 128,
+      "候选": 2,
+      "通过": 1
+    }
+  },
+  "真实阻塞": {
+    "错误": "ImportError: cannot import name 'SNIMissingWarning' from 'urllib3.exceptions'",
+    "位置": "tests/__init__.py:8（buggy_parent 版本）",
+    "原因": "历史测试代码依赖 urllib3 1.x，本机为 2.x",
+    "影响": "conftest 导入失败，pytest 退出码 4，与修复本身无关"
+  },
+  "唯一通过样本": {
+    "issue": "#6628 - JSONDecodeError are not deserializable",
+    "expected": "src/requests/exceptions.py:__init__:41",
+    "实际改动": "新增 __reduce__ 方法（新文件 44-52 行）",
+    "复核结论": "C4 未通过——标注函数 __init__ 未被改动触及；被正确剔除",
+    "根因": "miner 在纯插入 hunk 上把插入点回退到 hunk 起始行，归属到前一个符号"
+  },
+  "环境回退": {
+    "动作": [
+      "卸载 4 个包",
+      "恢复 greenlet==3.5.6",
+      "清理残留字节码目录"
+    ],
+    "与安装前比对": "版本变化 0 / 新增 0 / 移除 0"
+  },
+  "分母影响": {
+    "之前": 104,
+    "之后": 104,
+    "requests 贡献": 0
+  },
+  "回归": {
+    "全量测试": "170 passed / 0 failed / 81 subtests",
+    "check_env": "通过"
+  }
+}

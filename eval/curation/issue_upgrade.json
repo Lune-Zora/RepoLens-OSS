@@ -1,0 +1,57 @@
+{
+  "$comment": "弱描述的权威来源升级：只用上游原文（issue 标题 / PR 正文首句），不改写。由 scripts/repair_annotations.py 应用到数据集；new 条目的 issue_source 记为 upstream_issue / upstream_pull。",
+  "updated": "2026-10-29",
+  "why": "人工通读标记的 8 条弱描述里，5 条能从上游原文找到更准确的描述：提交标题只给了主题（format_num / short help abbreviation），而对应 issue 或 PR 正文说明了具体行为。另 3 条（tqdm 164ef / click ac6a）可由提交正文自动补充，无需人工介入。",
+  "entries": [
+    {
+      "fix_commit": "b38a9221c4b2723a82d8b186c0fd8e7b05771a12",
+      "project": "tqdm",
+      "issue": "fix negative decimals format",
+      "source": "upstream_issue",
+      "ref": "tqdm/tqdm#1548",
+      "url": "https://github.com/tqdm/tqdm/issues/1548",
+      "fetched_at": "2026-10-29",
+      "note": "提交标题 fix format_num 只给了函数名，正文只有 fixes #1548。"
+    },
+    {
+      "fix_commit": "f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e",
+      "project": "click",
+      "issue": "Just a small bug I encountered in my CLIs, where as `vs.` or `e.g.` was prematurely ending the shorten version of a help message produced by `_make_default_short_help`.",
+      "source": "upstream_pull",
+      "ref": "pallets/click#3865",
+      "url": "https://github.com/pallets/click/pull/3865",
+      "fetched_at": "2026-10-29",
+      "note": "提交标题与 PR 标题相同、都只说主题；取 PR 正文首句。"
+    },
+    {
+      "fix_commit": "82f377c547e1867d073f02bb8f476214d07e245b",
+      "project": "click",
+      "issue": "A bug I stumble upon while reviewing #3473: the `(DEPRECATED)` label can be rendered with a leading empty space in certain cases.",
+      "source": "upstream_pull",
+      "ref": "pallets/click#3509",
+      "url": "https://github.com/pallets/click/pull/3509",
+      "fetched_at": "2026-10-29",
+      "note": "提交标题只说主题；取 PR 正文首句。"
+    },
+    {
+      "fix_commit": "d340b0c1202284a1b9d0ca892549208527d586ce",
+      "project": "click",
+      "issue": "semver.Version as default causing an error",
+      "source": "upstream_issue",
+      "ref": "pallets/click#3298",
+      "url": "https://github.com/pallets/click/issues/3298",
+      "fetched_at": "2026-10-29",
+      "note": "提交标题 speculative speculative empty string check 重复用词；该提交正文只有 Closes #3298。"
+    },
+    {
+      "fix_commit": "1c20dc6e724cd5625faaa17b715ba928d44c08bf",
+      "project": "click",
+      "issue": "`default=True` on feature flags is order-sensitive",
+      "source": "upstream_issue",
+      "ref": "pallets/click#3071",
+      "url": "https://github.com/pallets/click/issues/3071",
+      "fetched_at": "2026-10-29",
+      "note": "提交正文讲的是实现细节（UNSET 归一化延后），issue 标题才是用户可见行为。"
+    }
+  ]
+}

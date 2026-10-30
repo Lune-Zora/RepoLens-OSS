@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "reasons": [
+    "材料、逐测试身份/状态及统一验收结论重放一致"
+  ],
+  "materials_status": "PASS",
+  "replay_status": "PASS",
+  "repair_status": "VERIFIED",
+  "schema_version": "2.0",
+  "recorded_repair_status": "VERIFIED",
+  "validation": {
+    "status": "VERIFIED",
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "targets": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_00",
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_01"
+    ],
+    "preserved": [
+      "__replens_task__/test_current_issue.py::TaskTests::test_issue_02",
+      "tests/test_public.py::PublicTests::test_false",
+      "tests/test_public.py::PublicTests::test_format",
+      "tests/test_public.py::PublicTests::test_invalid",
+      "tests/test_public.py::PublicTests::test_true"
+    ],
+    "preexisting_failures": [],
+    "scope": "current_issue_and_preserved_tests",
+    "acceptance_sha256": "a14a0e673614ed519e38085771b2378d1472a9c556493170422ad4f71ec1f022",
+    "acceptance_targets": [
+      "test_behavior.IndependentBehavior.test_controls",
+      "test_behavior.IndependentBehavior.test_padding"
+    ]
+  },
+  "phase_checks": {
+    "primary": {
+      "before": true,
+      "after": true
+    },
+    "auxiliary": {
+      "before": true,
+      "after": true
+    },
+    "acceptance": {
+      "before": true,
+      "after": true
+    }
+  },
+  "validation_matches": true
+}

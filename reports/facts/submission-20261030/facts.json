@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-30",
+  "localization": {
+    "schema_version": "3.0",
+    "top_k": 5,
+    "candidate_limit": 100,
+    "counts": {
+      "positive": 20,
+      "noise": 5,
+      "func_name_eval": 20,
+      "symbol_start_eval": 20,
+      "qualified_unsupported": 0,
+      "hit1": 17,
+      "hitk": 19,
+      "func": 17,
+      "line": 17,
+      "rr_sum": 17.833333333333332,
+      "refused": 5,
+      "positive_refused": 1,
+      "evidence_hit": 19
+    },
+    "hit@1": 0.85,
+    "hit@5": 0.95,
+    "func_name@5": 0.85,
+    "symbol_start@5": 0.85,
+    "mrr@5": 0.8917,
+    "refusal_rate": 1.0,
+    "positive_refusal_rate": 0.05,
+    "retrieval_mode": "bm25_callgraph"
+  },
+  "datasets": [
+    {
+      "file": "dataset.json",
+      "kind": "localization",
+      "total": 25,
+      "positive": 20,
+      "noise": 5,
+      "weak": 0,
+      "fail_pass_true": 0,
+      "targeted": 0
+    },
+    {
+      "file": "real_dataset_tqdm.json",
+      "kind": "localization",
+      "total": 5,
+      "positive": 2,
+      "noise": 3,
+      "weak": 0,
+      "fail_pass_true": 0,
+      "targeted": 0
+    },
+    {
+      "file": "real_dataset_pypdf.json",
+      "kind": "localization",
+      "total": 5,
+      "positive": 2,
+      "noise": 3,
+      "weak": 0,
+      "fail_pass_true": 0,
+      "targeted": 0
+    },
+    {
+      "file": "real_dataset_loguru.json",
+      "kind": "repair",
+      "total": 4,
+      "positive": 4,
+      "noise": 0,
+      "weak": 0,
+      "fail_pass_true": 4,
+      "targeted": 4
+    },
+    {
+      "file": "real_dataset_extended.json",
+      "kind": "repair",
+      "total": 10,
+      "positive": 8,
+      "noise": 2,
+      "weak": 0,
+      "fail_pass_true": 8,
+      "targeted": 8
+    },
+    {
+      "file": "real_dataset_mined.json",
+      "kind": "repair",
+      "total": 100,
+      "positive": 100,
+      "noise": 0,
+      "weak": 3,
+      "fail_pass_true": 100,
+      "targeted": 100
+    }
+  ],
+  "positive_rows": 136,
+  "repair_candidate_rows": 112,
+  "weak_rows": 3,
+  "unit_tests": {
+    "passed": 235,
+    "subtests_passed": 81,
+    "warnings": 1,
+    "raw_stdout": "unit-tests.stdout.txt"
+  },
+  "model_demo": {
+    "summary": "../../llm/demo-llm-20261030-022020/summary.json",
+    "calls": 5,
+    "plan_calls": 1,
+    "patch_calls": 4,
+    "actual_repair_rounds": 0,
+    "status": "VERIFIED"
+  },
+  "gold_control": {
+    "record": "gold-control/run.json",
+    "model_repair_credit": false,
+    "freshly_rerun": false
+  },
+  "semantic_experiment_this_round": false,
+  "code_inventory_files": 80
+}

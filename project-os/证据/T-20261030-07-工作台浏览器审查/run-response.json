@@ -1,0 +1,367 @@
+{
+  "report": {
+    "schema_version": "2.0",
+    "status": "VERIFIED",
+    "reasons": [
+      "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+    ],
+    "validation": {
+      "status": "VERIFIED",
+      "reasons": [
+        "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+      ],
+      "targets": [
+        "tests/test_parser.py::ParserTests::test_parse_date_with_whitespace"
+      ],
+      "preserved": [
+        "tests/test_parser.py::ParserTests::test_parse_date",
+        "tests/test_parser.py::ParserTests::test_parse_datetime"
+      ],
+      "acceptance_sha256": "1aacb96e419b642cacc224843609d7aab7fcad4da6266bdff2d87b80e9b7688d",
+      "acceptance_targets": [
+        "test_date_behavior.DateBehavior.test_tab_and_newline_padding"
+      ]
+    },
+    "test_framework": "pytest",
+    "generated_test_kind": "generated_auxiliary",
+    "acceptance_before": [
+      {
+        "command": "python -m unittest discover -s __replens_acceptance__ -p test_date_behavior.py",
+        "returncode": 1,
+        "stdout": "",
+        "stderr": ".E.\n======================================================================\nERROR: test_tab_and_newline_padding (test_date_behavior.DateBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_8ixp6twl\\__replens_acceptance__\\test_date_behavior.py\", line 7, in test_tab_and_newline_padding\n    self.assertEqual(parse_date('\\t2024-02-29\\n'), datetime.date(2024, 2, 29))\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_8ixp6twl\\src\\dateparse\\parser.py\", line 23, in parse_date\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n  File \"C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_strptime.py\", line 568, in _strptime_datetime\n    tt, fraction, gmtoff_fraction = _strptime(data_string, format)\n  File \"C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_strptime.py\", line 349, in _strptime\n    raise ValueError(\"time data %r does not match format %r\" %\nValueError: time data '\\t2024-02-29\\n' does not match format '%Y-%m-%d'\n\n----------------------------------------------------------------------\nRan 3 tests in 0.008s\n\nFAILED (errors=1)\n",
+        "timed_out": false,
+        "passed": false,
+        "valid": true,
+        "summary": {
+          "passed": 2,
+          "failed": 0,
+          "errors": 1,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 3,
+          "ran": 3
+        },
+        "invalid_reason": "",
+        "tests": {
+          "test_date_behavior.DateBehavior.test_invalid_date_stays_invalid": "PASS",
+          "test_date_behavior.DateBehavior.test_tab_and_newline_padding": "ERROR",
+          "test_date_behavior.DateBehavior.test_unpadded_date": "PASS"
+        },
+        "structured": true,
+        "framework": "unittest"
+      }
+    ],
+    "acceptance_after": [
+      {
+        "command": "python -m unittest discover -s __replens_acceptance__ -p test_date_behavior.py",
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.006s\n\nOK\n",
+        "timed_out": false,
+        "passed": true,
+        "valid": true,
+        "summary": {
+          "passed": 3,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 3,
+          "ran": 3
+        },
+        "invalid_reason": "",
+        "tests": {
+          "test_date_behavior.DateBehavior.test_invalid_date_stays_invalid": "PASS",
+          "test_date_behavior.DateBehavior.test_tab_and_newline_padding": "PASS",
+          "test_date_behavior.DateBehavior.test_unpadded_date": "PASS"
+        },
+        "structured": true,
+        "framework": "unittest"
+      }
+    ],
+    "acceptance_test_cmd": "python -m unittest discover -s __replens_acceptance__ -p test_date_behavior.py",
+    "repo": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+    "issue": "date string with surrounding whitespace fails to parse",
+    "insufficient_evidence": false,
+    "evidences": [
+      {
+        "ref": "src/dateparse/parser.py:9",
+        "type": "function",
+        "name": "parse_date",
+        "confidence": 1.0,
+        "reason": "失败轨迹 1 帧命中 src/dateparse/parser.py:9（累计权重 1.00）→ 未被执行证伪",
+        "source": "execution_confirmed",
+        "signature": "def parse_date(s)",
+        "code": "def parse_date(s):\n    \"\"\"Parse a date string in YYYY-MM-DD format.\n\n    Args:\n        s: the date string, e.g. \"2024-01-01\".\n\n    Returns:\n        datetime.date object.\n\n    Note:\n        The input is not stripped of surrounding whitespace, so a string\n        like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n        call s.strip() before parsing.\n    \"\"\"\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()"
+      },
+      {
+        "ref": "src/dateparse/validator.py:8",
+        "type": "function",
+        "name": "is_valid_date",
+        "confidence": 0.85,
+        "reason": "符号名/文档命中关键词: date, string, str, surrounding, surround",
+        "source": "keyword_match",
+        "signature": "def is_valid_date(s)",
+        "code": "def is_valid_date(s):\n    \"\"\"Check whether a date string is a valid YYYY-MM-DD date.\n\n    Args:\n        s: date string like \"2024-01-01\".\n\n    Returns:\n        True if the string parses to a valid date, False otherwise.\n\n    Note:\n        Delegates to parse_date, which does not strip surrounding whitespace,\n        so \" 2024-01-01 \" is wrongly reported as invalid.\n    \"\"\"\n    from .parser import parse_date\n    try:\n        parse_date(s)\n        return True\n    except ValueError:\n        return False"
+      },
+      {
+        "ref": "src/dateparse/utils.py:25",
+        "type": "function",
+        "name": "add_days",
+        "confidence": 0.7,
+        "reason": "符号名/文档命中关键词: date, string, str",
+        "source": "keyword_match",
+        "signature": "def add_days(s, n)",
+        "code": "def add_days(s, n):\n    \"\"\"Add n days to a date string and return a date object.\n\n    Args:\n        s: date string \"YYYY-MM-DD\".\n        n: integer number of days (can be negative).\n\n    Returns:\n        datetime.date object.\n    \"\"\"\n    from .parser import parse_date\n    d = parse_date(s)\n    return d + datetime.timedelta(days=n)"
+      },
+      {
+        "ref": "src/dateparse/parser.py:9",
+        "type": "function",
+        "name": "parse_date",
+        "confidence": 0.6,
+        "reason": "失败轨迹 1 帧命中 src/dateparse/parser.py:9（累计权重 1.00）→ 未被执行证伪",
+        "source": "execution_confirmed",
+        "signature": "def parse_date(s)",
+        "code": "def parse_date(s):\n    \"\"\"Parse a date string in YYYY-MM-DD format.\n\n    Args:\n        s: the date string, e.g. \"2024-01-01\".\n\n    Returns:\n        datetime.date object.\n\n    Note:\n        The input is not stripped of surrounding whitespace, so a string\n        like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n        call s.strip() before parsing.\n    \"\"\"\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()"
+      },
+      {
+        "ref": "src/dateparse/utils.py:5",
+        "type": "function",
+        "name": "days_between",
+        "confidence": 0.55,
+        "reason": "符号名/文档命中关键词: date, string, str",
+        "source": "keyword_match",
+        "signature": "def days_between(a, b)",
+        "code": "def days_between(a, b):\n    \"\"\"Return the number of days between two date strings (absolute value).\n\n    Args:\n        a: start date string \"YYYY-MM-DD\".\n        b: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        Non-negative integer day count.\n\n    Note:\n        Subtraction order is reversed — returns a negative value when a < b.\n        This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    da = parse_date(a)\n    db = parse_date(b)\n    return (da - db).days"
+      },
+      {
+        "ref": "src/dateparse/validator.py:29",
+        "type": "function",
+        "name": "validate_range",
+        "confidence": 0.4,
+        "reason": "符号名/文档命中关键词: date, string, str",
+        "source": "keyword_match",
+        "signature": "def validate_range(start, end)",
+        "code": "def validate_range(start, end):\n    \"\"\"Validate that the start date is not after the end date.\n\n    Args:\n        start: start date string \"YYYY-MM-DD\".\n        end: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        True if start <= end, False otherwise.\n\n    Note:\n        Uses strict less-than instead of less-or-equal, so equal dates are\n        wrongly rejected. This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    s = parse_date(start)\n    e = parse_date(end)\n    return s < e"
+      },
+      {
+        "ref": "tests/test_parser.py:8",
+        "type": "method",
+        "name": "test_parse_date",
+        "confidence": 0.25,
+        "reason": "证伪：位于测试文件，不是源码证据（降权）",
+        "source": "call_related",
+        "signature": "def test_parse_date(self)",
+        "code": "def test_parse_date(self):\n        self.assertEqual(parse_date(\"2024-01-01\"), datetime.date(2024, 1, 1))"
+      },
+      {
+        "ref": "tests/test_parser.py:17",
+        "type": "method",
+        "name": "test_parse_date_with_whitespace",
+        "confidence": 0.25,
+        "reason": "证伪：位于测试文件，不是源码证据（降权）",
+        "source": "call_related",
+        "signature": "def test_parse_date_with_whitespace(self)",
+        "code": "def test_parse_date_with_whitespace(self):\n        self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))"
+      }
+    ],
+    "plan": {
+      "root_cause": "The input date string is not stripped of surrounding whitespace before parsing.",
+      "affected_scope": [
+        "src/dateparse/parser.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/validator.py",
+        "tests/test_parser.py",
+        "tests/test_parser.py"
+      ],
+      "files_to_modify": [
+        "src/dateparse/parser.py",
+        "src/dateparse/validator.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/parser.py",
+        "src/dateparse/utils.py",
+        "src/dateparse/validator.py",
+        "tests/test_parser.py",
+        "tests/test_parser.py"
+      ],
+      "steps": [
+        "Add a call to `s.strip()` before parsing the date string in `src/dateparse/parser.py` and `src/dateparse/validator.py`."
+      ],
+      "risks": [
+        "Potential data loss due to incorrect parsing of date strings with surrounding whitespace."
+      ],
+      "regression_test": "Add a new test case in `tests/test_parser.py` that checks if the `parse_date` function correctly handles date strings with surrounding whitespace.",
+      "generated_by": "llm"
+    },
+    "test_command": "python -m pytest tests/test_parser.py",
+    "patch_note": "LLM 生成 3 个有效候选。；补丁应用成功（JSON 替换规则，共 3 处）。（主测试筛选通过，待最终验收）",
+    "before": [
+      {
+        "command": "python -m pytest tests/test_parser.py",
+        "returncode": 1,
+        "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_jb1far3f\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_parser.py .F.                                                 [100%]\n\n================================== FAILURES ===================================\n_________________ ParserTests.test_parse_date_with_whitespace _________________\n\nself = <test_parser.ParserTests testMethod=test_parse_date_with_whitespace>\n\n    def test_parse_date_with_whitespace(self):\n>       self.assertEqual(parse_date(\" 2024-01-01 \"), datetime.date(2024, 1, 1))\n\ntests\\test_parser.py:18: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nsrc\\dateparse\\parser.py:23: in parse_date\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n..\\..\\Programs\\Python\\Python310\\lib\\_strptime.py:568: in _strptime_datetime\n    tt, fraction, gmtoff_fraction = _strptime(data_string, format)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\ndata_string = ' 2024-01-01 ', format = '%Y-%m-%d'\n\n    def _strptime(data_string, format=\"%a %b %d %H:%M:%S %Y\"):\n        \"\"\"Return a 2-tuple consisting of a time struct and an int containing\n        the number of microseconds based on the input string and the\n        format string.\"\"\"\n    \n        for index, arg in enumerate([data_string, format]):\n            if not isinstance(arg, str):\n                msg = \"strptime() argument {} must be str, not {}\"\n                raise TypeError(msg.format(index, type(arg)))\n    \n        global _TimeRE_cache, _regex_cache\n        with _cache_lock:\n            locale_time = _TimeRE_cache.locale_time\n            if (_getlang() != locale_time.lang or\n                time.tzname != locale_time.tzname or\n                time.daylight != locale_time.daylight):\n                _TimeRE_cache = TimeRE()\n                _regex_cache.clear()\n                locale_time = _TimeRE_cache.locale_time\n            if len(_regex_cache) > _CACHE_MAX_SIZE:\n                _regex_cache.clear()\n            format_regex = _regex_cache.get(format)\n            if not format_regex:\n                try:\n                    format_regex = _TimeRE_cache.compile(format)\n                # KeyError raised when a bad format is found; can be specified as\n                # \\\\, in which case it was a stray % but with a space after it\n                except KeyError as err:\n                    bad_directive = err.args[0]\n                    if bad_directive == \"\\\\\":\n                        bad_directive = \"%\"\n                    del err\n                    raise ValueError(\"'%s' is a bad directive in format '%s'\" %\n                                        (bad_directive, format)) from None\n                # IndexError only occurs when the format string is \"%\"\n                except IndexError:\n                    raise ValueError(\"stray %% in format '%s'\" % format) from None\n                _regex_cache[format] = format_regex\n        found = format_regex.match(data_string)\n        if not found:\n>           raise ValueError(\"time data %r does not match format %r\" %\n                             (data_string, format))\nE           ValueError: time data ' 2024-01-01 ' does not match format '%Y-%m-%d'\n\n..\\..\\Programs\\Python\\Python310\\lib\\_strptime.py:349: ValueError\n=========================== short test summary info ===========================\nFAILED tests/test_parser.py::ParserTests::test_parse_date_with_whitespace - V...\n========================= 1 failed, 2 passed in 0.86s =========================\n",
+        "stderr": "",
+        "timed_out": false,
+        "passed": false,
+        "valid": true,
+        "summary": {
+          "passed": 2,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 3,
+          "ran": 3
+        },
+        "invalid_reason": "",
+        "tests": {
+          "tests/test_parser.py::ParserTests::test_parse_date": "PASS",
+          "tests/test_parser.py::ParserTests::test_parse_date_with_whitespace": "FAIL",
+          "tests/test_parser.py::ParserTests::test_parse_datetime": "PASS"
+        },
+        "structured": true,
+        "framework": "pytest"
+      }
+    ],
+    "after": [
+      {
+        "command": "python -m pytest tests/test_parser.py",
+        "returncode": 0,
+        "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_k9m113ep\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_parser.py ...                                                 [100%]\n\n============================== 3 passed in 0.43s ==============================\n",
+        "stderr": "",
+        "timed_out": false,
+        "passed": true,
+        "valid": true,
+        "summary": {
+          "passed": 3,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 3,
+          "ran": 3
+        },
+        "invalid_reason": "",
+        "tests": {
+          "tests/test_parser.py::ParserTests::test_parse_date": "PASS",
+          "tests/test_parser.py::ParserTests::test_parse_date_with_whitespace": "PASS",
+          "tests/test_parser.py::ParserTests::test_parse_datetime": "PASS"
+        },
+        "structured": true,
+        "framework": "pytest"
+      }
+    ],
+    "generated_test": "# 由 RepoLens-OSS 生成的回归测试\n# 目标: src/dateparse/parser.py:9 函数 `parse_date`\n# 对应 Issue: date string with surrounding whitespace fails to parse\n\ndef test_regression_parse_date_whitespace_invariance():\n    # 行为回归：首尾空白不应改变函数结果（对应 issue 的 whitespace/strip 语义）\n    assert _mod.parse_date(' 2024-01-01 ') == _mod.parse_date('2024-01-01')\n\n# 冒烟测试（smoke）：仅验证接口存在与签名一致，不验证业务行为。\n# 行为级验证由仓库自有测试 + 上方行为回归测试承担。\nimport importlib, pathlib, sys\nsys.path.insert(0, str(pathlib.Path('__TMP_REPO__') / 'src'))\n_mod = importlib.import_module('dateparse.parser')\n\n\ndef test_regression_parse_date_exists_and_callable():\n    assert callable(_mod.parse_date), \"函数 parse_date 不存在或不可调用\"\n\ndef test_regression_parse_date_signature():\n    # 校验必填参数个数与源码定义一致\n    import inspect\n    try:\n        params = inspect.signature(_mod.parse_date).parameters\n    except (ValueError, TypeError):\n        return  # 无法获取签名，跳过\n    required_count = sum(1 for p in params.values()\n        if p.default is inspect.Parameter.empty\n        and p.kind in (inspect.Parameter.POSITIONAL_ONLY,\n                      inspect.Parameter.POSITIONAL_OR_KEYWORD))\n    assert required_count == 1, f\"必填参数个数应为 1，实际 {required_count}\"\n",
+    "patch_diff": "--- a/src/dateparse/parser.py\n+++ b/src/dateparse/parser.py\n@@ -20,7 +20,7 @@\n         like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n         call s.strip() before parsing.\n     \"\"\"\n-    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n+    return datetime.datetime.strptime(s.strip(), \"%Y-%m-%d\").date()\n \n \n def parse_datetime(s):\n--- a/src/dateparse/validator.py\n+++ b/src/dateparse/validator.py\n@@ -41,7 +41,7 @@\n         wrongly rejected. This is the bug to fix.\n     \"\"\"\n     from .parser import parse_date\n-    s = parse_date(start)\n+    s = parse_date(start).strip()\n     e = parse_date(end)\n     return s < e\n \n--- a/src/dateparse/utils.py\n+++ b/src/dateparse/utils.py\n@@ -17,7 +17,7 @@\n         This is the bug to fix.\n     \"\"\"\n     from .parser import parse_date\n-    da = parse_date(a)\n+    da = parse_date(a).strip()\n     db = parse_date(b)\n     return (da - db).days\n ",
+    "execution_hints": [
+      {
+        "ref": "src/dateparse/parser.py:23",
+        "frame_func": "parse_date",
+        "weight": 1.0
+      }
+    ],
+    "flip_prediction": {
+      "predicted": [
+        "test_parse_date",
+        "test_parse_date_with_whitespace"
+      ],
+      "actual_flips": [
+        "tests/test_parser.py::ParserTests::test_parse_date_with_whitespace"
+      ],
+      "hit": [
+        "tests/test_parser.py::ParserTests::test_parse_date_with_whitespace"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "identity": "full_test_id; prediction matching uses method names"
+    },
+    "regression_before": [
+      {
+        "command": "pytest tests/test_replens_regression.py",
+        "returncode": 1,
+        "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens_67c_39z0\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_replens_regression.py F..                                     [100%]\n\n================================== FAILURES ===================================\n______________ test_regression_parse_date_whitespace_invariance _______________\n\n    def test_regression_parse_date_whitespace_invariance():\n        # 行为回归：首尾空白不应改变函数结果（对应 issue 的 whitespace/strip 语义）\n>       assert _mod.parse_date(' 2024-01-01 ') == _mod.parse_date('2024-01-01')\n\ntests\\test_replens_regression.py:7: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nsrc\\dateparse\\parser.py:23: in parse_date\n    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n..\\..\\Programs\\Python\\Python310\\lib\\_strptime.py:568: in _strptime_datetime\n    tt, fraction, gmtoff_fraction = _strptime(data_string, format)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\ndata_string = ' 2024-01-01 ', format = '%Y-%m-%d'\n\n    def _strptime(data_string, format=\"%a %b %d %H:%M:%S %Y\"):\n        \"\"\"Return a 2-tuple consisting of a time struct and an int containing\n        the number of microseconds based on the input string and the\n        format string.\"\"\"\n    \n        for index, arg in enumerate([data_string, format]):\n            if not isinstance(arg, str):\n                msg = \"strptime() argument {} must be str, not {}\"\n                raise TypeError(msg.format(index, type(arg)))\n    \n        global _TimeRE_cache, _regex_cache\n        with _cache_lock:\n            locale_time = _TimeRE_cache.locale_time\n            if (_getlang() != locale_time.lang or\n                time.tzname != locale_time.tzname or\n                time.daylight != locale_time.daylight):\n                _TimeRE_cache = TimeRE()\n                _regex_cache.clear()\n                locale_time = _TimeRE_cache.locale_time\n            if len(_regex_cache) > _CACHE_MAX_SIZE:\n                _regex_cache.clear()\n            format_regex = _regex_cache.get(format)\n            if not format_regex:\n                try:\n                    format_regex = _TimeRE_cache.compile(format)\n                # KeyError raised when a bad format is found; can be specified as\n                # \\\\, in which case it was a stray % but with a space after it\n                except KeyError as err:\n                    bad_directive = err.args[0]\n                    if bad_directive == \"\\\\\":\n                        bad_directive = \"%\"\n                    del err\n                    raise ValueError(\"'%s' is a bad directive in format '%s'\" %\n                                        (bad_directive, format)) from None\n                # IndexError only occurs when the format string is \"%\"\n                except IndexError:\n                    raise ValueError(\"stray %% in format '%s'\" % format) from None\n                _regex_cache[format] = format_regex\n        found = format_regex.match(data_string)\n        if not found:\n>           raise ValueError(\"time data %r does not match format %r\" %\n                             (data_string, format))\nE           ValueError: time data ' 2024-01-01 ' does not match format '%Y-%m-%d'\n\n..\\..\\Programs\\Python\\Python310\\lib\\_strptime.py:349: ValueError\n=========================== short test summary info ===========================\nFAILED tests/test_replens_regression.py::test_regression_parse_date_whitespace_invariance\n========================= 1 failed, 2 passed in 0.85s =========================\n",
+        "stderr": "",
+        "timed_out": false,
+        "passed": false,
+        "valid": true,
+        "summary": {
+          "passed": 2,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 3,
+          "ran": 3
+        },
+        "invalid_reason": "",
+        "tests": {
+          "tests/test_replens_regression.py::test_regression_parse_date_whitespace_invariance": "FAIL",
+          "tests/test_replens_regression.py::test_regression_parse_date_exists_and_callable": "PASS",
+          "tests/test_replens_regression.py::test_regression_parse_date_signature": "PASS"
+        },
+        "structured": true,
+        "framework": "pytest"
+      }
+    ],
+    "regression_after": [
+      {
+        "command": "pytest tests/test_replens_regression.py",
+        "returncode": 0,
+        "stdout": "============================= test session starts =============================\nplatform win32 -- Python 3.10.11, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\19248\\AppData\\Local\\Temp\\replens__tvuk9ws\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, hypothesis-6.168.3, asyncio-1.4.0, socket-0.8.1, timeout-2.4.0\nasyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests\\test_replens_regression.py ...                                     [100%]\n\n============================== 3 passed in 0.42s ==============================\n",
+        "stderr": "",
+        "timed_out": false,
+        "passed": true,
+        "valid": true,
+        "summary": {
+          "passed": 3,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 3,
+          "ran": 3
+        },
+        "invalid_reason": "",
+        "tests": {
+          "tests/test_replens_regression.py::test_regression_parse_date_whitespace_invariance": "PASS",
+          "tests/test_replens_regression.py::test_regression_parse_date_exists_and_callable": "PASS",
+          "tests/test_replens_regression.py::test_regression_parse_date_signature": "PASS"
+        },
+        "structured": true,
+        "framework": "pytest"
+      }
+    ],
+    "regression_test_cmd": "pytest tests/test_replens_regression.py",
+    "test_timeout": 120,
+    "provenance": {
+      "status": "WRITTEN",
+      "schema_version": "2.0",
+      "materials_status": "NOT_CHECKED",
+      "replay_status": "NOT_RUN",
+      "reasons": []
+    }
+  },
+  "status": "VERIFIED",
+  "reasons": [
+    "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+  ],
+  "markdown": "# RepoLens-OSS 分析报告\n\n## 问题\n\n> date string with surrounding whitespace fails to parse\n\n## 修复结论\n\n**VERIFIED — 独立验收通过**\n\n- 目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过\n\n## 证据包与重放\n\n打包状态：`WRITTEN`；Schema：`2.0`。\n\n材料核验：`NOT_CHECKED`；重放一致性：`NOT_RUN`。\n\n生成证据包后需单独执行 verify；重放一致不等于修复通过。\n\n\n## 代码定位（证据）\n\n| 文件:行号 | 类型 | 符号 | 置信度 | 来源 | 判断依据 |\n|---|---|---|---|---|---|\n| `src/dateparse/parser.py:9` | function | parse_date | 1.0 | execution_confirmed | 失败轨迹 1 帧命中 src/dateparse/parser.py:9（累计权重 1.00）→ 未被执行证伪 |\n| `src/dateparse/validator.py:8` | function | is_valid_date | 0.85 | keyword_match | 符号名/文档命中关键词: date, string, str, surrounding, surround |\n| `src/dateparse/utils.py:25` | function | add_days | 0.7 | keyword_match | 符号名/文档命中关键词: date, string, str |\n| `src/dateparse/parser.py:9` | function | parse_date | 0.6 | execution_confirmed | 失败轨迹 1 帧命中 src/dateparse/parser.py:9（累计权重 1.00）→ 未被执行证伪 |\n| `src/dateparse/utils.py:5` | function | days_between | 0.55 | keyword_match | 符号名/文档命中关键词: date, string, str |\n| `src/dateparse/validator.py:29` | function | validate_range | 0.4 | keyword_match | 符号名/文档命中关键词: date, string, str |\n| `tests/test_parser.py:8` | method | test_parse_date | 0.25 | call_related | 证伪：位于测试文件，不是源码证据（降权） |\n| `tests/test_parser.py:17` | method | test_parse_date_with_whitespace | 0.25 | call_related | 证伪：位于测试文件，不是源码证据（降权） |\n\n## 关键证据代码\n\n**`src/dateparse/parser.py:9` — parse_date**\n```python\ndef parse_date(s):\n    \"\"\"Parse a date string in YYYY-MM-DD format.\n\n    Args:\n        s: the date string, e.g. \"2024-01-01\".\n\n    Returns:\n        datetime.date object.\n```\n\n**`src/dateparse/validator.py:8` — is_valid_date**\n```python\ndef is_valid_date(s):\n    \"\"\"Check whether a date string is a valid YYYY-MM-DD date.\n\n    Args:\n        s: date string like \"2024-01-01\".\n\n    Returns:\n        True if the string parses to a valid date, False otherwise.\n```\n\n**`src/dateparse/utils.py:25` — add_days**\n```python\ndef add_days(s, n):\n    \"\"\"Add n days to a date string and return a date object.\n\n    Args:\n        s: date string \"YYYY-MM-DD\".\n        n: integer number of days (can be negative).\n\n    Returns:\n```\n\n## 修改计划\n\n- **根因分析**：The input date string is not stripped of surrounding whitespace before parsing.\n- **影响范围**：src/dateparse/parser.py, src/dateparse/validator.py, src/dateparse/utils.py, src/dateparse/parser.py, src/dateparse/utils.py, src/dateparse/validator.py, tests/test_parser.py, tests/test_parser.py\n- **修改文件**：src/dateparse/parser.py, src/dateparse/validator.py, src/dateparse/utils.py, src/dateparse/parser.py, src/dateparse/utils.py, src/dateparse/validator.py, tests/test_parser.py, tests/test_parser.py\n- **修改步骤**：\n  - Add a call to `s.strip()` before parsing the date string in `src/dateparse/parser.py` and `src/dateparse/validator.py`.\n- **风险提示**：\n  - Potential data loss due to incorrect parsing of date strings with surrounding whitespace.\n\n计划生成方式：`llm`\n\n## 测试验证\n\n测试命令：`python -m pytest tests/test_parser.py`\n\n补丁：LLM 生成 3 个有效候选。；补丁应用成功（JSON 替换规则，共 3 处）。（主测试筛选通过，待最终验收）\n\n### 修复前\n\n- 命令 `python -m pytest tests/test_parser.py` → exit 1（未通过；有效）\n  - 摘要：passed=2, failed=1, errors=0, skipped=0, collected=3\n  - ❌ ================================== FAILURES ===================================\n  - ❌ =========================== short test summary info ===========================\n  - ❌ FAILED tests/test_parser.py::ParserTests::test_parse_date_with_whitespace - V...\n\n### 修复后\n\n- 命令 `python -m pytest tests/test_parser.py` → exit 0（通过；有效）\n  - 摘要：passed=3, failed=0, errors=0, skipped=0, collected=3\n\n## 执行证据（失败轨迹，证伪式重检索）\n\n| 帧位置 | 函数 | 权重 |\n|---|---|---|\n| `src/dateparse/parser.py:23` | parse_date | 1.0 |\n\n说明：失败轨迹命中的符号获得最强证据权重；测试文件/模块级证据被证伪降权。\n\n\n## 测试翻转预测（反事实推理）\n\n- 预测会翻转的测试：test_parse_date, test_parse_date_with_whitespace\n- 实际翻转的测试：tests/test_parser.py::ParserTests::test_parse_date_with_whitespace\n- 命中：tests/test_parser.py::ParserTests::test_parse_date_with_whitespace\n- 预测准确率 precision=0.5，召回率 recall=1.0\n\n\n## 补丁内容（diff）\n\n```diff\n--- a/src/dateparse/parser.py\n+++ b/src/dateparse/parser.py\n@@ -20,7 +20,7 @@\n         like \" 2024-01-01 \" will fail to parse. This is the bug to fix:\n         call s.strip() before parsing.\n     \"\"\"\n-    return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()\n+    return datetime.datetime.strptime(s.strip(), \"%Y-%m-%d\").date()\n \n \n def parse_datetime(s):\n--- a/src/dateparse/validator.py\n+++ b/src/dateparse/validator.py\n@@ -41,7 +41,7 @@\n         wrongly rejected. This is the bug to fix.\n     \"\"\"\n     from .parser import parse_date\n-    s = parse_date(start)\n+    s = parse_date(start).strip()\n     e = parse_date(end)\n     return s < e\n \n--- a/src/dateparse/utils.py\n+++ b/src/dateparse/utils.py\n@@ -17,7 +17,7 @@\n         This is the bug to fix.\n     \"\"\"\n     from .parser import parse_date\n-    da = parse_date(a)\n+    da = parse_date(a).strip()\n     db = parse_date(b)\n     return (da - db).days\n \n```\n\n## 自动生成的辅助回归测试（不作为独立验收）\n\n```python\n# 由 RepoLens-OSS 生成的回归测试\n# 目标: src/dateparse/parser.py:9 函数 `parse_date`\n# 对应 Issue: date string with surrounding whitespace fails to parse\n\ndef test_regression_parse_date_whitespace_invariance():\n    # 行为回归：首尾空白不应改变函数结果（对应 issue 的 whitespace/strip 语义）\n    assert _mod.parse_date(' 2024-01-01 ') == _mod.parse_date('2024-01-01')\n\n# 冒烟测试（smoke）：仅验证接口存在与签名一致，不验证业务行为。\n# 行为级验证由仓库自有测试 + 上方行为回归测试承担。\nimport importlib, pathlib, sys\nsys.path.insert(0, str(pathlib.Path('__TMP_REPO__') / 'src'))\n_mod = importlib.import_module('dateparse.parser')\n\n\ndef test_regression_parse_date_exists_and_callable():\n    assert callable(_mod.parse_date), \"函数 parse_date 不存在或不可调用\"\n\ndef test_regression_parse_date_signature():\n    # 校验必填参数个数与源码定义一致\n    import inspect\n    try:\n        params = inspect.signature(_mod.parse_date).parameters\n    except (ValueError, TypeError):\n        return  # 无法获取签名，跳过\n    required_count = sum(1 for p in params.values()\n        if p.default is inspect.Parameter.empty\n        and p.kind in (inspect.Parameter.POSITIONAL_ONLY,\n                      inspect.Parameter.POSITIONAL_OR_KEYWORD))\n    assert required_count == 1, f\"必填参数个数应为 1，实际 {required_count}\"\n\n```\n\n## 自动生成的辅助回归结果（含冒烟检查）\n\n测试命令：`pytest tests/test_replens_regression.py`\n\n### 修复前\n\n- 命令 `pytest tests/test_replens_regression.py` → exit 1（未通过）\n  - ❌ ================================== FAILURES ===================================\n  - ❌ =========================== short test summary info ===========================\n  - ❌ FAILED tests/test_replens_regression.py::test_regression_parse_date_whitespace_invariance\n\n### 修复后\n\n- 命令 `pytest tests/test_replens_regression.py` → exit 0（通过）\n\n\n## 冻结的独立行为验收\n\n命令：`python -m unittest discover -s __replens_acceptance__ -p test_date_behavior.py`\n\nSHA-256：`1aacb96e419b642cacc224843609d7aab7fcad4da6266bdff2d87b80e9b7688d`\n\n### 修复前\n\n- 未通过（exit 1）\n  - `test_date_behavior.DateBehavior.test_invalid_date_stays_invalid`: PASS\n  - `test_date_behavior.DateBehavior.test_tab_and_newline_padding`: ERROR\n  - `test_date_behavior.DateBehavior.test_unpadded_date`: PASS\n\n### 修复后\n\n- 通过（exit 0）\n  - `test_date_behavior.DateBehavior.test_invalid_date_stays_invalid`: PASS\n  - `test_date_behavior.DateBehavior.test_tab_and_newline_padding`: PASS\n  - `test_date_behavior.DateBehavior.test_unpadded_date`: PASS\n",
+  "provenance": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo\\.replens\\provenance\\20261030T072921.053868Z-accbb14c",
+  "provenance_status": {
+    "status": "WRITTEN",
+    "schema_version": "2.0",
+    "materials_status": "NOT_CHECKED",
+    "replay_status": "NOT_RUN",
+    "reasons": []
+  }
+}

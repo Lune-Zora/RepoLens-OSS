@@ -1,0 +1,315 @@
+[
+ {
+  "id": 1,
+  "category": "bug",
+  "issue": "#6628 - JSONDecodeError are not deserializable",
+  "expected": [
+   "src/requests/exceptions.py:__init__:41"
+  ],
+  "commit": "3ff3ff21dd45957c9e143cd500291959bb15f690",
+  "parent": "96b22fa18c00831656ee4b286bf1c9062459b00a",
+  "project": "requests",
+  "buggy_parent": "96b22fa18c00831656ee4b286bf1c9062459b00a",
+  "fix_commit": "3ff3ff21dd45957c9e143cd500291959bb15f690",
+  "test_files": [
+   "tests/test_requests.py"
+  ],
+  "src_files": [
+   "src/requests/exceptions.py"
+  ],
+  "validation": {
+   "id": 1,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_requests.py::test_json_decode_errors_are_serializable_deserializable"
+   ]
+  }
+ },
+ {
+  "id": 2,
+  "category": "bug",
+  "issue": "linting issues",
+  "expected": [
+   "requests/sessions.py:rebuild_proxies:329"
+  ],
+  "commit": "6e5b15d542a4e85945fd72066bb6cecbc3a82191",
+  "parent": "147c8511ddbfa5e8f71bbf5c18ede0c4ceb3bba4",
+  "project": "requests",
+  "buggy_parent": "147c8511ddbfa5e8f71bbf5c18ede0c4ceb3bba4",
+  "fix_commit": "6e5b15d542a4e85945fd72066bb6cecbc3a82191",
+  "test_files": [
+   "tests/test_requests.py"
+  ],
+  "src_files": [
+   "requests/sessions.py"
+  ],
+  "validation": {
+   "id": 2,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_requests.py::test_proxy_authorization_not_appended_to_https_request"
+   ]
+  }
+ },
+ {
+  "id": 3,
+  "category": "bug",
+  "issue": "inconsistent exception for JSONDecode error (#6097)",
+  "expected": [
+   "requests/models.py:json:900"
+  ],
+  "commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+  "parent": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+  "project": "requests",
+  "buggy_parent": "8bce583b9547c7b82d44c8e97f37cf9a16cbe758",
+  "fix_commit": "2d5517682b3b38547634d153cea43d48fbc8cdb5",
+  "test_files": [
+   "tests/test_lowlevel.py"
+  ],
+  "src_files": [
+   "requests/models.py"
+  ],
+  "validation": {
+   "id": 3,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_lowlevel.py::test_json_decode_compatibility_for_alt_utf_encodings"
+   ]
+  }
+ },
+ {
+  "id": 4,
+  "category": "bug",
+  "issue": "environment CA Bundle resolution",
+  "expected": [
+   "requests/sessions.py:merge_environment_settings:705"
+  ],
+  "commit": "79c4a017fe341fb989d3a7876cf4e44b87601b58",
+  "parent": "5e749546a26ce62e53d0a14ae1455f8b066fe19f",
+  "project": "requests",
+  "buggy_parent": "5e749546a26ce62e53d0a14ae1455f8b066fe19f",
+  "fix_commit": "79c4a017fe341fb989d3a7876cf4e44b87601b58",
+  "test_files": [
+   "tests/test_requests.py"
+  ],
+  "src_files": [
+   "requests/sessions.py"
+  ],
+  "validation": {
+   "id": 4,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_requests.py::test_env_cert_bundles"
+   ]
+  }
+ },
+ {
+  "id": 5,
+  "category": "bug",
+  "issue": "auth parsing for proxies",
+  "expected": [
+   "requests/utils.py:prepend_scheme_if_needed:974"
+  ],
+  "commit": "38f3f8ecb93cadfac03a6b7b3173018ac829d0cf",
+  "parent": "0192aac24123735b3eaf9b08df46429bb770c283",
+  "project": "requests",
+  "buggy_parent": "0192aac24123735b3eaf9b08df46429bb770c283",
+  "fix_commit": "38f3f8ecb93cadfac03a6b7b3173018ac829d0cf",
+  "test_files": [
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "requests/utils.py"
+  ],
+  "validation": {
+   "id": 5,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_utils.py::test_prepend_scheme_if_needed"
+   ]
+  }
+ },
+ {
+  "id": 6,
+  "category": "bug",
+  "issue": "extract_zipped_paths infinite loop when provided invalid unc path (#5851)",
+  "expected": [
+   "requests/utils.py:extract_zipped_paths:251"
+  ],
+  "commit": "d8829f9f242149174e50f45e021ffb81fbbced70",
+  "parent": "b227e3cb82c8d42ea27790d615ecafe12528d3bc",
+  "project": "requests",
+  "buggy_parent": "b227e3cb82c8d42ea27790d615ecafe12528d3bc",
+  "fix_commit": "d8829f9f242149174e50f45e021ffb81fbbced70",
+  "test_files": [
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "requests/utils.py"
+  ],
+  "validation": {
+   "id": 6,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_utils.py::test_invalid_unc_path"
+   ]
+  }
+ },
+ {
+  "id": 7,
+  "category": "bug",
+  "issue": "inconsistent exception type in response.json() method (#5856)",
+  "expected": [
+   "requests/__init__.py"
+  ],
+  "commit": "db575eeedcfdb03bf31285afd3033e301df8b685",
+  "parent": "941a77f2b86a801aff9bda17c65b9f7e56f2c68a",
+  "project": "requests",
+  "buggy_parent": "941a77f2b86a801aff9bda17c65b9f7e56f2c68a",
+  "fix_commit": "db575eeedcfdb03bf31285afd3033e301df8b685",
+  "test_files": [
+   "tests/test_requests.py"
+  ],
+  "src_files": [
+   "requests/__init__.py",
+   "requests/compat.py",
+   "requests/exceptions.py"
+  ],
+  "validation": {
+   "id": 7,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_requests.py::test_post_json_nan",
+    "tests/test_requests.py::test_json_decode_compatibility"
+   ]
+  }
+ },
+ {
+  "id": 8,
+  "category": "bug",
+  "issue": "Revert \"Fix for response with UTF-8 BOM #4976\"",
+  "expected": [
+   "requests/models.py:text:859"
+  ],
+  "commit": "fd13816d015c4c90ee65297fa996caea6a094ed1",
+  "parent": "24bcb9eab60d2db5e71979ea391b3e5675daff1f",
+  "project": "requests",
+  "buggy_parent": "24bcb9eab60d2db5e71979ea391b3e5675daff1f",
+  "fix_commit": "fd13816d015c4c90ee65297fa996caea6a094ed1",
+  "test_files": [
+   "tests/test_testserver.py",
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "requests/models.py"
+  ],
+  "validation": {
+   "id": 8,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "file",
+   "targets": [
+    "tests/test_testserver.py",
+    "tests/test_utils.py"
+   ]
+  }
+ },
+ {
+  "id": 9,
+  "category": "bug",
+  "issue": "Revert \"#4965 fix: Accessing response.content twice removes forgets read error.\"",
+  "expected": [
+   "requests/models.py:__init__:644"
+  ],
+  "commit": "b15056d1d3c4ca3546c88b9fe390f0721b198c2e",
+  "parent": "80011a7917afe2cd6a5fa8359e7ea90203880b3c",
+  "project": "requests",
+  "buggy_parent": "80011a7917afe2cd6a5fa8359e7ea90203880b3c",
+  "fix_commit": "b15056d1d3c4ca3546c88b9fe390f0721b198c2e",
+  "test_files": [
+   "tests/test_lowlevel.py"
+  ],
+  "src_files": [
+   "requests/models.py"
+  ],
+  "validation": {
+   "id": 9,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "file",
+   "targets": [
+    "tests/test_lowlevel.py"
+   ]
+  }
+ },
+ {
+  "id": 10,
+  "category": "bug",
+  "issue": "#4965 fix: Accessing response.content twice removes forgets read error.",
+  "expected": [
+   "requests/models.py:__init__:643"
+  ],
+  "commit": "bd100472443dcf4189630f6b1ed3ec0a61259dd8",
+  "parent": "d91fe00983f1c66b9a428fe1ad15bf6ea8238972",
+  "project": "requests",
+  "buggy_parent": "d91fe00983f1c66b9a428fe1ad15bf6ea8238972",
+  "fix_commit": "bd100472443dcf4189630f6b1ed3ec0a61259dd8",
+  "test_files": [
+   "tests/test_lowlevel.py"
+  ],
+  "src_files": [
+   "requests/models.py"
+  ],
+  "validation": {
+   "id": 10,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_lowlevel.py::test_response_content_retains_error"
+   ]
+  }
+ },
+ {
+  "id": 11,
+  "category": "bug",
+  "issue": "assumed hostname when using a 'file' URI scheme adapter",
+  "expected": [
+   "requests/utils.py:should_bypass_proxies:706"
+  ],
+  "commit": "8023a01dba6f7d6c2ae0336c59a368929ef26ac3",
+  "parent": "dffd5d435e2d51958af1ccc9fd5e0f8f9df2fdfe",
+  "project": "requests",
+  "buggy_parent": "dffd5d435e2d51958af1ccc9fd5e0f8f9df2fdfe",
+  "fix_commit": "8023a01dba6f7d6c2ae0336c59a368929ef26ac3",
+  "test_files": [
+   "tests/test_utils.py"
+  ],
+  "src_files": [
+   "requests/utils.py"
+  ],
+  "validation": {
+   "id": 11,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_utils.py::test_should_bypass_proxies"
+   ]
+  }
+ }
+]

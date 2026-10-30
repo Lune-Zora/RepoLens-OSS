@@ -1,0 +1,65 @@
+{
+  "after": [
+    {
+      "command": "python -m pytest -o addopts= __replens_acceptance__/test_reset_infinity_contract.py -q",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "..                                                                       [100%]\n2 passed in 0.28s\n",
+      "structured": true,
+      "summary": {
+        "collected": 2,
+        "errors": 0,
+        "failed": 0,
+        "passed": 2,
+        "ran": 2,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_finite_total_keeps_normal_counting": "PASS",
+        "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "before": [
+    {
+      "command": "python -m pytest -o addopts= __replens_acceptance__/test_reset_infinity_contract.py -q",
+      "framework": "pytest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "",
+      "stdout": ".F                                                                       [100%]\n================================== FAILURES ===================================\n_ ResetInfiniteTotalContract.test_reset_infinity_matches_unknown_total_behavior _\n\nself = <test_reset_infinity_contract.ResetInfiniteTotalContract testMethod=test_reset_infinity_matches_unknown_total_behavior>\n\n    def test_reset_infinity_matches_unknown_total_behavior(self):\n        with closing(StringIO()) as output:\n            with tqdm(total=8, file=output, miniters=1, mininterval=0, maxinterval=0) as bar:\n                bar.update(3)\n                bar.reset(total=math.inf)\n                bar.update(1)\n                rendered = bar.format_meter(bar.n, bar.total, 0)\n>               self.assertIsNone(bar.total)\nE               AssertionError: inf is not None\n\n__replens_acceptance__\\test_reset_infinity_contract.py:17: AssertionError\n=========================== short test summary info ===========================\nFAILED __replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior - AssertionError: inf is not None\n1 failed, 1 passed in 0.42s\n",
+      "structured": true,
+      "summary": {
+        "collected": 2,
+        "errors": 0,
+        "failed": 1,
+        "passed": 1,
+        "ran": 2,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_finite_total_keeps_normal_counting": "PASS",
+        "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior": "FAIL"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m pytest -o addopts= __replens_acceptance__/test_reset_infinity_contract.py -q",
+  "enabled": true,
+  "files": {
+    "__replens_acceptance__/test_reset_infinity_contract.py": "import math\nimport unittest\nfrom contextlib import closing\nfrom io import StringIO\n\nfrom tqdm import tqdm\n\n\nclass ResetInfiniteTotalContract(unittest.TestCase):\n    def test_reset_infinity_matches_unknown_total_behavior(self):\n        with closing(StringIO()) as output:\n            with tqdm(total=8, file=output, miniters=1, mininterval=0, maxinterval=0) as bar:\n                bar.update(3)\n                bar.reset(total=math.inf)\n                bar.update(1)\n                rendered = bar.format_meter(bar.n, bar.total, 0)\n                self.assertIsNone(bar.total)\n                self.assertEqual(bar.n, 1)\n        self.assertIn(\"1it\", rendered)\n        self.assertNotIn(\"inf\", rendered.lower())\n\n    def test_reset_finite_total_keeps_normal_counting(self):\n        with closing(StringIO()) as output:\n            with tqdm(total=8, file=output, miniters=1, mininterval=0, maxinterval=0) as bar:\n                bar.reset(total=3)\n                bar.update(1)\n                self.assertEqual((bar.n, bar.total), (1, 3))\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+  },
+  "sha256": "2096cd8cd007f74a60fc2b44f0d00867a064342599dcdbb940d2ff5195404e80",
+  "timeout": 300
+}

@@ -1,0 +1,67 @@
+__pycache__/
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+# 时代环境 venv（replens/era_env.py）。默认建在用户缓存；此处兜底 REPLENS_ERA_ENVS 指到仓库内的情况
+.miner_envs/
+.replens/
+build/
+dist/
+*.pyc
+repos/
+models/
+gitee_test/
+%SystemDrive%/
+gitee_*.json
+gitee_*.html
+
+# ---- 对话 / 过程记录（devskill 默认排除）----
+project-os/会话记录/
+conversation/
+.chat/
+*.log
+*.tmp
+*.session.md
+
+# ---- IDE 与本地文件 ----
+.vscode/
+.idea/
+.DS_Store
+
+# ---- 密钥与凭据（绝不提交）----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+
+# ---- 运行产物与报告输出（本地，不进版本库）----
+.replens/
+reports/runs/
+reports/archive/
+examples/demo_repo/.replens/
+*.db
+*.sqlite3
+
+# ---- 控制材料与真实仓库输入（严禁入库）----
+validation/
+replens-realbug-work/
+replens-realbug-results/
+
+# ---- 编辑器临时文件 ----
+*.swp
+*.swo
+Thumbs.db
+desktop.ini
+# Microsoft Office editing lock files; final DOCX/PDF files remain eligible.
+~$*
+
+# Rendered page QA images remain local; final Word/PDF are included.
+/project-os/证据/T-20261030-05-第三方资源清单/排版检查/
+
+# Local browser diagnostic traces are archived outside the source tree.
+**/*.har
+**/final-trace.zip
+**/browser-trace.zip

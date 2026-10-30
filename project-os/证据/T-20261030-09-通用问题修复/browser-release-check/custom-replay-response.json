@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "reasons": [
+    "材料、逐测试身份/状态及统一验收结论重放一致"
+  ],
+  "materials_status": "PASS",
+  "replay_status": "PASS",
+  "repair_status": "NO_PATCH",
+  "schema_version": "2.0",
+  "recorded_repair_status": "NO_PATCH",
+  "validation": {
+    "status": "NO_PATCH",
+    "reasons": [
+      "没有进入验收的补丁"
+    ],
+    "targets": [],
+    "preserved": [],
+    "acceptance_sha256": "9e37c68f6fb4ecf155dd4912d8d9023aba434a2aea48c76bffbaf64144d3739c"
+  },
+  "phase_checks": {
+    "primary": {
+      "before": true,
+      "after": true
+    },
+    "auxiliary": {
+      "before": true,
+      "after": true
+    },
+    "acceptance": {
+      "before": true,
+      "after": true
+    }
+  },
+  "validation_matches": true,
+  "markdown": "# RepoLens-OSS 证据包重放报告\n\n| 检查 | 结论 |\n|---|---|\n| 材料核验 | PASS |\n| 重放一致性 | PASS |\n| 修复结论 | NO_PATCH |\n\n重放 PASS 表示结果与记录一致；只有修复结论 VERIFIED 表示通过独立验收。\n\n- 材料、逐测试身份/状态及统一验收结论重放一致\n\n| 测试套件 | 修复前一致 | 修复后一致 |\n|---|---|---|\n| primary | True | True |\n| auxiliary | True | True |\n| acceptance | True | True |\n"
+}

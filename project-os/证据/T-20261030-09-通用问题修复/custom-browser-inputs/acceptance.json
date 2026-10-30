@@ -1,0 +1,6 @@
+{
+  "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "files": {
+    "__replens_acceptance__/test_behavior.py": "import unittest\nimport stream_ops as api\n\nclass IndependentBehavior(unittest.TestCase):\n    def test_tail(self): self.assertEqual(api.split_packets([0,1,2,3,4,5,6],3),[[0,1,2],[3,4,5],[6]])\n    def test_short(self): self.assertEqual(api.split_packets([7],4),[[7]])\n    def test_empty(self): self.assertEqual(api.split_packets([],3),[])\n    def test_unit(self): self.assertEqual(api.split_packets([5,6],1),[[5],[6]])\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.split_packets([1,2],-1)\n    def test_helper(self): self.assertEqual(api.flatten([[1],[],[2,3]]),[1,2,3])\n"
+  }
+}

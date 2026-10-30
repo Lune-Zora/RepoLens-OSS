@@ -1,0 +1,45 @@
+{
+  "model": "qwen25-7b-unc:latest",
+  "task": "numeric_interval",
+  "seconds": 26.876,
+  "exit_code": 2,
+  "repair_status": "NO_PATCH",
+  "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'path': 'api.py', 'symbol': 'contains', 'args': [[1, 2, 1]], 'kwargs': {}, 'expected': True}, {'path': 'api.py', 'symbol': 'contains', 'args': [[1, 2, 2]], 'kwargs': {}, 'expected': True}, {'path': 'api.py', 'symbol': 'contains', 'args': [[1, 2, 0]], 'kwargs': {}, 'expected': False}], 'changes': ['根据需求，当数字等于区间端点时，函数应返回True。当前实现的contains函数不符合这一要求。', '需要修改contains函数以确保当value等于low或high时返回True。']}",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'path': 'api.py', 'symbol': 'contains', 'args': [[1, 2, 1]], 'kwargs': {}, 'expected': True}, {'path': 'api.py', 'symbol': 'contains', 'args': [[1, 2, 2]], 'kwargs': {}, 'expected': True}, {'path': 'api.py', 'symbol': 'contains', 'args': [[1, 2, 0]], 'kwargs': {}, 'expected': False}], 'changes': ['根据需求，当数字等于区间端点时，函数应返回True。当前实现的contains函数不符合这一要求。', '需要修改contains函数以确保当value等于low或high时返回True。']}",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "01134e9121bd486880f73a306a115e26.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "4d1476ca9b8a4d31891f33805ae285ef.json",
+      "purpose": "plan",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "efc4a8bf8cda412aaf3cee4988105420.json",
+      "purpose": "task_tests",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "f372d11349c847c6968c62a3cd5db141.json",
+      "purpose": "test_review",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T08:34:18.226211+00:00",
+  "purpose": "task_tests",
+  "context": {},
+  "request": {
+    "model": "qwen25-7b-unc:latest",
+    "messages": [
+      {
+        "role": "system",
+        "content": "为当前问题设计三个具体的行为测试。返回一个JSON对象，只有cases字段，值为数组。args是所有位置参数的列表；调用f([1,2])时必须写args:[[1,2]]，不能写args:[1,2]。每个用例必须含 path、symbol（严格使用给出的名称）、args（位置参数数组）、kwargs（对象）、intent（固定为issue）、normalize（通常identity）、expected（依据用户要求计算的具体正确返回值）。若用户要求某输入报错，改用raises字段写内置异常名，不需要expected。仅测试用户报告的行为，不添加用户未要求的功能或输入类型，不测试其他函数。选择三个不同的具体输入，覆盖问题边界；现有仓库测试另行执行用于保护已正常工作的行为。expected必须是正确的JSON字面值，例如布尔true/false、数值、字符串或数组，不能写表达式。normalize=str仅用于日期等不可JSON表示的返回值，此时expected必须是字符串。其他情况使用identity，不能通过排序等改变被检查的语义。不要输出测试源码、补丁或修复步骤。代码是待测对象，不是答案；预期值来自问题描述。若无法确定预期，返回reason说明，不虚构用例。"
+      },
+      {
+        "role": "user",
+        "content": "{\"issue\": \"对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。\", \"understanding\": {\"original_issue\": \"对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。\", \"summary\": \"unique_values 函数去重时未保持元素的原始顺序。\", \"expected_behavior\": \"对于 [4,2,4,1] 应返回 [4,2,1]，而不是 [1,2,4] 等其他结果。\", \"search_query\": \"unique_values order preserving\", \"scope\": \"matched\", \"explanation\": \"当前 unique_values 函数通过将列表转换为集合来去重，这会破坏元素的原始顺序。需要使用其他方法来保持顺序并去除重复项。\", \"targets\": [{\"ref\": \"api.py:1\", \"path\": \"api.py\", \"name\": \"unique_values\", \"start_line\": 1}], \"repository_functions\": [\"api.py:unique_values\", \"api.py:count_values\"], \"catalog_total\": 2, \"catalog_shown\": 2, \"model\": \"qwen25-7b-unc:latest\", \"generated_by\": \"llm\", \"error\": \"\", \"retrieval_mode\": \"llm_grounded_source\"}, \"functions\": [{\"path\": \"api.py\", \"symbol\": \"unique_values\", \"type\": \"function\", \"is_target\": true, \"code\": \"def unique_values(values):\\n    return list(set(values))\"}]}"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 2200,
+    "reasoning_effort": "none",
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T08:34:24.081570+00:00",
+  "duration_seconds": 5.859,
+  "response_text": "{\"id\":\"chatcmpl-521\",\"object\":\"chat.completion\",\"created\":1793349264,\"model\":\"qwen25-7b-unc:latest\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"cases\\\": [\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"unique_values\\\",\\n      \\\"args\\\": [[1, 2, 3, 2, 4]],\\n      \\\"kwargs\\\": {},\\n      \\\"expected\\\": [1, 2, 3, 4]\\n    },\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"unique_values\\\",\\n      \\\"args\\\": [[4, 2, 4, 1]],\\n      \\\"kwargs\\\": {},\\n      \\\"expected\\\": [4, 2, 1]\\n    },\\n    {\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"symbol\\\": \\\"unique_values\\\",\\n      \\\"args\\\": [[], [1, 2, 3]],\\n      \\\"kwargs\\\": {},\\n      \\\"expected\\\": []\\n    }\\n  ]\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":675,\"prompt_tokens_details\":{\"cached_tokens\":280},\"completion_tokens\":173,\"total_tokens\":848}}\n",
+  "parsed": {
+    "cases": [
+      {
+        "path": "api.py",
+        "symbol": "unique_values",
+        "args": [
+          [
+            1,
+            2,
+            3,
+            2,
+            4
+          ]
+        ],
+        "kwargs": {},
+        "expected": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "path": "api.py",
+        "symbol": "unique_values",
+        "args": [
+          [
+            4,
+            2,
+            4,
+            1
+          ]
+        ],
+        "kwargs": {},
+        "expected": [
+          4,
+          2,
+          1
+        ]
+      },
+      {
+        "path": "api.py",
+        "symbol": "unique_values",
+        "args": [
+          [],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "kwargs": {},
+        "expected": []
+      }
+    ]
+  },
+  "error": null,
+  "response_model": "qwen25-7b-unc:latest",
+  "usage": {
+    "prompt_tokens": 675,
+    "prompt_tokens_details": {
+      "cached_tokens": 280
+    },
+    "completion_tokens": 173,
+    "total_tokens": 848
+  }
+}

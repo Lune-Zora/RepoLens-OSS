@@ -1,0 +1,128 @@
+{
+  "$comment": "人工通读判定。按 fix_commit 记录（id 会随裁剪变化，提交哈希不会）。",
+  "$usage": "scripts/promote_mined.py 读取本文件：verdict=exclude 的提交不会进入正式分母。weak 的含义是「标题本身不足，允许用提交正文或上游原文替换出处」（scripts/repair_annotations.py 据此打开 allow_body），并不表示数据集中当前仍保留弱描述——当前文本质量看数据集的 issue_quality 字段。",
+  "$weak-vs-quality": "2026-10-29 实测：8 条 weak 里 7 条已换到更准确的上游原文（issue_quality=clear），仅 1 条仍为 weak；weak 标记保留，否则下次重算描述会退回标题。",
+  "updated": "2026-10-29（第四轮：时代环境解锁 requests 5 条后复核）",
+  "scope": "对自动挖掘样本逐条通读 issue 与 diff 后的人工判定；按 fix_commit 记录。verdict: exclude（不进分母）/ weak（保留但标注）/ resolved（问题已通过规则修复）",
+  "verdicts": [
+    {
+      "fix_commit": "3757d0d13ec86d73a838b55fc35ef89bc42a3461",
+      "project": "tqdm",
+      "verdict": "exclude",
+      "category": "非缺陷描述",
+      "reason": "合并提交标题「Merge pull requests #1717 and #1767 (fixes #1658)」，不是 issue 描述；且其改动与 disp_trim 那条（b557cb03b6）重叠"
+    },
+    {
+      "fix_commit": "764cd30d4b285ca01718ab3162a9f1a022bc49c6",
+      "project": "loguru",
+      "verdict": "exclude",
+      "category": "非行为修复",
+      "reason": "「Trivial grammar fix」只改了报错文案（did not misspelled → have not misspelled），没有行为变化，不能作为缺陷修复样本"
+    },
+    {
+      "fix_commit": "dcf42d962567723c0195bb8b2bb6fd764ecf41ae",
+      "project": "loguru",
+      "verdict": "exclude",
+      "category": "非行为修复",
+      "reason": "「Enable RET linting rule of Ruff and fix newly reported errors」是启用 lint 规则后的代码风格调整（elif → if 等），不是针对某个缺陷的修复"
+    },
+    {
+      "fix_commit": "4c8ebe267b82c4e97e2a2e7821b571199218e44d",
+      "project": "loguru",
+      "verdict": "exclude",
+      "category": "重复样本",
+      "reason": "与 565a6f63bb 完全重复：两提交的 tree 哈希与 diff 内容完全一致，同一修复被重复计入分母"
+    },
+    {
+      "fix_commit": "164ef7302b4c8c9dd455b523d8e8c38c61e68d50",
+      "project": "tqdm",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「rich: misc fixes」未说明具体行为；保留但作为弱描述样本"
+    },
+    {
+      "fix_commit": "b38a9221c4b2723a82d8b186c0fd8e7b05771a12",
+      "project": "tqdm",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「format_num」只是函数名，未描述行为变化；保留但作为弱描述样本"
+    },
+    {
+      "fix_commit": "84546d6be86810915b868078efb4d426dbac9d6c",
+      "project": "tqdm",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「edge cases & windows tests」过于笼统；保留但作为弱描述样本"
+    },
+    {
+      "fix_commit": "ea92a0b5fba1ac7438a976184e41247a0c476d29",
+      "project": "tqdm",
+      "verdict": "resolved",
+      "category": "已修复",
+      "reason": "已修复：前缀剥离规则改为「剥完是残句就不剥」，现为「Fix that tqdm_class cannot be passed to tmap and tzip」"
+    },
+    {
+      "fix_commit": "d80ccfc79d94ae48035b4ecef1e605ff532a99b8",
+      "project": "pypdf",
+      "verdict": "resolved",
+      "category": "已修复",
+      "reason": "已修复：前缀规则加入 rob 标签，现为「Fix compatibility for fonttools < 4.57.0 (#4050)」"
+    },
+    {
+      "fix_commit": "11f48e2cd1812692ec118cf14dbf2866b83db10a",
+      "project": "click",
+      "verdict": "exclude",
+      "category": "非缺陷描述",
+      "reason": "合并提交标题「Merge branch 'stable' into bugfix/OptionsAutoCompletion」；改动只是 docs/conf.py 与版本号，不是缺陷修复"
+    },
+    {
+      "fix_commit": "f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e",
+      "project": "click",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「short help abbreviation」只说涉及的主题，未说明修复了空白折叠行为"
+    },
+    {
+      "fix_commit": "82f377c547e1867d073f02bb8f476214d07e245b",
+      "project": "click",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「deprecated label formatting」描述笼统，未说明 label 为空时的行为"
+    },
+    {
+      "fix_commit": "d340b0c1202284a1b9d0ca892549208527d586ce",
+      "project": "click",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「speculative speculative empty string check」标题重复用词，措辞不规范"
+    },
+    {
+      "fix_commit": "1c20dc6e724cd5625faaa17b715ba928d44c08bf",
+      "project": "click",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「default handling to defer UNSET normalization」偏内部实现描述，未说明用户可见行为"
+    },
+    {
+      "fix_commit": "ac6a2acfdb4550c35ce69ce54db502ba96c96324",
+      "project": "click",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「shell completion for nested groups」只说主题，未说明故障表现"
+    },
+    {
+      "fix_commit": "79c4a017fe341fb989d3a7876cf4e44b87601b58",
+      "project": "requests",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「environment CA Bundle resolution」只说了主题（环境变量里的 CA 包如何解析），未说明具体行为；正文为空。保留但记为弱描述。"
+    },
+    {
+      "fix_commit": "38f3f8ecb93cadfac03a6b7b3173018ac829d0cf",
+      "project": "requests",
+      "verdict": "weak",
+      "category": "描述含糊",
+      "reason": "「auth parsing for proxies」只说了主题，未说明代理凭据解析出了什么错；正文只有 Co-authored-by 行。保留但记为弱描述。"
+    }
+  ]
+}

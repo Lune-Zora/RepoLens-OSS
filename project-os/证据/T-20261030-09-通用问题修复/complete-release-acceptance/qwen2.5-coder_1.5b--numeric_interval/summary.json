@@ -1,0 +1,59 @@
+{
+  "model": "qwen2.5-coder:1.5b",
+  "task": "numeric_interval",
+  "seconds": 18.486,
+  "exit_code": 2,
+  "repair_status": "NO_PATCH",
+  "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [0, 10, 5], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}, {'args': [0, 10, 20], 'expected': False, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}, {'args': [-1, 3, 4], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}], 'changes': ['修正了函数的逻辑，使其能够正确处理区间外的情况，并且包含左右端点。']}",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [0, 10, 5], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}, {'args': [0, 10, 20], 'expected': False, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}, {'args': [-1, 3, 4], 'expected': True, 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'contains'}], 'changes': ['修正了函数的逻辑，使其能够正确处理区间外的情况，并且包含左右端点。']}",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "26bb0d9b057f46fdaf3ffc4f9d03f93b.json",
+      "purpose": "test_review",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    },
+    {
+      "file": "5a576f8e4c474ebb8aad39050961716a.json",
+      "purpose": "task_tests",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    },
+    {
+      "file": "5f2a9ff9fff8445fb3ef491849325472.json",
+      "purpose": "intent",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    },
+    {
+      "file": "67ec02323ed840fb9a2028008c8459f9.json",
+      "purpose": "plan",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    },
+    {
+      "file": "a4acdaf0b4a84e0e965781bae7087ee0.json",
+      "purpose": "scope_validation",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    },
+    {
+      "file": "d52cb083562647a1a88358c45848794d.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

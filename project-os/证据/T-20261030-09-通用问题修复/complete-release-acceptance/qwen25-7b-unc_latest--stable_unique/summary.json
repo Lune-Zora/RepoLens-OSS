@@ -1,0 +1,38 @@
+{
+  "model": "qwen25-7b-unc:latest",
+  "task": "stable_unique",
+  "seconds": 17.844,
+  "exit_code": 2,
+  "repair_status": "UNVERIFIED",
+  "blocked_reason": "",
+  "reasons": [
+    "定位证据不足，不能确认修复"
+  ],
+  "patch_note": "候选功能与原始问题不匹配：用户要求生成一个新的无重复项且保持原顺序的列表。唯一满足此需求的候选函数是 unique_values，尽管其当前实现没有在函数签名或契约中提供具体说明。",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "3d270c1b7bb041eba7b47a9e550e4513.json",
+      "purpose": "scope_validation",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "533070270c2a4fef8b3c8f5484973115.json",
+      "purpose": "intent",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "b546db43c2ad464a9efc8a476f516824.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

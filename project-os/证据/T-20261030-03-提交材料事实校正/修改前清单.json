@@ -1,0 +1,106 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "b1f34d9cf39dda0a2e51bfb2965c0d1c3ae37d4c3345a9967676407e32df91fd"
+  },
+  {
+    "path": "reports/README.md",
+    "sha256": "fb25ee2c2edab76663df51a66636bd341f235923b4b7a8931b3db7f8bf907e07"
+  },
+  {
+    "path": "eval/README.md",
+    "sha256": "7b496fa2e8c1291a969ca3b1afc47ecda0b3f0310c4cf388020e76149abefc81"
+  },
+  {
+    "path": "docs/01_需求/项目简介.md",
+    "sha256": "86eef69481941eb98027b10e457273487fea7b3421e4ff9bd2af841914c19441"
+  },
+  {
+    "path": "docs/01_需求/申报策略.md",
+    "sha256": "1996b349b99f28c1577e87492a12e729fc6df32fb4f258ec2afd5b1afbd1d0f9"
+  },
+  {
+    "path": "docs/01_需求/答辩大纲.md",
+    "sha256": "9b7a2fe3a1402c30932c078e4c3d396250db1d4f7c08bb0cf5fa152bd53a426d"
+  },
+  {
+    "path": "docs/01_需求/优化计划.md",
+    "sha256": "593a9011786b9ef78c090d787656a7b6277f7d66b45d9b885cab50a7a5bb5101"
+  },
+  {
+    "path": "docs/02_架构/技术报告.md",
+    "sha256": "0d4ff8d8c653d872bea9054376b2bc7783b1ab0471ed04fefb3f76fcb57b70b9"
+  },
+  {
+    "path": "docs/02_架构/设计方案.md",
+    "sha256": "c13124a2f6822430bf2daaafb2b0c65a6b3711fe5eefc029b62a26c9985a2234"
+  },
+  {
+    "path": "docs/02_架构/系统分析.md",
+    "sha256": "5383a2701756c578b7a1c9aafb0f7deb6290e2f610111e546b4f3f9aef97d04f"
+  },
+  {
+    "path": "docs/02_架构/创新点.md",
+    "sha256": "8fd8746cf0b84223c39c6cf0dbb7a5da77ac89c6ecdbd519f5c0b37ef38981db"
+  },
+  {
+    "path": "docs/02_架构/创新验收.md",
+    "sha256": "e3f9ad2e791dbb85fe7d2673bd531422cb2815fe237f5995f147b72d25c0cccb"
+  },
+  {
+    "path": "docs/02_架构/创新执行.md",
+    "sha256": "1091644105c613c441dc5009040d5108824ed38f257d8619b941528ca2810b1d"
+  },
+  {
+    "path": "docs/05_测试/评测口径总表.md",
+    "sha256": "5394f6a6d7f507ff4371fd533021b0c6fa10cd7deea3148bb741c28c28790998"
+  },
+  {
+    "path": "docs/05_测试/真实仓库评测.md",
+    "sha256": "1e19e48a96c0fe141e549cb259a4babb2dd51598145b6215198b5f779a4e6920"
+  },
+  {
+    "path": "docs/05_测试/消融实验.md",
+    "sha256": "6b7e483391d0bf3be0773eaea135b8c713f130daf2a6a2e43c54dc863639a0d6"
+  },
+  {
+    "path": "docs/05_测试/定位改进.md",
+    "sha256": "1278713a73308f1bf4c1cdf6cff461f83de1a5cee20528e4331bb5932f986546"
+  },
+  {
+    "path": "docs/06_运维/社区贡献.md",
+    "sha256": "4ce579f8db243bb859e3cf1ec437e520d78d1d717440002bfed87c2614ac1c99"
+  },
+  {
+    "path": "docs/06_运维/演示脚本.md",
+    "sha256": "e9eba488f80dd4e76960cfade981e6c43b16dfe3603bb3e0e3d7cb1d38ec45f8"
+  },
+  {
+    "path": "docs/文档地图.md",
+    "sha256": "b7679c828fb214b9756183f85c2ebb2ae114838f3ba585b1fd448b5a38b18a3d"
+  },
+  {
+    "path": "project-os/项目状态.md",
+    "sha256": "19c62dff86faea517adf017883cd83ded657ae371d943f8b57e88e97be3613d9"
+  },
+  {
+    "path": "eval/datasets/datasets.manifest.json",
+    "sha256": "4644c8066eb1aab44fb1c322d8a377aec0db6ee96748706a71caa45a12c5aed8"
+  },
+  {
+    "path": "docs/05_测试/修复支撑材料.md",
+    "sha256": "041adf3b28b8574a3ade25d8e89563c2615c26b7bc1f6a83d4c89afa8209dd21"
+  },
+  {
+    "path": "docs/05_测试/验收规划.md",
+    "sha256": "40ffcc73e721108404215280a70640af76bea8cb93b8b1662802e1d3ece1c8a1"
+  },
+  {
+    "path": "docs/02_架构/本地模型.md",
+    "sha256": "246f0da8ab238cb75c631f4c2ed0eaecbdecc71c082262c7a629784381dba472"
+  },
+  {
+    "path": "docs/02_架构/规则说明.md",
+    "sha256": "c90b7a70ca9356a44ab36c7b4fd616796138f2888fe55f857b40bea198a05330"
+  }
+]

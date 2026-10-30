@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "category": "bug",
+    "issue": "handle total=inf in format_meter to avoid OverflowError",
+    "project": "tqdm",
+    "expected": [
+      "tqdm/std.py:format_meter:463"
+    ]
+  },
+  {
+    "id": 2,
+    "category": "bug",
+    "issue": "prevent tqdm.write from crashing when sys.stdout is none",
+    "project": "tqdm",
+    "expected": [
+      "tqdm/std.py:write:717"
+    ]
+  },
+  {
+    "id": 3,
+    "category": "noise",
+    "issue": "add GPU acceleration support",
+    "project": "tqdm",
+    "expected": []
+  },
+  {
+    "id": 4,
+    "category": "noise",
+    "issue": "translate the whole documentation into French",
+    "project": "tqdm",
+    "expected": []
+  },
+  {
+    "id": 5,
+    "category": "noise",
+    "issue": "implement an HTTP web server inside tqdm",
+    "project": "tqdm",
+    "expected": []
+  }
+]

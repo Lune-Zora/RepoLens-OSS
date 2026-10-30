@@ -1,0 +1,11 @@
+{
+  "after": null,
+  "before": null,
+  "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "enabled": true,
+  "files": {
+    "__replens_acceptance__/test_behavior.py": "import unittest\nimport api\n\nclass IndependentBehavior(unittest.TestCase):\n    def test_padding(self): self.assertIs(api.read_flag(\"  true  \"), True)\n    def test_controls(self): self.assertIs(api.read_flag(\"\\tFaLsE\\n\"), False)\n    def test_original(self): self.assertIs(api.read_flag(\"TRUE\"), True)\n    def test_unknown(self):\n        with self.assertRaises(ValueError): api.read_flag(\"perhaps\")\n    def test_empty(self):\n        with self.assertRaises(ValueError): api.read_flag(\"   \")\n    def test_other_function(self): self.assertEqual(api.format_flag(True), \"true\")\n"
+  },
+  "sha256": "a14a0e673614ed519e38085771b2378d1472a9c556493170422ad4f71ec1f022",
+  "timeout": 120
+}

@@ -1,0 +1,132 @@
+{
+  "archive_root": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7",
+  "files": [
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-07-工作台浏览器审查\\browser-trace.zip",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-07-工作台浏览器审查\\browser-trace.zip",
+      "relative_path": "project-os/证据/T-20261030-07-工作台浏览器审查/browser-trace.zip",
+      "bytes": 14630257,
+      "sha256": "8bb3bda40e0a8de36f4f01f14ebed56117fc1327a88684330d1365e0de4b0a8e"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-07-工作台浏览器审查\\workbench.har",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-07-工作台浏览器审查\\workbench.har",
+      "relative_path": "project-os/证据/T-20261030-07-工作台浏览器审查/workbench.har",
+      "bytes": 188821,
+      "sha256": "51a65ab19dd8aa757b187b123b3be2b0a592c3566c1268cdca32caddecdb4a3c"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-check\\final-trace.zip",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-check\\final-trace.zip",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-check/final-trace.zip",
+      "bytes": 31224559,
+      "sha256": "cda65952ef11f2581ab449f3a8e7cf5dd3ef7bb80e078d102b40005947a6374c"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-check\\final-workbench.har",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-check\\final-workbench.har",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-check/final-workbench.har",
+      "bytes": 123336,
+      "sha256": "a72692f1628b7cba7c829c03e9176f10cc18693113df6b4ff15272aefa64a518"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-delivery-check\\final-trace.zip",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-delivery-check\\final-trace.zip",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-delivery-check/final-trace.zip",
+      "bytes": 22095364,
+      "sha256": "8604bc658ac01fd54334a24eb4e2895b7a25e5f1c25775aee845a12bddc1ca5d"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-delivery-check\\final-workbench.har",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-delivery-check\\final-workbench.har",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-delivery-check/final-workbench.har",
+      "bytes": 115526,
+      "sha256": "9e14820c023852d6c709e530e5b218eb555e6a13fa8b595a965fcc66b2838b2d"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-final-acceptance\\final-trace.zip",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-final-acceptance\\final-trace.zip",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-final-acceptance/final-trace.zip",
+      "bytes": 34177854,
+      "sha256": "9139f813e3f30082b05695ea6083dc93adda03a469a84c6e6fe1ccba1d8fa862"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-final-acceptance\\final-workbench.har",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-final-acceptance\\final-workbench.har",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-final-acceptance/final-workbench.har",
+      "bytes": 114244,
+      "sha256": "c021bb46972d8e7f13da87be698150178f51c52514bf32516da8daa952729e3f"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-final-check\\final-trace.zip",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-final-check\\final-trace.zip",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-final-check/final-trace.zip",
+      "bytes": 23842091,
+      "sha256": "7d423fc98ff4859925cdcd46713c262f564d5f8459f0a6f16d8ab5e5997143b1"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-final-check\\final-workbench.har",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-final-check\\final-workbench.har",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-final-check/final-workbench.har",
+      "bytes": 107350,
+      "sha256": "244b515e0b6099b233adca9bd8abd072883428cdf08342f55bd27779921f3c9e"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-release-check\\final-trace.zip",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-release-check\\final-trace.zip",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-release-check/final-trace.zip",
+      "bytes": 25585567,
+      "sha256": "62ff4cd0fb19ec842fde0e097ad869bc46453c897038c26eccb238f14c8d0cc9"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-release-check\\final-workbench.har",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-release-check\\final-workbench.har",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-release-check/final-workbench.har",
+      "bytes": 104573,
+      "sha256": "defd32b4f3bf30a7b7e3db7760f99c4cd35d36e511e024a6ba6e7b267f9e28ca"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-release-final\\final-trace.zip",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-release-final\\final-trace.zip",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-release-final/final-trace.zip",
+      "bytes": 22974116,
+      "sha256": "c49a591d55476d389bf1a6cccdeac2c69a9bdc69d0ca7f26e69fbcd0dc85537f"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-release-final\\final-workbench.har",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-release-final\\final-workbench.har",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-release-final/final-workbench.har",
+      "bytes": 114566,
+      "sha256": "435880f1fd788cf3166d2d740c188808aef70845fea8f96c274c7f2a5743afaa"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-user-examples-check\\final-trace.zip",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-user-examples-check\\final-trace.zip",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-user-examples-check/final-trace.zip",
+      "bytes": 30777951,
+      "sha256": "0bb82d683b980949008f137c6cf9e20b1a9ee093fe8dfa2bcd64fc9381767f29"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-user-examples-check\\final-workbench.har",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-user-examples-check\\final-workbench.har",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-user-examples-check/final-workbench.har",
+      "bytes": 108412,
+      "sha256": "e6ddade388aaf38a17dc498a3981f5ec632236ed5fe6bd02602c4bf50f84802d"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-verified-release\\final-trace.zip",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-verified-release\\final-trace.zip",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-verified-release/final-trace.zip",
+      "bytes": 27873641,
+      "sha256": "3b7402b833998254d6b1d59170be6b907d580b8bfa4280121429f5e833dcb074"
+    },
+    {
+      "original": "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-verified-release\\final-workbench.har",
+      "archive": "E:\\osspj\\参赛提交-20261030\\调试归档-0.7\\project-os\\证据\\T-20261030-09-通用问题修复\\browser-verified-release\\final-workbench.har",
+      "relative_path": "project-os/证据/T-20261030-09-通用问题修复/browser-verified-release/final-workbench.har",
+      "bytes": 115378,
+      "sha256": "40948c507199aa989b160cc5e0ca81f2539671ae1baa78a9e9c2bf73e7f6533f"
+    }
+  ],
+  "note": "仅移动可选浏览器调试轨迹；原始字节与哈希保留，核心运行/模型/验收证据不移动。"
+}

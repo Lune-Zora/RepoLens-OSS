@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "c71a057f123d",
+    "buggy_parent": "2a17be730e11",
+    "test_cmd": "pytest tests/test_filesink_rotation.py::test_weekday_rotation_first_rotation_on_requested_weekday",
+    "issue": "first rotation of weekday at time ignoring the weekday",
+    "expected": [
+      "loguru/_file_sink.py:__init__:109"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:20:38",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 2,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "2a2c59e1c47d",
+    "buggy_parent": "36da8cca1445",
+    "test_cmd": "pytest tests/test_ansimarkup_extended.py::test_8bit_colors tests/test_ansimarkup_extended.py::test_hex_colors tests/test_ansimarkup_extended.py::test_hex_short_code_equals_long_code",
+    "issue": "hex color short code expansion",
+    "expected": [
+      "loguru/_colorizer.py:_get_ansicode:319"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:20:38",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 3,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "ffe1617122cc",
+    "buggy_parent": "62952bd97465",
+    "test_cmd": "pytest tests/test_standard_handler.py::test_standard_handler_with_configured_filter tests/test_standard_handler.py::test_standard_handler_with_configured_level",
+    "issue": "the .level of standard Handler previously ignored",
+    "expected": [
+      "loguru/_simple_sinks.py:write:70"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:20:38",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  },
+  {
+    "id": 4,
+    "project": "loguru",
+    "category": "bug",
+    "fix_commit": "7b30cd046a59",
+    "buggy_parent": "97a50cf75faf",
+    "test_cmd": "pytest tests/test_filesink_rotation.py::test_time_rotation",
+    "issue": "parsing of 12-hour rotation times without seconds",
+    "expected": [
+      "loguru/_string_parsers.py:parse_time:300"
+    ],
+    "fail_pass": true,
+    "verified_at": "2026-10-29T13:20:38",
+    "env_profile": "modern",
+    "validation_scope": "targeted"
+  }
+]

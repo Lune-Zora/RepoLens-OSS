@@ -1,0 +1,73 @@
+{
+  "after": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "framework": "unittest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n",
+      "stdout": "",
+      "structured": true,
+      "summary": {
+        "collected": 6,
+        "errors": 0,
+        "failed": 0,
+        "passed": 6,
+        "ran": 6,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_helper": "PASS",
+        "test_behavior.IndependentBehavior.test_invalid": "PASS",
+        "test_behavior.IndependentBehavior.test_short": "PASS",
+        "test_behavior.IndependentBehavior.test_tail": "PASS",
+        "test_behavior.IndependentBehavior.test_unit": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "before": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "framework": "unittest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "...FF.\n======================================================================\nFAIL: test_short (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_gdys_e_u\\__replens_acceptance__\\test_behavior.py\", line 6, in test_short\n    def test_short(self): self.assertEqual(api.partition([7],4),[[7]])\nAssertionError: Lists differ: [] != [[7]]\n\nSecond list contains 1 additional elements.\nFirst extra element 0:\n[7]\n\n- []\n+ [[7]]\n\n======================================================================\nFAIL: test_tail (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_gdys_e_u\\__replens_acceptance__\\test_behavior.py\", line 5, in test_tail\n    def test_tail(self): self.assertEqual(api.partition([0,1,2,3,4,5,6],3),[[0,1,2],[3,4,5],[6]])\nAssertionError: Lists differ: [[0, 1, 2], [3, 4, 5]] != [[0, 1, 2], [3, 4, 5], [6]]\n\nSecond list contains 1 additional elements.\nFirst extra element 2:\n[6]\n\n- [[0, 1, 2], [3, 4, 5]]\n+ [[0, 1, 2], [3, 4, 5], [6]]\n?                      ++++ +\n\n\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nFAILED (failures=2)\n",
+      "stdout": "",
+      "structured": true,
+      "summary": {
+        "collected": 6,
+        "errors": 0,
+        "failed": 2,
+        "passed": 4,
+        "ran": 6,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "test_behavior.IndependentBehavior.test_empty": "PASS",
+        "test_behavior.IndependentBehavior.test_helper": "PASS",
+        "test_behavior.IndependentBehavior.test_invalid": "PASS",
+        "test_behavior.IndependentBehavior.test_short": "FAIL",
+        "test_behavior.IndependentBehavior.test_tail": "FAIL",
+        "test_behavior.IndependentBehavior.test_unit": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "enabled": true,
+  "files": {
+    "__replens_acceptance__/test_behavior.py": "import unittest\nimport api\n\nclass IndependentBehavior(unittest.TestCase):\n    def test_tail(self): self.assertEqual(api.partition([0,1,2,3,4,5,6],3),[[0,1,2],[3,4,5],[6]])\n    def test_short(self): self.assertEqual(api.partition([7],4),[[7]])\n    def test_empty(self): self.assertEqual(api.partition([],3),[])\n    def test_unit(self): self.assertEqual(api.partition([5,6],1),[[5],[6]])\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.partition([1,2],-1)\n    def test_helper(self): self.assertEqual(api.flatten([[1],[],[2,3]]),[1,2,3])\n"
+  },
+  "sha256": "f0f142aebf3516a09983d768d27451de39576952e9c9800763c2df4a473764dd",
+  "timeout": 120
+}

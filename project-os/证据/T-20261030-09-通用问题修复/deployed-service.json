@@ -1,0 +1,66 @@
+{
+  "/api/env": {
+    "python": "3.10.11",
+    "llm": {
+      "base_url": "http://127.0.0.1:11434/v1",
+      "model": "qwen35-9b-unc:latest",
+      "configured": true,
+      "strict": true
+    },
+    "embedding": {
+      "remote": false,
+      "local": true
+    }
+  },
+  "/api/models": {
+    "models": [
+      "qwen25-7b-unc:latest",
+      "qwen35-9b-unc:latest",
+      "qwen2.5-coder:1.5b"
+    ],
+    "current": "qwen35-9b-unc:latest"
+  },
+  "/api/scenarios": [
+    {
+      "id": "config_values",
+      "name": "布尔配置解析",
+      "issue": "布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。",
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\config_values",
+      "acceptance_suite": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\validation\\config_values.json",
+      "kind": "constructed_independent_task",
+      "test_cmd": "python -m pytest tests"
+    },
+    {
+      "id": "sequence_blocks",
+      "name": "列表分块",
+      "issue": "列表分块时最后不足一个分块的元素也需要保留。输入为空时返回空列表，分块大小必须是正整数。",
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\sequence_blocks",
+      "acceptance_suite": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\validation\\sequence_blocks.json",
+      "kind": "constructed_independent_task",
+      "test_cmd": "python -m pytest tests"
+    },
+    {
+      "id": "numeric_interval",
+      "name": "数值区间边界",
+      "issue": "判断数字是否位于闭区间时，应当包含左右端点；上下界相同且值等于该边界时也应该返回真。区间外返回假。",
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\numeric_interval",
+      "acceptance_suite": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\validation\\numeric_interval.json",
+      "kind": "constructed_independent_task",
+      "test_cmd": "python -m pytest tests"
+    },
+    {
+      "id": "stable_unique",
+      "name": "保持顺序去重",
+      "issue": "对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。",
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\stable_unique",
+      "acceptance_suite": "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\validation\\stable_unique.json",
+      "kind": "constructed_independent_task",
+      "test_cmd": "python -m pytest tests"
+    }
+  ],
+  "/openapi.json": {
+    "title": "RepoLens-OSS",
+    "description": "开源贡献 Issue 定位 / 补丁生成 / 测试验证工作台",
+    "version": "0.7.0"
+  }
+}

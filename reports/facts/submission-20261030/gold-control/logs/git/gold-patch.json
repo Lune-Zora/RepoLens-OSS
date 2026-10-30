@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "git",
+    "--no-optional-locks",
+    "-c",
+    "safe.directory=E:/osspj/人工智能/tqdm",
+    "-c",
+    "safe.directory=E:/osspj/人工智能/tqdm/.git",
+    "-C",
+    "E:\\osspj\\人工智能\\tqdm",
+    "diff",
+    "--no-ext-diff",
+    "--binary",
+    "5bf58c2d61410e5a17da3440df921fe34c6c38bf",
+    "426a0988a1e9970041f5a649ae8a6376c5293fbe",
+    "--",
+    "tqdm/std.py"
+  ],
+  "returncode": 0,
+  "stdout_sha256": "60d3981ea45901075d0774f75f35a4da41f6dd16da5b73f8b2bdcee7b4386d04",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

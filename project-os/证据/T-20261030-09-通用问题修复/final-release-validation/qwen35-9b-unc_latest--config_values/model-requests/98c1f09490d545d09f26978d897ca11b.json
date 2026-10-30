@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T10:02:49.107760+00:00",
+  "purpose": "patch",
+  "context": {
+    "generation_round": 1,
+    "candidate_index": 2
+  },
+  "request": {
+    "model": "qwen35-9b-unc:latest",
+    "messages": [
+      {
+        "role": "system",
+        "content": "你是开源仓库修复专家。基于给定的代码证据与测试反馈，生成最小修改补丁。只允许修改标记为【可修改】的生产源码文件；标记为【仅供上下文，禁止修改】的测试文件只用于理解预期行为，绝不能出现在补丁里。from 字段必须是目标文件中逐字符一致的原文（含缩进与标点），且要包含足够上下文（可多行），保证在整个文件里唯一匹配。严格输出 JSON 对象，格式：{\"<相对路径>\": {\"from\": \"<原文>\", \"to\": \"<替换后>\"}}。若无法生成可靠补丁，输出 {\"reason\": \"<原因>\"}。不要输出任何多余文字。"
+      },
+      {
+        "role": "user",
+        "content": "问题描述：布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。\nExpected behavior: 当传入的布尔值字符串（如 'true'）前后包含空格、制表符或换行时，函数应能正确解析为布尔值；同时大小写不敏感（如 'TRUE', 'True'）。若字符串内容本身非 true/false（忽略前后空白后），则抛出 ValueError。\nFrozen model-proposed test cases: [{\"args\": [\" true \"], \"expected\": true, \"intent\": \"issue\", \"kwargs\": {}, \"normalize\": \"identity\", \"path\": \"api.py\", \"raises\": \"\", \"symbol\": \"read_flag\"}, {\"args\": [\"\\tfalse\\n\"], \"expected\": false, \"intent\": \"issue\", \"kwargs\": {}, \"normalize\": \"identity\", \"path\": \"api.py\", \"raises\": \"\", \"symbol\": \"read_flag\"}, {\"args\": [\"unknown\"], \"expected\": null, \"intent\": \"issue\", \"kwargs\": {}, \"normalize\": \"identity\", \"path\": \"api.py\", \"raises\": \"ValueError\", \"symbol\": \"read_flag\"}]\n\n代码证据：\n【可修改】文件 api.py:1 function read_flag 证据来源: 用户核心需求是处理‘布尔值字符串’（即字面量为 'true'/'false'）的边界情况（如前后空格），而候选函数 `read_flag` 仅将输入视为一个整体 key，未对字符串内部或前后的空白字符做剥离处理。因此，对于带空格的输入，它无法正确识别为布尔值，属于功能范围上的细微偏差。\n[代码开始]\ndef read_flag(value):\n    key = value.lower()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\"\n[代码结束]\n【仅供上下文，禁止修改】文件 api.py:8 function format_flag 证据来源: 符号名/文档命中关键词: flag, value\n[代码开始]\ndef format_flag(value):\n    return \"true\" if value else \"false\"\n[代码结束]\n【仅供上下文，禁止修改】文件 tests/test_public.py:4 class PublicTests 证据来源: 代码片段命中检索词（class @ tests/test_public.py:4）\n[代码开始]\nclass PublicTests(unittest.TestCase):\n    def test_true(self): self.assertIs(api.read_flag(\"true\"), True)\n    def test_false(self): self.assertIs(api.read_flag(\"FALSE\"), False)\n    def test_invalid(self):\n        with self.assertRaises(ValueError): api.read_flag(\"unknown\")\n    def test_format(self): self.assertEqual(api.format_flag(False), \"false\")\n[代码结束]\n【仅供上下文，禁止修改】文件 tests/test_public.py:5 method test_true 证据来源: 符号名/文档命中关键词: true\n[代码开始]\ndef test_true(self): self.assertIs(api.read_flag(\"true\"), True)\n[代码结束]"
+      }
+    ],
+    "temperature": 0.35,
+    "max_tokens": 2200,
+    "reasoning_effort": "none",
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "replens_response",
+        "strict": true,
+        "schema": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "api.py": {
+                  "type": "object",
+                  "properties": {
+                    "from": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "to": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "from",
+                    "to"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false,
+              "minProperties": 1
+            },
+            {
+              "type": "object",
+              "properties": {
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T10:02:53.008149+00:00",
+  "duration_seconds": 3.906,
+  "response_text": "{\"id\":\"chatcmpl-588\",\"object\":\"chat.completion\",\"created\":1793354573,\"model\":\"qwen35-9b-unc:latest\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"api.py\\\": {\\\"from\\\": \\\"def read_flag(value):\\\\n    key = value.lower()\\\\n    if key not in {\\\\\\\"true\\\\\\\", \\\\\\\"false\\\\\\\"}:\\\\n        raise ValueError(\\\\\\\"unsupported flag\\\\\\\")\\\\n    return key == \\\\\\\"true\\\\\\\"\\\", \\\"to\\\": \\\"def read_flag(value):\\\\n    key = value.strip().lower()\\\\n    if key not in {\\\\\\\"true\\\\\\\", \\\\\\\"false\\\\\\\"}:\\\\n        raise ValueError(\\\\\\\"unsupported flag\\\\\\\")\\\\n    return key == \\\\\\\"true\\\\\\\"\\\"}}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":810,\"prompt_tokens_details\":{\"cached_tokens\":806},\"completion_tokens\":104,\"total_tokens\":914}}\n",
+  "parsed": {
+    "api.py": {
+      "from": "def read_flag(value):\n    key = value.lower()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\"",
+      "to": "def read_flag(value):\n    key = value.strip().lower()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\""
+    }
+  },
+  "error": null,
+  "response_model": "qwen35-9b-unc:latest",
+  "usage": {
+    "prompt_tokens": 810,
+    "prompt_tokens_details": {
+      "cached_tokens": 806
+    },
+    "completion_tokens": 104,
+    "total_tokens": 914
+  }
+}

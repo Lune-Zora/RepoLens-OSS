@@ -1,0 +1,31 @@
+{
+  "title": "RepoLens-OSS 可视化工作台",
+  "pill": "Python 3.10.11\nLLM：已配置 qwen2.5-coder:1.5b，推理未验证\n向量：本地模型",
+  "errors": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8000/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/static/style.css",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/static/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/repos",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/datasets",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/env",
+      "status": 200
+    }
+  ]
+}

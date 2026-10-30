@@ -1,0 +1,1575 @@
+[
+ {
+  "id": 1,
+  "category": "bug",
+  "issue": "Resolve indirect widths in CID font /W arrays (#4267)",
+  "expected": [
+   "pypdf/generic/_font.py:_collect_cid_character_widths:241"
+  ],
+  "commit": "d1894af08967f41e539e88bedc6d2b94dc485dfe",
+  "parent": "82b91951dc74496bb3efe6465434f041bb6a5e6b",
+  "project": "pypdf",
+  "buggy_parent": "82b91951dc74496bb3efe6465434f041bb6a5e6b",
+  "fix_commit": "d1894af08967f41e539e88bedc6d2b94dc485dfe",
+  "test_files": [
+   "tests/generic/test_font.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_font.py"
+  ],
+  "validation": {
+   "id": 1,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/generic/test_font.py::test_font__collect_cid_character_widths__indirect_widths"
+   ]
+  }
+ },
+ {
+  "id": 2,
+  "category": "bug",
+  "issue": "Decode Unicode glyph names in font encodings (#4257)",
+  "expected": [
+   "pypdf/_cmap.py:_parse_encoding:142"
+  ],
+  "commit": "6a4caa10613282666301ddfe71128eff9ddb29cd",
+  "parent": "b891fef37000cd86baa6e9848a3387d080b3b03e",
+  "project": "pypdf",
+  "buggy_parent": "b891fef37000cd86baa6e9848a3387d080b3b03e",
+  "fix_commit": "6a4caa10613282666301ddfe71128eff9ddb29cd",
+  "test_files": [
+   "tests/test_cmap.py"
+  ],
+  "src_files": [
+   "pypdf/_cmap.py"
+  ],
+  "validation": {
+   "id": 2,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_cmap.py::test_get_encoding__unicode_glyph_names"
+   ]
+  }
+ },
+ {
+  "id": 3,
+  "category": "bug",
+  "issue": "Accept strings in viewer preference names (#4238)",
+  "expected": [
+   "pypdf/generic/_viewerpref.py:_set_name:72"
+  ],
+  "commit": "451e8b7d5e01f471c7f1222737f89d9d3f35de3f",
+  "parent": "6d804f0058751343c9b42bf07e2d34133b754e4f",
+  "project": "pypdf",
+  "buggy_parent": "6d804f0058751343c9b42bf07e2d34133b754e4f",
+  "fix_commit": "451e8b7d5e01f471c7f1222737f89d9d3f35de3f",
+  "test_files": [
+   "tests/generic/test_viewerpref.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_viewerpref.py"
+  ],
+  "validation": {
+   "id": 3,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/generic/test_viewerpref.py::test_viewer_preference_name_roundtrip",
+    "tests/generic/test_viewerpref.py::test_viewer_preference_name_rejects_invalid_value"
+   ]
+  }
+ },
+ {
+  "id": 4,
+  "category": "bug",
+  "issue": "Decode UniGB-UTF16 CMaps as UTF-16BE (#4231)",
+  "expected": [
+   "pypdf/_cmap.py"
+  ],
+  "commit": "b7eb7b9d6253876b2f0078651450ca1d4e0cb06b",
+  "parent": "885e7430cdf96b55b4ebaf2515e6efe46c396834",
+  "project": "pypdf",
+  "buggy_parent": "885e7430cdf96b55b4ebaf2515e6efe46c396834",
+  "fix_commit": "b7eb7b9d6253876b2f0078651450ca1d4e0cb06b",
+  "test_files": [
+   "tests/test_cmap.py"
+  ],
+  "src_files": [
+   "pypdf/_cmap.py"
+  ],
+  "validation": {
+   "id": 4,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_cmap.py::test_unigb_utf16_without_tounicode"
+   ]
+  }
+ },
+ {
+  "id": 5,
+  "category": "bug",
+  "issue": "Keep 8-bit DeviceRGB image mode (#4230)",
+  "expected": [
+   "pypdf/generic/_image_xobject.py:_get_mode_and_invert_color:489"
+  ],
+  "commit": "a91817ac1f8d98c0a50540c6333ed9ca99f163ea",
+  "parent": "b32df1d4cad45ce58fdddcbf9ebcbe166c0a822d",
+  "project": "pypdf",
+  "buggy_parent": "b32df1d4cad45ce58fdddcbf9ebcbe166c0a822d",
+  "fix_commit": "a91817ac1f8d98c0a50540c6333ed9ca99f163ea",
+  "test_files": [
+   "tests/generic/test_image_xobject.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_image_xobject.py"
+  ],
+  "validation": {
+   "id": 5,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/generic/test_image_xobject.py::test_device_rgb_mode_is_not_overwritten"
+   ]
+  }
+ },
+ {
+  "id": 6,
+  "category": "bug",
+  "issue": "Preserve all annotation quadrilaterals when merging pages (#4223)",
+  "expected": [
+   "pypdf/_page.py:_merge_page_writer:1453"
+  ],
+  "commit": "cf2dabb9bd14aebbb04e924d0c0e5737a938b97f",
+  "parent": "32fd5fbbce7616ff5a6a506c69ea986fd2861692",
+  "project": "pypdf",
+  "buggy_parent": "32fd5fbbce7616ff5a6a506c69ea986fd2861692",
+  "fix_commit": "cf2dabb9bd14aebbb04e924d0c0e5737a938b97f",
+  "test_files": [
+   "tests/test_page.py"
+  ],
+  "src_files": [
+   "pypdf/_page.py"
+  ],
+  "validation": {
+   "id": 6,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_page.py::test_merge_page_preserves_annotation_quad_points"
+   ]
+  }
+ },
+ {
+  "id": 7,
+  "category": "bug",
+  "issue": "Treat NUL as whitespace in ArrayObject (#4198)",
+  "expected": [
+   "pypdf/generic/_data_structures.py:read_from_stream:269"
+  ],
+  "commit": "f2f158a2b051818f4981b34ff15d1ca67b324611",
+  "parent": "4a296e43c59fde5efeafc2d057581155d9558268",
+  "project": "pypdf",
+  "buggy_parent": "4a296e43c59fde5efeafc2d057581155d9558268",
+  "fix_commit": "f2f158a2b051818f4981b34ff15d1ca67b324611",
+  "test_files": [
+   "tests/test_generic.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_data_structures.py"
+  ],
+  "validation": {
+   "id": 7,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_generic.py::test_read_array_with_nul_whitespace"
+   ]
+  }
+ },
+ {
+  "id": 8,
+  "category": "bug",
+  "issue": "Avoid overwriting unread objects in add_form_topname (#4190)",
+  "expected": [
+   "pypdf/_reader.py:add_form_topname:1613"
+  ],
+  "commit": "4a296e43c59fde5efeafc2d057581155d9558268",
+  "parent": "b29ac76fcd890db1b2f1ba5f387241a776520b1b",
+  "project": "pypdf",
+  "buggy_parent": "b29ac76fcd890db1b2f1ba5f387241a776520b1b",
+  "fix_commit": "4a296e43c59fde5efeafc2d057581155d9558268",
+  "test_files": [
+   "tests/test_reader.py"
+  ],
+  "src_files": [
+   "pypdf/_reader.py"
+  ],
+  "validation": {
+   "id": 8,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_reader.py::test_form_topname_preserves_unread_objects",
+    "tests/test_reader.py::test_form_topname_allocation_bounds"
+   ]
+  }
+ },
+ {
+  "id": 9,
+  "category": "bug",
+  "issue": "Read an indirect page box on a writer page (#4179)",
+  "expected": [
+   "pypdf/_page.py:_get_rectangle:134"
+  ],
+  "commit": "42c5f114b88f54e1baf338d36e4889d6f71fe746",
+  "parent": "55ffd5013ad08eedb4c09727815762eb1f1eb62a",
+  "project": "pypdf",
+  "buggy_parent": "55ffd5013ad08eedb4c09727815762eb1f1eb62a",
+  "fix_commit": "42c5f114b88f54e1baf338d36e4889d6f71fe746",
+  "test_files": [
+   "tests/test_page.py"
+  ],
+  "src_files": [
+   "pypdf/_page.py"
+  ],
+  "validation": {
+   "id": 9,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_page.py::test_get_rectangle__indirect_box_on_a_writer_page"
+   ]
+  }
+ },
+ {
+  "id": 10,
+  "category": "bug",
+  "issue": "Do not crash on an /Outlines reference to a free object (#4177)",
+  "expected": [
+   "pypdf/_doc_common.py:_get_outline:972"
+  ],
+  "commit": "55ffd5013ad08eedb4c09727815762eb1f1eb62a",
+  "parent": "628c06057308b76a21cc9779df601c7a321399fb",
+  "project": "pypdf",
+  "buggy_parent": "628c06057308b76a21cc9779df601c7a321399fb",
+  "fix_commit": "55ffd5013ad08eedb4c09727815762eb1f1eb62a",
+  "test_files": [
+   "tests/test_doc_common.py"
+  ],
+  "src_files": [
+   "pypdf/_doc_common.py"
+  ],
+  "validation": {
+   "id": 10,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_doc_common.py::test_outline__outlines_entry_references_a_free_object"
+   ]
+  }
+ },
+ {
+  "id": 11,
+  "category": "bug",
+  "issue": "Apply the sign of zero-hour XMP timezone offsets (#4182)",
+  "expected": [
+   "pypdf/xmp.py:_converter_date:135"
+  ],
+  "commit": "8ed783efc5e18c907b0d9b0ff92de43c3e7f89e9",
+  "parent": "b3f28fa8e1184aa319f62339dfeaaf7c3422eb0c",
+  "project": "pypdf",
+  "buggy_parent": "b3f28fa8e1184aa319f62339dfeaaf7c3422eb0c",
+  "fix_commit": "8ed783efc5e18c907b0d9b0ff92de43c3e7f89e9",
+  "test_files": [
+   "tests/test_xmp.py"
+  ],
+  "src_files": [
+   "pypdf/xmp.py"
+  ],
+  "validation": {
+   "id": 11,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_xmp.py::test_converter_date_minute_offsets",
+    "tests/test_xmp.py::test_read_xmp_date_with_positive_zero_hour_offset"
+   ]
+  }
+ },
+ {
+  "id": 12,
+  "category": "bug",
+  "issue": "Only read the colour operator from a text field's default appearance (#4158)",
+  "expected": [
+   "pypdf/generic/_appearance_stream.py"
+  ],
+  "commit": "b5557f06cc4675245a206a1a66cd866e2f453261",
+  "parent": "ece7730074487ef647dcaa941a5b10177fab7a15",
+  "project": "pypdf",
+  "buggy_parent": "ece7730074487ef647dcaa941a5b10177fab7a15",
+  "fix_commit": "b5557f06cc4675245a206a1a66cd866e2f453261",
+  "test_files": [
+   "tests/generic/test_appearance_stream.py",
+   "tests/generic/test_color.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_appearance_stream.py",
+   "pypdf/generic/_color.py"
+  ],
+  "validation": {
+   "id": 12,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/generic/test_appearance_stream.py::test_parse_default_appearance",
+    "tests/generic/test_appearance_stream.py::test_text_annotation_default_appearance_with_other_operators",
+    "tests/generic/test_color.py::test_color"
+   ]
+  }
+ },
+ {
+  "id": 13,
+  "category": "bug",
+  "issue": "Keep the text shown before a change of direction (#4155)",
+  "expected": [
+   "pypdf/_text_extraction/__init__.py:get_display_str:243"
+  ],
+  "commit": "11458e74b7208caefbd565bfcbdc6136d7ec56b7",
+  "parent": "93d357106d70d00ecb6376bd1d976ea2a1cfdd07",
+  "project": "pypdf",
+  "buggy_parent": "93d357106d70d00ecb6376bd1d976ea2a1cfdd07",
+  "fix_commit": "11458e74b7208caefbd565bfcbdc6136d7ec56b7",
+  "test_files": [
+   "tests/test_text_extraction.py",
+   "tests/text_extraction/test_text_extraction_cache.py"
+  ],
+  "src_files": [
+   "pypdf/_text_extraction/__init__.py",
+   "pypdf/_text_extraction/_text_extractor.py"
+  ],
+  "validation": {
+   "id": 13,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_text_extraction.py::test_text_before_a_change_of_direction_is_kept",
+    "tests/text_extraction/test_text_extraction_cache.py::test_get_display_str_caches_repeated_character_lookups"
+   ]
+  }
+ },
+ {
+  "id": 14,
+  "category": "bug",
+  "issue": "Keep wrapped table-cell text on one extracted line (#4132)",
+  "expected": [
+   "pypdf/_text_extraction/__init__.py:crlf_space_check:102"
+  ],
+  "commit": "93d357106d70d00ecb6376bd1d976ea2a1cfdd07",
+  "parent": "8c7d4441954d2ada4a9d5d08fca02926bfad5a00",
+  "project": "pypdf",
+  "buggy_parent": "8c7d4441954d2ada4a9d5d08fca02926bfad5a00",
+  "fix_commit": "93d357106d70d00ecb6376bd1d976ea2a1cfdd07",
+  "test_files": [
+   "tests/test_text_extraction.py"
+  ],
+  "src_files": [
+   "pypdf/_text_extraction/__init__.py",
+   "pypdf/_text_extraction/_text_extractor.py"
+  ],
+  "validation": {
+   "id": 14,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_text_extraction.py::test_wrapped_table_cell_line_is_not_split"
+   ]
+  }
+ },
+ {
+  "id": 15,
+  "category": "bug",
+  "issue": "Scale layout-mode space_tx into page space (#4128)",
+  "expected": [
+   "pypdf/_text_extraction/_layout_mode/_fixed_width_page.py:recurse_to_target_op:170"
+  ],
+  "commit": "175f6c0391aa508f2e0c2ae64cf06bfdf13aa8ce",
+  "parent": "ca99aa42994b2ef8355e2dae674190a858b06395",
+  "project": "pypdf",
+  "buggy_parent": "ca99aa42994b2ef8355e2dae674190a858b06395",
+  "fix_commit": "175f6c0391aa508f2e0c2ae64cf06bfdf13aa8ce",
+  "test_files": [
+   "tests/test_text_extraction.py"
+  ],
+  "src_files": [
+   "pypdf/_text_extraction/_layout_mode/_fixed_width_page.py"
+  ],
+  "validation": {
+   "id": 15,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_text_extraction.py::test_layout_mode_space_tx_scaled_into_page_space"
+   ]
+  }
+ },
+ {
+  "id": 16,
+  "category": "bug",
+  "issue": "Report the correct page number for identical pages (#4154)",
+  "expected": [
+   "pypdf/_page.py:page_number:1820"
+  ],
+  "commit": "ca99aa42994b2ef8355e2dae674190a858b06395",
+  "parent": "1fdc10f2ce45469400c2af045f4c2e6e552c17b7",
+  "project": "pypdf",
+  "buggy_parent": "1fdc10f2ce45469400c2af045f4c2e6e552c17b7",
+  "fix_commit": "ca99aa42994b2ef8355e2dae674190a858b06395",
+  "test_files": [
+   "tests/test_page.py"
+  ],
+  "src_files": [
+   "pypdf/_page.py"
+  ],
+  "validation": {
+   "id": 16,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_page.py::test_page_number_of_identical_pages",
+    "tests/test_page.py::test_page_number_of_named_destination"
+   ]
+  }
+ },
+ {
+  "id": 17,
+  "category": "bug",
+  "issue": "Decrypt the XMP metadata stream unless /EncryptMetadata is false (#4151)",
+  "expected": [
+   "pypdf/_reader.py:xmp_metadata:328"
+  ],
+  "commit": "b78c2aa5301ee4fb1ee024b9838923945ab357b6",
+  "parent": "fa9d5cbafbb4c8f6bc75b5feca8826d5ffbc3137",
+  "project": "pypdf",
+  "buggy_parent": "fa9d5cbafbb4c8f6bc75b5feca8826d5ffbc3137",
+  "fix_commit": "b78c2aa5301ee4fb1ee024b9838923945ab357b6",
+  "test_files": [
+   "tests/test_encryption.py"
+  ],
+  "src_files": [
+   "pypdf/_reader.py"
+  ],
+  "validation": {
+   "id": 17,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_encryption.py::test_xmp_metadata_of_encrypted_document",
+    "tests/test_encryption.py::test_xmp_metadata_with_cleartext_metadata"
+   ]
+  }
+ },
+ {
+  "id": 18,
+  "category": "bug",
+  "issue": "Raise a clear error for a rectangle without four values (#4123)",
+  "expected": [
+   "pypdf/generic/_rectangle.py:__init__:22"
+  ],
+  "commit": "59c1d74a0cc52d45b0dadd9e8736be6c1375b3b7",
+  "parent": "1758ef5fd95140597316dad06a6bc7f1fc452759",
+  "project": "pypdf",
+  "buggy_parent": "1758ef5fd95140597316dad06a6bc7f1fc452759",
+  "fix_commit": "59c1d74a0cc52d45b0dadd9e8736be6c1375b3b7",
+  "test_files": [
+   "tests/test_generic.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_rectangle.py"
+  ],
+  "validation": {
+   "id": 18,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_generic.py::test_rectangleobject__requires_four_values"
+   ]
+  }
+ },
+ {
+  "id": 19,
+  "category": "bug",
+  "issue": "FloatObject.hash_bin hashes the as_numeric method, not the value (#4129)",
+  "expected": [
+   "pypdf/generic/_base.py:hash_bin:535"
+  ],
+  "commit": "1758ef5fd95140597316dad06a6bc7f1fc452759",
+  "parent": "a776b495063520400f5a77681b07c9b10f73f920",
+  "project": "pypdf",
+  "buggy_parent": "a776b495063520400f5a77681b07c9b10f73f920",
+  "fix_commit": "1758ef5fd95140597316dad06a6bc7f1fc452759",
+  "test_files": [
+   "tests/test_generic.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_base.py"
+  ],
+  "validation": {
+   "id": 19,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_generic.py::test_missing_hashbin"
+   ]
+  }
+ },
+ {
+  "id": 20,
+  "category": "bug",
+  "issue": "Fixes for standard mode text extraction with simple fonts with difference encoding and ToUnicode CMap (#4124)",
+  "expected": [
+   "pypdf/_cmap.py:_parse_encoding:100"
+  ],
+  "commit": "d4c9a6239cf470e036fe042acb20352b0fda5a1e",
+  "parent": "d92bbcfbe9c4128b9d9b21aa92b87f400bbb6626",
+  "project": "pypdf",
+  "buggy_parent": "d92bbcfbe9c4128b9d9b21aa92b87f400bbb6626",
+  "fix_commit": "d4c9a6239cf470e036fe042acb20352b0fda5a1e",
+  "test_files": [
+   "tests/test_font.py",
+   "tests/text_extraction/test_text_extraction_cache.py"
+  ],
+  "src_files": [
+   "pypdf/_cmap.py",
+   "pypdf/_font.py",
+   "pypdf/_text_extraction/__init__.py"
+  ],
+  "validation": {
+   "id": 20,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_font.py::test_simple_font_space_char_with_tounicode_cmap",
+    "tests/text_extraction/test_text_extraction_cache.py::test_get_display_str_caches_repeated_character_lookups",
+    "tests/text_extraction/test_text_extraction_cache.py::test_get_text_operands_cache_is_scoped_to_each_call",
+    "tests/text_extraction/test_text_extraction_cache.py::test_get_display_str_invalidates_caches_after_visitor_callback",
+    "tests/text_extraction/test_text_extraction_cache.py::test_get_text_operands_caches_repeated_character_lookups",
+    "tests/text_extraction/test_text_extraction_cache.py::test_get_text_operands_dict_encoding_byte_caching"
+   ]
+  }
+ },
+ {
+  "id": 21,
+  "category": "bug",
+  "issue": "Layout mode text extraction: Use raw character codes in word_tx for width calculation (#4116)",
+  "expected": [
+   "pypdf/_text_extraction/_layout_mode/_text_state_params.py:TextStateParams:56"
+  ],
+  "commit": "25c5cdb038fef9415da522d1398eec8d91f52397",
+  "parent": "2c536fc1d2eeea63581d5d13dad60c53eda53761",
+  "project": "pypdf",
+  "buggy_parent": "2c536fc1d2eeea63581d5d13dad60c53eda53761",
+  "fix_commit": "25c5cdb038fef9415da522d1398eec8d91f52397",
+  "test_files": [
+   "tests/test_text_extraction.py"
+  ],
+  "src_files": [
+   "pypdf/_text_extraction/_layout_mode/_text_state_params.py"
+  ],
+  "validation": {
+   "id": 21,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_text_extraction.py::test_text_state_params__unicode_decode_error",
+    "tests/test_text_extraction.py::test_simple_font_character_widths_with_differences_encoding"
+   ]
+  }
+ },
+ {
+  "id": 22,
+  "category": "bug",
+  "issue": "Remove duplicate visitor_text callback for Form XObject text (#4100)",
+  "expected": [
+   "pypdf/_page.py:_extract_text:1982"
+  ],
+  "commit": "f0b34a2879173df71467a889ce848e7064bbfb34",
+  "parent": "df5397d680b11619ed2c9498eb4ad9d1cc245aaa",
+  "project": "pypdf",
+  "buggy_parent": "df5397d680b11619ed2c9498eb4ad9d1cc245aaa",
+  "fix_commit": "f0b34a2879173df71467a889ce848e7064bbfb34",
+  "test_files": [
+   "tests/test_text_extraction.py"
+  ],
+  "src_files": [
+   "pypdf/_page.py"
+  ],
+  "validation": {
+   "id": 22,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_text_extraction.py::test_visitor_text_reports_form_xobject_text_once"
+   ]
+  }
+ },
+ {
+  "id": 23,
+  "category": "bug",
+  "issue": "Release content streams replaced by replace_contents() (#4088)",
+  "expected": [
+   "pypdf/_page.py:replace_contents:1177"
+  ],
+  "commit": "27d592f5af257b89d67074be905dbedabe50b5fa",
+  "parent": "095d5af1dacc6c5fcfe7cde1dca0d33e56c7810e",
+  "project": "pypdf",
+  "buggy_parent": "095d5af1dacc6c5fcfe7cde1dca0d33e56c7810e",
+  "fix_commit": "27d592f5af257b89d67074be905dbedabe50b5fa",
+  "test_files": [
+   "tests/test_page.py"
+  ],
+  "src_files": [
+   "pypdf/_page.py"
+  ],
+  "validation": {
+   "id": 23,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_page.py::test_compress_content_streams_releases_replaced_streams",
+    "tests/test_page.py::test_replace_contents_skips_direct_array_entries"
+   ]
+  }
+ },
+ {
+  "id": 24,
+  "category": "bug",
+  "issue": "Use the page top for a named destination instead of a fixed value (#4099)",
+  "expected": [
+   "pypdf/_writer.py:add_named_destination:1966"
+  ],
+  "commit": "d970841341d6d95d9a7a3390a24a1675e5fab05a",
+  "parent": "8202d2a2ba4703e7afad13b994dc92c20f7eb726",
+  "project": "pypdf",
+  "buggy_parent": "8202d2a2ba4703e7afad13b994dc92c20f7eb726",
+  "fix_commit": "d970841341d6d95d9a7a3390a24a1675e5fab05a",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py"
+  ],
+  "validation": {
+   "id": 24,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_add_named_destination__fit_h_uses_the_page_top"
+   ]
+  }
+ },
+ {
+  "id": 25,
+  "category": "bug",
+  "issue": "Avoid link mismatch warnings for excluded annotations (#4092)",
+  "expected": [
+   "pypdf/_writer.py:_add_page:566"
+  ],
+  "commit": "ca60531d3ca90d71c02f55ff23c30a6f6ec9a764",
+  "parent": "6eb7ca2e7bc129944163609c37c339c4a679e56d",
+  "project": "pypdf",
+  "buggy_parent": "6eb7ca2e7bc129944163609c37c339c4a679e56d",
+  "fix_commit": "ca60531d3ca90d71c02f55ff23c30a6f6ec9a764",
+  "test_files": [
+   "tests/generic/test_link.py",
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py"
+  ],
+  "validation": {
+   "id": 25,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/generic/test_link.py::test_extract_links_warns_when_internal_links_are_missing",
+    "tests/test_writer.py::test_transfer_internal_links_without_spurious_warnings"
+   ]
+  }
+ },
+ {
+  "id": 26,
+  "category": "bug",
+  "issue": "Do not copy unrelated pages when appending pages with non-terminal fields (#4078)",
+  "expected": [
+   "pypdf/_writer.py:merge:2829"
+  ],
+  "commit": "a92443848fda10cc2a65a7b6397fd8e1986c17d2",
+  "parent": "cf5cec2e49b9da8fae0d82a0f99f1bfe9eceb8ed",
+  "project": "pypdf",
+  "buggy_parent": "cf5cec2e49b9da8fae0d82a0f99f1bfe9eceb8ed",
+  "fix_commit": "a92443848fda10cc2a65a7b6397fd8e1986c17d2",
+  "test_files": [
+   "tests/test_merger.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py"
+  ],
+  "validation": {
+   "id": 26,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_merger.py::test_append_page_with_non_terminal_fields",
+    "tests/test_merger.py::test_merge_widget_with_non_dictionary_parent",
+    "tests/test_merger.py::test_merge_widget_with_cyclic_parent_chain"
+   ]
+  }
+ },
+ {
+  "id": 27,
+  "category": "bug",
+  "issue": "Use page reference for existing internal link targets (#4076)",
+  "expected": [
+   "pypdf/_writer.py:add_annotation:2552"
+  ],
+  "commit": "cf5cec2e49b9da8fae0d82a0f99f1bfe9eceb8ed",
+  "parent": "96d81f05ba4b3ec9ff1b3c3e52bc71a3cdd702c7",
+  "project": "pypdf",
+  "buggy_parent": "96d81f05ba4b3ec9ff1b3c3e52bc71a3cdd702c7",
+  "fix_commit": "cf5cec2e49b9da8fae0d82a0f99f1bfe9eceb8ed",
+  "test_files": [
+   "tests/test_annotations.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py"
+  ],
+  "validation": {
+   "id": 27,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_annotations.py::test_link__existing_target_uses_indirect_reference",
+    "tests/test_annotations.py::test_link__future_target_preserves_page_index",
+    "tests/test_annotations.py::test_link__completed_destination_is_preserved"
+   ]
+  }
+ },
+ {
+  "id": 28,
+  "category": "bug",
+  "issue": "Arabic-Indic digits are reversed during text extraction (#4077)",
+  "expected": [
+   "pypdf/_utils.py:is_char_neutral:253"
+  ],
+  "commit": "96d81f05ba4b3ec9ff1b3c3e52bc71a3cdd702c7",
+  "parent": "2d219015b4cf92edcfd6d28c564295f0704fd204",
+  "project": "pypdf",
+  "buggy_parent": "2d219015b4cf92edcfd6d28c564295f0704fd204",
+  "fix_commit": "96d81f05ba4b3ec9ff1b3c3e52bc71a3cdd702c7",
+  "test_files": [
+   "tests/test_text_extraction.py"
+  ],
+  "src_files": [
+   "pypdf/_utils.py"
+  ],
+  "validation": {
+   "id": 28,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_text_extraction.py::test_arabic_indic_digits_keep_their_order"
+   ]
+  }
+ },
+ {
+  "id": 29,
+  "category": "bug",
+  "issue": "Parse a string rect for add_uri into a rectangle (#4074)",
+  "expected": [
+   "pypdf/_writer.py:add_uri:2326"
+  ],
+  "commit": "3a1111d65ce463d03d9d0b7eaf731d7b993ba3d1",
+  "parent": "d26df365f60c63802aa743c7b7c61b7223a71da3",
+  "project": "pypdf",
+  "buggy_parent": "d26df365f60c63802aa743c7b7c61b7223a71da3",
+  "fix_commit": "3a1111d65ce463d03d9d0b7eaf731d7b993ba3d1",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py"
+  ],
+  "validation": {
+   "id": 29,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_add_uri"
+   ]
+  }
+ },
+ {
+  "id": 30,
+  "category": "bug",
+  "issue": "Use current text matrix for visitor_text (#4062)",
+  "expected": [
+   "pypdf/_text_extraction/_text_extractor.py:_post_process_text_operation:160"
+  ],
+  "commit": "735d284ca9757fc1b0081837d717caa1eb707025",
+  "parent": "808a318693e1ead5a0b2a0a52bb39e4c76d84e02",
+  "project": "pypdf",
+  "buggy_parent": "808a318693e1ead5a0b2a0a52bb39e4c76d84e02",
+  "fix_commit": "735d284ca9757fc1b0081837d717caa1eb707025",
+  "test_files": [
+   "tests/test_text_extraction.py"
+  ],
+  "src_files": [
+   "pypdf/_text_extraction/_text_extractor.py"
+  ],
+  "validation": {
+   "id": 30,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_text_extraction.py::test_visitor_text_uses_current_text_matrix"
+   ]
+  }
+ },
+ {
+  "id": 31,
+  "category": "bug",
+  "issue": "Repeat the letter for /S /A and /S /a page labels past Z (#4065)",
+  "expected": [
+   "pypdf/_page_labels.py:number2uppercase_letter:118"
+  ],
+  "commit": "c38feda0edff9ed2646ed87ddb731fc210b81c10",
+  "parent": "3f7bc193bcc0a917e53b1e505e3f5ce55d43e841",
+  "project": "pypdf",
+  "buggy_parent": "3f7bc193bcc0a917e53b1e505e3f5ce55d43e841",
+  "fix_commit": "c38feda0edff9ed2646ed87ddb731fc210b81c10",
+  "test_files": [
+   "tests/test_page_labels.py"
+  ],
+  "src_files": [
+   "pypdf/_page_labels.py"
+  ],
+  "validation": {
+   "id": 31,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_page_labels.py::test_number2lowercase_letter",
+    "tests/test_page_labels.py::test_number2uppercase_letter__repeats_the_same_letter",
+    "tests/test_page_labels.py::test_get_label_from_nums__letter_style_past_z"
+   ]
+  }
+ },
+ {
+  "id": 32,
+  "category": "bug",
+  "issue": "ROB: Fix compatibility for fonttools < 4.57.0 (#4050)",
+  "expected": [
+   "pypdf/_font.py:from_truetype_font_file:577"
+  ],
+  "commit": "d80ccfc79d94ae48035b4ecef1e605ff532a99b8",
+  "parent": "7bb71dd911553eeb27b149aa00804234a7f0eeae",
+  "project": "pypdf",
+  "buggy_parent": "7bb71dd911553eeb27b149aa00804234a7f0eeae",
+  "fix_commit": "d80ccfc79d94ae48035b4ecef1e605ff532a99b8",
+  "test_files": [
+   "tests/test_font.py"
+  ],
+  "src_files": [
+   "pypdf/_font.py"
+  ],
+  "validation": {
+   "id": 32,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_font.py::test_font_old_fonttools_substitution"
+   ]
+  }
+ },
+ {
+  "id": 33,
+  "category": "bug",
+  "issue": "STY: Fix typos in comment and test names (#4057)",
+  "expected": [
+   "pypdf/_page.py:_get_page_resources:102"
+  ],
+  "commit": "3f37f47bd4d4760e72355f0df1fcfcf827ad9144",
+  "parent": "948c9b5d72fc9da587dd7cdcd2b2dacac34c3439",
+  "project": "pypdf",
+  "buggy_parent": "948c9b5d72fc9da587dd7cdcd2b2dacac34c3439",
+  "fix_commit": "3f37f47bd4d4760e72355f0df1fcfcf827ad9144",
+  "test_files": [
+   "tests/test_actions.py",
+   "tests/test_generic.py",
+   "tests/test_page.py"
+  ],
+  "src_files": [
+   "pypdf/_page.py",
+   "pypdf/filters.py",
+   "pypdf/generic/_data_structures.py"
+  ],
+  "validation": {
+   "id": 33,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 34,
+  "category": "bug",
+  "issue": "Use font color for FreeText default appearance (#4051)",
+  "expected": [
+   "pypdf/annotations/_markup_annotations.py:__init__:166"
+  ],
+  "commit": "231698766174a1ab1cd5c41cf3e4cca716071560",
+  "parent": "d8fe3e733bfda007aafc609378920e554ea5c092",
+  "project": "pypdf",
+  "buggy_parent": "d8fe3e733bfda007aafc609378920e554ea5c092",
+  "fix_commit": "231698766174a1ab1cd5c41cf3e4cca716071560",
+  "test_files": [
+   "tests/test_annotations.py"
+  ],
+  "src_files": [
+   "pypdf/annotations/_markup_annotations.py"
+  ],
+  "validation": {
+   "id": 34,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_annotations.py::test_free_text__font_color"
+   ]
+  }
+ },
+ {
+  "id": 35,
+  "category": "bug",
+  "issue": "Do not read indirect_reference off a direct /Dests dictionary (#4028)",
+  "expected": [
+   "pypdf/_doc_common.py:get_named_dest_root:441"
+  ],
+  "commit": "a692202de32adef695fd38c29499280fba53175a",
+  "parent": "5c2ec34dca41fa246ed1ab41f7ce671504e7f61b",
+  "project": "pypdf",
+  "buggy_parent": "5c2ec34dca41fa246ed1ab41f7ce671504e7f61b",
+  "fix_commit": "a692202de32adef695fd38c29499280fba53175a",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/_doc_common.py"
+  ],
+  "validation": {
+   "id": 35,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_append_with_direct_dests_dictionary"
+   ]
+  }
+ },
+ {
+  "id": 36,
+  "category": "bug",
+  "issue": "Check the page label style and type it as the strings it accepts (#4017)",
+  "expected": [
+   "pypdf/_writer.py:set_page_label:3290"
+  ],
+  "commit": "13b5ffc10d307b6c57f08db4918675feb570fc14",
+  "parent": "0b0721e7f99f3437659aa62642fa0cb7cd9eacf6",
+  "project": "pypdf",
+  "buggy_parent": "0b0721e7f99f3437659aa62642fa0cb7cd9eacf6",
+  "fix_commit": "13b5ffc10d307b6c57f08db4918675feb570fc14",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py",
+   "pypdf/constants.py"
+  ],
+  "validation": {
+   "id": 36,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_set_page_label",
+    "tests/test_writer.py::test_set_page_label_accepts_the_spec_styles",
+    "tests/test_writer.py::test_set_page_label_rejects_other_styles"
+   ]
+  }
+ },
+ {
+  "id": 37,
+  "category": "bug",
+  "issue": "Report an out-of-range page number when adding a destination or URI (#4016)",
+  "expected": [
+   "pypdf/_writer.py:add_named_destination:1952"
+  ],
+  "commit": "0b0721e7f99f3437659aa62642fa0cb7cd9eacf6",
+  "parent": "a1f510c940ed653bfe60e08263359675cc2ba7a6",
+  "project": "pypdf",
+  "buggy_parent": "a1f510c940ed653bfe60e08263359675cc2ba7a6",
+  "fix_commit": "0b0721e7f99f3437659aa62642fa0cb7cd9eacf6",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py"
+  ],
+  "validation": {
+   "id": 37,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_add_named_destination_out_of_range",
+    "tests/test_writer.py::test_add_uri_out_of_range",
+    "tests/test_writer.py::test_add_named_destination_in_range"
+   ]
+  }
+ },
+ {
+  "id": 38,
+  "category": "bug",
+  "issue": "Detect a duplicate dictionary key whose first value is falsy (#4024)",
+  "expected": [
+   "pypdf/generic/_data_structures.py:read_from_stream:633"
+  ],
+  "commit": "a1f510c940ed653bfe60e08263359675cc2ba7a6",
+  "parent": "d85ef0faf7853d242ef200ed6e475b80267b5664",
+  "project": "pypdf",
+  "buggy_parent": "d85ef0faf7853d242ef200ed6e475b80267b5664",
+  "fix_commit": "a1f510c940ed653bfe60e08263359675cc2ba7a6",
+  "test_files": [
+   "tests/generic/test_data_structures.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_data_structures.py"
+  ],
+  "validation": {
+   "id": 38,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/generic/test_data_structures.py::test_dictionary_object__duplicate_key_with_falsy_first_value__strict",
+    "tests/generic/test_data_structures.py::test_dictionary_object__duplicate_key_with_falsy_first_value__non_strict",
+    "tests/generic/test_data_structures.py::test_dictionary_object__duplicate_key_with_non_falsy_first_value__strict",
+    "tests/generic/test_data_structures.py::test_dictionary_object__different_keys_with_falsy_first_value"
+   ]
+  }
+ },
+ {
+  "id": 39,
+  "category": "bug",
+  "issue": "Reject a negative number of copies (#4012)",
+  "expected": [
+   "pypdf/generic/_viewerpref.py:_get_int:99"
+  ],
+  "commit": "295594900e35f8d7628c13c05f5d28d9b29ef990",
+  "parent": "b0ec95d9392232b3873bf2dd8d9179095734ca16",
+  "project": "pypdf",
+  "buggy_parent": "b0ec95d9392232b3873bf2dd8d9179095734ca16",
+  "fix_commit": "295594900e35f8d7628c13c05f5d28d9b29ef990",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_viewerpref.py"
+  ],
+  "validation": {
+   "id": 39,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_num_copies_rejects_negative",
+    "tests/test_writer.py::test_num_copies_accepts_zero_and_above"
+   ]
+  }
+ },
+ {
+  "id": 40,
+  "category": "bug",
+  "issue": "Check the box names assigned to the area and clip preferences (#4014)",
+  "expected": [
+   "pypdf/generic/_viewerpref.py:__new__:156"
+  ],
+  "commit": "b0ec95d9392232b3873bf2dd8d9179095734ca16",
+  "parent": "38170a2be6516e41ee2edf34f61257750dd179ab",
+  "project": "pypdf",
+  "buggy_parent": "38170a2be6516e41ee2edf34f61257750dd179ab",
+  "fix_commit": "b0ec95d9392232b3873bf2dd8d9179095734ca16",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_viewerpref.py"
+  ],
+  "validation": {
+   "id": 40,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_box_preferences_accept_the_page_boxes",
+    "tests/test_writer.py::test_box_preferences_reject_other_names"
+   ]
+  }
+ },
+ {
+  "id": 41,
+  "category": "bug",
+  "issue": "Reject an odd-length print page range (#4013)",
+  "expected": [
+   "pypdf/generic/_viewerpref.py:_set_arr:76"
+  ],
+  "commit": "38170a2be6516e41ee2edf34f61257750dd179ab",
+  "parent": "8687d2504d09887c8e0e252dad5f9c0fb02c1bb7",
+  "project": "pypdf",
+  "buggy_parent": "8687d2504d09887c8e0e252dad5f9c0fb02c1bb7",
+  "fix_commit": "38170a2be6516e41ee2edf34f61257750dd179ab",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_viewerpref.py"
+  ],
+  "validation": {
+   "id": 41,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_print_pagerange_rejects_an_odd_length",
+    "tests/test_writer.py::test_print_pagerange_accepts_page_pairs"
+   ]
+  }
+ },
+ {
+  "id": 42,
+  "category": "bug",
+  "issue": "Check the value assigned to print_scaling (#4011)",
+  "expected": [
+   "pypdf/generic/_viewerpref.py:__new__:154"
+  ],
+  "commit": "e1abeb088f3458c10c07f90ec02c2b3bf814ef7a",
+  "parent": "29f389c4fc8a45d3f0cef48065e22d3fbecf4757",
+  "project": "pypdf",
+  "buggy_parent": "29f389c4fc8a45d3f0cef48065e22d3fbecf4757",
+  "fix_commit": "e1abeb088f3458c10c07f90ec02c2b3bf814ef7a",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_viewerpref.py"
+  ],
+  "validation": {
+   "id": 42,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_print_scaling_accepts_the_spec_values",
+    "tests/test_writer.py::test_print_scaling_rejects_other_values"
+   ]
+  }
+ },
+ {
+  "id": 43,
+  "category": "bug",
+  "issue": "List the valid layouts in the page layout warning (#4010)",
+  "expected": [
+   "pypdf/_writer.py:_set_page_layout:2395"
+  ],
+  "commit": "29f389c4fc8a45d3f0cef48065e22d3fbecf4757",
+  "parent": "9344ad6517daa1b7564b3777946df004120fadc0",
+  "project": "pypdf",
+  "buggy_parent": "9344ad6517daa1b7564b3777946df004120fadc0",
+  "fix_commit": "29f389c4fc8a45d3f0cef48065e22d3fbecf4757",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py"
+  ],
+  "validation": {
+   "id": 43,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_page_layout_warning_lists_the_valid_layouts",
+    "tests/test_writer.py::test_page_mode_warning_lists_the_valid_modes"
+   ]
+  }
+ },
+ {
+  "id": 44,
+  "category": "bug",
+  "issue": "Reject a page range with a zero stride (#4004)",
+  "expected": [
+   "pypdf/pagerange.py:__init__:77"
+  ],
+  "commit": "98e649e78f8c2295747bc281becef359f14e79ff",
+  "parent": "db93ea6554a394dbfac25ac2d5c8f3d1e10609dd",
+  "project": "pypdf",
+  "buggy_parent": "db93ea6554a394dbfac25ac2d5c8f3d1e10609dd",
+  "fix_commit": "98e649e78f8c2295747bc281becef359f14e79ff",
+  "test_files": [
+   "tests/test_pagerange.py"
+  ],
+  "src_files": [
+   "pypdf/pagerange.py"
+  ],
+  "validation": {
+   "id": 44,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_pagerange.py::test_str_init_zero_step",
+    "tests/test_pagerange.py::test_valid"
+   ]
+  }
+ },
+ {
+  "id": 45,
+  "category": "bug",
+  "issue": "Make is_open=False collapse outline items (#3998)",
+  "expected": [
+   "pypdf/_writer.py:add_outline_item_destination:1808"
+  ],
+  "commit": "db93ea6554a394dbfac25ac2d5c8f3d1e10609dd",
+  "parent": "bc1a49f75af9783ee08f09e9e281c163749678c2",
+  "project": "pypdf",
+  "buggy_parent": "bc1a49f75af9783ee08f09e9e281c163749678c2",
+  "fix_commit": "db93ea6554a394dbfac25ac2d5c8f3d1e10609dd",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py"
+  ],
+  "validation": {
+   "id": 45,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_add_outline_item",
+    "tests/test_writer.py::test_add_outline_item_collapsed",
+    "tests/test_writer.py::test_add_outline_item_nested_count"
+   ]
+  }
+ },
+ {
+  "id": 46,
+  "category": "bug",
+  "issue": "Make remove_from_tree() work on outline items (#3939)",
+  "expected": [
+   "pypdf/generic/_data_structures.py:remove_child:912"
+  ],
+  "commit": "f6853ccd3ff492309c84060186aabc88ed472ffd",
+  "parent": "c6d38af1c561c629cd6965f611e8afad9b445ab0",
+  "project": "pypdf",
+  "buggy_parent": "c6d38af1c561c629cd6965f611e8afad9b445ab0",
+  "fix_commit": "f6853ccd3ff492309c84060186aabc88ed472ffd",
+  "test_files": [
+   "tests/generic/test_data_structures.py"
+  ],
+  "src_files": [
+   "pypdf/generic/_data_structures.py"
+  ],
+  "validation": {
+   "id": 46,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/generic/test_data_structures.py::test_remove_from_tree_on_outline_item",
+    "tests/generic/test_data_structures.py::test_remove_from_tree_on_outline_item_without_clone",
+    "tests/generic/test_data_structures.py::test_remove_from_tree_on_nested_outline_item",
+    "tests/generic/test_data_structures.py::test_remove_from_tree_on_destination_without_node",
+    "tests/generic/test_data_structures.py::test_remove_from_tree_on_node_already_detached"
+   ]
+  }
+ },
+ {
+  "id": 47,
+  "category": "bug",
+  "issue": "Be more lenient about space width in layout mode text extraction (#3992)",
+  "expected": [
+   "pypdf/_text_extraction/_layout_mode/_fixed_width_page.py:recurse_to_target_op:171"
+  ],
+  "commit": "412975a86033ec2d66c6e4cfd73afd85390a7db0",
+  "parent": "ddbfea942cadd1594cb3902a27289a53ca637204",
+  "project": "pypdf",
+  "buggy_parent": "ddbfea942cadd1594cb3902a27289a53ca637204",
+  "fix_commit": "412975a86033ec2d66c6e4cfd73afd85390a7db0",
+  "test_files": [
+   "tests/test_text_extraction.py"
+  ],
+  "src_files": [
+   "pypdf/_text_extraction/_layout_mode/_fixed_width_page.py"
+  ],
+  "validation": {
+   "id": 47,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_text_extraction.py::test_recurse_to_target_op__excessive_intra_group_spacing"
+   ]
+  }
+ },
+ {
+  "id": 48,
+  "category": "bug",
+  "issue": "Interpolate the reader in the reset_translation error message (#3981)",
+  "expected": [
+   "pypdf/_writer.py:reset_translation:3240"
+  ],
+  "commit": "ddbfea942cadd1594cb3902a27289a53ca637204",
+  "parent": "c646ef24857f152afdf84f8b5f8a9d4097bae258",
+  "project": "pypdf",
+  "buggy_parent": "c646ef24857f152afdf84f8b5f8a9d4097bae258",
+  "fix_commit": "ddbfea942cadd1594cb3902a27289a53ca637204",
+  "test_files": [
+   "tests/test_writer.py"
+  ],
+  "src_files": [
+   "pypdf/_writer.py"
+  ],
+  "validation": {
+   "id": 48,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_writer.py::test_reset_translation_invalid_parameter"
+   ]
+  }
+ },
+ {
+  "id": 49,
+  "category": "bug",
+  "issue": "Do not scale the text leading by the font size (#3987)",
+  "expected": [
+   "pypdf/_text_extraction/__init__.py:crlf_space_check:122"
+  ],
+  "commit": "31b32980f85a68c821349b006d7258044717a75e",
+  "parent": "7595da3201604309ab8d96afdc6f2e8bc661b3cd",
+  "project": "pypdf",
+  "buggy_parent": "7595da3201604309ab8d96afdc6f2e8bc661b3cd",
+  "fix_commit": "31b32980f85a68c821349b006d7258044717a75e",
+  "test_files": [
+   "tests/test_text_extraction.py"
+  ],
+  "src_files": [
+   "pypdf/_text_extraction/__init__.py",
+   "pypdf/_text_extraction/_text_extractor.py"
+  ],
+  "validation": {
+   "id": 49,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_text_extraction.py::test_text_leading_is_not_scaled_by_font_size",
+    "tests/test_text_extraction.py::test_line_breaks_with_scaled_current_matrix"
+   ]
+  }
+ },
+ {
+  "id": 50,
+  "category": "bug",
+  "issue": "Update annotation appearance stream matrix on page transform (#3968)",
+  "expected": [
+   "pypdf/_page.py:_merge_page_writer:1404"
+  ],
+  "commit": "7595da3201604309ab8d96afdc6f2e8bc661b3cd",
+  "parent": "a548e4126ddd96711e05c6017d97f393d45e3765",
+  "project": "pypdf",
+  "buggy_parent": "a548e4126ddd96711e05c6017d97f393d45e3765",
+  "fix_commit": "7595da3201604309ab8d96afdc6f2e8bc661b3cd",
+  "test_files": [
+   "tests/test_appearance_stream.py"
+  ],
+  "src_files": [
+   "pypdf/_page.py",
+   "pypdf/generic/_appearance_stream.py"
+  ],
+  "validation": {
+   "id": 50,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_appearance_stream.py::test_merge_transformed_page_annotation_with_ap_but_no_normal_state",
+    "tests/test_appearance_stream.py::test_merge_transformed_page_annotation_with_malformed_normal_state",
+    "tests/test_appearance_stream.py::test_merge_transformed_page_updates_annotation_appearance_matrix",
+    "tests/test_appearance_stream.py::test_merge_transformed_page_composes_existing_annotation_matrix",
+    "tests/test_appearance_stream.py::test_merge_transformed_page_annotation_without_appearance_stream",
+    "tests/test_appearance_stream.py::test_merge_transformed_page_annotation_with_multi_state_appearance"
+   ]
+  }
+ },
+ {
+  "id": 51,
+  "category": "bug",
+  "issue": "Accept an ArrayObject when constructing a RectangleObject (#3984)",
+  "expected": [
+   "pypdf/_page.py:create_blank_page:622"
+  ],
+  "commit": "d8809f2b49fe07a5513bda480a291fd26563b336",
+  "parent": "f98acfdc9702499c837575ba0c9fea69063c17ca",
+  "project": "pypdf",
+  "buggy_parent": "f98acfdc9702499c837575ba0c9fea69063c17ca",
+  "fix_commit": "d8809f2b49fe07a5513bda480a291fd26563b336",
+  "test_files": [
+   "tests/test_generic.py"
+  ],
+  "src_files": [
+   "pypdf/_page.py",
+   "pypdf/generic/_rectangle.py"
+  ],
+  "validation": {
+   "id": 51,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 52,
+  "category": "bug",
+  "issue": "Collect the fonts declared in the AcroForm /DR dictionary (#3983)",
+  "expected": [
+   "pypdf/_page.py:process_font:2530"
+  ],
+  "commit": "f98acfdc9702499c837575ba0c9fea69063c17ca",
+  "parent": "b45aeba7b1ffd93d3a2414d1ce8c5115370be965",
+  "project": "pypdf",
+  "buggy_parent": "b45aeba7b1ffd93d3a2414d1ce8c5115370be965",
+  "fix_commit": "f98acfdc9702499c837575ba0c9fea69063c17ca",
+  "test_files": [
+   "tests/test_page.py"
+  ],
+  "src_files": [
+   "pypdf/_page.py"
+  ],
+  "validation": {
+   "id": 52,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_page.py::test_get_fonts__acroform_default_resources"
+   ]
+  }
+ },
+ {
+  "id": 53,
+  "category": "bug",
+  "issue": "Default decode_parms to a DictionaryObject (#3971)",
+  "expected": [
+   "pypdf/filters.py:decode_stream_data:835"
+  ],
+  "commit": "b45aeba7b1ffd93d3a2414d1ce8c5115370be965",
+  "parent": "bb62d06b993cb3d3e90c031c35f399f48b3b3c3e",
+  "project": "pypdf",
+  "buggy_parent": "bb62d06b993cb3d3e90c031c35f399f48b3b3c3e",
+  "fix_commit": "b45aeba7b1ffd93d3a2414d1ce8c5115370be965",
+  "test_files": [
+   "tests/test_filters.py"
+  ],
+  "src_files": [
+   "pypdf/filters.py"
+  ],
+  "validation": {
+   "id": 53,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_filters.py::test_decode_stream_data__default_parms_are_dictionary_objects"
+   ]
+  }
+ },
+ {
+  "id": 54,
+  "category": "bug",
+  "issue": "Allow repeated page references (#3959)",
+  "expected": [
+   "pypdf/_doc_common.py:_flatten:1232"
+  ],
+  "commit": "718dd1417788495cb66618673e8b02d1029656ee",
+  "parent": "1856f9e02e615506ed3f6a27d3203b87379211b2",
+  "project": "pypdf",
+  "buggy_parent": "1856f9e02e615506ed3f6a27d3203b87379211b2",
+  "fix_commit": "718dd1417788495cb66618673e8b02d1029656ee",
+  "test_files": [
+   "tests/test_doc_common.py"
+  ],
+  "src_files": [
+   "pypdf/_doc_common.py"
+  ],
+  "validation": {
+   "id": 54,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/test_doc_common.py::test_flatten__repeated_page_reference",
+    "tests/test_doc_common.py::test_flatten__repeated_page_reference_with_different_inheritance",
+    "tests/test_doc_common.py::test_flatten__depth_limit",
+    "tests/test_doc_common.py::test_flatten__entry_limit_for_reused_paths"
+   ]
+  }
+ }
+]

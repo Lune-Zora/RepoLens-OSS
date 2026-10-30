@@ -1,0 +1,6 @@
+{
+  "pypdf/_writer.py": {
+    "from": "            page_destination.inc_parent_counter_outline\n            if is_open\n            else (lambda x, y: 0),  # noqa: ARG005",
+    "to": "            page_destination.inc_parent_counter_outline"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "api.py": {
+    "from": "def read_flag(value):\n    key = value.lower()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\"",
+    "to": "def read_flag(value):\n    key = value.lower().strip()\n    if key not in {\"true\", \"false\"}:\n        raise ValueError(\"unsupported flag\")\n    return key == \"true\""
+  }
+}

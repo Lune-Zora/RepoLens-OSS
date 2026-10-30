@@ -1,0 +1,22 @@
+{
+  "before": {
+    "name": "本机qwen2.5-coder:1.5b（GGUF模型）",
+    "version_source": "实际调用Ollama qwen2.5-coder:1.5b；ID db848539a068；GGUF/Q4_K_M约1.1GB；manifest及blob完整摘要见ollama记录",
+    "license": "官方Qwen2.5-Coder-1.5B-Instruct为Apache-2.0；本地转换物来源未闭合",
+    "source_path": "replens/llm.py",
+    "usage": "严格Demo实际推理；不随源码或材料分发权重",
+    "duty": "再分发附Apache-2.0，保留适用声明/NOTICE，修改须标注；不授予商标权；需补原始下载/转换来源与官方权重对应关系",
+    "own": "仅推理调用；未声称团队训练模型或创建原权重",
+    "status": "待核验"
+  },
+  "after": {
+    "name": "本地Ollama推理模型（GGUF）",
+    "version_source": "历史qwen2.5-coder:1.5b；本轮qwen25-7b-unc:latest、qwen35-9b-unc:latest；摘要见T-20261030-09模型记录",
+    "license": "各本地GGUF的原始来源、转换链路及适用许可待核验",
+    "source_path": "replens/llm.py",
+    "usage": "本地问题理解、测试设计、计划及补丁推理；不随源码或材料分发权重",
+    "duty": "按实际来源与适用许可核对声明和再分发义务；不把标签名称或官方同名许可等同于本机转换物已核验",
+    "own": "团队实现调用、检索、验证与界面；未声称自行训练这些模型权重",
+    "status": "待核验"
+  }
+}

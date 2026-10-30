@@ -1,0 +1,12 @@
+{
+  "files": {
+    "patch/patch.json": "d7a57ad620c46bc9bb9edcde8a0fdbe7135e0d65a5e1d8f97e9ae383daffe3a0",
+    "provenance.json": "adcd6877bf3838cb6531bd8f7c04e8fdab1dd4a725d5bd27e089d565fecc492a",
+    "report.json": "9b16d08bd5d8a09007939ddfd79c8e8a1abfe5df48eaba2110624f7d11e8307f",
+    "report.md": "e69db60c3f2e904b2b69d79254132526b31597cffb5009ed4788127a1fa70652",
+    "suites/acceptance.json": "e651d2385269aad7ced8e42efa44c6d56cebc00e0d33a68645d225b92241aa6e",
+    "suites/auxiliary.json": "5cc5139b1120dbf276c7034ad62be29821ea7477b9f9dcc6e12a04041231c5a6",
+    "suites/primary.json": "ff3917c3655fd1a60f29b7caad154e1d16693b7b4d2933c1229bfe632b8ada42"
+  },
+  "schema_version": "2.0"
+}

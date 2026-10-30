@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "C:\Users\19248\AppData\Local\Programs\Python\Python310\lib\runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "C:\Users\19248\AppData\Local\Programs\Python\Python310\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "E:\osspj\人工智能\repo\replens\__main__.py", line 4, in <module>
+    main()
+  File "E:\osspj\人工智能\repo\replens\cli.py", line 401, in main
+    args.func(args)
+  File "E:\osspj\人工智能\repo\replens\cli.py", line 133, in cmd_run
+    result = run_repair(req, build_provenance=None if args.no_provenance else build_provenance)
+  File "E:\osspj\人工智能\repo\replens\runner.py", line 141, in run_repair
+    return _run_repair(req, meta, db, acceptance_cmd, acceptance_files,
+  File "E:\osspj\人工智能\repo\replens\runner.py", line 177, in _run_repair
+    plan = planner.generate(req.issue, evidences)
+  File "E:\osspj\人工智能\repo\replens\planner.py", line 166, in generate
+    return self._fail(issue, evidences, "LLM 返回缺少 root_cause 或有效 files_to_modify")
+  File "E:\osspj\人工智能\repo\replens\planner.py", line 124, in _fail
+    raise RuntimeError("严格模式：禁止规则回退。" + reason)
+RuntimeError: 严格模式：禁止规则回退。LLM 返回缺少 root_cause 或有效 files_to_modify

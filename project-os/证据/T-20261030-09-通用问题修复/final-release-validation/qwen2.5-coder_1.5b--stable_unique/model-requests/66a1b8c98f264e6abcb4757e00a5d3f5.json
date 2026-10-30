@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T10:00:14.194974+00:00",
+  "purpose": "task_tests",
+  "context": {},
+  "request": {
+    "model": "qwen2.5-coder:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "为当前问题设计三个具体的行为测试。返回一个JSON对象，只有cases字段，值为数组。args是所有位置参数的列表；调用f([1,2])时必须写args:[[1,2]]，不能写args:[1,2]。每个用例必须含 path、symbol（严格使用给出的名称）、args（位置参数数组）、kwargs（对象）、intent（固定为issue）、normalize（通常identity）、expected（依据用户要求计算的具体正确返回值）。若用户要求某输入报错，改用raises字段写内置异常名，不需要expected。仅测试用户报告的行为，不添加用户未要求的功能或输入类型，不测试其他函数。选择三个不同的具体输入，覆盖问题边界；现有仓库测试另行执行用于保护已正常工作的行为。expected必须是正确的JSON字面值，例如布尔true/false、数值、字符串或数组，不能写表达式。normalize=str仅用于日期等不可JSON表示的返回值，此时expected必须是字符串。其他情况使用identity，不能通过排序等改变被检查的语义。不要输出测试源码、补丁或修复步骤。用例预期是修复后的正确行为；它们在有缺陷的代码上失败是正常且必要的。只按用户要求和公开测试约定写expected；不要把异常名写成expected字符串，预期异常应写raises字段。若无法确定预期，返回reason说明，不虚构用例。"
+      },
+      {
+        "role": "user",
+        "content": "{\"functions\": [{\"path\": \"api.py\", \"symbol\": \"unique_values\", \"type\": \"function\", \"is_target\": true, \"signature\": \"def unique_values(values)\", \"contract\": \"\"}, {\"path\": \"api.py\", \"symbol\": \"count_values\", \"type\": \"function\", \"is_target\": true, \"signature\": \"def count_values(values)\", \"contract\": \"\"}], \"existing_test_contracts\": [{\"path\": \"tests/test_public.py\", \"code\": \"import unittest\\nimport api\\n\\nclass PublicTests(unittest.TestCase):\\n    def test_one(self): self.assertEqual(api.unique_values([2,2]),[2])\\n    def test_empty(self): self.assertEqual(api.unique_values([]),[])\\n    def test_count(self): self.assertEqual(api.count_values([1,1,2]),3)\\n\"}], \"original_user_requirement\": \"对列表去重时需要保持各元素首次出现的顺序。例如 [4,2,4,1] 应当得到 [4,2,1]；空列表仍返回空列表，输入列表不能被修改。元素均可哈希。\"}"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 2200,
+    "reasoning_effort": "none",
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "replens_response",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "cases": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string",
+                        "enum": [
+                          "api.py"
+                        ]
+                      },
+                      "symbol": {
+                        "type": "string",
+                        "enum": [
+                          "unique_values"
+                        ]
+                      },
+                      "args": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 1,
+                        "prefixItems": [
+                          {
+                            "type": "array"
+                          }
+                        ]
+                      },
+                      "kwargs": {
+                        "type": "object",
+                        "properties": {},
+                        "required": [],
+                        "additionalProperties": false
+                      },
+                      "intent": {
+                        "type": "string",
+                        "enum": [
+                          "issue"
+                        ]
+                      },
+                      "normalize": {
+                        "type": "string",
+                        "enum": [
+                          "identity",
+                          "str",
+                          "list"
+                        ]
+                      },
+                      "expected": {},
+                      "raises": {
+                        "type": "string",
+                        "enum": [
+                          "",
+                          "ValueError",
+                          "TypeError",
+                          "KeyError",
+                          "IndexError",
+                          "ZeroDivisionError",
+                          "OverflowError"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "symbol",
+                      "args",
+                      "kwargs",
+                      "intent",
+                      "normalize",
+                      "expected",
+                      "raises"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string",
+                        "enum": [
+                          "api.py"
+                        ]
+                      },
+                      "symbol": {
+                        "type": "string",
+                        "enum": [
+                          "count_values"
+                        ]
+                      },
+                      "args": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 1,
+                        "prefixItems": [
+                          {
+                            "type": "array"
+                          }
+                        ]
+                      },
+                      "kwargs": {
+                        "type": "object",
+                        "properties": {},
+                        "required": [],
+                        "additionalProperties": false
+                      },
+                      "intent": {
+                        "type": "string",
+                        "enum": [
+                          "issue"
+                        ]
+                      },
+                      "normalize": {
+                        "type": "string",
+                        "enum": [
+                          "identity",
+                          "str",
+                          "list"
+                        ]
+                      },
+                      "expected": {},
+                      "raises": {
+                        "type": "string",
+                        "enum": [
+                          "",
+                          "ValueError",
+                          "TypeError",
+                          "KeyError",
+                          "IndexError",
+                          "ZeroDivisionError",
+                          "OverflowError"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "symbol",
+                      "args",
+                      "kwargs",
+                      "intent",
+                      "normalize",
+                      "expected",
+                      "raises"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "cases"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T10:00:16.434480+00:00",
+  "duration_seconds": 2.234,
+  "response_text": "{\"id\":\"chatcmpl-23\",\"object\":\"chat.completion\",\"created\":1793354416,\"model\":\"qwen2.5-coder:1.5b\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"cases\\\": [\\n    {\\n      \\\"args\\\": [[4, 2, 4, 1]],\\n      \\\"expected\\\": [4, 2, 1],\\n      \\\"intent\\\": \\\"issue\\\",\\n      \\\"kwargs\\\": {},\\n      \\\"normalize\\\": \\\"identity\\\",\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"raises\\\": \\\"\\\",\\n      \\\"symbol\\\": \\\"unique_values\\\"\\n    },\\n    {\\n      \\\"args\\\": [[1, 1, 2]],\\n      \\\"expected\\\": [1, 2],\\n      \\\"intent\\\": \\\"issue\\\",\\n      \\\"kwargs\\\": {},\\n      \\\"normalize\\\": \\\"identity\\\",\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"raises\\\": \\\"\\\",\\n      \\\"symbol\\\": \\\"unique_values\\\"\\n    },\\n    {\\n      \\\"args\\\": [[]],\\n      \\\"expected\\\": [],\\n      \\\"intent\\\": \\\"issue\\\",\\n      \\\"kwargs\\\": {},\\n      \\\"normalize\\\": \\\"identity\\\",\\n      \\\"path\\\": \\\"api.py\\\",\\n      \\\"raises\\\": \\\"\\\",\\n      \\\"symbol\\\": \\\"unique_values\\\"\\n    }\\n  ]\\n}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":554,\"prompt_tokens_details\":{\"cached_tokens\":324},\"completion_tokens\":209,\"total_tokens\":763}}\n",
+  "parsed": {
+    "cases": [
+      {
+        "args": [
+          [
+            4,
+            2,
+            4,
+            1
+          ]
+        ],
+        "expected": [
+          4,
+          2,
+          1
+        ],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "api.py",
+        "raises": "",
+        "symbol": "unique_values"
+      },
+      {
+        "args": [
+          [
+            1,
+            1,
+            2
+          ]
+        ],
+        "expected": [
+          1,
+          2
+        ],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "api.py",
+        "raises": "",
+        "symbol": "unique_values"
+      },
+      {
+        "args": [
+          []
+        ],
+        "expected": [],
+        "intent": "issue",
+        "kwargs": {},
+        "normalize": "identity",
+        "path": "api.py",
+        "raises": "",
+        "symbol": "unique_values"
+      }
+    ]
+  },
+  "error": null,
+  "response_model": "qwen2.5-coder:1.5b",
+  "usage": {
+    "prompt_tokens": 554,
+    "prompt_tokens_details": {
+      "cached_tokens": 324
+    },
+    "completion_tokens": 209,
+    "total_tokens": 763
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-10-29T01:44:59",
+  "python": "3.10.11",
+  "platform": "win32",
+  "repo_root": "E:\\osspj\\人工智能\\repo",
+  "steps": [
+    {
+      "index": 1,
+      "name": "环境自检",
+      "command": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe scripts/check_env.py --with-web",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "passed": true,
+      "duration_seconds": 0.88,
+      "stdout_tail": [
+        "Python 3.10.11",
+        "环境检查通过（核心 + Web + 测试），共 8 项"
+      ],
+      "stderr_tail": []
+    },
+    {
+      "index": 2,
+      "name": "数据集口径校验",
+      "command": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe scripts/validate_datasets.py",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "passed": true,
+      "duration_seconds": 0.1,
+      "stdout_tail": [
+        "dataset.json                localization  demo      25   20      0  演示仓库定位集",
+        "real_dataset_tqdm.json      localization  real       5    2      0  tqdm 定位集",
+        "real_dataset_pypdf.json     localization  real       5    2      0  pypdf 定位集",
+        "real_dataset_loguru.json    repair        real       4    4      4  loguru 修复集",
+        "real_dataset_extended.json  repair        real      10    8      8  扩展修复集",
+        "real_dataset_mined.json     repair        real      62   62     62  自动挖掘修复集",
+        "",
+        "可定位评测的正向样本合计: 98",
+        "可做端到端修复评测的样本合计: 74",
+        "注意：两项分母口径不同，不得混算成同一个成功率。",
+        "",
+        "校验通过：6 份数据集全部符合 schema 与业务规则"
+      ],
+      "stderr_tail": []
+    },
+    {
+      "index": 3,
+      "name": "单元与集成测试",
+      "command": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe -m pytest tests/ -q",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "passed": true,
+      "duration_seconds": 60.85,
+      "stdout_tail": [
+        "......................................... [ 25%]",
+        "....................................... [ 49%]",
+        "............................................................... [ 87%]",
+        "....................                                             [100%]",
+        "============================== warnings summary ===============================",
+        "tests/test_eval.py::EvaluationIntegration::test_real_web_eval_dynamic_metrics_and_invalid_input",
+        "  C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.",
+        "    from starlette.testclient import TestClient as TestClient  # noqa",
+        "",
+        "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
+        "163 passed, 1 warning, 81 subtests passed in 60.14s (0:01:00)"
+      ],
+      "stderr_tail": []
+    },
+    {
+      "index": 4,
+      "name": "端到端演示（规则自动补丁，离线）",
+      "command": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe -m replens run examples/demo_repo --issue date string with surrounding whitespace fails to parse --test-cmd pytest tests/test_parser.py --auto-patch --acceptance-suite examples/acceptance/demo.json --require-verified --no-provenance --output reports/runs/ci_demo.md",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "passed": true,
+      "duration_seconds": 5.23,
+      "stdout_tail": [
+        "报告已写入: reports/runs/ci_demo.md"
+      ],
+      "stderr_tail": []
+    },
+    {
+      "index": 5,
+      "name": "拒绝未验证修复（报告仍写出）",
+      "command": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe -m replens run examples/demo_repo --issue date string with surrounding whitespace fails to parse --test-cmd pytest tests/test_parser.py --auto-patch --require-verified --no-provenance --format json --output reports/runs/ci_unverified.json",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "passed": true,
+      "duration_seconds": 4.73,
+      "stdout_tail": [
+        "报告已写入: reports/runs/ci_unverified.json"
+      ],
+      "stderr_tail": [
+        "修复验收未通过: UNVERIFIED；主测试通过；尚未提供冻结的独立行为验收用例，生成测试不能代替独立验收"
+      ]
+    },
+    {
+      "index": 6,
+      "name": "检索评测",
+      "command": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe -m replens eval examples/demo_repo --dataset eval/datasets/dataset.json",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "passed": true,
+      "duration_seconds": 0.32,
+      "stdout_tail": [
+        "评测结果 (top-5, 20 正向 + 5 干扰；候选符号预算 100):",
+        "  hit@1 (去重文件) = 0.85 (17/20)",
+        "  hit@5 (去重文件) = 0.95 (19/20)",
+        "  func_name@5 (函数短名) = 0.85 (17/20)",
+        "  symbol_start@5 (同文件/短名，起始行 ±3) = 0.85 (17/20)",
+        "  mrr@5 (去重文件，截断) = 0.8917",
+        "  拒答率 = 1.0 (5/5)",
+        "  输入模式: repository_audit_only"
+      ],
+      "stderr_tail": []
+    },
+    {
+      "index": 7,
+      "name": "基线对比",
+      "command": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe eval/baselines.py examples/demo_repo --dataset eval/datasets/dataset.json",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "passed": true,
+      "duration_seconds": 0.28,
+      "stdout_tail": [
+        "# RepoLens 文件定位基线",
+        "",
+        "相同文件全集：8 个源码/文档文件；符号检索预算 100。",
+        "先按文件去重再取 k；所有方法 MRR 均在同一 k 截断。",
+        "",
+        "| 方法 | hit@1 | hit@5 | mrr@5 | 正向分母 |",
+        "|---|---|---|---|---|",
+        "| random(5 seeds) | 0.14 | 0.53 | 0.2602 | 20 |",
+        "| grep(token count) | 0.6 | 1.0 | 0.725 | 20 |",
+        "| RepoLens BM25 | 0.85 | 0.95 | 0.8917 | 20 |"
+      ],
+      "stderr_tail": []
+    },
+    {
+      "index": 8,
+      "name": "Web 冒烟",
+      "command": "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe scripts/check_web.py",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "passed": true,
+      "duration_seconds": 0.8,
+      "stdout_tail": [
+        "路由数: 19",
+        "GET /api/env -> 200",
+        "GET /api/repos -> 200",
+        "GET /api/datasets -> 200",
+        "Web 冒烟通过"
+      ],
+      "stderr_tail": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.",
+        "  from starlette.testclient import TestClient as TestClient  # noqa"
+      ]
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0
+  }
+}

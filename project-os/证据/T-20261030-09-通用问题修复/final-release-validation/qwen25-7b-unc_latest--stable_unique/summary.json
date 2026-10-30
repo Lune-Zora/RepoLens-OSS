@@ -1,0 +1,52 @@
+{
+  "model": "qwen25-7b-unc:latest",
+  "task": "stable_unique",
+  "seconds": 36.256,
+  "exit_code": 2,
+  "repair_status": "NO_PATCH",
+  "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [[1, 2, 3]], 'expected': [1, 2, 3], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[4, 2, 4, 1]], 'expected': [4, 2, 1], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[1, 1, 2]], 'expected': [1, 2], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}], 'changes': ['当前的测试用例没有违反任何已知的规范或逻辑错误。但是，它们未能充分验证用户需求中的关键点：保持元素首次出现的顺序。因此，这些测试用例需要进一步修改以确保正确性。', '需要添加一个空列表的测试用例来验证空列表的行为。']}",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'args': [[1, 2, 3]], 'expected': [1, 2, 3], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[4, 2, 4, 1]], 'expected': [4, 2, 1], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}, {'args': [[1, 1, 2]], 'expected': [1, 2], 'intent': 'issue', 'kwargs': {}, 'normalize': 'identity', 'path': 'api.py', 'raises': '', 'symbol': 'unique_values'}], 'changes': ['当前的测试用例没有违反任何已知的规范或逻辑错误。但是，它们未能充分验证用户需求中的关键点：保持元素首次出现的顺序。因此，这些测试用例需要进一步修改以确保正确性。', '需要添加一个空列表的测试用例来验证空列表的行为。']}",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "32746d32f8fe492a837dfe9f2a4b0cba.json",
+      "purpose": "plan",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "39c22bd4f1d248b09656327fa2fef278.json",
+      "purpose": "test_review",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "47715bc525f54c8cb33f8acc129c33ea.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "856cfbdb39974d24a60ab4aed1ef2750.json",
+      "purpose": "scope_validation",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "a37f19e2ea39437789d861fb608f457e.json",
+      "purpose": "task_tests",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

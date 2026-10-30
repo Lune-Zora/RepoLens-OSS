@@ -1,0 +1,92 @@
+{
+  "version": "0.7.0",
+  "tests": {
+    "passed": 251,
+    "subtests": 81,
+    "warnings": 1
+  },
+  "models": [
+    {
+      "model": "qwen2.5-coder:1.5b",
+      "passed": 0,
+      "total": 4,
+      "calls": 24
+    },
+    {
+      "model": "qwen25-7b-unc:latest",
+      "passed": 0,
+      "total": 4,
+      "calls": 11
+    },
+    {
+      "model": "qwen35-9b-unc:latest",
+      "passed": 4,
+      "total": 4,
+      "calls": 32
+    }
+  ],
+  "browser": {
+    "http_status": 200,
+    "status": "VERIFIED",
+    "model": "qwen35-9b-unc:latest",
+    "button_disabled_while_running": true,
+    "scenario_selection": "",
+    "test_source": "user_behavioral_examples",
+    "explicit_example": {
+      "args": [
+        [
+          11,
+          12,
+          13
+        ],
+        2
+      ],
+      "expected": [
+        [
+          11,
+          12
+        ],
+        [
+          13
+        ]
+      ]
+    },
+    "source_unchanged": true,
+    "errors": [],
+    "replay_status": "PASS",
+    "repair_status": "VERIFIED",
+    "downloaded_patch_matches_report": true
+  },
+  "model_evidence": [
+    {
+      "model": "qwen35-9b-unc:latest",
+      "task": "config_values",
+      "raw_model_patch_match": true,
+      "external_acceptance_visible_to_model": false,
+      "source_unchanged": true
+    },
+    {
+      "model": "qwen35-9b-unc:latest",
+      "task": "sequence_blocks",
+      "raw_model_patch_match": true,
+      "external_acceptance_visible_to_model": false,
+      "source_unchanged": true
+    },
+    {
+      "model": "qwen35-9b-unc:latest",
+      "task": "numeric_interval",
+      "raw_model_patch_match": true,
+      "external_acceptance_visible_to_model": false,
+      "source_unchanged": true
+    },
+    {
+      "model": "qwen35-9b-unc:latest",
+      "task": "stable_unique",
+      "raw_model_patch_match": true,
+      "external_acceptance_visible_to_model": false,
+      "source_unchanged": true
+    }
+  ],
+  "historical_results_rewritten": false,
+  "git_pushed": false
+}

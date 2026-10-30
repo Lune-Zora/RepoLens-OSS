@@ -1,0 +1,635 @@
+{
+  "schema_version": 1,
+  "sample_id": "tqdm-reset-total-infinity",
+  "status": "PASS",
+  "started_at_unix": 1793203588.6170585,
+  "repository": "tqdm",
+  "issue": "When a progress bar's counters are cleared and re-initialized with an infinite total, the bar must treat it as unknown, as it does at construction.",
+  "buggy_parent": "5bf58c2d61410e5a17da3440df921fe34c6c38bf",
+  "fix_commit": "426a0988a1e9970041f5a649ae8a6376c5293fbe",
+  "control_artifact_directory": "E:\\osspj\\人工智能\\_delivery-staging\\validation\\tqdm-reset-inf",
+  "steps": [
+    {
+      "stage": "upstream-verification",
+      "status": "PASS"
+    },
+    {
+      "stage": "environment",
+      "status": "PASS"
+    },
+    {
+      "stage": "buggy-baseline",
+      "status": "PASS"
+    },
+    {
+      "stage": "gold-validation",
+      "status": "PASS"
+    },
+    {
+      "stage": "cross-worktree-replay",
+      "status": "PASS"
+    }
+  ],
+  "stage": "complete",
+  "source_read_only_audit": {
+    "before": {
+      "files": 137,
+      "tree_sha256_including_git": "4532b8b51c479e32e3609f816e8a4a2222e4c638629fed974da0cb615b0c282d"
+    },
+    "status": "PASS",
+    "after": {
+      "files": 137,
+      "tree_sha256_including_git": "4532b8b51c479e32e3609f816e8a4a2222e4c638629fed974da0cb615b0c282d"
+    }
+  },
+  "upstream": {
+    "repository_root": "E:\\osspj\\人工智能\\tqdm",
+    "official_remote": "",
+    "project": "tqdm",
+    "source_remote": "gitee.com/mirrors/tqdm",
+    "source_kind": "mirror-with-pinned-commits",
+    "canonical_repository": "https://github.com/tqdm/tqdm",
+    "network_origin_verification": "NOT_PERFORMED",
+    "identity_basis": "pinned full commit IDs, parent relation and local git fsck --full",
+    "buggy_parent": "5bf58c2d61410e5a17da3440df921fe34c6c38bf",
+    "fix_commit": "426a0988a1e9970041f5a649ae8a6376c5293fbe",
+    "commit_subject": "Treat inf total as unknown in reset() too",
+    "commit_time": "2026-07-27T11:21:24+01:00",
+    "source_path": "tqdm/std.py",
+    "source_sha256_at_parent": "ebcf82b109673da326f9452ce2799bb2c2d778bd4d00f09c1fa38ee1e62eebec",
+    "test_path": "tests/tests_tqdm.py",
+    "test_patch_sha256": "e24ed07f1eb66978cf013ed02db335e88f0210a2289ed9ea38e2e4e3a59fb3d7",
+    "gold_patch_sha256": "60d3981ea45901075d0774f75f35a4da41f6dd16da5b73f8b2bdcee7b4386d04",
+    "license": {
+      "path": "LICENCE",
+      "sha256": "fcff87c3a47ce8028a8512aa182d4fcf0ad1c90544ee75cf9b343684cac194de",
+      "detected": "MPL-2.0 AND MIT",
+      "bytes": 1985,
+      "confidence": true,
+      "declared_expression": "MPL-2.0 AND MIT",
+      "components": [
+        "MPL-2.0",
+        "MIT"
+      ]
+    }
+  },
+  "independent_acceptance_sha256": "2096cd8cd007f74a60fc2b44f0d00867a064342599dcdbb940d2ff5195404e80",
+  "source_repository_read_only": true,
+  "execution_repository": "E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\local-git",
+  "buggy_worktree_path": "E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\buggy",
+  "baseline": {
+    "patch_note": "",
+    "target_state": "FAIL",
+    "results": [
+      {
+        "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+        "returncode": 1,
+        "valid": true,
+        "passed": false,
+        "summary": {
+          "passed": 2,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 3,
+          "ran": 3
+        },
+        "tests": {
+          "tests/tests_tqdm.py::test_reset": "PASS",
+          "tests/tests_tqdm.py::test_reset_inf": "FAIL",
+          "tests/tests_tqdm.py::test_disabled_reset": "PASS"
+        },
+        "timed_out": false
+      }
+    ]
+  },
+  "gold": {
+    "patch_note": "补丁应用成功（unified diff，共 1 个文件）。",
+    "before": [
+      {
+        "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+        "returncode": 1,
+        "valid": true,
+        "passed": false,
+        "summary": {
+          "passed": 2,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 3,
+          "ran": 3
+        },
+        "tests": {
+          "tests/tests_tqdm.py::test_reset": "PASS",
+          "tests/tests_tqdm.py::test_reset_inf": "FAIL",
+          "tests/tests_tqdm.py::test_disabled_reset": "PASS"
+        },
+        "timed_out": false
+      }
+    ],
+    "after": [
+      {
+        "command": "python -m pytest -o addopts= tests/tests_tqdm.py -k reset",
+        "returncode": 0,
+        "valid": true,
+        "passed": true,
+        "summary": {
+          "passed": 3,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 3,
+          "ran": 3
+        },
+        "tests": {
+          "tests/tests_tqdm.py::test_reset": "PASS",
+          "tests/tests_tqdm.py::test_reset_inf": "PASS",
+          "tests/tests_tqdm.py::test_disabled_reset": "PASS"
+        },
+        "timed_out": false
+      }
+    ]
+  },
+  "independent_acceptance": {
+    "before": [
+      {
+        "command": "python -m pytest -o addopts= __replens_acceptance__/test_reset_infinity_contract.py -q",
+        "returncode": 1,
+        "valid": true,
+        "passed": false,
+        "summary": {
+          "passed": 1,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 2,
+          "ran": 2
+        },
+        "tests": {
+          "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_finite_total_keeps_normal_counting": "PASS",
+          "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior": "FAIL"
+        },
+        "timed_out": false
+      }
+    ],
+    "after": [
+      {
+        "command": "python -m pytest -o addopts= __replens_acceptance__/test_reset_infinity_contract.py -q",
+        "returncode": 0,
+        "valid": true,
+        "passed": true,
+        "summary": {
+          "passed": 2,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "xfailed": 0,
+          "xpassed": 0,
+          "collected": 2,
+          "ran": 2
+        },
+        "tests": {
+          "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_finite_total_keeps_normal_counting": "PASS",
+          "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior": "PASS"
+        },
+        "timed_out": false
+      }
+    ],
+    "finite_control_test": "test_reset_finite_total_keeps_normal_counting"
+  },
+  "evidence_bundle": "E:\\osspj\\人工智能\\_delivery-staging\\validation\\tqdm-reset-inf\\evidence_bundle",
+  "recorded_repair_status": "VERIFIED",
+  "replay_worktree_path": "E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\replay",
+  "cross_worktree_source_hash": {
+    "first": "657166100bf08fe6989610a188a4b7d146677f95f0f84f344d865d59ff199664",
+    "second": "657166100bf08fe6989610a188a4b7d146677f95f0f84f344d865d59ff199664",
+    "status": "PASS"
+  },
+  "cross_worktree_replay": {
+    "status": "PASS",
+    "reasons": [
+      "材料、逐测试身份/状态及统一验收结论重放一致"
+    ],
+    "materials_status": "PASS",
+    "replay_status": "PASS",
+    "repair_status": "VERIFIED",
+    "schema_version": "2.0",
+    "recorded_repair_status": "VERIFIED",
+    "validation": {
+      "status": "VERIFIED",
+      "reasons": [
+        "目标失败明确转为 PASS，原有通过测试保持通过，冻结独立行为验收通过"
+      ],
+      "targets": [
+        "tests/tests_tqdm.py::test_reset_inf"
+      ],
+      "preserved": [
+        "tests/tests_tqdm.py::test_disabled_reset",
+        "tests/tests_tqdm.py::test_reset"
+      ],
+      "acceptance_sha256": "2096cd8cd007f74a60fc2b44f0d00867a064342599dcdbb940d2ff5195404e80",
+      "acceptance_targets": [
+        "__replens_acceptance__/test_reset_infinity_contract.py::ResetInfiniteTotalContract::test_reset_infinity_matches_unknown_total_behavior"
+      ]
+    },
+    "phase_checks": {
+      "primary": {
+        "before": true,
+        "after": true
+      },
+      "auxiliary": {
+        "before": true,
+        "after": true
+      },
+      "acceptance": {
+        "before": true,
+        "after": true
+      }
+    },
+    "validation_matches": true
+  },
+  "environment_sha256": "27bcdc94a0f65be4422ff0a7e22ae2596129122f569f18992e44c39835c45514",
+  "independent_materials_outside_bundle_input": true,
+  "model_repair_credit": false,
+  "completed_at_unix": 1793203608.2034261,
+  "raw_log_manifest": [
+    {
+      "path": "logs/git/add-buggy-worktree.json",
+      "bytes": 596,
+      "sha256": "62ee7dc9d27e7ce897bee7989233b2f1b227a89b0d4fb7175b775447e225b18f"
+    },
+    {
+      "path": "logs/git/add-replay-worktree.json",
+      "bytes": 597,
+      "sha256": "d596fd5b3638f7caa080a48b7a524e7d442599c88b59084ff7a3101b4203e780"
+    },
+    {
+      "path": "logs/git/buggy-source.json",
+      "bytes": 491,
+      "sha256": "232e458bb0bfb539a4abfb4e0651df35037cbd5d19a39a4f3b086ad5a5e6a300"
+    },
+    {
+      "path": "logs/git/buggy-source.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/git/buggy-source.stdout.bin",
+      "bytes": 58078,
+      "sha256": "ebcf82b109673da326f9452ce2799bb2c2d778bd4d00f09c1fa38ee1e62eebec"
+    },
+    {
+      "path": "logs/git/buggy-test-apply.json",
+      "bytes": 416,
+      "sha256": "d57632d64ea7036e77e18114b7364fffbf1e35bb29a7304a8638b7137583806c"
+    },
+    {
+      "path": "logs/git/buggy-test-check.json",
+      "bytes": 431,
+      "sha256": "846832fb8ce9817030668cd73fe6fe67f72300b4c09355bb602ee253da5b73f5"
+    },
+    {
+      "path": "logs/git/buggy-test-status.json",
+      "bytes": 381,
+      "sha256": "e23bf5b246ed690b96e5772f1fa22bc8dd209e694a3fbc2e9c2bfad2f370e596"
+    },
+    {
+      "path": "logs/git/cleanup-buggy.json",
+      "bytes": 535,
+      "sha256": "89d7b602d32f5e582990c148ab57c90f6a7a7c86f7a42ea892c4f55e9d33071a"
+    },
+    {
+      "path": "logs/git/cleanup-replay.json",
+      "bytes": 536,
+      "sha256": "476b9e52cd291876dea8457503e75d5523f37a45ff2ff9c01a5ad79bf9d4a68b"
+    },
+    {
+      "path": "logs/git/environment-file-pyproject.toml.json",
+      "bytes": 494,
+      "sha256": "db9ad94bbef5f9b78a6ca9b8668016c8220b1e364ebc5a86a5d8840931c867c5"
+    },
+    {
+      "path": "logs/git/environment-file-pyproject.toml.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/git/environment-file-pyproject.toml.stdout.bin",
+      "bytes": 6048,
+      "sha256": "47775d94555b7c5fc9c1d0dbdfddb3efe3aa35ea8f53768a4ff4aa1663fb5564"
+    },
+    {
+      "path": "logs/git/environment-input-tree.json",
+      "bytes": 2718,
+      "sha256": "8ca7bdeb7f547f99b76a036e3273afd3e18becde5e80dfc2087d3c166d842814"
+    },
+    {
+      "path": "logs/git/fix-metadata.json",
+      "bytes": 533,
+      "sha256": "a9fb16117b3d20a5843fec2207a22a5d244fa5efd5c8c346d3cad7ff3d2954bb"
+    },
+    {
+      "path": "logs/git/fix-parent.json",
+      "bytes": 460,
+      "sha256": "56079afbc8feded55e6c522a673759ec9718b2364db28d0db516f2d8ff00cb89"
+    },
+    {
+      "path": "logs/git/git-object-integrity.json",
+      "bytes": 440,
+      "sha256": "0e70a1d297a38587207d10005acf3355abc9dbc485ac09fccde83d069a222af3"
+    },
+    {
+      "path": "logs/git/gold-patch.json",
+      "bytes": 593,
+      "sha256": "6c7ffd54dc8ff34c67d18bd44e2a6f37d1f6e66c2ffba85a2a66d5b02dca3a4b"
+    },
+    {
+      "path": "logs/git/gold-patch.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/git/gold-patch.stdout.bin",
+      "bytes": 472,
+      "sha256": "60d3981ea45901075d0774f75f35a4da41f6dd16da5b73f8b2bdcee7b4386d04"
+    },
+    {
+      "path": "logs/git/license-content.json",
+      "bytes": 487,
+      "sha256": "140f33a8dc3da9de6f1817326df2c770663f9a8f0d7d0928a2cde5750dbef3a8"
+    },
+    {
+      "path": "logs/git/license-content.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/git/license-content.stdout.bin",
+      "bytes": 1985,
+      "sha256": "fcff87c3a47ce8028a8512aa182d4fcf0ad1c90544ee75cf9b343684cac194de"
+    },
+    {
+      "path": "logs/git/license-declaration.json",
+      "bytes": 494,
+      "sha256": "db9ad94bbef5f9b78a6ca9b8668016c8220b1e364ebc5a86a5d8840931c867c5"
+    },
+    {
+      "path": "logs/git/license-declaration.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/git/license-declaration.stdout.bin",
+      "bytes": 6048,
+      "sha256": "47775d94555b7c5fc9c1d0dbdfddb3efe3aa35ea8f53768a4ff4aa1663fb5564"
+    },
+    {
+      "path": "logs/git/license-tree.json",
+      "bytes": 2718,
+      "sha256": "8ca7bdeb7f547f99b76a036e3273afd3e18becde5e80dfc2087d3c166d842814"
+    },
+    {
+      "path": "logs/git/local-execution-clone.json",
+      "bytes": 581,
+      "sha256": "100c7f95d1ccff67d4a727b093878c4c7a1aaf4d359aa3c5bd29e932a1fdd690"
+    },
+    {
+      "path": "logs/git/remote-names.json",
+      "bytes": 299,
+      "sha256": "b81ceca39d4a014c7ada65a9736222ba0543cdee9ce5756fd1024f271117285d"
+    },
+    {
+      "path": "logs/git/remote-origin.json",
+      "bytes": 356,
+      "sha256": "92b2bc769921784890baf79466801ef420bf1dd01856d8512fb2c8aedc511bf8"
+    },
+    {
+      "path": "logs/git/replay-test-apply.json",
+      "bytes": 418,
+      "sha256": "04cee6aac65bcd44bb54a4b005e05b854b301b6234417aa5f89946355fca8afc"
+    },
+    {
+      "path": "logs/git/replay-test-check.json",
+      "bytes": 433,
+      "sha256": "ce7731ea24782105c57632a341e847dc644d5867f7256a93ad749ecfcba2f56b"
+    },
+    {
+      "path": "logs/git/replay-test-status.json",
+      "bytes": 383,
+      "sha256": "92d85e1ea3e3f445cbb09f6bc179ea50297280f40d4886d2a5f168208751f1ae"
+    },
+    {
+      "path": "logs/git/repo-root.json",
+      "bytes": 345,
+      "sha256": "43a387483584168a2e2e5092a96fdac66796f633808590782cd2856991b02597"
+    },
+    {
+      "path": "logs/git/resolve-buggy-parent.json",
+      "bytes": 409,
+      "sha256": "9c408b7811fe80fe80a9e9c01ec2d9a5fc51c871c1f58dd9262823c43b6039b1"
+    },
+    {
+      "path": "logs/git/resolve-fix-commit.json",
+      "bytes": 409,
+      "sha256": "0f4798abb45396a77fb98c65cd6d3b9d0669ae680d9a56e1287d6abff643cc0d"
+    },
+    {
+      "path": "logs/git/test-patch.json",
+      "bytes": 601,
+      "sha256": "7c76fe8db23db613e35d176abb1b0c90ab4bc91e8f95f1a740a0f6ebf55b6da4"
+    },
+    {
+      "path": "logs/git/test-patch.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/git/test-patch.stdout.bin",
+      "bytes": 821,
+      "sha256": "e24ed07f1eb66978cf013ed02db335e88f0210a2289ed9ea38e2e4e3a59fb3d7"
+    },
+    {
+      "path": "logs/independent-acceptance/after/01.json",
+      "bytes": 896,
+      "sha256": "81f81e2771e8bb5b835c963cc04a23e475b0d6af09fe51203f3da6902ab72bdd"
+    },
+    {
+      "path": "logs/independent-acceptance/after/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/independent-acceptance/after/01.stdout.txt",
+      "bytes": 98,
+      "sha256": "92a008925f96648e3b59dfa05639da80fb0fe814a2b8c5ac4f49c054b800fd07"
+    },
+    {
+      "path": "logs/independent-acceptance/before/01.json",
+      "bytes": 897,
+      "sha256": "79df14d125cbad0d4dc73f4daf6ec23a9459b81d38b4be003389fdd3ee432f08"
+    },
+    {
+      "path": "logs/independent-acceptance/before/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/independent-acceptance/before/01.stdout.txt",
+      "bytes": 1194,
+      "sha256": "e9c26627327e56ba544d1a32018e714cef495e0395992bc384a3530b845f12c0"
+    },
+    {
+      "path": "logs/independent-acceptance/patch_note.txt",
+      "bytes": 57,
+      "sha256": "bfb358653fd930f83b46e8a8878a65f0066352bbfdcd98c60e36185f36c304f8"
+    },
+    {
+      "path": "logs/main-baseline/before/01.json",
+      "bytes": 727,
+      "sha256": "ffbb39714472f1c3967590fad4eb4d5b5415c8e6bd26beee32f7cd6772170a2e"
+    },
+    {
+      "path": "logs/main-baseline/before/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/main-baseline/before/01.stdout.txt",
+      "bytes": 1743,
+      "sha256": "fc38dfdd25f827a93fecbc8f82905f780ae0621130e4c3577527aa3c285cec49"
+    },
+    {
+      "path": "logs/main-baseline/patch_note.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/main-gold/after/01.json",
+      "bytes": 726,
+      "sha256": "d02799fa058428f16588b20a078249e7e0aa83533039beb8ef1737f5f4c650f9"
+    },
+    {
+      "path": "logs/main-gold/after/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/main-gold/after/01.stdout.txt",
+      "bytes": 750,
+      "sha256": "90aded2c32e2c49b216384f08e62a71cc23c82fab0d6b2c672bf568692d5d893"
+    },
+    {
+      "path": "logs/main-gold/before/01.json",
+      "bytes": 727,
+      "sha256": "a7fc79d70723ef222de874ad6c444422b1b4b49b2c929fe0bb9b20013cdc20af"
+    },
+    {
+      "path": "logs/main-gold/before/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/main-gold/before/01.stdout.txt",
+      "bytes": 1743,
+      "sha256": "2ccb43a34b6fc285772654ff07a993b7367172b07230e1dcdd921a28fa48379a"
+    },
+    {
+      "path": "logs/main-gold/patch_note.txt",
+      "bytes": 57,
+      "sha256": "bfb358653fd930f83b46e8a8878a65f0066352bbfdcd98c60e36185f36c304f8"
+    },
+    {
+      "path": "logs/python-pytest-version.json",
+      "bytes": 205,
+      "sha256": "2f0960f143e953daaa2572f839b7e89bc0cb5cb3c14caf63fd03ff7dd730e0e9"
+    },
+    {
+      "path": "logs/replay-acceptance/after/01.json",
+      "bytes": 896,
+      "sha256": "4e14d3a7139816ec5267f8eb0131c237db4f1e2f42a7d341f4f110873ee7a3af"
+    },
+    {
+      "path": "logs/replay-acceptance/after/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/replay-acceptance/after/01.stdout.txt",
+      "bytes": 98,
+      "sha256": "d2e19278f2acef7cfe468afa87fbba8925315ff38a8d23649526ec4f7bbe6521"
+    },
+    {
+      "path": "logs/replay-acceptance/before/01.json",
+      "bytes": 897,
+      "sha256": "44b4c3fef469b3608fe301a95165ea54ab13bc582f4694d20ae35b3cc81207c6"
+    },
+    {
+      "path": "logs/replay-acceptance/before/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/replay-acceptance/before/01.stdout.txt",
+      "bytes": 1194,
+      "sha256": "eac802acde8d539d908a65ed78a3a2071d77462120c7a94b0f37d20631c62ac8"
+    },
+    {
+      "path": "logs/replay-acceptance/patch_note.txt",
+      "bytes": 57,
+      "sha256": "bfb358653fd930f83b46e8a8878a65f0066352bbfdcd98c60e36185f36c304f8"
+    },
+    {
+      "path": "logs/replay-auxiliary/patch_note.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/replay-primary/after/01.json",
+      "bytes": 726,
+      "sha256": "bae7a2d004d67e0422a3d883124782011099d9464cfe2dc6009d39c648758906"
+    },
+    {
+      "path": "logs/replay-primary/after/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/replay-primary/after/01.stdout.txt",
+      "bytes": 750,
+      "sha256": "ccd276329d0bcd90a1a4923ff17ec241a84aec987050630a4ba2531e9eea2ae9"
+    },
+    {
+      "path": "logs/replay-primary/before/01.json",
+      "bytes": 727,
+      "sha256": "64cbd945a19a0ef58554ec85e82c39bc69f0cbf7ec3209ce09ac3c1dbfe36690"
+    },
+    {
+      "path": "logs/replay-primary/before/01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/replay-primary/before/01.stdout.txt",
+      "bytes": 1743,
+      "sha256": "36bcd6fd52366ccb50e5a2a3bcf64c0842205e0bc3354ae4c3ca1eed223d7ae1"
+    },
+    {
+      "path": "logs/replay-primary/patch_note.txt",
+      "bytes": 57,
+      "sha256": "bfb358653fd930f83b46e8a8878a65f0066352bbfdcd98c60e36185f36c304f8"
+    },
+    {
+      "path": "logs/upstream-remote.json",
+      "bytes": 140,
+      "sha256": "dc8289dc49ac360780de0b65a3e7e46003e6d26d11f37675af949e6aed5993cd"
+    }
+  ]
+}

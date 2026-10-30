@@ -1,0 +1,70 @@
+{
+  "review_scope": "single local Edge browser run; six views, selected real operations and ordinary behavior checks; no batch model or security audit",
+  "workflow": {
+    "repair": "VERIFIED",
+    "materials": "PASS",
+    "replay": "PASS",
+    "repair_replay": "VERIFIED"
+  },
+  "actual_model_calls_in_request_window": [
+    {
+      "file": "46faea57c5814956ac8cfa63027db2ed.json",
+      "purpose": "patch",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    },
+    {
+      "file": "62d7ac484d0a49b4b0618815b36d3253.json",
+      "purpose": "patch",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    },
+    {
+      "file": "6d755bca58a84a628d98c73334bac436.json",
+      "purpose": "plan",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    },
+    {
+      "file": "c0e0e739bd9c4254b94726ee7284b598.json",
+      "purpose": "patch",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    },
+    {
+      "file": "e8550d1d81864fd8bf3ae65054cf0cb4.json",
+      "purpose": "patch",
+      "request_model": "qwen2.5-coder:1.5b",
+      "response_model": "qwen2.5-coder:1.5b"
+    }
+  ],
+  "page_errors": [],
+  "indexed_input_comparison": [
+    {
+      "variant": "frozen-eight-files",
+      "indexed_file_count": 8,
+      "hit@1": 0.85,
+      "hit@5": 0.95,
+      "mrr@5": 0.8917
+    },
+    {
+      "variant": "same-eight-plus-current-compliance",
+      "indexed_file_count": 10,
+      "hit@1": 0.8,
+      "hit@5": 0.95,
+      "mrr@5": 0.8667
+    }
+  ],
+  "source_unchanged": true,
+  "finding_ids": [
+    "P1-01",
+    "P1-02",
+    "P2-01",
+    "P2-02",
+    "P2-03",
+    "P2-04",
+    "P2-05",
+    "P3-01",
+    "P3-02"
+  ]
+}

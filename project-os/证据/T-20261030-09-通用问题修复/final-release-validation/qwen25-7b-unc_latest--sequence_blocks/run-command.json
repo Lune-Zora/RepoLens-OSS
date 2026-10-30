@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-m",
+    "replens",
+    "run",
+    "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\sequence_blocks",
+    "--issue",
+    "列表分块时最后不足一个分块的元素也需要保留。输入为空时返回空列表，分块大小必须是正整数。",
+    "--auto-patch",
+    "--test-cmd",
+    "python -m pytest tests",
+    "--acceptance-suite",
+    "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\validation\\sequence_blocks.json",
+    "--require-verified",
+    "--format",
+    "json",
+    "--output",
+    "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\final-release-validation\\qwen25-7b-unc_latest--sequence_blocks\\report.json"
+  ],
+  "exit_code": 2,
+  "seconds": 12.307
+}

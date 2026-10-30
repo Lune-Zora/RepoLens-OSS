@@ -1,0 +1,29 @@
+# RepoLens-OSS 依赖约束（2026-10-28 实测通过）
+#
+# 用途：pip install -c constraints.txt -e .[web]
+# 目的：避免 anyio 与 typing_extensions 的版本错配导致 FastAPI/HTTPX 无法导入。
+#
+# 已知故障（2026-10-28 修复）：
+#   anyio 4.15.1 声明依赖 typing_extensions>=4.16.0（Python < 3.15），
+#   但环境实际装的是 4.11.0，缺少 sentinel。
+#   症状：ImportError: cannot import name 'sentinel' from 'typing_extensions'
+#   影响：FastAPI 不可导入 → web/ 不可用，3 条 HTTP 集成测试失败。
+#
+# 版本来自 pytest 全绿（129 passed / 81 subtests）时的实际解析结果。
+
+# ---- 关键约束：必须满足 anyio>=4.13 的 typing_extensions>=4.16.0 ----
+typing_extensions>=4.16.0
+
+# ---- Web 层（实测组合）----
+anyio>=4.13,<5
+starlette>=0.46,<2
+fastapi>=0.110
+uvicorn>=0.29
+httpx>=0.27,<0.29
+httpcore>=1.0,<2
+
+# ---- Pydantic（fastapi 传递依赖）----
+pydantic>=2.9,<3
+
+# ---- 测试 ----
+pytest>=8

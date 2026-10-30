@@ -1,0 +1,6 @@
+{
+  "url": "https://api.github.com/repos/tqdm/tqdm/commits/426a0988a1e9970041f5a649ae8a6376c5293fbe",
+  "time_unix": 1793060603.9082894,
+  "error_type": "URLError",
+  "error": "<urlopen error [WinError 10061] 由于目标计算机积极拒绝，无法连接。>"
+}

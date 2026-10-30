@@ -1,0 +1,6 @@
+{
+  "src/dateparse/parser.py": {
+    "from": "return datetime.datetime.strptime(s, \"%Y-%m-%d\").date()",
+    "to": "return datetime.datetime.strptime(s.strip(), \"%Y-%m-%d\").date()"
+  }
+}

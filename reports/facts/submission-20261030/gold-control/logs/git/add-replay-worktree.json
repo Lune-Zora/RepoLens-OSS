@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "git",
+    "--no-optional-locks",
+    "-c",
+    "safe.directory=E:/osspj/人工智能/_delivery-work/tqdm_reset_inf_qkqlk1p2/local-git",
+    "-c",
+    "safe.directory=E:/osspj/人工智能/_delivery-work/tqdm_reset_inf_qkqlk1p2/local-git/.git",
+    "-C",
+    "E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\local-git",
+    "worktree",
+    "add",
+    "--quiet",
+    "--detach",
+    "E:\\osspj\\人工智能\\_delivery-work\\tqdm_reset_inf_qkqlk1p2\\replay",
+    "5bf58c2d61410e5a17da3440df921fe34c6c38bf"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": ""
+}

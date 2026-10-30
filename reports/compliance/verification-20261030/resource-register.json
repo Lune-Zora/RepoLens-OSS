@@ -1,0 +1,492 @@
+[
+  {
+    "name": "Python（解释器/标准库）",
+    "version_source": "3.10.11；python-installed-LICENSE.txt；官方docs.python.org/3.10/license.html",
+    "license": "PSF及所附历史许可",
+    "source_path": "pyproject.toml",
+    "usage": "运行环境；源码包不捆绑解释器",
+    "duty": "解释器或组件再分发按其完整LICENSE保留声明；本次仅要求用户安装",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "SQLite FTS5（组件）",
+    "version_source": "3.40.1；Python sqlite3；官方sqlite.org/copyright.html",
+    "license": "Public Domain（SQLite官方声明）",
+    "source_path": "replens/indexer.py",
+    "usage": "默认检索；不独立再分发SQLite二进制",
+    "duty": "SQLite本体为公有领域；外层Python许可仍单独适用",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "fastapi（软件库/工具）",
+    "version_source": "0.141.1；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web声明依赖；用户安装，不在源码包捆绑",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "uvicorn（软件库/工具）",
+    "version_source": "0.54.0；安装元数据及LICENSE，详见核验索引",
+    "license": "BSD-3-Clause",
+    "source_path": "pyproject.toml",
+    "usage": "Web声明依赖；用户安装，不在源码包捆绑",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "pytest（软件库/工具）",
+    "version_source": "9.1.1；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "测试声明依赖；用户安装，不捆绑",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "httpx（软件库/工具）",
+    "version_source": "0.27.2；安装元数据及LICENSE，详见核验索引",
+    "license": "BSD-3-Clause",
+    "source_path": "pyproject.toml",
+    "usage": "测试声明依赖；用户安装，不捆绑",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "httpcore（软件库/工具）",
+    "version_source": "1.0.9；安装元数据及LICENSE，详见核验索引",
+    "license": "BSD-3-Clause",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "anyio（软件库/工具）",
+    "version_source": "4.15.1；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web声明依赖；用户安装，不在源码包捆绑",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "starlette（软件库/工具）",
+    "version_source": "1.7.0；安装元数据及LICENSE，详见核验索引",
+    "license": "BSD-3-Clause",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "pydantic（软件库/工具）",
+    "version_source": "2.13.5；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "pydantic-core（软件库/工具）",
+    "version_source": "2.46.5；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "typing_extensions（软件库/工具）",
+    "version_source": "4.16.0；安装元数据及LICENSE，详见核验索引",
+    "license": "PSF-2.0",
+    "source_path": "pyproject.toml",
+    "usage": "Web声明依赖；用户安装，不在源码包捆绑",
+    "duty": "保留完整许可与版权；按所选许可满足再分发条件",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "typing-inspection（软件库/工具）",
+    "version_source": "0.4.4；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "annotated-types（软件库/工具）",
+    "version_source": "0.8.0；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "annotated-doc（软件库/工具）",
+    "version_source": "0.0.5；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "sniffio（软件库/工具）",
+    "version_source": "1.3.1；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT OR Apache-2.0",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "再分发附Apache-2.0，保留适用声明/NOTICE，修改须标注；不授予商标权",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "idna（软件库/工具）",
+    "version_source": "3.20；安装元数据及LICENSE，详见核验索引",
+    "license": "BSD-3-Clause",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "certifi（软件库/工具）",
+    "version_source": "2026.7.22；安装元数据及LICENSE，详见核验索引",
+    "license": "MPL-2.0",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑certifi/证书包；若分发或修改受MPL覆盖文件，保留声明并履行对应源码/许可义务",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "exceptiongroup（软件库/工具）",
+    "version_source": "1.3.1；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "click（软件库/工具）",
+    "version_source": "8.5.0；安装元数据及LICENSE，详见核验索引",
+    "license": "BSD-3-Clause",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "h11（软件库/工具）",
+    "version_source": "0.14.0；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "colorama（软件库/工具）",
+    "version_source": "0.4.6；安装元数据及LICENSE，详见核验索引",
+    "license": "BSD-3-Clause",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "packaging（软件库/工具）",
+    "version_source": "24.1；安装元数据及LICENSE，详见核验索引",
+    "license": "Apache-2.0 OR BSD-2-Clause",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "再分发附Apache-2.0，保留适用声明/NOTICE，修改须标注；不授予商标权",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "pluggy（软件库/工具）",
+    "version_source": "1.6.0；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "iniconfig（软件库/工具）",
+    "version_source": "2.3.0；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "pygments（软件库/工具）",
+    "version_source": "2.21.0；安装元数据及LICENSE，详见核验索引",
+    "license": "BSD-2-Clause",
+    "source_path": "pyproject.toml",
+    "usage": "Web/测试传递依赖；通过安装获取，未捆绑二进制",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "setuptools（软件库/工具）",
+    "version_source": "80.10.2；安装元数据及LICENSE，详见核验索引",
+    "license": "MIT",
+    "source_path": "pyproject.toml",
+    "usage": "构建工具；wheel已构建，本次不捆绑工具",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "Ollama（推理服务）",
+    "version_source": "0.34.4（本机命令）；官方仓库LICENSE当前main已存档",
+    "license": "MIT",
+    "source_path": "replens/llm.py",
+    "usage": "本地HTTP推理服务；不分发Ollama软件",
+    "duty": "MIT软件副本/实质部分保留版权与许可；具体模型许可另行核对",
+    "own": "未修改第三方实现；团队完成集成、编排与验证",
+    "status": "已核验"
+  },
+  {
+    "name": "本地Ollama推理模型（GGUF）",
+    "version_source": "历史qwen2.5-coder:1.5b；本轮qwen25-7b-unc:latest、qwen35-9b-unc:latest；摘要见T-20261030-09模型记录",
+    "license": "各本地GGUF的原始来源、转换链路及适用许可待核验",
+    "source_path": "replens/llm.py",
+    "usage": "本地问题理解、测试设计、计划及补丁推理；不随源码或材料分发权重",
+    "duty": "按实际来源与适用许可核对声明和再分发义务；不把标签名称或官方同名许可等同于本机转换物已核验",
+    "own": "团队实现调用、检索、验证与界面；未声称自行训练这些模型权重",
+    "status": "待核验"
+  },
+  {
+    "name": "tqdm（上游评测源码/补丁来源）",
+    "version_source": "实际候选buggy_parent的LICENSE/NOTICE已从本地Git提取；historical-license-index.json",
+    "license": "MPL-2.0 AND MIT",
+    "source_path": "eval/datasets",
+    "usage": "本地评测；源码包保留必要参考补丁/证据，不捆绑完整上游仓库",
+    "duty": "按tqdm LICENCE的文件/贡献归属适用MPL和MIT；原样保留；分发受MPL源码须按对应条款，不统一改为MIT",
+    "own": "团队整理候选、测试适配、环境与验证；上游源码和参考修复不计团队原创/模型自主修复",
+    "status": "已核验"
+  },
+  {
+    "name": "pypdf（上游评测源码/补丁来源）",
+    "version_source": "实际候选buggy_parent的LICENSE/NOTICE已从本地Git提取；historical-license-index.json",
+    "license": "BSD-3-Clause",
+    "source_path": "eval/datasets",
+    "usage": "本地评测；源码包保留必要参考补丁/证据，不捆绑完整上游仓库",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "团队整理候选、测试适配、环境与验证；上游源码和参考修复不计团队原创/模型自主修复",
+    "status": "已核验"
+  },
+  {
+    "name": "loguru（上游评测源码/补丁来源）",
+    "version_source": "实际候选buggy_parent的LICENSE/NOTICE已从本地Git提取；historical-license-index.json",
+    "license": "MIT",
+    "source_path": "eval/datasets",
+    "usage": "本地评测；源码包保留必要参考补丁/证据，不捆绑完整上游仓库",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "团队整理候选、测试适配、环境与验证；上游源码和参考修复不计团队原创/模型自主修复",
+    "status": "已核验"
+  },
+  {
+    "name": "click（上游评测源码/补丁来源）",
+    "version_source": "实际候选buggy_parent的LICENSE/NOTICE已从本地Git提取；historical-license-index.json",
+    "license": "BSD-3-Clause",
+    "source_path": "eval/datasets",
+    "usage": "本地评测；源码包保留必要参考补丁/证据，不捆绑完整上游仓库",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "团队整理候选、测试适配、环境与验证；上游源码和参考修复不计团队原创/模型自主修复",
+    "status": "已核验"
+  },
+  {
+    "name": "requests（上游评测源码/补丁来源）",
+    "version_source": "实际候选buggy_parent的LICENSE/NOTICE已从本地Git提取；historical-license-index.json",
+    "license": "Apache-2.0",
+    "source_path": "eval/datasets",
+    "usage": "本地评测；源码包保留必要参考补丁/证据，不捆绑完整上游仓库",
+    "duty": "再分发附Apache-2.0，保留适用声明/NOTICE，修改须标注；不授予商标权",
+    "own": "团队整理候选、测试适配、环境与验证；上游源码和参考修复不计团队原创/模型自主修复",
+    "status": "已核验"
+  },
+  {
+    "name": "历史Issue/PR文本与描述记录（数据）",
+    "version_source": "eval/datasets、eval/curation；原始出处与日期记录",
+    "license": "不能从仓库软件许可自动推定所有讨论文本授权",
+    "source_path": "eval/datasets",
+    "usage": "保留来源；未作为本轮训练输入；公开分发应先核查逐条授权/最小引用",
+    "duty": "公开可读不等于任意训练/改编/再分发；保留原链接，未明确授权的长段文本限评审用途",
+    "own": "团队完成筛选和标注，不主张原文著作权",
+    "status": "待核验"
+  },
+  {
+    "name": "fastembed（可选/历史后端）",
+    "version_source": "0.8.1；本机元数据及原始许可",
+    "license": "Apache-2.0",
+    "source_path": "replens/retriever_hybrid.py",
+    "usage": "仅可选/历史代码；本轮无向量或微调效果成绩，不捆绑安装包",
+    "duty": "再分发附Apache-2.0，保留适用声明/NOTICE，修改须标注；不授予商标权",
+    "own": "团队实现可选适配脚本，不把安装状态当运行效果",
+    "status": "已核验"
+  },
+  {
+    "name": "torch（可选/历史后端）",
+    "version_source": "2.14.0；本机元数据及原始许可",
+    "license": "Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT",
+    "source_path": "scripts/finetune.py",
+    "usage": "仅可选/历史代码；本轮无向量或微调效果成绩，不捆绑安装包",
+    "duty": "按torch原始许可及内含第三方通知逐项保留；本次不分发其二进制",
+    "own": "团队实现可选适配脚本，不把安装状态当运行效果",
+    "status": "已核验"
+  },
+  {
+    "name": "transformers（可选/历史后端）",
+    "version_source": "5.17.0；本机元数据及原始许可",
+    "license": "Apache-2.0",
+    "source_path": "scripts/finetune.py",
+    "usage": "仅可选/历史代码；本轮无向量或微调效果成绩，不捆绑安装包",
+    "duty": "再分发附Apache-2.0，保留适用声明/NOTICE，修改须标注；不授予商标权",
+    "own": "团队实现可选适配脚本，不把安装状态当运行效果",
+    "status": "已核验"
+  },
+  {
+    "name": "peft（可选/历史后端）",
+    "version_source": "0.21.0；本机元数据及原始许可",
+    "license": "Apache-2.0",
+    "source_path": "scripts/finetune.py",
+    "usage": "仅可选/历史代码；本轮无向量或微调效果成绩，不捆绑安装包",
+    "duty": "再分发附Apache-2.0，保留适用声明/NOTICE，修改须标注；不授予商标权",
+    "own": "团队实现可选适配脚本，不把安装状态当运行效果",
+    "status": "已核验"
+  },
+  {
+    "name": "BAAI/bge-small-en-v1.5（可选模型）",
+    "version_source": "官方模型卡license:mit已存档；本轮未运行、未确定本地权重摘要",
+    "license": "MIT（官方模型卡）",
+    "source_path": "replens/retriever_hybrid.py",
+    "usage": "本轮实验不启用；不分发权重",
+    "duty": "未来启用时固定版本与来源，权重分发保留适用许可声明",
+    "own": "仅预留向量适配，不列为本轮实测收益",
+    "status": "不适用"
+  },
+  {
+    "name": "sentence-transformers（可选后端）",
+    "version_source": "当前解释器未安装",
+    "license": "本轮不对未使用版本作许可核验",
+    "source_path": "replens/retriever_hybrid.py",
+    "usage": "本轮未使用，不打包该依赖",
+    "duty": "未来启用前固定版本及核验许可",
+    "own": "仅保留导入适配代码",
+    "status": "不适用"
+  },
+  {
+    "name": "Qwen2.5-Coder-0.5B-Instruct（可选训练基座）",
+    "version_source": "官方LICENSE已存档；本轮未加载或训练",
+    "license": "Apache-2.0（官方）",
+    "source_path": "scripts/finetune.py",
+    "usage": "训练脚本默认配置；本次不分发权重/适配器，不报微调收益",
+    "duty": "再分发附Apache-2.0，保留适用声明/NOTICE，修改须标注；不授予商标权",
+    "own": "本轮不主张已有自训权重或微调效果",
+    "status": "不适用"
+  },
+  {
+    "name": "python-docx（材料处理工具）",
+    "version_source": "1.2.0；安装许可原文已归档",
+    "license": "MIT",
+    "source_path": "docs/02_架构/技术报告.docx",
+    "usage": "仅辅助生成或检查材料；不是作品运行时必需，不捆绑工具",
+    "duty": "本次不捆绑库安装包；若再分发其代码/实质部分，保留版权、许可证及免责声明",
+    "own": "团队负责材料内容；工具执行排版/提取/渲染",
+    "status": "已核验"
+  },
+  {
+    "name": "lxml（材料处理工具）",
+    "version_source": "6.1.3；安装许可原文已归档",
+    "license": "BSD-3-Clause及LICENSES所列组件",
+    "source_path": "docs/02_架构/技术报告.docx",
+    "usage": "仅辅助生成或检查材料；不是作品运行时必需，不捆绑工具",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "团队负责材料内容；工具执行排版/提取/渲染",
+    "status": "已核验"
+  },
+  {
+    "name": "pypdf（材料处理工具）",
+    "version_source": "6.19.0；安装许可原文已归档",
+    "license": "BSD-3-Clause",
+    "source_path": "docs/02_架构/技术报告.docx",
+    "usage": "仅辅助生成或检查材料；不是作品运行时必需，不捆绑工具",
+    "duty": "不捆绑安装包；再分发须保留版权、条件与免责声明；BSD-3另不得用作者名背书",
+    "own": "团队负责材料内容；工具执行排版/提取/渲染",
+    "status": "已核验"
+  },
+  {
+    "name": "PyMuPDF（材料处理工具）",
+    "version_source": "1.28.2；安装许可原文已归档",
+    "license": "AGPL-3.0或Artifex商业许可（二选一）",
+    "source_path": "docs/02_架构/技术报告.docx",
+    "usage": "仅辅助生成或检查材料；不是作品运行时必需，不捆绑工具",
+    "duty": "仅本地读取/渲染PDF，不捆绑库或提供其网络服务；若将库/衍生应用分发或服务化，另核对AGPL/商业授权义务，不套用项目MIT",
+    "own": "团队负责材料内容；工具执行排版/提取/渲染",
+    "status": "已核验"
+  },
+  {
+    "name": "Microsoft Word（文档工具）",
+    "version_source": "本机COM版本14.0；用户提供模板由Word读取",
+    "license": "专有软件许可/EULA",
+    "source_path": "docs/02_架构/技术报告.docx",
+    "usage": "仅本机打开、导出PDF；不再分发Word",
+    "duty": "由使用者确认设备/账号有效授权；不分发软件、字体文件或模板原件",
+    "own": "作品报告内容与排版为团队交付；Word不作为开源资源",
+    "status": "待核验"
+  },
+  {
+    "name": "Codex/OpenAI（生成式开发辅助服务）",
+    "version_source": "本次开发会话；具体账号/订阅适用合同由使用者确认",
+    "license": "服务条款；不是开源代码许可",
+    "source_path": "project-os",
+    "usage": "辅助代码分析、修改建议/实现、调试验证和材料整理；不是项目运行依赖",
+    "duty": "准确披露AI辅助环节；团队复核输出正确性、来源与权利；不把AI生成部分一概称为纯人工",
+    "own": "团队负责需求/设计取舍、代码审核、运行验收与提交；不估算贡献比例",
+    "status": "待核验"
+  },
+  {
+    "name": "Git（版本控制工具）",
+    "version_source": "git version 2.54.0.windows.1",
+    "license": "GPL-2.0（Git软件；当前仅工具使用）",
+    "source_path": "CONTRIBUTING.md",
+    "usage": "本地版本管理与读取上游提交，不捆绑Git",
+    "duty": "若再分发Git软件另遵其许可；不把工具许可等同于作品许可",
+    "own": "团队完成版本选择、变更与记录",
+    "status": "已核验"
+  }
+]

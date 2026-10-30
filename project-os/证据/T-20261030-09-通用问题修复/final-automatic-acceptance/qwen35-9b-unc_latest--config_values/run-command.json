@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-m",
+    "replens",
+    "run",
+    "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\repositories\\config_values",
+    "--issue",
+    "布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。",
+    "--auto-patch",
+    "--test-cmd",
+    "python -m pytest tests",
+    "--acceptance-suite",
+    "E:\\osspj\\人工智能\\repo\\examples\\independent_tasks\\validation\\config_values.json",
+    "--require-verified",
+    "--format",
+    "json",
+    "--output",
+    "E:\\osspj\\人工智能\\repo\\project-os\\证据\\T-20261030-09-通用问题修复\\final-automatic-acceptance\\qwen35-9b-unc_latest--config_values\\report.json"
+  ],
+  "exit_code": 2,
+  "seconds": 6.156
+}

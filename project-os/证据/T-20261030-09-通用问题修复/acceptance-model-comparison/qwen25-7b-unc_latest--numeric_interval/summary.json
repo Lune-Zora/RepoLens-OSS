@@ -1,0 +1,52 @@
+{
+  "model": "qwen25-7b-unc:latest",
+  "task": "numeric_interval",
+  "seconds": 33.673,
+  "exit_code": 2,
+  "repair_status": "NO_PATCH",
+  "blocked_reason": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'path': 'api.py', 'symbol': 'contains', 'args': [[0, 10, 5]], 'kwargs': {}, 'intent': 'issue', 'normalize': 'identity', 'expected': True}, {'path': 'api.py', 'symbol': 'contains', 'args': [[0, 10, 0]], 'kwargs': {}, 'intent': 'issue', 'normalize': 'identity', 'expected': True}, {'path': 'api.py', 'symbol': 'contains', 'args': [[0, 10, 10]], 'kwargs': {}, 'intent': 'issue', 'normalize': 'identity', 'expected': True}], 'changes': ['当前的测试用例符合用户需求，但需要确认这些预期是否正确。根据用户的需求描述，当值等于左右端点时，函数应该返回True。', '目前的测试用例没有发现与需求相矛盾的地方，也没有发现错误的输入类型、参数个数或嵌套层次等问题。', '需要进一步确认这些预期是否符合修复后的用户需求。']}",
+  "reasons": [
+    "没有进入验收的补丁"
+  ],
+  "patch_note": "当前问题行为测试生成失败：模型测试审核未通过：{'approved': False, 'cases': [{'path': 'api.py', 'symbol': 'contains', 'args': [[0, 10, 5]], 'kwargs': {}, 'intent': 'issue', 'normalize': 'identity', 'expected': True}, {'path': 'api.py', 'symbol': 'contains', 'args': [[0, 10, 0]], 'kwargs': {}, 'intent': 'issue', 'normalize': 'identity', 'expected': True}, {'path': 'api.py', 'symbol': 'contains', 'args': [[0, 10, 10]], 'kwargs': {}, 'intent': 'issue', 'normalize': 'identity', 'expected': True}], 'changes': ['当前的测试用例符合用户需求，但需要确认这些预期是否正确。根据用户的需求描述，当值等于左右端点时，函数应该返回True。', '目前的测试用例没有发现与需求相矛盾的地方，也没有发现错误的输入类型、参数个数或嵌套层次等问题。', '需要进一步确认这些预期是否符合修复后的用户需求。']}",
+  "replay_status": null,
+  "source_unchanged": true,
+  "calls": [
+    {
+      "file": "11c5228ccc8141719850ce7e8cef895f.json",
+      "purpose": "test_review",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "1e877f080a8149b2ba813657f4a62645.json",
+      "purpose": "plan",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "4fe5a5c34cff41718f8e6cf8bfd0545a.json",
+      "purpose": "issue_understanding",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "b179f565115d472b9202bb99d08d0ef4.json",
+      "purpose": "scope_validation",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    },
+    {
+      "file": "c1d3c55a5d36433489ec0227c0e3b0f4.json",
+      "purpose": "task_tests",
+      "requested_model": "qwen25-7b-unc:latest",
+      "response_model": "qwen25-7b-unc:latest",
+      "status": "success"
+    }
+  ],
+  "pass": false
+}

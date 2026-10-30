@@ -1,0 +1,9 @@
+{
+  "source": "https://registry.ollama.ai/v2/library/qwen2.5-coder/manifests/1.5b",
+  "local_model_layer": "sha256:cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+  "official_model_layers": [
+    "sha256:29d8c98fa6b098e200069bfb88b9508dc3e85586d20cba59f8dda9a808165104"
+  ],
+  "model_layer_matches": false,
+  "note": "仅比较已下载manifest中的模型层摘要，不下载大权重、不重写本地模型"
+}

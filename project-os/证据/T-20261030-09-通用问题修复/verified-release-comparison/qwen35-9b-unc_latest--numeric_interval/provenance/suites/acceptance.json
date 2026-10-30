@@ -1,0 +1,73 @@
+{
+  "after": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "framework": "unittest",
+      "invalid_reason": "",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n",
+      "stdout": "",
+      "structured": true,
+      "summary": {
+        "collected": 6,
+        "errors": 0,
+        "failed": 0,
+        "passed": 6,
+        "ran": 6,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "test_behavior.IndependentBehavior.test_helper": "PASS",
+        "test_behavior.IndependentBehavior.test_inside": "PASS",
+        "test_behavior.IndependentBehavior.test_left": "PASS",
+        "test_behavior.IndependentBehavior.test_outside": "PASS",
+        "test_behavior.IndependentBehavior.test_right": "PASS",
+        "test_behavior.IndependentBehavior.test_single": "PASS"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "before": [
+    {
+      "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+      "framework": "unittest",
+      "invalid_reason": "",
+      "passed": false,
+      "returncode": 1,
+      "stderr": "..F.FF\n======================================================================\nFAIL: test_left (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_34bpqsej\\__replens_acceptance__\\test_behavior.py\", line 5, in test_left\n    def test_left(self): self.assertTrue(api.contains(-3,8,-3))\nAssertionError: False is not true\n\n======================================================================\nFAIL: test_right (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_34bpqsej\\__replens_acceptance__\\test_behavior.py\", line 6, in test_right\n    def test_right(self): self.assertTrue(api.contains(-3,8,8))\nAssertionError: False is not true\n\n======================================================================\nFAIL: test_single (test_behavior.IndependentBehavior)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\19248\\AppData\\Local\\Temp\\replens_34bpqsej\\__replens_acceptance__\\test_behavior.py\", line 7, in test_single\n    def test_single(self): self.assertTrue(api.contains(4,4,4))\nAssertionError: False is not true\n\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nFAILED (failures=3)\n",
+      "stdout": "",
+      "structured": true,
+      "summary": {
+        "collected": 6,
+        "errors": 0,
+        "failed": 3,
+        "passed": 3,
+        "ran": 6,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "tests": {
+        "test_behavior.IndependentBehavior.test_helper": "PASS",
+        "test_behavior.IndependentBehavior.test_inside": "PASS",
+        "test_behavior.IndependentBehavior.test_left": "FAIL",
+        "test_behavior.IndependentBehavior.test_outside": "PASS",
+        "test_behavior.IndependentBehavior.test_right": "FAIL",
+        "test_behavior.IndependentBehavior.test_single": "FAIL"
+      },
+      "timed_out": false,
+      "valid": true
+    }
+  ],
+  "command": "python -m unittest discover -s __replens_acceptance__ -p test_behavior.py",
+  "enabled": true,
+  "files": {
+    "__replens_acceptance__/test_behavior.py": "import unittest\nimport api\n\nclass IndependentBehavior(unittest.TestCase):\n    def test_left(self): self.assertTrue(api.contains(-3,8,-3))\n    def test_right(self): self.assertTrue(api.contains(-3,8,8))\n    def test_single(self): self.assertTrue(api.contains(4,4,4))\n    def test_outside(self): self.assertFalse(api.contains(-3,8,-4))\n    def test_inside(self): self.assertTrue(api.contains(-3,8,0))\n    def test_helper(self): self.assertEqual(api.interval_width(2,9),7)\n"
+  },
+  "sha256": "f55d5137ae18423eaeec746b0a5452961e401a2c28b60acd814575efb64d8990",
+  "timeout": 120
+}

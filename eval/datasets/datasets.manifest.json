@@ -1,0 +1,59 @@
+{
+  "$comment": "数据集清单。kind 决定该文件能支撑哪类实验；分母不得跨文件混算。",
+  "schema": "dataset.schema.json",
+  "updated": "2026-10-30",
+  "kinds": {
+    "localization": "仅支持定位评测（hit@k / func@k / line_acc / MRR / 拒答率）；bug 样本不含修复提交，不能计入修复成功率",
+    "repair": "支持定位评测 + 端到端修复评测；bug 样本必须含 project / buggy_parent / fix_commit / test_cmd 四项"
+  },
+  "datasets": [
+    {
+      "file": "dataset.json",
+      "name": "演示仓库定位集",
+      "kind": "localization",
+      "scope": "demo",
+      "target_repo": "examples/demo_repo",
+      "description": "自建 dateparse 演示仓库，20 正向 + 5 干扰。描述数不等于独立 Bug 数。"
+    },
+    {
+      "file": "real_dataset_tqdm.json",
+      "name": "tqdm 定位集",
+      "kind": "localization",
+      "scope": "real",
+      "target_repo": "tqdm",
+      "description": "2 个 bug 描述 + 3 个干扰。历史标注未含修复提交，只能用于定位评测。"
+    },
+    {
+      "file": "real_dataset_pypdf.json",
+      "name": "pypdf 定位集",
+      "kind": "localization",
+      "scope": "real",
+      "target_repo": "pypdf",
+      "description": "2 个 bug 描述 + 3 个干扰。历史标注未含修复提交，只能用于定位评测。"
+    },
+    {
+      "file": "real_dataset_loguru.json",
+      "name": "loguru 修复集",
+      "kind": "repair",
+      "scope": "real",
+      "target_repo": "loguru",
+      "description": "4 个 bug，含完整修复提交与测试命令。可用于端到端修复评测。"
+    },
+    {
+      "file": "real_dataset_extended.json",
+      "name": "扩展修复集",
+      "kind": "repair",
+      "scope": "real",
+      "target_repo": "tqdm + pypdf",
+      "description": "8 个 bug（tqdm 3 / pypdf 5）+ 2 个干扰。bug 样本含完整修复信息。"
+    },
+    {
+      "file": "real_dataset_mined.json",
+      "name": "自动挖掘修复集",
+      "kind": "repair",
+      "scope": "real",
+      "target_repo": "tqdm + pypdf + loguru + click + requests",
+      "description": "100条挖掘修复候选，保存参考补丁fail→pass、定向验证及C1–C9/人工复核记录。候选数量不是模型修复成绩；本轮仅核对schema和字段，未重跑上游测试。"
+    }
+  ]
+}

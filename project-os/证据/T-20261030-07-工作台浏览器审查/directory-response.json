@@ -1,0 +1,25 @@
+{
+  "path": "",
+  "parent": null,
+  "entries": [
+    {
+      "name": "C:\\",
+      "path": "C:\\",
+      "is_dir": true,
+      "is_repo": false
+    },
+    {
+      "name": "D:\\",
+      "path": "D:\\",
+      "is_dir": true,
+      "is_repo": false
+    },
+    {
+      "name": "E:\\",
+      "path": "E:\\",
+      "is_dir": true,
+      "is_repo": false
+    }
+  ],
+  "is_root": true
+}

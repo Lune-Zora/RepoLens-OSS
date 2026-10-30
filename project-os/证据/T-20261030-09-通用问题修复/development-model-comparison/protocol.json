@@ -1,0 +1,29 @@
+{
+  "kind": "constructed_independent_tasks",
+  "models": [
+    "qwen2.5-coder:1.5b",
+    "qwen35-9b-unc:latest"
+  ],
+  "tasks": [
+    {
+      "id": "config_values",
+      "name": "布尔配置解析",
+      "issue": "布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。",
+      "repo": "repositories/config_values",
+      "acceptance_suite": "validation/config_values.json",
+      "kind": "constructed_independent_task",
+      "test_cmd": "python -m pytest tests"
+    }
+  ],
+  "candidate_count": 2,
+  "max_repair_rounds": 1,
+  "temperature_candidates": [
+    0.2,
+    0.35
+  ],
+  "understanding_temperature": 0,
+  "tests_temperature": 0,
+  "reference_patch": null,
+  "acceptance_outside_input": true,
+  "time": "2026-10-30T08:17:34.233469+00:00"
+}

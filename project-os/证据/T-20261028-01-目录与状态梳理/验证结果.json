@@ -1,0 +1,63 @@
+{
+  "生成时间": "2026-10-28",
+  "任务": "T-20261028-01-目录与状态梳理",
+  "阶段0_git基线": {
+    "仓库": "E:\\osspj\\人工智能\\repo",
+    "初始化提交": "2d0e80d",
+    "入库文件数": 186,
+    "清理": [
+      "__pycache__ 100 个文件 / 1.41MB",
+      ".pytest_cache 6 个文件",
+      "examples/demo_repo/.replens 运行产物"
+    ]
+  },
+  "阶段1_三方核对": {
+    "repo_control_manifest": {
+      "声明文件数": 22,
+      "实测匹配": 22,
+      "结论": "全部 MATCH"
+    },
+    "repo_vs_repo_oss_同步前": {
+      "repo_files": 197,
+      "oss_files": 166,
+      "same": 85,
+      "diff": 55,
+      "only_repo": 57,
+      "only_oss": 26
+    },
+    "迁移文件对": {
+      "对数": 24,
+      "内容完全相同": 24
+    },
+    "差异方向": "repo 为迁移后新版本，repo-oss 为迁移前旧版本"
+  },
+  "阶段1_同步执行": {
+    "可回退点": {
+      "分支": "backup/pre-sync-20261028",
+      "标签": "pre-sync-20261028",
+      "指向": "b085a50"
+    },
+    "同步提交": "04bbca3",
+    "变更统计": {
+      "M": 61,
+      "A": 42,
+      "R": 17,
+      "D": 3
+    },
+    "git统计": "123 files changed, 7329 insertions(+), 1821 deletions(-)"
+  },
+  "阶段1_同步后校验": {
+    "repo_files": 194,
+    "oss_files": 194,
+    "only_repo": 0,
+    "only_oss": 0,
+    "content_diff": 0,
+    "工作区": "两侧均干净"
+  },
+  "测试基线": {
+    "命令": "python -m pytest tests/ -q",
+    "两侧一致": "3 failed, 126 passed, 81 subtests passed in ~48s",
+    "失败原因": "本机 anyio 与 typing_extensions 版本冲突（cannot import name 'sentinel'），导致 FastAPI/HTTPX 不可导入",
+    "判定": "非项目回归失败，属环境缺陷；已登记为后续阶段 3 待修复项"
+  }
+}

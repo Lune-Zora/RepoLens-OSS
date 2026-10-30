@@ -1,0 +1,15 @@
+数据集覆盖表
+文件                          种类            范围        样本   正向    可修复   弱描述  名称
+dataset.json                localization  demo      25   20      0     0  演示仓库定位集
+real_dataset_tqdm.json      localization  real       5    2      0     0  tqdm 定位集
+real_dataset_pypdf.json     localization  real       5    2      0     0  pypdf 定位集
+real_dataset_loguru.json    repair        real       4    4      4     0  loguru 修复集
+real_dataset_extended.json  repair        real      10    8      8     0  扩展修复集
+real_dataset_mined.json     repair        real     100  100    100     3  自动挖掘修复集
+
+可定位评测的正向样本合计: 136
+可做端到端修复评测的样本合计: 112
+其中弱描述样本: 3（保留在分母内，引用指标时须同时给出条数）
+注意：两项分母口径不同，不得混算成同一个成功率。
+
+校验通过：6 份数据集全部符合 schema 与业务规则

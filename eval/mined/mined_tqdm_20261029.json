@@ -1,0 +1,741 @@
+[
+ {
+  "id": 1,
+  "category": "bug",
+  "issue": "contrib.concurrent: fix no-len iterables",
+  "expected": [
+   "tqdm/contrib/concurrent.py:_min_map_len:103"
+  ],
+  "commit": "2a9e4e82ddba07c5dd6d126e23a4745b76ea49c8",
+  "parent": "8d6ff8de5a9066de77d0a9df3e80a022a3dcf146",
+  "project": "tqdm",
+  "buggy_parent": "8d6ff8de5a9066de77d0a9df3e80a022a3dcf146",
+  "fix_commit": "2a9e4e82ddba07c5dd6d126e23a4745b76ea49c8",
+  "test_files": [
+   "tests/tests_concurrent.py"
+  ],
+  "src_files": [
+   "tqdm/contrib/concurrent.py"
+  ],
+  "validation": {
+   "id": 1,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_concurrent.py::test_min_map_len",
+    "tests/tests_concurrent.py::test_concurrent_map_no_length_hint"
+   ]
+  }
+ },
+ {
+  "id": 2,
+  "category": "bug",
+  "issue": "length detection in contrib.concurrent",
+  "expected": [
+   "tqdm/contrib/concurrent.py:_executor_map:42"
+  ],
+  "commit": "0eaee96e4fd5ccf18e5bc2a637aa19a280e54bc3",
+  "parent": "4a7f422734a765d3df89ad7dbfec3ef1baf53b30",
+  "project": "tqdm",
+  "buggy_parent": "4a7f422734a765d3df89ad7dbfec3ef1baf53b30",
+  "fix_commit": "0eaee96e4fd5ccf18e5bc2a637aa19a280e54bc3",
+  "test_files": [
+   "tests/tests_concurrent.py"
+  ],
+  "src_files": [
+   "tqdm/contrib/concurrent.py"
+  ],
+  "validation": {
+   "id": 2,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_concurrent.py::test_chunksize_warning"
+   ]
+  }
+ },
+ {
+  "id": 3,
+  "category": "bug",
+  "issue": "rich: misc fixes",
+  "expected": [
+   "tqdm/rich.py:render:31"
+  ],
+  "commit": "164ef7302b4c8c9dd455b523d8e8c38c61e68d50",
+  "parent": "6ab24dcc5df910044f1f6e0685f95dbf9cd424f3",
+  "project": "tqdm",
+  "buggy_parent": "6ab24dcc5df910044f1f6e0685f95dbf9cd424f3",
+  "fix_commit": "164ef7302b4c8c9dd455b523d8e8c38c61e68d50",
+  "test_files": [
+   "tests/tests_rich.py"
+  ],
+  "src_files": [
+   "tqdm/rich.py"
+  ],
+  "validation": {
+   "id": 3,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_rich.py::test_rich_no_total",
+    "tests/tests_rich.py::test_rich_fraction_column_no_total"
+   ]
+  }
+ },
+ {
+  "id": 4,
+  "category": "bug",
+  "issue": "handle total=inf in format_meter to avoid OverflowError",
+  "expected": [
+   "tqdm/std.py:format_meter:533"
+  ],
+  "commit": "ef15578141f2df10f9c169ec619d8a5217f6a37f",
+  "parent": "6ab24dcc5df910044f1f6e0685f95dbf9cd424f3",
+  "project": "tqdm",
+  "buggy_parent": "6ab24dcc5df910044f1f6e0685f95dbf9cd424f3",
+  "fix_commit": "ef15578141f2df10f9c169ec619d8a5217f6a37f",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/std.py"
+  ],
+  "validation": {
+   "id": 4,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_tqdm.py::test_format_meter"
+   ]
+  }
+ },
+ {
+  "id": 5,
+  "category": "bug",
+  "issue": "prevent tqdm.write from crashing when sys.stdout is none",
+  "expected": [
+   "tqdm/std.py:external_write_mode:730"
+  ],
+  "commit": "74ff9929dfec128972eb68f9ff27ae40fae6a21c",
+  "parent": "3757d0d13ec86d73a838b55fc35ef89bc42a3461",
+  "project": "tqdm",
+  "buggy_parent": "3757d0d13ec86d73a838b55fc35ef89bc42a3461",
+  "fix_commit": "74ff9929dfec128972eb68f9ff27ae40fae6a21c",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/std.py"
+  ],
+  "validation": {
+   "id": 5,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_tqdm.py::test_write_stdout_none"
+   ]
+  }
+ },
+ {
+  "id": 6,
+  "category": "bug",
+  "issue": "Merge pull requests #1717 and #1767 (fixes #1658)",
+  "expected": [
+   "tqdm/std.py:format_meter:630"
+  ],
+  "commit": "3757d0d13ec86d73a838b55fc35ef89bc42a3461",
+  "parent": "9aff6090b6fa98c88a2dbff8bd9e2a68d9a99c1b",
+  "project": "tqdm",
+  "buggy_parent": "9aff6090b6fa98c88a2dbff8bd9e2a68d9a99c1b",
+  "fix_commit": "3757d0d13ec86d73a838b55fc35ef89bc42a3461",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/std.py"
+  ],
+  "validation": {
+   "id": 6,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_tqdm.py::test_format_meter"
+   ]
+  }
+ },
+ {
+  "id": 7,
+  "category": "bug",
+  "issue": "apply disp_trim to all format_meter return paths (#1658)",
+  "expected": [
+   "tqdm/std.py:format_meter:632"
+  ],
+  "commit": "55156ce4bed3457956d0557558b9bfb1c2de8a33",
+  "parent": "9aff6090b6fa98c88a2dbff8bd9e2a68d9a99c1b",
+  "project": "tqdm",
+  "buggy_parent": "9aff6090b6fa98c88a2dbff8bd9e2a68d9a99c1b",
+  "fix_commit": "55156ce4bed3457956d0557558b9bfb1c2de8a33",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/std.py"
+  ],
+  "validation": {
+   "id": 7,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_tqdm.py::test_format_meter"
+   ]
+  }
+ },
+ {
+  "id": 8,
+  "category": "bug",
+  "issue": "Merge pull request #1751 from jaltmayerpizzorno/fix-atexit-monitor-deadlock",
+  "expected": [
+   "tqdm/_monitor.py:TqdmSynchronisationWarning:10"
+  ],
+  "commit": "67cf355f96dfc3e459d18193d68a98a7abb6e08e",
+  "parent": "59029c37ad6af57df7b49d31c0f48728280ae824",
+  "project": "tqdm",
+  "buggy_parent": "59029c37ad6af57df7b49d31c0f48728280ae824",
+  "fix_commit": "67cf355f96dfc3e459d18193d68a98a7abb6e08e",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/_monitor.py"
+  ],
+  "validation": {
+   "id": 8,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "file"
+  }
+ },
+ {
+  "id": 9,
+  "category": "bug",
+  "issue": "TMonitor deadlock at interpreter shutdown",
+  "expected": [
+   "tqdm/_monitor.py:__init__:38"
+  ],
+  "commit": "f83290ce32f424e0562d47efe2304cdb90d244d5",
+  "parent": "59029c37ad6af57df7b49d31c0f48728280ae824",
+  "project": "tqdm",
+  "buggy_parent": "59029c37ad6af57df7b49d31c0f48728280ae824",
+  "fix_commit": "f83290ce32f424e0562d47efe2304cdb90d244d5",
+  "test_files": [
+   "tests/tests_synchronisation.py"
+  ],
+  "src_files": [
+   "tqdm/_monitor.py"
+  ],
+  "validation": {
+   "id": 9,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_synchronisation.py::test_monitor_atexit_does_not_deadlock_on_stuck_get_lock"
+   ]
+  }
+ },
+ {
+  "id": 10,
+  "category": "bug",
+  "issue": "apply disp_trim to all format_meter return paths",
+  "expected": [
+   "tqdm/std.py:format_meter:633"
+  ],
+  "commit": "b557cb03b6fd573a98e433fcf80b016c7e48702f",
+  "parent": "75bdb6c379bcfc6c592b6342dc791a092b5d6ae0",
+  "project": "tqdm",
+  "buggy_parent": "75bdb6c379bcfc6c592b6342dc791a092b5d6ae0",
+  "fix_commit": "b557cb03b6fd573a98e433fcf80b016c7e48702f",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/std.py"
+  ],
+  "validation": {
+   "id": 10,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_tqdm.py::test_disp_trim_all_format_meter_paths"
+   ]
+  }
+ },
+ {
+  "id": 11,
+  "category": "bug",
+  "issue": "pandas>=3 & negative format_interval",
+  "expected": [
+   "tqdm/std.py:format_interval:414"
+  ],
+  "commit": "9bcd04b3ba730c8bceb3c39d84850457660632fc",
+  "parent": "8c175ea97fdf586a10b21def09c27c0218b17bad",
+  "project": "tqdm",
+  "buggy_parent": "8c175ea97fdf586a10b21def09c27c0218b17bad",
+  "fix_commit": "9bcd04b3ba730c8bceb3c39d84850457660632fc",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/std.py"
+  ],
+  "validation": {
+   "id": 11,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_tqdm.py::test_format_interval"
+   ]
+  }
+ },
+ {
+  "id": 12,
+  "category": "bug",
+  "issue": "pandas: add progress_map, fix tests",
+  "expected": [
+   "tqdm/std.py:pandas:930"
+  ],
+  "commit": "a95cd884659dda1b75ce0282beb5724ccf416aa7",
+  "parent": "123cb1c036dac74e646bdea57056ad4af25a08e0",
+  "project": "tqdm",
+  "buggy_parent": "123cb1c036dac74e646bdea57056ad4af25a08e0",
+  "fix_commit": "a95cd884659dda1b75ce0282beb5724ccf416aa7",
+  "test_files": [
+   "tests/tests_pandas.py"
+  ],
+  "src_files": [
+   "tqdm/std.py"
+  ],
+  "validation": {
+   "id": 12,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_pandas.py::test_pandas_data_frame",
+    "tests/tests_pandas.py::test_pandas_groupby_apply"
+   ]
+  }
+ },
+ {
+  "id": 13,
+  "category": "bug",
+  "issue": "format_num",
+  "expected": [
+   "tqdm/std.py:format_num:437"
+  ],
+  "commit": "b38a9221c4b2723a82d8b186c0fd8e7b05771a12",
+  "parent": "9a11b2e591d77d5ff2dc1e27fb469f27e78b6dbf",
+  "project": "tqdm",
+  "buggy_parent": "9a11b2e591d77d5ff2dc1e27fb469f27e78b6dbf",
+  "fix_commit": "b38a9221c4b2723a82d8b186c0fd8e7b05771a12",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/std.py"
+  ],
+  "validation": {
+   "id": 13,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_tqdm.py::test_format_num"
+   ]
+  }
+ },
+ {
+  "id": 14,
+  "category": "bug",
+  "issue": "utils.envwrap: fix types",
+  "expected": [
+   "tqdm/std.py:tqdm:952"
+  ],
+  "commit": "6ce50bedb3c525f762258fb0701aacae15515f4d",
+  "parent": "f12b8bc907b5f333147d538deaf30686ed5cb99f",
+  "project": "tqdm",
+  "buggy_parent": "f12b8bc907b5f333147d538deaf30686ed5cb99f",
+  "fix_commit": "6ce50bedb3c525f762258fb0701aacae15515f4d",
+  "test_files": [
+   "tests/tests_utils.py"
+  ],
+  "src_files": [
+   "tqdm/std.py",
+   "tqdm/utils.py"
+  ],
+  "validation": {
+   "id": 14,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_utils.py::test_envwrap",
+    "tests/tests_utils.py::test_envwrap_types",
+    "tests/tests_utils.py::test_envwrap_annotations"
+   ]
+  }
+ },
+ {
+  "id": 15,
+  "category": "bug",
+  "issue": "edge cases & windows tests",
+  "expected": [
+   "tqdm/utils.py:envwrap:69"
+  ],
+  "commit": "84546d6be86810915b868078efb4d426dbac9d6c",
+  "parent": "fff3bf5f3ead77e493cad1ce29d8adf1b72da33c",
+  "project": "tqdm",
+  "buggy_parent": "fff3bf5f3ead77e493cad1ce29d8adf1b72da33c",
+  "fix_commit": "84546d6be86810915b868078efb4d426dbac9d6c",
+  "test_files": [
+   "tests/tests_utils.py"
+  ],
+  "src_files": [
+   "tqdm/utils.py"
+  ],
+  "validation": {
+   "id": 15,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_utils.py::test_envwrap",
+    "tests/tests_utils.py::test_envwrap_case"
+   ]
+  }
+ },
+ {
+  "id": 16,
+  "category": "bug",
+  "issue": "utils.envwrap: fix unused var, add tests",
+  "expected": [
+   "tqdm/utils.py:envwrap:55"
+  ],
+  "commit": "1411a0fd6a350a7e712358fa943f71005852e23e",
+  "parent": "6feef44607c8baf850712d6d5c54797bbcdee9d5",
+  "project": "tqdm",
+  "buggy_parent": "6feef44607c8baf850712d6d5c54797bbcdee9d5",
+  "fix_commit": "1411a0fd6a350a7e712358fa943f71005852e23e",
+  "test_files": [
+   "tests/tests_utils.py"
+  ],
+  "src_files": [
+   "tqdm/utils.py"
+  ],
+  "validation": {
+   "id": 16,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_utils.py::test_envwrap"
+   ]
+  }
+ },
+ {
+  "id": 17,
+  "category": "bug",
+  "issue": "Make postfix whitespace stripping optional",
+  "expected": [
+   "tqdm/std.py:set_postfix:1401"
+  ],
+  "commit": "2edd32dbfc757b59f811dddd8bf18f61c1bd9b65",
+  "parent": "fc69d5dcf578f7c7986fa76841a6b793f813df35",
+  "project": "tqdm",
+  "buggy_parent": "fc69d5dcf578f7c7986fa76841a6b793f813df35",
+  "fix_commit": "2edd32dbfc757b59f811dddd8bf18f61c1bd9b65",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/std.py"
+  ],
+  "validation": {
+   "id": 17,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_tqdm.py::test_postfix"
+   ]
+  }
+ },
+ {
+  "id": 18,
+  "category": "bug",
+  "issue": "deps & tests",
+  "expected": [
+   "tqdm/cli.py:main:248"
+  ],
+  "commit": "6c930f5d84a30a3c4dc74ff0e1081af7939ae44a",
+  "parent": "3ad2549adc8f4a6997e5ddccbaae1d2ebb268930",
+  "project": "tqdm",
+  "buggy_parent": "3ad2549adc8f4a6997e5ddccbaae1d2ebb268930",
+  "fix_commit": "6c930f5d84a30a3c4dc74ff0e1081af7939ae44a",
+  "test_files": [
+   "tests/tests_tqdm.py"
+  ],
+  "src_files": [
+   "tqdm/cli.py"
+  ],
+  "validation": {
+   "id": 18,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 19,
+  "category": "bug",
+  "issue": "keras: fix resume from `initial_epoch`",
+  "expected": [
+   "tqdm/keras.py:on_epoch_begin:77"
+  ],
+  "commit": "74ec6226610b22c4a2b509d9a7bcf8e90c3f4373",
+  "parent": "3f899b9f77a2585b8b8bed2e6305c28ce8ec1d98",
+  "project": "tqdm",
+  "buggy_parent": "3f899b9f77a2585b8b8bed2e6305c28ce8ec1d98",
+  "fix_commit": "74ec6226610b22c4a2b509d9a7bcf8e90c3f4373",
+  "test_files": [
+   "tests/tests_keras.py"
+  ],
+  "src_files": [
+   "tqdm/keras.py"
+  ],
+  "validation": {
+   "id": 19,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 20,
+  "category": "bug",
+  "issue": "display wrong epoch on keras resume training",
+  "expected": [
+   "tqdm/keras.py:on_train_begin:72"
+  ],
+  "commit": "3f899b9f77a2585b8b8bed2e6305c28ce8ec1d98",
+  "parent": "d9372a2d478fb001d19b0bd74fd6cd28c084734d",
+  "project": "tqdm",
+  "buggy_parent": "d9372a2d478fb001d19b0bd74fd6cd28c084734d",
+  "fix_commit": "3f899b9f77a2585b8b8bed2e6305c28ce8ec1d98",
+  "test_files": [
+   "tests/tests_keras.py"
+  ],
+  "src_files": [
+   "tqdm/keras.py"
+  ],
+  "validation": {
+   "id": 20,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 21,
+  "category": "bug",
+  "issue": "that tqdm_class cannot be passed to `tmap` and `tzip`",
+  "expected": [
+   "tqdm/contrib/__init__.py:tzip:83"
+  ],
+  "commit": "ea92a0b5fba1ac7438a976184e41247a0c476d29",
+  "parent": "bcce20f771a16cb8e4ac5cc5b2307374a2c0e535",
+  "project": "tqdm",
+  "buggy_parent": "bcce20f771a16cb8e4ac5cc5b2307374a2c0e535",
+  "fix_commit": "ea92a0b5fba1ac7438a976184e41247a0c476d29",
+  "test_files": [
+   "tests/tests_contrib.py"
+  ],
+  "src_files": [
+   "tqdm/contrib/__init__.py"
+  ],
+  "validation": {
+   "id": 21,
+   "ok": true,
+   "reason": "fail→pass",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_contrib.py::test_enumerate",
+    "tests/tests_contrib.py::test_enumerate_numpy",
+    "tests/tests_contrib.py::test_zip",
+    "tests/tests_contrib.py::test_map"
+   ]
+  }
+ },
+ {
+  "id": 22,
+  "category": "bug",
+  "issue": "asyncio: fix, tidy & update `gather` & tests",
+  "expected": [
+   "tqdm/asyncio.py:tqdm_asyncio:21"
+  ],
+  "commit": "8fdcddb446088241b51da0cd7667c7ad452c0222",
+  "parent": "82e0851f6306de59ab8313ebe6e538e9631e375e",
+  "project": "tqdm",
+  "buggy_parent": "82e0851f6306de59ab8313ebe6e538e9631e375e",
+  "fix_commit": "8fdcddb446088241b51da0cd7667c7ad452c0222",
+  "test_files": [
+   "tests/py37_asyncio.py"
+  ],
+  "src_files": [
+   "tqdm/asyncio.py"
+  ],
+  "validation": {
+   "id": 22,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/py37_asyncio.py::test_gather"
+   ]
+  }
+ },
+ {
+  "id": 23,
+  "category": "bug",
+  "issue": "lint: fix some warnings",
+  "expected": [
+   "benchmarks/benchmarks.py:run:25"
+  ],
+  "commit": "bbf40d242b7af9cc6022726de709038e5f5f8061",
+  "parent": "b612be49ccecfe750e22c4c24bf01eedea7aab53",
+  "project": "tqdm",
+  "buggy_parent": "b612be49ccecfe750e22c4c24bf01eedea7aab53",
+  "fix_commit": "bbf40d242b7af9cc6022726de709038e5f5f8061",
+  "test_files": [
+   "tests/tests_main.py"
+  ],
+  "src_files": [
+   "benchmarks/benchmarks.py",
+   "examples/include_no_requirements.py",
+   "tqdm/_utils.py"
+  ],
+  "validation": {
+   "id": 23,
+   "ok": false,
+   "reason": "修复前测试未失败",
+   "scope": "targeted"
+  }
+ },
+ {
+  "id": 24,
+  "category": "bug",
+  "issue": "minor codacy fixes",
+  "expected": [
+   "examples/7zx.py:main:80"
+  ],
+  "commit": "f2f47d5f90bcf6b908e165b40f4c8bfabcd1f149",
+  "parent": "b9507b31beb67c9903073f8ae6f89c9735c5f1d0",
+  "project": "tqdm",
+  "buggy_parent": "b9507b31beb67c9903073f8ae6f89c9735c5f1d0",
+  "fix_commit": "f2f47d5f90bcf6b908e165b40f4c8bfabcd1f149",
+  "test_files": [
+   "tests/tests_main.py"
+  ],
+  "src_files": [
+   "examples/7zx.py"
+  ],
+  "validation": {
+   "id": 24,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_main.py::test_pipes"
+   ]
+  }
+ },
+ {
+  "id": 25,
+  "category": "bug",
+  "issue": "some codacy issues",
+  "expected": [
+   ".meta/mksnap.py"
+  ],
+  "commit": "16ef7036601484bdfbac2c23f9a056832d39c1f4",
+  "parent": "ce0872216f610cfa160c2d395aa6446b21130917",
+  "project": "tqdm",
+  "buggy_parent": "ce0872216f610cfa160c2d395aa6446b21130917",
+  "fix_commit": "16ef7036601484bdfbac2c23f9a056832d39c1f4",
+  "test_files": [
+   "tests/tests_main.py"
+  ],
+  "src_files": [
+   ".meta/mksnap.py",
+   "examples/7zx.py",
+   "examples/parallel_bars.py"
+  ],
+  "validation": {
+   "id": 25,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_main.py::test_pipes"
+   ]
+  }
+ },
+ {
+  "id": 26,
+  "category": "bug",
+  "issue": "more formatting and potential minor bugs",
+  "expected": [
+   "examples/7zx.py:main:60"
+  ],
+  "commit": "fd0ca187f02cc6e0bd3b1788fe4c9dee0d0a2d92",
+  "parent": "4a613272143920eb418ba1ba51897e0e96391abb",
+  "project": "tqdm",
+  "buggy_parent": "4a613272143920eb418ba1ba51897e0e96391abb",
+  "fix_commit": "fd0ca187f02cc6e0bd3b1788fe4c9dee0d0a2d92",
+  "test_files": [
+   "tests/tests_pandas.py",
+   "tests/tests_tqdm.py",
+   "tests/tests_version.py"
+  ],
+  "src_files": [
+   "examples/7zx.py",
+   "examples/parallel_bars.py",
+   "examples/simple_examples.py"
+  ],
+  "validation": {
+   "id": 26,
+   "ok": false,
+   "reason": "修复后测试未通过",
+   "scope": "targeted",
+   "targets": [
+    "tests/tests_pandas.py::test_pandas_groupby_apply",
+    "tests/tests_pandas.py::test_pandas_apply_args_deprecation",
+    "tests/tests_tqdm.py::test_ansi_escape_codes",
+    "tests/tests_tqdm.py::test_position",
+    "tests/tests_tqdm.py::test_autodisable_enable",
+    "tests/tests_tqdm.py::test_postfix_direct",
+    "tests/tests_tqdm.py::test_bool",
+    "tests/tests_tqdm.py::test_screen_shape",
+    "tests/tests_version.py::test_version"
+   ]
+  }
+ }
+]

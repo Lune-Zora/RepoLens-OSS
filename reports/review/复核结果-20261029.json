@@ -1,0 +1,5302 @@
+[
+  {
+    "id": 1,
+    "project": "tqdm",
+    "issue": "contrib.concurrent: fix no-len iterables",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/contrib/concurrent.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 2,
+    "project": "tqdm",
+    "issue": "length detection in contrib.concurrent",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/contrib/concurrent.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 3,
+    "project": "tqdm",
+    "issue": "handle iterables without len, mirrorin rich's `DownloadColumn` (fixes #1391)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交正文一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/rich.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 4,
+    "project": "tqdm",
+    "issue": "handle total=inf in format_meter to avoid OverflowError",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/std.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 5,
+    "project": "tqdm",
+    "issue": "TMonitor deadlock at interpreter shutdown",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/_monitor.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 6,
+    "project": "tqdm",
+    "issue": "apply disp_trim to all format_meter return paths",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/std.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 7,
+    "project": "tqdm",
+    "issue": "pandas>=3 & negative format_interval",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/std.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 8,
+    "project": "tqdm",
+    "issue": "fix negative decimals format",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与上游原文一致（tqdm/tqdm#1548）"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/std.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 9,
+    "project": "tqdm",
+    "issue": "utils.envwrap: fix types",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/std.py, tqdm/utils.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 10,
+    "project": "tqdm",
+    "issue": "edge cases & windows tests",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/utils.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 11,
+    "project": "tqdm",
+    "issue": "Make postfix whitespace stripping optional",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/std.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 12,
+    "project": "tqdm",
+    "issue": "Fix that tqdm_class cannot be passed to `tmap` and `tzip`",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: tqdm/contrib/__init__.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 13,
+    "project": "pypdf",
+    "issue": "Resolve indirect widths in CID font /W arrays (#4267)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_font.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 14,
+    "project": "pypdf",
+    "issue": "Decode Unicode glyph names in font encodings (#4257)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_cmap.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 15,
+    "project": "pypdf",
+    "issue": "Accept strings in viewer preference names (#4238)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_viewerpref.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 16,
+    "project": "pypdf",
+    "issue": "Decode UniGB-UTF16 CMaps as UTF-16BE (#4231)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_cmap.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 17,
+    "project": "pypdf",
+    "issue": "Keep 8-bit DeviceRGB image mode (#4230)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_image_xobject.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 18,
+    "project": "pypdf",
+    "issue": "Preserve all annotation quadrilaterals when merging pages (#4223)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_page.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 19,
+    "project": "pypdf",
+    "issue": "Treat NUL as whitespace in ArrayObject (#4198)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_data_structures.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 20,
+    "project": "pypdf",
+    "issue": "Avoid overwriting unread objects in add_form_topname (#4190)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_reader.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 21,
+    "project": "pypdf",
+    "issue": "Read an indirect page box on a writer page (#4179)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_page.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 22,
+    "project": "pypdf",
+    "issue": "BUG: Do not crash on an /Outlines reference to a free object (#4177)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_doc_common.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 23,
+    "project": "pypdf",
+    "issue": "Apply the sign of zero-hour XMP timezone offsets (#4182)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/xmp.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 24,
+    "project": "pypdf",
+    "issue": "Only read the colour operator from a text field's default appearance (#4158)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_appearance_stream.py, pypdf/generic/_color.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 25,
+    "project": "pypdf",
+    "issue": "Keep the text shown before a change of direction (#4155)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_text_extraction/__init__.py, pypdf/_text_extraction/_text_extractor.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 26,
+    "project": "pypdf",
+    "issue": "Keep wrapped table-cell text on one extracted line (#4132)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_text_extraction/__init__.py, pypdf/_text_extraction/_text_extractor.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 27,
+    "project": "pypdf",
+    "issue": "Scale layout-mode space_tx into page space (#4128)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_text_extraction/_layout_mode/_fixed_width_page.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 28,
+    "project": "pypdf",
+    "issue": "Report the correct page number for identical pages (#4154)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_page.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 29,
+    "project": "pypdf",
+    "issue": "Raise a clear error for a rectangle without four values (#4123)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_rectangle.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 30,
+    "project": "pypdf",
+    "issue": "FloatObject.hash_bin hashes the as_numeric method, not the value (#4129)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_base.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 31,
+    "project": "pypdf",
+    "issue": "Fixes for standard mode text extraction with simple fonts with difference encoding and ToUnicode CMap (#4124)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_cmap.py, pypdf/_font.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 32,
+    "project": "pypdf",
+    "issue": "Layout mode text extraction: Use raw character codes in word_tx for width calculation (#4116)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_text_extraction/_layout_mode/_text_state_params.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 33,
+    "project": "pypdf",
+    "issue": "Remove duplicate visitor_text callback for Form XObject text (#4100)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_page.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 34,
+    "project": "pypdf",
+    "issue": "Release content streams replaced by replace_contents() (#4088)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_page.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 35,
+    "project": "pypdf",
+    "issue": "Use the page top for a named destination instead of a fixed value (#4099)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_writer.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 36,
+    "project": "pypdf",
+    "issue": "Avoid link mismatch warnings for excluded annotations (#4092)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_writer.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 37,
+    "project": "pypdf",
+    "issue": "Use page reference for existing internal link targets (#4076)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_writer.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 38,
+    "project": "pypdf",
+    "issue": "Arabic-Indic digits are reversed during text extraction (#4077)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_utils.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 39,
+    "project": "pypdf",
+    "issue": "Parse a string rect for add_uri into a rectangle (#4074)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_writer.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 40,
+    "project": "pypdf",
+    "issue": "Fix compatibility for fonttools < 4.57.0 (#4050)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_font.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 41,
+    "project": "pypdf",
+    "issue": "Use font color for FreeText default appearance (#4051)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/annotations/_markup_annotations.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 42,
+    "project": "pypdf",
+    "issue": "BUG: Do not read indirect_reference off a direct /Dests dictionary (#4028)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_doc_common.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 43,
+    "project": "pypdf",
+    "issue": "Report an out-of-range page number when adding a destination or URI (#4016)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_writer.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 44,
+    "project": "pypdf",
+    "issue": "Detect a duplicate dictionary key whose first value is falsy (#4024)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_data_structures.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 45,
+    "project": "pypdf",
+    "issue": "Check the box names assigned to the area and clip preferences (#4014)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_viewerpref.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 46,
+    "project": "pypdf",
+    "issue": "Reject an odd-length print page range (#4013)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_viewerpref.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 47,
+    "project": "pypdf",
+    "issue": "Check the value assigned to print_scaling (#4011)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_viewerpref.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 48,
+    "project": "pypdf",
+    "issue": "List the valid layouts in the page layout warning (#4010)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_writer.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 49,
+    "project": "pypdf",
+    "issue": "Reject a page range with a zero stride (#4004)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/pagerange.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 50,
+    "project": "pypdf",
+    "issue": "Make is_open=False collapse outline items (#3998)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_writer.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 51,
+    "project": "pypdf",
+    "issue": "Make remove_from_tree() work on outline items (#3939)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/generic/_data_structures.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 52,
+    "project": "pypdf",
+    "issue": "Be more lenient about space width in layout mode text extraction (#3992)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_text_extraction/_layout_mode/_fixed_width_page.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 53,
+    "project": "pypdf",
+    "issue": "Interpolate the reader in the reset_translation error message (#3981)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_writer.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 54,
+    "project": "pypdf",
+    "issue": "BUG: Do not scale the text leading by the font size (#3987)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_text_extraction/__init__.py, pypdf/_text_extraction/_text_extractor.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 55,
+    "project": "pypdf",
+    "issue": "Update annotation appearance stream matrix on page transform (#3968)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_page.py, pypdf/generic/_appearance_stream.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 56,
+    "project": "pypdf",
+    "issue": "Collect the fonts declared in the AcroForm /DR dictionary (#3983)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_page.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 57,
+    "project": "pypdf",
+    "issue": "Default decode_parms to a DictionaryObject (#3971)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/filters.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 58,
+    "project": "pypdf",
+    "issue": "Allow repeated page references (#3959)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: pypdf/_doc_common.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 59,
+    "project": "click",
+    "issue": "`show_envvar` output for a sequence or an empty `envvar`",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 60,
+    "project": "click",
+    "issue": "Just a small bug I encountered in my CLIs, where as `vs.` or `e.g.` was prematurely ending the shorten version of a help message produced by `_make_default_short_help`.",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与上游原文一致（pallets/click#3865）"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/utils.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 61,
+    "project": "click",
+    "issue": "race condition on `KeyboardInterrupt` arriving in `Command.main()`",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 62,
+    "project": "click",
+    "issue": "`copy`, `deepcopy` and `pickle` of `Sentinel` members",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/_utils.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 63,
+    "project": "click",
+    "issue": "Validate style() color arguments, fix explicit black color argument",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/termui.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 64,
+    "project": "click",
+    "issue": "A bug I stumble upon while reviewing #3473: the `(DEPRECATED)` label can be rendered with a leading empty space in certain cases.",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与上游原文一致（pallets/click#3509）"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 65,
+    "project": "click",
+    "issue": "broken fish completion and multiline help string",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/shell_completion.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 66,
+    "project": "click",
+    "issue": "get_parameter_source() during type conversion and eager callbacks",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 67,
+    "project": "click",
+    "issue": "Skip flaky pager test on macOS with free-threaded Python 3.14t",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/_compat.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 68,
+    "project": "click",
+    "issue": "`HelpFormatter.write_usage` producing spurious characters",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/formatting.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 69,
+    "project": "click",
+    "issue": "dual-option arbitration to respect explicit defaults",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 70,
+    "project": "click",
+    "issue": "show custom error message in prompt with hide_input=True",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/termui.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 71,
+    "project": "click",
+    "issue": "Ensure fish completion handles multiline help strings correctly (#3126)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/shell_completion.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 72,
+    "project": "click",
+    "issue": "Document and fix command string sanitizing with `shlex.split`",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/_termui_impl.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 73,
+    "project": "click",
+    "issue": "semver.Version as default causing an error",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与上游原文一致（pallets/click#3298）"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 74,
+    "project": "click",
+    "issue": "callable ``flag_value`` being instantiated when used as a default",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 75,
+    "project": "click",
+    "issue": "#3084: Correct flag optional value behavior and add comprehensive tests",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 76,
+    "project": "click",
+    "issue": "`default=True` on feature flags is order-sensitive",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与上游原文一致（pallets/click#3071）"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 77,
+    "project": "click",
+    "issue": "completions for quoted/escaped parameters in Fish (#3013)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/shell_completion.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 78,
+    "project": "click",
+    "issue": "Zsh completions with colons (#2846)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/shell_completion.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 79,
+    "project": "click",
+    "issue": "We need to extract the args from the fresh context when following nested groups to keep 8.1.8 behavior for shell completion for nested groups.",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交正文一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/shell_completion.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 80,
+    "project": "click",
+    "issue": "condition for setting flag value when type is provided",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/click/core.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 81,
+    "project": "requests",
+    "issue": "#6628 - JSONDecodeError are not deserializable",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: src/requests/exceptions.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 82,
+    "project": "loguru",
+    "issue": "thread/process info in standard handlers with `enqueue=True` (#1529)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_simple_sinks.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 83,
+    "project": "loguru",
+    "issue": "incorrect formatting of negative timestamps (#1508)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_datetime.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 84,
+    "project": "loguru",
+    "issue": "incorrect formatting of negative timezone offsets (#1507)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_datetime.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 85,
+    "project": "loguru",
+    "issue": "wrong formatting of microsecond timestamp (\"x\" token for time) (#1441)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_datetime.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 86,
+    "project": "loguru",
+    "issue": "\"NO_COLOR\" and \"FORCE_COLOR\" affecting non-standard streams",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_colorama.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 87,
+    "project": "loguru",
+    "issue": "inability to display '\\' before color markups (#1236)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_colorizer.py, loguru/_logger.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 88,
+    "project": "loguru",
+    "issue": "\"remove()\" not thread-safe causing possible RuntimeError (#1183)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_logger.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 89,
+    "project": "loguru",
+    "issue": "error using \"set_start_method()\" after \"logger\" import (#974)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_handler.py, loguru/_logger.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 90,
+    "project": "loguru",
+    "issue": "errors due to non-unpicklable Exception when \"enqueue=True\" (#329)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_recattrs.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 91,
+    "project": "loguru",
+    "issue": "missing seconds when formatting timezone offset (#961)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_datetime.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 92,
+    "project": "loguru",
+    "issue": "incorrect rotation when re-starting around midnight (#894)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_file_sink.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 93,
+    "project": "loguru",
+    "issue": "usage of aware \"datetime.time\" for file rotation (#697)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_file_sink.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 94,
+    "project": "loguru",
+    "issue": "incompatibility with \"freezegun\" library to simulate time (#600)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_datetime.py, loguru/_file_sink.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 95,
+    "project": "loguru",
+    "issue": "colors in Github Actions and others CI platforms (#604)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_colorama.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 96,
+    "project": "loguru",
+    "issue": "colors in Jupyter Notebook and Google Colab (#494)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: loguru/_colorama.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 97,
+    "project": "requests",
+    "issue": "inconsistent exception for JSONDecode error (#6097)",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: requests/models.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 98,
+    "project": "requests",
+    "issue": "environment CA Bundle resolution",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: requests/sessions.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 99,
+    "project": "requests",
+    "issue": "auth parsing for proxies",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: requests/utils.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  },
+  {
+    "id": 100,
+    "project": "requests",
+    "issue": "#4965 fix: Accessing response.content twice removes forgets read error.",
+    "verdict": "PASS",
+    "checks": [
+      [
+        "C1",
+        "PASS",
+        "提交存在"
+      ],
+      [
+        "C2",
+        "PASS",
+        "父提交一致"
+      ],
+      [
+        "C3",
+        "PASS",
+        "标注路径均在改动内"
+      ],
+      [
+        "C4",
+        "PASS",
+        "标注符号均被改动触及"
+      ],
+      [
+        "C5",
+        "PASS",
+        "测试目标可定位"
+      ],
+      [
+        "C6",
+        "PASS",
+        "与提交标题一致"
+      ],
+      [
+        "C7",
+        "PASS",
+        "有源码改动: requests/models.py"
+      ],
+      [
+        "C9",
+        "PASS",
+        "行号均为符号定义行"
+      ],
+      [
+        "C8",
+        "PASS",
+        "补丁内容唯一"
+      ]
+    ]
+  }
+]

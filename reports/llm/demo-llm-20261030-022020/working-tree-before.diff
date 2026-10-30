@@ -1,0 +1,602 @@
+diff --git a/.env.example b/.env.example
+index 698b4b3..f371ccd 100644
+--- a/.env.example
++++ b/.env.example
+@@ -20,6 +20,8 @@ REPLENS_LLM_API_KEY=
+ REPLENS_LLM_N_CANDIDATES=4
+ 
+ # 严格模式：1=未配置模型直接报错，禁止用规则引擎冒充模型结果；0=允许规则兜底
++# scripts/run_llm_demo.py 始终强制严格模式，并自动保存每次模型调用记录。
++# 普通 CLI / Web 不会自动加载 .env；启动它们前须在终端设置相应环境变量。
+ REPLENS_REQUIRE_LLM=0
+ 
+ # ---- 语义向量检索（可选）----
+diff --git a/README.md b/README.md
+index 18cb9e3..ef02ffc 100644
+--- a/README.md
++++ b/README.md
+@@ -113,6 +113,12 @@ base_url 含 localhost/11434 时自动默认 qwen2.5-coder:1.5b，无需设置 A
+ 
+ ## 云端或兼容接口
+ 
++正式 Demo 证据可通过 `python scripts/run_llm_demo.py` 生成。脚本读取环境变量或
++`.env`，始终禁止规则兜底，使用标准 CLI `run` 和 `verify`，同时保存逐次模型调用、
++实际次数与重试轮次、源码 ZIP/哈希、报告和重放结果。已有输出目录不会被覆盖。
++可用 `--output-dir <新目录>` 指定交付位置，细节见 [LLM 证据说明](reports/llm/README.md)。
++普通 CLI 和 Web 不会自动加载 `.env`，需先在启动终端设置模型环境变量。
++
+ 不配置以下变量时，使用有限的 RulePlanner/RulePatchGenerator 兜底。它们不能理解任意错误；可以设置 `REPLENS_REQUIRE_LLM=1`，让复杂流程在没有模型时直接报错，避免误把规则结果当成通用智能分析。
+ 配置后接入任意 OpenAI 兼容接口（含自建网关）：
+ 
+diff --git a/replens/llm.py b/replens/llm.py
+index 648c1b9..b383aa7 100644
+--- a/replens/llm.py
++++ b/replens/llm.py
+@@ -11,6 +11,8 @@ import urllib.error
+ import urllib.request
+ from typing import Optional
+ 
++from .llm_audit import LLMTrace
++
+ 
+ class LLMError(Exception):
+     pass
+@@ -21,16 +23,18 @@ class OpenAICompatLLM:
+ 
+     def __init__(self, base_url: str, api_key: str,
+                  model: str = "gpt-4o-mini", timeout: int = 60,
+-                 use_response_format: bool = False):
++                 use_response_format: bool = False, purpose: str = "unspecified"):
+         self.base_url = base_url.rstrip("/")
+         self.api_key = api_key
+         self.model = model
+         self.timeout = timeout
+         # response_format 很多网关不支持（自建/国产模型），默认关闭
+         self.use_response_format = use_response_format
++        self.purpose = purpose
++        self.trace_context = {}
+ 
+     def chat_json(self, system: str, user: str, temperature: float = 0.2) -> Optional[dict]:
+-        """发送一次对话并解析 JSON 响应。任何异常都返回 None。
++        """发送一次对话并解析 JSON 响应；调用/解析失败时抛出 LLMError。
+ 
+         temperature 用于 Best-of-N 候选采样：不同温度产生多样性。
+         """
+@@ -51,20 +55,25 @@ class OpenAICompatLLM:
+         if self.api_key:
+             # Ollama 等本地服务不要求鉴权，仅在配置了 key 时附加
+             req.add_header("Authorization", f"Bearer {self.api_key}")
++        trace = LLMTrace(payload, self.purpose, self.trace_context, self.api_key)
++        body = ""
+         try:
+-            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+-                body = resp.read().decode("utf-8")
+-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
+-            raise LLMError(f"LLM 调用失败: {e}")
+-
+-        try:
+-            obj = json.loads(body)
+-            content = obj["choices"][0]["message"]["content"]
+-            if isinstance(content, dict):
+-                return content
+-            return self._extract_json(content)
+-        except (KeyError, IndexError, json.JSONDecodeError) as e:
+-            raise LLMError(f"LLM 响应解析失败: {e}")
++            try:
++                with urllib.request.urlopen(req, timeout=self.timeout) as resp:
++                    body = resp.read().decode("utf-8")
++            except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
++                raise LLMError(f"LLM 调用失败: {e}") from e
++            try:
++                obj = json.loads(body)
++                content = obj["choices"][0]["message"]["content"]
++                result = content if isinstance(content, dict) else self._extract_json(content)
++            except (KeyError, IndexError, json.JSONDecodeError) as e:
++                raise LLMError(f"LLM 响应解析失败: {e}") from e
++        except Exception as e:
++            trace.finish(response_text=body, error=e)
++            raise
++        trace.finish(response_text=body, parsed=result)
++        return result
+ 
+     @staticmethod
+     def _extract_json(content: str) -> dict:
+diff --git a/replens/patchgen.py b/replens/patchgen.py
+index fa29997..87b2477 100644
+--- a/replens/patchgen.py
++++ b/replens/patchgen.py
+@@ -263,22 +263,35 @@ class LLMPatchGenerator(PatchGenerator):
+         self.llm = llm
+         self.model = model
+         self.n_candidates = max(1, n_candidates)
++        self._generation_round = 0
+ 
+     def _build_prompts(self, issue, evidences, feedback=""):
++        # 关键修复（2026-10-29）：此前只喂 evidences[:4]，真实 bug 文件（如 tqdm/std.py）
++        # 常因检索排序排在第 5 位之后而被截断，模型根本没看到要改的代码 → 候选为 0。
++        # 现在：生产源码证据全部纳入（最多 8 条，供修改），测试文件单独标为「仅供上下文、
++        # 禁止修改」（最多 2 条，帮助模型理解预期行为），并要求 from 带足够上下文以唯一匹配。
+         system = (
+             "你是开源仓库修复专家。基于给定的代码证据与测试反馈，生成最小修改补丁。"
+-            "只允许修改证据中的生产源码文件（不得修改测试文件或测试/构建配置），"
+-            "from 字段必须是证据代码中逐字符一致的原文（含缩进与标点）。"
++            "只允许修改标记为【可修改】的生产源码文件；标记为【仅供上下文，禁止修改】的"
++            "测试文件只用于理解预期行为，绝不能出现在补丁里。"
++            "from 字段必须是目标文件中逐字符一致的原文（含缩进与标点），"
++            "且要包含足够上下文（可多行），保证在整个文件里唯一匹配。"
+             '严格输出 JSON 对象，格式：{"<相对路径>": {"from": "<原文>", "to": "<替换后>"}}。'
+             '若无法生成可靠补丁，输出 {"reason": "<原因>"}。不要输出任何多余文字。'
+         )
++        prod = [e for e in evidences if not _is_test_path(e.symbol.path)]
++        tests = [e for e in evidences if _is_test_path(e.symbol.path)]
++        ordered = ([("可修改", e) for e in prod[:8]]
++                   + [("仅供上下文，禁止修改", e) for e in tests[:2]])
++        if not ordered:
++            ordered = [("可修改", e) for e in evidences[:8]]
+         ctx = []
+-        for e in evidences[:4]:
++        for tag, e in ordered:
+             numbered = []
+             for idx, line in enumerate(e.symbol.code.splitlines()[:40], 1):
+                 numbered.append(str(idx).rjust(4) + " | " + line)
+             code = "\n".join(numbered)
+-            ctx.append("文件 " + e.symbol.ref + " " + e.symbol.type + " "
++            ctx.append("【" + tag + "】文件 " + e.symbol.ref + " " + e.symbol.type + " "
+                        + e.symbol.name + " 证据来源: " + e.reason)
+             ctx.append("[代码开始]")
+             ctx.append(code)
+@@ -293,11 +306,15 @@ class LLMPatchGenerator(PatchGenerator):
+         """Best-of-N：以不同温度采样多个候选，返回通过结构化校验的候选列表。"""
+         if not evidences:
+             return []
++        self._generation_round += 1
+         system, user = self._build_prompts(issue, evidences, feedback)
+         candidates = []
+         seen = set()
+         for i in range(self.n_candidates):
+             temperature = round(0.2 + 0.15 * i, 2)
++            context = getattr(self.llm, "trace_context", None)
++            if isinstance(context, dict):
++                context.update(generation_round=self._generation_round, candidate_index=i + 1)
+             try:
+                 data = self.llm.chat_json(system, user, temperature=temperature)
+             except Exception:
+@@ -344,7 +361,8 @@ def build_patch_generator() -> PatchGenerator:
+         default_model = "qwen2.5-coder:1.5b" if is_local else "gpt-4o-mini"
+         model = os.environ.get("REPLENS_LLM_MODEL", default_model)
+         n_candidates = int(os.environ.get("REPLENS_LLM_N_CANDIDATES", "4"))
+-        client = OpenAICompatLLM(base, key, model=model, use_response_format=is_local)
++        client = OpenAICompatLLM(base, key, model=model, use_response_format=is_local,
++                                 purpose="patch")
+         return LLMPatchGenerator(client, model=model, n_candidates=n_candidates)
+     if _llm_required():
+         raise RuntimeError("REPLENS_REQUIRE_LLM=1，但未配置 LLM 服务，拒绝使用有限规则引擎")
+diff --git a/replens/planner.py b/replens/planner.py
+index 89ebae9..75f5911 100644
+--- a/replens/planner.py
++++ b/replens/planner.py
+@@ -188,7 +188,8 @@ def build_planner() -> Planner:
+         is_local = ("11434" in base or "localhost" in base)
+         default_model = "qwen2.5-coder:1.5b" if is_local else "gpt-4o-mini"
+         model = os.environ.get("REPLENS_LLM_MODEL", default_model)
+-        client = OpenAICompatLLM(base, key, model=model, use_response_format=is_local)
++        client = OpenAICompatLLM(base, key, model=model, use_response_format=is_local,
++                                 purpose="plan")
+         return LLMPlanner(client, model=model)
+     if _llm_required():
+         raise RuntimeError("REPLENS_REQUIRE_LLM=1，但未配置 REPLENS_LLM_BASE_URL 或 OPENAI_BASE_URL")
+diff --git a/reports/llm/README.md b/reports/llm/README.md
+index 06cdced..447f415 100644
+--- a/reports/llm/README.md
++++ b/reports/llm/README.md
+@@ -1,51 +1,49 @@
+-# LLM 路径证据（本地模型 + Schema 2.0）
+-
+-本目录保存「LLM 计划 + LLM 自动补丁 + 独立验收」的可验证证据，用于回应「AI 与开源融合」评分项。
+-与 `reports/runs/`（被 `.gitignore` 排除的临时输出）不同，**本目录会被提交入库**，是可交付证据。
+-
+-## 目录结构
+-
+-```text
+-reports/llm/
+-└── demo-llm-<时间戳>/
+-    ├── report.md        # 完整分析报告（定位证据 / 计划 / 补丁 diff / 测试前后结果）
+-    ├── replay.json      # verify 重放结论（材料核验 + 重放一致性 + 修复结论）
+-    └── provenance/      # Schema 2.0 证据包
+-        ├── provenance.json  # 环境、源码清单与哈希、修复结论
+-        ├── manifest.json    # 各文件 SHA-256
+-        ├── suites/          # primary / auxiliary / acceptance 三组用例与前后结果
+-        ├── patch/patch.json # 实际采用的补丁
+-        └── report.json/md   # 运行时的报告快照
+-```
++# 严格模型 Demo 证据
+ 
+-## 生成方式（本机）
++正式入口为 `python scripts/run_llm_demo.py`。它读取环境变量 / `.env`，强制
++`REPLENS_REQUIRE_LLM=1`，通过标准 CLI `run`（包含计划生成）和 `verify` 完成验证。
++不会额外跑一份独立计划，也不会用规则补丁代替模型结果。
+ 
+-```bash
+-# 1) 安装并启动 Ollama，拉取模型
+-ollama serve
+-ollama pull qwen2.5-coder:1.5b
+-# 2) 配置（复制模板后按本机情况修改；.env 不入库）
+-cp .env.example .env        # Windows: copy .env.example .env
+-python scripts/llm_env.py   # 自检配置与连通性
+-# 3) 一键跑完整闭环，产物落到本目录
++```powershell
+ python scripts/run_llm_demo.py
++# 或指定一个尚不存在、位于 Demo 仓库之外的输出目录
++python scripts/run_llm_demo.py --output-dir 'E:\osspj\参赛提交-20261030\验证\新的唯一目录'
+ ```
+ 
+-## 本轮结论
++输出包含：
++
++- `summary.json`：源码提交、工作区状态、配置、实际命令和退出码、调用次数、实际重试轮次与模型用量。
++- `model-requests/`：每次模型请求、原始响应、解析结果或错误、阶段、候选轮次和耗时。
++- `source-snapshot.zip`、`source-files-before.json` / `source-files-after.json`、工作区差异：本次代码与运行输入快照，可包含尚未提交的实际变更。
++- `report.json` / `report.md`：计划、采用的补丁及三个测试套件的前后结果。
++- `provenance/`：本次 CLI 实际返回的 Schema 2.0 包；不会猜测“最新目录”或选用旧包。
++- `replay.json`：对交付副本执行标准 CLI verify 的最终结论。
++- `run.*.txt` / `verify.*.txt`：原始控制台输出。
++- `delivery-manifest.json`：上述交付文件的 SHA-256。
++
++只有 run、完整材料、严格模型来源、verify、调用记录和源码一致性全部满足要求，
++脚本才返回 0。任何阶段失败均返回非零，保留已经产生的证据，不能因缺包或重放失败而显示完成。
++重复执行使用新目录，不覆盖已有记录。精确调用次数是模型调用尝试次数；网络或解析失败也会计数。
++Token 用量来自服务响应，不作为独立计费核验；未返回用量时会明确标记不可用。
+ 
+-- 计划由本地模型生成（`generated_by=llm`）。
+-- 补丁由本地模型经 Best-of-N 生成并通过结构化校验，`s.strip()` 修复生效。
+-- 结果：**VERIFIED** —— 目标用例 `test_parse_date_with_whitespace` 由 FAIL→PASS，原有通过测试保持通过，冻结独立行为验收通过；`replay.json` 为 `status=PASS`、`repair_status=VERIFIED`、`validation_matches=true`。
++普通 CLI / Web 不会自动读取 `.env`；需要先在终端设置模型环境变量。
++若单独使用标准 CLI 并需要调用记录，可设置进程环境变量 `REPLENS_LLM_TRACE_DIR`。
++当前调用记录覆盖 OpenAI 兼容 HTTP 客户端；本演示脚本使用该路径，不宣称覆盖 transformers 后端。
++记录中不写鉴权头，配置的 API key 会脱敏；请求内包含任务代码和模型输出，分享前应复核内容。
+ 
+-> 说明：`report.md` 中「材料核验：NOT_CHECKED / 重放一致性：NOT_RUN」是**运行当时**的即时状态（那时还没执行 verify），属正常；**权威重放结论以同目录 `replay.json` 为准**。
++## 历史结果纠正
+ 
+-## 边界（如实说明，勿夸大）
++`demo-llm-20261029-200720` 的证据包和 replay 均保留原始字节，不修改历史记录。
++该次计划来源是模型，但 `provenance/report.json` 的 patch_note 明确说明最终采用了规则 strip 补丁。
++所以该次 VERIFIED 只能证明规则修复与重放通过，不能记为模型自主修复成功。
+ 
+-- 覆盖对象是内置 `examples/demo_repo` 的 strip 类 bug，**不代表真实复杂 bug**已由模型修好。
+-- 模型为 `qwen2.5-coder:1.5b`（CPU 可跑）。真实 bug（如 tqdm `total=inf`）在 1.5B 下 0 个候选通过校验，需 7B+ 或 LoRA，见 [本地模型](../../docs/02_架构/本地模型.md) 第 8 节。
+-- 证据包含运行环境的 Python 与依赖版本（见 `provenance/provenance.json` 的 `environment` 字段），重放需相同/兼容环境。
++2026-10-30 01:26 的外部交付目录 `standard-cli-20261030-012622` 已通过标准 CLI 严格模型修复和重放，
++但未记录逐次模型请求，因此它是有效的功能验证，不能被称为完整调用轨迹证据。
++后续使用本脚本生成的新目录补齐调用记录，不倒填或覆盖该次历史材料。
+ 
+-## 复现与移植
++## 能力边界
+ 
+-接口地址与模型名是**运行期配置**（环境变量 > `.env` > 默认值），仓库不写死。
+-他人复现只需安装 Ollama、拉取模型、按 `.env.example` 填自己的 `.env`，再执行上面的命令即可。
++内置 Demo 源码注释包含 strip 修复提示，成功主要证明模型调用、补丁生成、测试验收和重放链路。
++它不代表真实复杂 Bug 已被模型修复，不代表跨机器验证或多次稳定性实验。
++report 中 NOT_CHECKED / NOT_RUN 是打包时快照；后续重放结果以 replay.json 为准。
++单个模型失败案例不能推出“必须 7B+ 或 LoRA 才能解决”的结论。
+diff --git a/scripts/run_llm_demo.py b/scripts/run_llm_demo.py
+index 0ca4195..1bfc9f7 100644
+--- a/scripts/run_llm_demo.py
++++ b/scripts/run_llm_demo.py
+@@ -1,124 +1,218 @@
+-"""一键运行 LLM 修复闭环（本地 Ollama / 任意 OpenAI 兼容服务）。
+-
+-流程：
+-  1. 解析配置（环境变量 > .env > 默认值）并自检连通性；
+-  2. 运行 LLM 计划（replens plan）；
+-  3. 运行修复闭环（replens run --auto-patch + 独立验收 + --require-verified），产出 VERIFIED 报告；
+-  4. 把 Schema 2.0 证据包复制到 reports/llm/ 并执行 verify 重放，结论一并落盘。
+-
+-本机地址 / 模型名全部来自配置，不写死；换电脑或上传 GitHub 时只需改 .env。
+-
+-用法：
+-    python scripts/run_llm_demo.py
+-    python scripts/run_llm_demo.py --model qwen2.5-coder:1.5b --issue "..." --test-cmd "python -m pytest tests/test_parser.py"
+-"""
++"""Strict LLM Demo evidence via standard CLI run and verify; preserves all artifacts."""
+ from __future__ import annotations
+-
+ import argparse
++import hashlib
++import inspect
++import json
+ import os
+ import shutil
+ import subprocess
+ import sys
+ import time
++import zipfile
++from datetime import datetime, timezone
+ from pathlib import Path
++from uuid import uuid4
+ 
+ ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT))
+ sys.path.insert(0, str(Path(__file__).resolve().parent))
+-import llm_env  # noqa: E402
++import llm_env
+ 
+ DEFAULT_ISSUE = "date string with surrounding whitespace fails to parse"
+-DEMO_REPO = ROOT / "examples" / "demo_repo"
+-ACCEPTANCE = ROOT / "examples" / "acceptance" / "demo.json"
+-REPORT_DIR = ROOT / "reports" / "llm"
+-
+ 
+-def _run(cmd, env) -> int:
+-    print("[cmd] " + " ".join(str(c) for c in cmd))
+-    completed = subprocess.run([str(c) for c in cmd], cwd=str(ROOT), env=env)
+-    return completed.returncode
+ 
+-
+-def _latest_bundle(prov_root: Path):
+-    if not prov_root.exists():
+-        return None
+-    dirs = [d for d in prov_root.iterdir() if d.is_dir()]
+-    if not dirs:
+-        return None
+-    dirs.sort(key=lambda d: d.stat().st_mtime)
+-    return dirs[-1]
+-
+-
+-def main(argv=None) -> int:
+-    parser = argparse.ArgumentParser(description="一键运行 LLM 修复闭环")
++def _save(path, data):
++    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
++
++
++def _git(*args):
++    result = subprocess.run(["git", *args], cwd=ROOT, capture_output=True,
++                            encoding="utf-8", errors="replace")
++    return result.stdout.strip() if result.returncode == 0 else None
++
++
++def _source_files():
++    excluded = {"__pycache__", ".pytest_cache", ".replens", ".git", ".venv"}
++    files = set()
++    for name in ("replens", "web", "scripts", "tests", "examples", "eval", ".github"):
++        folder = ROOT / name
++        for path in folder.rglob("*") if folder.exists() else ():
++            if (path.is_file() and not excluded.intersection(path.relative_to(ROOT).parts)
++                    and not path.name.startswith(".env") and path.suffix != ".pyc"):
++                files.add(path)
++    for name in ("pyproject.toml", "README.md", "LICENSE", "constraints.txt",
++                 "requirements.txt", "requirements-lock.txt", ".env.example", ".gitattributes"):
++        if (ROOT / name).is_file():
++            files.add(ROOT / name)
++    return {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
++            for p in sorted(files)}
++
++
++def _run(label, command, env, output, commands):
++    started = time.monotonic()
++    print("[cmd] " + " ".join(map(str, command)), flush=True)
++    try:
++        result = subprocess.run(list(map(str, command)), cwd=ROOT, env=env,
++                                capture_output=True, encoding="utf-8", errors="replace", timeout=1200)
++        code, stdout, stderr = result.returncode, result.stdout, result.stderr
++    except subprocess.TimeoutExpired as exc:
++        def decode(value):
++            return value.decode("utf-8", "replace") if isinstance(value, bytes) else (value or "")
++        code, stdout, stderr = 124, decode(exc.stdout), decode(exc.stderr)
++    (output / (label + ".stdout.txt")).write_text(stdout, encoding="utf-8")
++    (output / (label + ".stderr.txt")).write_text(stderr, encoding="utf-8")
++    commands.append({"label": label, "argv": list(map(str, command)), "exit_code": code,
++                     "seconds": round(time.monotonic() - started, 3)})
++    print("[%s] exit=%s" % (label, code), flush=True)
++    return code, stdout, stderr
++
++
++def _trace_summary(directory, require_complete=True):
++    rows = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(directory.glob("*.json"))]
++    if require_complete and (not rows or any(row.get("status") not in {"success", "error"} for row in rows)):
++        raise ValueError("模型调用记录为空或存在未完成调用")
++    phases = {phase: sum(row.get("purpose") == phase for row in rows) for phase in ("plan", "patch")}
++    if require_complete and (not phases["plan"] or not phases["patch"]):
++        raise ValueError("缺少计划或补丁的真实模型调用记录")
++    rounds = [row.get("context", {}).get("generation_round", 0)
++              for row in rows if row.get("purpose") == "patch"]
++    usage = {key: sum((row.get("usage") or {}).get(key, 0) or 0 for row in rows)
++             for key in ("prompt_tokens", "completion_tokens", "total_tokens")}
++    return {"call_attempts": len(rows), "by_purpose": phases,
++            "completed_json_calls": sum(row["status"] == "success" for row in rows),
++            "error_calls": sum(row["status"] == "error" for row in rows),
++            "incomplete_calls": sum(row.get("status") not in {"success", "error"} for row in rows),
++            "patch_generation_rounds": max(rounds, default=0),
++            "actual_repair_rounds": max(0, max(rounds, default=0) - 1),
++            "call_seconds_sum": round(sum(row.get("duration_seconds", 0) for row in rows), 3),
++            "provider_usage_sum": usage,
++            "provider_usage_available": all(isinstance(row.get("usage"), dict) for row in rows),
++            "response_models": sorted({row["response_model"] for row in rows if row.get("response_model")})}
++
++
++def main(argv=None):
++    from replens.patchgen import auto_patch_loop
++    parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument("--issue", default=DEFAULT_ISSUE)
+-    parser.add_argument("--model", default=None, help="覆盖 REPLENS_LLM_MODEL")
++    parser.add_argument("--model")
+     parser.add_argument("--test-cmd", default="python -m pytest tests/test_parser.py")
+     parser.add_argument("--env-file", default=str(ROOT / ".env"))
+     parser.add_argument("--skip-check", action="store_true")
++    parser.add_argument("--output-dir", help="本次新建目录；已有目录不会被覆盖")
+     args = parser.parse_args(argv)
+-
+     cfg = llm_env.resolve_config(args.env_file)
+     if args.model:
+         cfg["REPLENS_LLM_MODEL"] = args.model
+-    llm_env.apply_config(cfg)
+-    env = dict(os.environ)
+-
+-    ok, detail = llm_env.check_endpoint(cfg)
+-    print("LLM 端点: " + str(cfg["REPLENS_LLM_BASE_URL"]) +
+-          " | 模型: " + str(cfg["REPLENS_LLM_MODEL"]))
+-    print("连通性: " + ("OK — " if ok else "FAIL — ") + detail)
+-    if not ok and not args.skip_check:
+-        print("")
+-        print("[!] 无法连接 LLM 服务。请先安装并启动 Ollama，或修改 .env 的 REPLENS_LLM_BASE_URL。")
+-        print("    Ollama 示例： ollama serve  &&  ollama pull " + str(cfg["REPLENS_LLM_MODEL"]))
+-        return 3
+-
+-    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+-    label = "demo-llm-" + time.strftime("%Y%m%d-%H%M%S")
+-    out_dir = REPORT_DIR / label
+-    out_dir.mkdir(parents=True, exist_ok=True)
+-    report_md = out_dir / "report.md"
+-
+-    # 1) LLM 计划
+-    _run([sys.executable, "-m", "replens", "plan", "examples/demo_repo", "--issue", args.issue], env)
+-
+-    # 2) 修复闭环（LLM 补丁 + 独立验收，仅 VERIFIED 视为通过）
+-    run_cmd = [
+-        sys.executable, "-m", "replens", "run", "examples/demo_repo",
+-        "--issue", args.issue,
+-        "--test-cmd", args.test_cmd,
+-        "--auto-patch",
+-        "--acceptance-suite", "examples/acceptance/demo.json",
+-        "--require-verified",
+-        "--output", str(report_md),
+-    ]
+-    code = _run(run_cmd, env)
+-    if code != 0:
+-        print("[!] run 未通过（exit=" + str(code) + "）。报告见 " + str(report_md))
+-        return code
+-
+-    # 3) 收集证据包并复制到入库目录
+-    bundle = _latest_bundle(DEMO_REPO / ".replens" / "provenance")
+-    if bundle is None:
+-        print("[!] 未找到证据包目录，跳过 verify。")
+-        return 0
+-    dest = out_dir / "provenance"
+-    if dest.exists():
+-        shutil.rmtree(dest)
+-    shutil.copytree(bundle, dest)
+-    print("证据包已复制到: " + str(dest))
+-
+-    # 4) 重放校验（材料核验 + 重放一致性 + 修复结论）
+-    _run([
+-        sys.executable, "-m", "replens", "verify", "examples/demo_repo",
+-        "--provenance", str(dest),
+-        "--require-verified", "--format", "json",
+-        "--output", str(out_dir / "replay.json"),
+-    ], env)
+-
+-    print("")
+-    print("完成。产物目录: " + str(out_dir))
+-    return 0
++    cfg["REPLENS_REQUIRE_LLM"] = "1"
++    env = dict(os.environ, **cfg, REPLENS_LLM_PROVIDER="", PYTHONUTF8="1", PYTHONIOENCODING="utf-8")
++    demo = ROOT / "examples" / "demo_repo"
++    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
++    output = (Path(args.output_dir).resolve() if args.output_dir else
++              ROOT / "reports" / "llm" / ("demo-llm-" + stamp + "-" + uuid4().hex[:8]))
++    if output == demo or demo in output.parents:
++        parser.error("交付目录必须在被修复的 Demo 仓库之外")
++    if output.exists():
++        parser.error("输出目录已存在，拒绝覆盖: " + str(output))
++    output.mkdir(parents=True)
++    trace_dir = output / "model-requests"
++    trace_dir.mkdir()
++    env["REPLENS_LLM_TRACE_DIR"] = str(trace_dir)
++    commands = []
++    before = _source_files()
++    summary = {"schema_version": 1, "status": "IN_PROGRESS", "started_at": stamp,
++               "source_root": str(ROOT), "git_commit": _git("rev-parse", "HEAD"),
++               "git_status_before": _git("status", "--short"), "python": sys.version,
++               "settings": {k: v for k, v in cfg.items() if "KEY" not in k},
++               "max_repair_rounds": inspect.signature(auto_patch_loop).parameters["max_repair_rounds"].default,
++               "commands": commands, "raw_llm_requests_recorded": True}
++    _save(output / "summary.json", summary)
++    _save(output / "source-files-before.json", before)
++    (output / "working-tree-before.diff").write_text(_git("diff", "--binary") or "", encoding="utf-8")
++    with zipfile.ZipFile(output / "source-snapshot.zip", "w", zipfile.ZIP_DEFLATED) as archive:
++        for relative in before:
++            archive.write(ROOT / relative, relative)
++    print("产物目录: " + str(output), flush=True)
++    try:
++        prov_root = demo / ".replens" / "provenance"
++        old_bundles = {p.resolve() for p in prov_root.iterdir()} if prov_root.exists() else set()
++        if not args.skip_check:
++            ok, detail = llm_env.check_endpoint(cfg)
++            summary["endpoint_check"] = {"ok": ok, "detail": detail}
++            if not ok:
++                raise ValueError("模型服务不可连接: " + detail)
++        code, stdout, stderr = _run("run", [sys.executable, "-m", "replens", "run", str(demo),
++            "--issue", args.issue, "--test-cmd", args.test_cmd, "--auto-patch",
++            "--acceptance-suite", str(ROOT / "examples" / "acceptance" / "demo.json"),
++            "--require-verified", "--format", "json", "--output", str(output / "report.json")],
++            env, output, commands)
++        if code:
++            raise ValueError("标准 CLI run 失败，退出码 " + str(code))
++        report = json.loads((output / "report.json").read_text(encoding="utf-8"))
++        if (report.get("status") != "VERIFIED" or report.get("plan", {}).get("generated_by") != "llm"
++                or report.get("provenance", {}).get("status") != "WRITTEN"):
++            raise ValueError("报告未满足模型计划、VERIFIED 和证据包写入条件")
++        if any(token in report.get("patch_note", "") for token in ("规则候选主测试筛选通过", "规则引擎生成")):
++            raise ValueError("最终补丁来自规则，不能作为严格模型成功")
++        paths = [line.split("证据包已生成:", 1)[1].strip()
++                 for line in (stdout + "\n" + stderr).splitlines() if "证据包已生成:" in line]
++        if len(paths) != 1:
++            raise ValueError("CLI 未返回唯一的本次证据包路径")
++        bundle = Path(paths[0]).resolve()
++        if bundle in old_bundles:
++            raise ValueError("CLI 返回了旧证据包，拒绝作为本次结果")
++        if bundle.parent != (demo / ".replens" / "provenance").resolve():
++            raise ValueError("CLI 证据包路径不在预期目录")
++        frozen_report = json.loads((bundle / "report.json").read_text(encoding="utf-8"))
++        if frozen_report != report:
++            raise ValueError("本次报告与证据包报告不一致")
++        dest = output / "provenance"
++        shutil.copytree(bundle, dest)
++        shutil.copy2(dest / "report.md", output / "report.md")
++        code, _, _ = _run("verify", [sys.executable, "-m", "replens", "verify", str(demo),
++            "--provenance", str(dest), "--require-verified", "--format", "json",
++            "--output", str(output / "replay.json")], env, output, commands)
++        if code:
++            raise ValueError("标准 CLI verify 失败，退出码 " + str(code))
++        replay = json.loads((output / "replay.json").read_text(encoding="utf-8"))
++        required = {"status": "PASS", "materials_status": "PASS", "replay_status": "PASS",
++                    "repair_status": "VERIFIED", "validation_matches": True}
++        if any(replay.get(key) != value for key, value in required.items()):
++            raise ValueError("重放结果未同时满足材料、重放和修复通过")
++        summary.update(status="PASS", repair_status=report["status"],
++                       plan_generated_by=report["plan"]["generated_by"], patch_note=report["patch_note"],
++                       replay=replay, model_calls=_trace_summary(trace_dir))
++    except Exception as exc:
++        summary.update(status="FAILED", error=str(exc))
++        print("失败: " + str(exc), file=sys.stderr)
++    finally:
++        if "model_calls" not in summary:
++            try:
++                summary["model_calls"] = _trace_summary(trace_dir, require_complete=False)
++            except (ValueError, OSError) as exc:
++                summary["trace_error"] = str(exc)
++        after = _source_files()
++        _save(output / "source-files-after.json", after)
++        changes = [p for p in sorted(set(before) | set(after)) if before.get(p) != after.get(p)]
++        summary["source_files_changed"] = changes
++        if changes:
++            summary.update(status="FAILED", error="执行期间源码发生变化")
++        summary["finished_at"] = datetime.now(timezone.utc).isoformat()
++        _save(output / "summary.json", summary)
++        lines = ["# 严格模型 Demo 验证", "", "最终状态：" + summary["status"], "",
++                 "本目录通过标准 CLI run + verify 生成。实际命令和退出码见 summary.json；",
++                 "调用原文、响应、错误、轮次和用量见 model-requests/。",
++                 "源码为 source-snapshot.zip；工作区差异及源码前后哈希均保留。", "",
++                 "模型调用汇总：", "```json", json.dumps(summary.get("model_calls"), ensure_ascii=False, indent=2),
++                 "```", "", "此结果仅覆盖内置 Demo；源码注释含 strip 提示，不代表真实复杂 Bug 的自主修复能力。",
++                 "报告内重放状态是打包时快照，最终以 replay.json 为准。",
++                 "调用记录不包含鉴权头，并对配置的 API key 脱敏；其中包含任务代码和模型输出。",
++                 "未校验模型权重摘要；未开展跨机器或多次稳定性实验。", ""]
++        (output / "验证说明.md").write_text("\n".join(lines), encoding="utf-8")
++        manifest = {p.relative_to(output).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
++                    for p in sorted(output.rglob("*")) if p.is_file() and p != output / "delivery-manifest.json"}
++        _save(output / "delivery-manifest.json", {"algorithm": "sha256", "files": manifest})
++    return 0 if summary["status"] == "PASS" else 2
+ 
+ 
+ if __name__ == "__main__":

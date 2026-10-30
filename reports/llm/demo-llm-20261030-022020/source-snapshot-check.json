@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "archive_files": 131,
+  "archive_hashes_match": true,
+  "extracted_source_root": "C:\\Users\\19248\\AppData\\Local\\Temp\\replens-frozen-source-v67d_kcw",
+  "argv": [
+    "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "-m",
+    "replens",
+    "verify",
+    "C:\\Users\\19248\\AppData\\Local\\Temp\\replens-frozen-source-v67d_kcw\\examples\\demo_repo",
+    "--provenance",
+    "E:\\osspj\\参赛提交-20261030\\验证\\strict-cli-complete-20261030-022020\\provenance",
+    "--require-verified",
+    "--format",
+    "json",
+    "--output",
+    "E:\\osspj\\参赛提交-20261030\\验证\\strict-cli-complete-20261030-022020\\source-snapshot-replay.json"
+  ],
+  "exit_code": 0,
+  "seconds": 7.781,
+  "same_machine": true,
+  "new_virtual_environment": false
+}

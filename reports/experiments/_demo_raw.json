@@ -1,0 +1,86 @@
+[
+  {
+    "id": "success_strip",
+    "issue": "parse_date should strip surrounding whitespace before parsing YYYY-MM-DD",
+    "expected": [
+      "src/dateparse/parser.py:parse_date"
+    ],
+    "insufficient": false,
+    "returned": [
+      "src/dateparse/parser.py:9",
+      "src/dateparse/validator.py:8",
+      "src/dateparse/parser.py:1",
+      "src/dateparse/utils.py:5",
+      "src/dateparse/validator.py:29",
+      "src/dateparse/utils.py:25",
+      "tests/test_parser.py:8",
+      "tests/test_parser.py:17"
+    ],
+    "top1_conf": 1.0,
+    "top1_reason": "符号名/文档命中关键词: parse, date, strip, surrounding, surround",
+    "top1_source": "keyword_match",
+    "correct_refusal": null,
+    "hit_at_1": true,
+    "hit_at_5": true
+  },
+  {
+    "id": "success_validate",
+    "issue": "is_valid_date incorrectly rejects whitespace-padded date strings",
+    "expected": [
+      "src/dateparse/validator.py:is_valid_date"
+    ],
+    "insufficient": false,
+    "returned": [
+      "src/dateparse/validator.py:8",
+      "src/dateparse/utils.py:5",
+      "src/dateparse/validator.py:1",
+      "src/dateparse/parser.py:9",
+      "src/dateparse/utils.py:25"
+    ],
+    "top1_conf": 1.0,
+    "top1_reason": "符号名/文档命中关键词: valid, date, whitespace, string",
+    "top1_source": "keyword_match",
+    "correct_refusal": null,
+    "hit_at_1": true,
+    "hit_at_5": true
+  },
+  {
+    "id": "failure_gpu",
+    "issue": "add GPU acceleration support to the parser",
+    "expected": [],
+    "insufficient": true,
+    "returned": [],
+    "top1_conf": null,
+    "top1_reason": null,
+    "top1_source": null,
+    "correct_refusal": true,
+    "hit_at_1": true,
+    "hit_at_5": true
+  },
+  {
+    "id": "failure_neural",
+    "issue": "integrate neural network to predict holidays",
+    "expected": [],
+    "insufficient": true,
+    "returned": [],
+    "top1_conf": null,
+    "top1_reason": null,
+    "top1_source": null,
+    "correct_refusal": true,
+    "hit_at_1": true,
+    "hit_at_5": true
+  },
+  {
+    "id": "failure_nonsense",
+    "issue": "fix blockchain integration with cloud sync",
+    "expected": [],
+    "insufficient": true,
+    "returned": [],
+    "top1_conf": null,
+    "top1_reason": null,
+    "top1_source": null,
+    "correct_refusal": true,
+    "hit_at_1": true,
+    "hit_at_5": true
+  }
+]

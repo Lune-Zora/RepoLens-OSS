@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "output": "E:\\osspj\\参赛提交-20261030\\验证\\model-config-20261030-024249",
+  "commands": [
+    {
+      "label": "unconfigured-with-env-file",
+      "argv": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "-c",
+        "import sys,json;sys.path.insert(0,'E:\\\\osspj\\\\人工智能\\\\repo');from replens.planner import build_planner;from replens.patchgen import build_patch_generator;from web.app import _env_status;p=build_planner();g=build_patch_generator();print(json.dumps({'planner':type(p).__name__,'patch_generator':type(g).__name__,'web':_env_status()['llm']}))"
+      ],
+      "exit_code": 0,
+      "seconds": 0.953
+    },
+    {
+      "label": "script-env-file",
+      "argv": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "-c",
+        "import sys,json;sys.path.insert(0,'E:\\\\osspj\\\\人工智能\\\\repo\\\\scripts');import llm_env;d=llm_env.resolve_config('E:\\\\osspj\\\\参赛提交-20261030\\\\验证\\\\model-config-20261030-024249\\\\isolated-config-fixture\\\\.env');print(json.dumps({k:v for k,v in d.items() if 'KEY' not in k}))"
+      ],
+      "exit_code": 0,
+      "seconds": 0.39
+    },
+    {
+      "label": "environment-overrides-file",
+      "argv": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "-c",
+        "import sys,json;sys.path.insert(0,'E:\\\\osspj\\\\人工智能\\\\repo\\\\scripts');import llm_env;d=llm_env.resolve_config('E:\\\\osspj\\\\参赛提交-20261030\\\\验证\\\\model-config-20261030-024249\\\\isolated-config-fixture\\\\.env');print(json.dumps({k:v for k,v in d.items() if 'KEY' not in k}))"
+      ],
+      "exit_code": 0,
+      "seconds": 0.25
+    },
+    {
+      "label": "configured-factories",
+      "argv": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "-c",
+        "import sys,json;sys.path.insert(0,'E:\\\\osspj\\\\人工智能\\\\repo');from replens.planner import build_planner;from replens.patchgen import build_patch_generator;from web.app import _env_status;p=build_planner();g=build_patch_generator();print(json.dumps({'planner':type(p).__name__,'patch_generator':type(g).__name__,'web':_env_status()['llm']}))"
+      ],
+      "exit_code": 0,
+      "seconds": 0.953
+    },
+    {
+      "label": "documented-env-check",
+      "argv": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "scripts/llm_env.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.266
+    },
+    {
+      "label": "documented-cli-index",
+      "argv": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "-m",
+        "replens",
+        "index",
+        "examples/demo_repo"
+      ],
+      "exit_code": 0,
+      "seconds": 0.375
+    },
+    {
+      "label": "documented-cli-plan",
+      "argv": [
+        "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "-m",
+        "replens",
+        "plan",
+        "examples/demo_repo",
+        "--issue",
+        "date string with surrounding whitespace fails to parse"
+      ],
+      "exit_code": 0,
+      "seconds": 4.703
+    }
+  ],
+  "scope": "配置与启动验证，非新的补丁修复实验",
+  "unconfigured_probe": {
+    "planner": "RulePlanner",
+    "patch_generator": "RulePatchGenerator",
+    "web": {
+      "base_url": "",
+      "model": "",
+      "configured": false
+    }
+  },
+  "file_config": {
+    "REPLENS_LLM_BASE_URL": "http://127.0.0.1:11434/v1",
+    "REPLENS_LLM_MODEL": "file-model-for-config-test",
+    "REPLENS_LLM_N_CANDIDATES": "4",
+    "REPLENS_REQUIRE_LLM": "0"
+  },
+  "priority_config": {
+    "REPLENS_LLM_BASE_URL": "http://127.0.0.1:11434/v1",
+    "REPLENS_LLM_MODEL": "qwen2.5-coder:1.5b",
+    "REPLENS_LLM_N_CANDIDATES": "4",
+    "REPLENS_REQUIRE_LLM": "1"
+  },
+  "configured_probe": {
+    "planner": "LLMPlanner",
+    "patch_generator": "LLMPatchGenerator",
+    "web": {
+      "base_url": "http://127.0.0.1:11434/v1",
+      "model": "qwen2.5-coder:1.5b",
+      "configured": true
+    }
+  },
+  "cli_plan_generated_by": "llm",
+  "web_plan_generated_by": "llm",
+  "web_process": {
+    "argv": [
+      "C:\\Users\\19248\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "-m",
+      "uvicorn",
+      "web.app:app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "12139"
+    ],
+    "pid": 61484,
+    "port": 12139,
+    "binding": "loopback temporary port"
+  },
+  "ui_configuration_label": "已配置，推理未验证",
+  "verification_server_stopped": true,
+  "finished_at": "2026-10-30T02:43:01.571113+08:00"
+}

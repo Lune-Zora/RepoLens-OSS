@@ -1,0 +1,165 @@
+[
+  {
+    "case": "chinese-existing",
+    "request": {
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+      "issue": "1900年被错误判断为闰年",
+      "model": "qwen35-9b-unc:latest",
+      "top_k": 5
+    },
+    "response": {
+      "insufficient_evidence": false,
+      "evidences": [
+        {
+          "ref": "src/dateparse/utils.py:40",
+          "type": "function",
+          "name": "is_leap_year",
+          "confidence": 0.0,
+          "reason": "用户核心诉求是解决'1900年'这一特定边界条件的闰年判断问题。候选函数`is_leap_year`的核心逻辑正是处理整百年份（% 100 == 0）与四百年份（% 400 == 0）的优先级关系，完全契合用户针对1900年的业务含义需求。虽然代码简介未显式提及1900年，但这属于数据层面的描述，不影响其处理该输入类型的功能范围。",
+          "source": "intent_target",
+          "signature": "def is_leap_year(year)",
+          "code": "def is_leap_year(year):\n    \"\"\"Determine whether a year is a leap year.\n\n    Args:\n        year: integer year.\n\n    Returns:\n        True if the year is a leap year.\n\n    Note:\n        Century rule is wrong — treats every year divisible by 100 as a leap\n        year, so 1900 is wrongly reported as leap. This is the bug to fix.\n    \"\"\"\n    if year % 400 == 0:\n        return True\n    if year % 100 == 0:\n        return True\n    return year % 4 == 0"
+        },
+        {
+          "ref": "src/dateparse/utils.py:1",
+          "type": "module",
+          "name": "src/dateparse/utils.py",
+          "confidence": 0.85,
+          "reason": "代码片段命中检索词（module @ src/dateparse/utils.py:1）",
+          "source": "keyword_match",
+          "signature": "",
+          "code": "\"\"\"General date math utilities.\"\"\"\nimport datetime\n\n\ndef days_between(a, b):\n    \"\"\"Return the number of days between two date strings (absolute value).\n\n    Args:\n        a: start date string \"YYYY-MM-DD\".\n        b: end date string \"YYYY-MM-DD\".\n\n    Returns:\n        Non-negative integer day count.\n\n    Note:\n        Subtraction order is reversed — returns a negative value when a < b.\n        This is the bug to fix.\n    \"\"\"\n    from .parser import parse_date\n    da = parse_date(a)\n    db = parse_date(b)\n    return (da - db).days\n\n\ndef add_days(s, n):\n    \"\"\"Add n days to a date string and return a date object.\n\n    Args:\n        s: date string \"YYYY-MM-DD\".\n        n: integer number of days (can be negative).\n\n    Returns:\n        datetime.date object.\n    \"\"\"\n    from .parser import parse_date\n    d = parse_date(s)\n    return d + datetime.timedelta(days=n)\n\n\ndef is_leap_year(year):\n    \"\"\"Determine whether a year is a leap year.\n\n    Args:\n        year: integer year.\n\n    Returns:\n        True if the year is a leap year.\n\n    Note:\n        Century rule is wrong — treats every year divisible by 100 as a leap\n        year, so 1900 is wrongly reported as leap. This is the bug to fix.\n    \"\"\"\n    if year % 400 == 0:\n        return True\n    if year % 100 == 0:\n        return True\n    return year % 4 == 0\n"
+        },
+        {
+          "ref": "src/dateparse/formatter.py:5",
+          "type": "function",
+          "name": "format_date",
+          "confidence": 0.7,
+          "reason": "代码片段命中检索词（function @ src/dateparse/formatter.py:5）",
+          "source": "keyword_match",
+          "signature": "def format_date(d)",
+          "code": "def format_date(d):\n    \"\"\"Format a date object as YYYY-MM-DD with zero padding.\n\n    Args:\n        d: datetime.date object.\n\n    Returns:\n        String like \"2024-01-05\".\n\n    Note:\n        Uses plain attribute access without zero-padding, so single-digit\n        months/days render as \"2024-1-5\". This is the bug to fix.\n    \"\"\"\n    return f\"{d.year}-{d.month}-{d.day}\""
+        },
+        {
+          "ref": "src/dateparse/formatter.py:1",
+          "type": "module",
+          "name": "src/dateparse/formatter.py",
+          "confidence": 0.55,
+          "reason": "代码片段命中检索词（module @ src/dateparse/formatter.py:1）",
+          "source": "keyword_match",
+          "signature": "",
+          "code": "\"\"\"Date formatting utilities.\"\"\"\nimport datetime\n\n\ndef format_date(d):\n    \"\"\"Format a date object as YYYY-MM-DD with zero padding.\n\n    Args:\n        d: datetime.date object.\n\n    Returns:\n        String like \"2024-01-05\".\n\n    Note:\n        Uses plain attribute access without zero-padding, so single-digit\n        months/days render as \"2024-1-5\". This is the bug to fix.\n    \"\"\"\n    return f\"{d.year}-{d.month}-{d.day}\"\n\n\ndef format_iso(dt):\n    \"\"\"Format a datetime as an ISO 8601 string.\"\"\"\n    return dt.isoformat()\n"
+        }
+      ],
+      "plan": {
+        "root_cause": "The `is_leap_year` function incorrectly prioritizes the century rule (divisible by 100) over the quadricentennial rule (divisible by 400). Consequently, years like 1900 are returned as leap years because the check for `% 400 == 0` happens first and fails, while the subsequent check for `% 100 == 0` succeeds.",
+        "affected_scope": [
+          "src/dateparse/utils.py"
+        ],
+        "files_to_modify": [
+          "src/dateparse/utils.py"
+        ],
+        "steps": [
+          "Locate the `is_leap_year` function in `src/dateparse/utils.py` (around line 40).",
+          "Refactor the logic to check for divisibility by 4 (`% 4 == 0`) first.",
+          "Then check for divisibility by 100 (`% 100 == 0`).",
+          "Finally, check for divisibility by 400 (`% 400 == 0`).",
+          "Update the docstring's 'Note' section to reflect the corrected logic or remove the specific 'Century rule is wrong' comment if it becomes less relevant."
+        ],
+        "risks": [
+          "The function signature remains `year: integer`, so no type changes are needed.",
+          "The return type is `bool`, which handles all three branches correctly."
+        ],
+        "regression_test": "Verify that the year 1900 now returns `False` (non-leap), while 2000 returns `True` (leap) and 2024 returns `True` (leap).",
+        "generated_by": "llm"
+      },
+      "understanding": {
+        "original_issue": "1900年被错误判断为闰年",
+        "summary": "1900年被错误判断为闰年",
+        "expected_behavior": "根据公历规则，能被4整除的年份是闰年，但能被100整除的年份必须是400的倍数才是闰年。因此1900年（能被4和100整除）应被判断为非闰年，除非它是400的倍数。",
+        "search_query": "is_leap_year 1900",
+        "scope": "matched",
+        "explanation": "用户核心诉求是解决'1900年'这一特定边界条件的闰年判断问题。候选函数`is_leap_year`的核心逻辑正是处理整百年份（% 100 == 0）与四百年份（% 400 == 0）的优先级关系，完全契合用户针对1900年的业务含义需求。虽然代码简介未显式提及1900年，但这属于数据层面的描述，不影响其处理该输入类型的功能范围。",
+        "targets": [
+          {
+            "ref": "src/dateparse/utils.py:40",
+            "path": "src/dateparse/utils.py",
+            "name": "is_leap_year",
+            "start_line": 40
+          }
+        ],
+        "repository_functions": [
+          "src/dateparse/formatter.py:format_date",
+          "src/dateparse/formatter.py:format_iso",
+          "src/dateparse/parser.py:parse_date",
+          "src/dateparse/parser.py:parse_datetime",
+          "src/dateparse/utils.py:days_between",
+          "src/dateparse/utils.py:add_days",
+          "src/dateparse/utils.py:is_leap_year",
+          "src/dateparse/validator.py:is_valid_date",
+          "src/dateparse/validator.py:validate_range",
+          "src/dateparse/validator.py:is_weekend"
+        ],
+        "catalog_total": 10,
+        "catalog_shown": 10,
+        "model": "qwen35-9b-unc:latest",
+        "generated_by": "llm",
+        "error": "",
+        "retrieval_mode": "llm_grounded_source"
+      }
+    }
+  },
+  {
+    "case": "absent-feature",
+    "request": {
+      "repo": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo",
+      "issue": "布尔值字符串 true/false 前后有空格时解析失败",
+      "model": "qwen35-9b-unc:latest",
+      "top_k": 5
+    },
+    "response": {
+      "insufficient_evidence": true,
+      "evidences": [],
+      "plan": {
+        "root_cause": "证据不足，无法确认问题根因。",
+        "affected_scope": [],
+        "files_to_modify": [],
+        "steps": [
+          "补充问题描述或确认目标仓库是否包含相关代码。"
+        ],
+        "risks": [
+          "无依据推断风险"
+        ],
+        "regression_test": "",
+        "generated_by": "rule"
+      },
+      "understanding": {
+        "original_issue": "布尔值字符串 true/false 前后有空格时解析失败",
+        "summary": "布尔值字符串 true/false 前后有空格时解析失败",
+        "expected_behavior": "解析函数应能忽略布尔值字符串前后的空白字符，正确返回 Python 的 True 或 False。",
+        "search_query": "parse_boolean strip whitespace",
+        "scope": "not_found",
+        "explanation": "候选功能与原始问题不匹配：用户实际输入的是‘布尔值字符串’（如 'true'），而候选函数 `parse_datetime` 专为‘日期时间格式’（YYYY-MM-DD HH:MM:SS）设计。两者业务含义不同，属于功能错配。",
+        "targets": [],
+        "repository_functions": [
+          "src/dateparse/formatter.py:format_date",
+          "src/dateparse/formatter.py:format_iso",
+          "src/dateparse/parser.py:parse_date",
+          "src/dateparse/parser.py:parse_datetime",
+          "src/dateparse/utils.py:days_between",
+          "src/dateparse/utils.py:add_days",
+          "src/dateparse/utils.py:is_leap_year",
+          "src/dateparse/validator.py:is_valid_date",
+          "src/dateparse/validator.py:validate_range",
+          "src/dateparse/validator.py:is_weekend"
+        ],
+        "catalog_total": 10,
+        "catalog_shown": 10,
+        "model": "qwen35-9b-unc:latest",
+        "generated_by": "llm",
+        "error": "",
+        "retrieval_mode": "llm_grounded_source"
+      }
+    }
+  }
+]

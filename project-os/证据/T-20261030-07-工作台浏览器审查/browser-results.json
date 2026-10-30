@@ -1,0 +1,697 @@
+{
+  "page_errors": [],
+  "console_errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request)"
+  ],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8000/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/static/style.css",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/static/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/repos",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/datasets",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/env",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/fs/list",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/init",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/index",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/eval",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/eval",
+      "status": 400
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/compliance",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/run",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/api/verify",
+      "status": 200
+    }
+  ],
+  "steps": [
+    {
+      "name": "navigation-overview",
+      "title": "概览"
+    },
+    {
+      "name": "navigation-analyze",
+      "title": "定位 / 计划"
+    },
+    {
+      "name": "navigation-run",
+      "title": "完整闭环"
+    },
+    {
+      "name": "navigation-eval",
+      "title": "评测"
+    },
+    {
+      "name": "navigation-compliance",
+      "title": "合规披露"
+    },
+    {
+      "name": "navigation-mine",
+      "title": "评测集挖掘"
+    },
+    {
+      "name": "directory-picker",
+      "result": {
+        "http_status": 200,
+        "payload_file": "directory-response.json",
+        "error": null,
+        "visible_entries": 3
+      },
+      "seconds": 0.088
+    },
+    {
+      "name": "import-demo",
+      "result": {
+        "http_status": 200,
+        "payload_file": "init-response.json",
+        "error": null
+      },
+      "seconds": 0.118
+    },
+    {
+      "name": "index-demo",
+      "result": {
+        "http_status": 200,
+        "payload_file": "index-response.json",
+        "error": null
+      },
+      "seconds": 0.073
+    },
+    {
+      "name": "evaluate-demo",
+      "result": {
+        "http_status": 200,
+        "payload_file": "eval-response.json",
+        "error": null
+      },
+      "seconds": 0.341
+    },
+    {
+      "name": "listed-schema-selected",
+      "result": {
+        "http_status": 400,
+        "payload_file": "schema-eval-response.json",
+        "error": "评测集必须是非空 JSON 数组"
+      },
+      "seconds": 0.023
+    },
+    {
+      "name": "project-compliance",
+      "result": {
+        "http_status": 200,
+        "payload_file": "compliance-response.json",
+        "error": null
+      },
+      "seconds": 1.047
+    },
+    {
+      "name": "full-model-demo-with-acceptance",
+      "result": {
+        "http_status": 200,
+        "status": "VERIFIED",
+        "error": null,
+        "patch_note": "LLM 生成 3 个有效候选。；补丁应用成功（JSON 替换规则，共 3 处）。（主测试筛选通过，待最终验收）",
+        "provenance": "E:\\osspj\\人工智能\\repo\\examples\\demo_repo\\.replens\\provenance\\20261030T072921.053868Z-accbb14c",
+        "payload_file": "run-response.json"
+      },
+      "seconds": 21.321
+    },
+    {
+      "name": "replay-demo",
+      "result": {
+        "http_status": 200,
+        "payload_file": "verify-response.json",
+        "error": null
+      },
+      "seconds": 9.284
+    },
+    {
+      "name": "download-report",
+      "result": {
+        "filename": "replens_report.md",
+        "bytes": 8634
+      },
+      "seconds": 0.499
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "view": "overview",
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "mainWidth": 1208,
+      "contentWidth": 1208,
+      "contentScrollWidth": 1208,
+      "offscreenControls": []
+    },
+    {
+      "width": 1440,
+      "view": "analyze",
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "mainWidth": 1208,
+      "contentWidth": 1208,
+      "contentScrollWidth": 1208,
+      "offscreenControls": []
+    },
+    {
+      "width": 1440,
+      "view": "run",
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "mainWidth": 1208,
+      "contentWidth": 1208,
+      "contentScrollWidth": 1208,
+      "offscreenControls": []
+    },
+    {
+      "width": 1440,
+      "view": "eval",
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "mainWidth": 1208,
+      "contentWidth": 1208,
+      "contentScrollWidth": 1208,
+      "offscreenControls": []
+    },
+    {
+      "width": 1440,
+      "view": "compliance",
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "mainWidth": 1208,
+      "contentWidth": 1208,
+      "contentScrollWidth": 1208,
+      "offscreenControls": []
+    },
+    {
+      "width": 1440,
+      "view": "mine",
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "mainWidth": 1208,
+      "contentWidth": 1208,
+      "contentScrollWidth": 1208,
+      "offscreenControls": []
+    },
+    {
+      "width": 1366,
+      "view": "overview",
+      "viewport": 1366,
+      "documentWidth": 1366,
+      "mainWidth": 1134,
+      "contentWidth": 1134,
+      "contentScrollWidth": 1134,
+      "offscreenControls": []
+    },
+    {
+      "width": 1366,
+      "view": "analyze",
+      "viewport": 1366,
+      "documentWidth": 1366,
+      "mainWidth": 1134,
+      "contentWidth": 1134,
+      "contentScrollWidth": 1134,
+      "offscreenControls": []
+    },
+    {
+      "width": 1366,
+      "view": "run",
+      "viewport": 1366,
+      "documentWidth": 1366,
+      "mainWidth": 1134,
+      "contentWidth": 1134,
+      "contentScrollWidth": 1134,
+      "offscreenControls": []
+    },
+    {
+      "width": 1366,
+      "view": "eval",
+      "viewport": 1366,
+      "documentWidth": 1366,
+      "mainWidth": 1134,
+      "contentWidth": 1134,
+      "contentScrollWidth": 1134,
+      "offscreenControls": []
+    },
+    {
+      "width": 1366,
+      "view": "compliance",
+      "viewport": 1366,
+      "documentWidth": 1366,
+      "mainWidth": 1134,
+      "contentWidth": 1134,
+      "contentScrollWidth": 1134,
+      "offscreenControls": []
+    },
+    {
+      "width": 1366,
+      "view": "mine",
+      "viewport": 1366,
+      "documentWidth": 1366,
+      "mainWidth": 1134,
+      "contentWidth": 1134,
+      "contentScrollWidth": 1134,
+      "offscreenControls": []
+    },
+    {
+      "width": 1024,
+      "view": "overview",
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "mainWidth": 792,
+      "contentWidth": 792,
+      "contentScrollWidth": 792,
+      "offscreenControls": []
+    },
+    {
+      "width": 1024,
+      "view": "analyze",
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "mainWidth": 792,
+      "contentWidth": 792,
+      "contentScrollWidth": 792,
+      "offscreenControls": []
+    },
+    {
+      "width": 1024,
+      "view": "run",
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "mainWidth": 792,
+      "contentWidth": 792,
+      "contentScrollWidth": 792,
+      "offscreenControls": []
+    },
+    {
+      "width": 1024,
+      "view": "eval",
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "mainWidth": 792,
+      "contentWidth": 792,
+      "contentScrollWidth": 792,
+      "offscreenControls": []
+    },
+    {
+      "width": 1024,
+      "view": "compliance",
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "mainWidth": 792,
+      "contentWidth": 792,
+      "contentScrollWidth": 792,
+      "offscreenControls": []
+    },
+    {
+      "width": 1024,
+      "view": "mine",
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "mainWidth": 792,
+      "contentWidth": 792,
+      "contentScrollWidth": 792,
+      "offscreenControls": []
+    },
+    {
+      "width": 390,
+      "view": "overview",
+      "viewport": 390,
+      "documentWidth": 459,
+      "mainWidth": 390,
+      "contentWidth": 390,
+      "contentScrollWidth": 390,
+      "offscreenControls": [
+        {
+          "id": "btnInit",
+          "right": 404
+        },
+        {
+          "id": "btnIndex",
+          "right": 459
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "view": "analyze",
+      "viewport": 390,
+      "documentWidth": 459,
+      "mainWidth": 390,
+      "contentWidth": 390,
+      "contentScrollWidth": 390,
+      "offscreenControls": [
+        {
+          "id": "btnInit",
+          "right": 404
+        },
+        {
+          "id": "btnIndex",
+          "right": 459
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "view": "run",
+      "viewport": 390,
+      "documentWidth": 459,
+      "mainWidth": 390,
+      "contentWidth": 390,
+      "contentScrollWidth": 390,
+      "offscreenControls": [
+        {
+          "id": "btnInit",
+          "right": 404
+        },
+        {
+          "id": "btnIndex",
+          "right": 459
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "view": "eval",
+      "viewport": 390,
+      "documentWidth": 459,
+      "mainWidth": 390,
+      "contentWidth": 390,
+      "contentScrollWidth": 390,
+      "offscreenControls": [
+        {
+          "id": "btnInit",
+          "right": 404
+        },
+        {
+          "id": "btnIndex",
+          "right": 459
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "view": "compliance",
+      "viewport": 390,
+      "documentWidth": 459,
+      "mainWidth": 390,
+      "contentWidth": 390,
+      "contentScrollWidth": 390,
+      "offscreenControls": [
+        {
+          "id": "btnInit",
+          "right": 404
+        },
+        {
+          "id": "btnIndex",
+          "right": 459
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "view": "mine",
+      "viewport": 390,
+      "documentWidth": 459,
+      "mainWidth": 390,
+      "contentWidth": 390,
+      "contentScrollWidth": 390,
+      "offscreenControls": [
+        {
+          "id": "btnInit",
+          "right": 404
+        },
+        {
+          "id": "btnIndex",
+          "right": 459
+        }
+      ]
+    }
+  ],
+  "dataset_options": [
+    "dataset.json",
+    "dataset.schema.json",
+    "datasets.manifest.json",
+    "real_dataset_extended.json",
+    "real_dataset_loguru.json",
+    "real_dataset_mined.json",
+    "real_dataset_pypdf.json",
+    "real_dataset_tqdm.json",
+    "人工复核判定.json"
+  ],
+  "compliance_badges": [
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "待核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "待核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "不适用",
+      "classes": "badge pass"
+    },
+    {
+      "text": "不适用",
+      "classes": "badge pass"
+    },
+    {
+      "text": "不适用",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "待核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "待核验",
+      "classes": "badge pass"
+    },
+    {
+      "text": "已核验",
+      "classes": "badge pass"
+    }
+  ],
+  "run_defaults": {
+    "acceptance_suite": "",
+    "description": "定位 → 计划 → 补丁生成 → 测试验证 → 报告，一键完成。零 LLM key 离线可跑（规则引擎自动兜底）。"
+  },
+  "run_button_disabled_while_pending": false,
+  "verify_display": "材料核验\t重放一致性\t修复结论\nPASS\tPASS\tVERIFIED\n材料、逐测试身份/状态及统一验收结论重放一致\n重放报告",
+  "run_section_titles": [
+    "代码定位证据",
+    "修改计划\nLLM 生成",
+    "测试验证",
+    "执行证据（失败轨迹 → 证伪式重检索）",
+    "测试翻转预测（反事实推理）",
+    "补丁内容（diff）",
+    "自动生成的辅助回归（含冒烟检查，不作为独立验收）",
+    "冻结的独立行为验收",
+    "建议新增的回归测试"
+  ]
+}

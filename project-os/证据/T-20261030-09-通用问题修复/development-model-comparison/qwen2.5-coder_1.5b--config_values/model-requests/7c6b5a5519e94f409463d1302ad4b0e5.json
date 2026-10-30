@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-30T08:17:44.336743+00:00",
+  "purpose": "plan",
+  "context": {},
+  "request": {
+    "model": "qwen2.5-coder:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "你是开源贡献辅助工具。基于给定的代码证据生成结构化修改计划。只允许引用提供的证据，不得编造不存在的文件或行号。严格输出 JSON，字段：root_cause(字符串)、affected_scope(数组)、files_to_modify(数组)、steps(数组)、risks(数组)、regression_test(字符串)。"
+      },
+      {
+        "role": "user",
+        "content": "问题描述：布尔值字符串 true/false 前后有空格、制表符或换行时也应该能够解析，大小写不敏感。其他内容仍应报 ValueError。\n\n检索到的代码证据：\n- evidence=api.py:8 (function format_flag): 在 `api.py` 文件的 `format_flag` 函数中，如果输入的字符串是 \"true\" 或 \"false\"，无论前后是否有空格、制表符或换行，都应该能够正确解析为布尔值。在 `api.py` 文件的 `read_flag` 函数中，如果输入的字符串不是 \"true\" 或 \"false\"，应该抛出 `ValueError` 异常。\n[代码]\n0008 | def format_flag(value):\n0009 |     return \"true\" if value else \"false\"\n[/代码]\n- evidence=api.py:1 (function read_flag): 在 `api.py` 文件的 `format_flag` 函数中，如果输入的字符串是 \"true\" 或 \"false\"，无论前后是否有空格、制表符或换行，都应该能够正确解析为布尔值。在 `api.py` 文件的 `read_flag` 函数中，如果输入的字符串不是 \"true\" 或 \"false\"，应该抛出 `ValueError` 异常。\n[代码]\n0001 | def read_flag(value):\n0002 |     key = value.lower()\n0003 |     if key not in {\"true\", \"false\"}:\n0004 |         raise ValueError(\"unsupported flag\")\n0005 |     return key == \"true\"\n[/代码]\n- evidence=tests/test_public.py:4 (class PublicTests): 代码片段命中检索词（class @ tests/test_public.py:4）\n[代码]\n0004 | class PublicTests(unittest.TestCase):\n0005 |     def test_true(self): self.assertIs(api.read_flag(\"true\"), True)\n0006 |     def test_false(self): self.assertIs(api.read_flag(\"FALSE\"), False)\n0007 |     def test_invalid(self):\n0008 |         with self.assertRaises(ValueError): api.read_flag(\"unknown\")\n0009 |     def test_format(self): self.assertEqual(api.format_flag(False), \"false\")\n[/代码]\n- evidence=tests/test_public.py:5 (method test_true): 符号名/文档命中关键词: true\n[代码]\n0005 | def test_true(self): self.assertIs(api.read_flag(\"true\"), True)\n[/代码]\n- evidence=tests/test_public.py:9 (method test_format): 与 format_flag 存在调用关系（调用图扩展）\n[代码]\n0009 | def test_format(self): self.assertEqual(api.format_flag(False), \"false\")\n[/代码]\n- evidence=tests/test_public.py:6 (method test_false): 与 read_flag 存在调用关系（调用图扩展）\n[代码]\n0006 | def test_false(self): self.assertIs(api.read_flag(\"FALSE\"), False)\n[/代码]\n- evidence=tests/test_public.py:7 (method test_invalid): 与 read_flag 存在调用关系（调用图扩展）\n[代码]\n0007 | def test_invalid(self):\n0008 |         with self.assertRaises(ValueError): api.read_flag(\"unknown\")\n[/代码]"
+      }
+    ],
+    "temperature": 0.2,
+    "max_tokens": 2200,
+    "reasoning_effort": "none",
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "status": "success",
+  "finished_at": "2026-10-30T08:17:55.671811+00:00",
+  "duration_seconds": 11.328,
+  "response_text": "{\"id\":\"chatcmpl-929\",\"object\":\"chat.completion\",\"created\":1793348275,\"model\":\"qwen2.5-coder:1.5b\",\"system_fingerprint\":\"fp_ollama\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"root_cause\\\": \\\"输入的字符串前后有空格、制表符或换行时应该能够正确解析为布尔值，大小写不敏感。\\\",\\n  \\\"affected_scope\\\": [\\\"api.py\\\", \\\"tests/test_public.py\\\"],\\n  \\\"files_to_modify\\\": [\\n    {\\n      \\\"file_path\\\": \\\"api.py\\\",\\n      \\\"lines\\\": [\\n        8, 1\\n      ]\\n    }\\n  ],\\n  \\\"steps\\\": [\\n    \\\"在 `api.py` 文件的 `format_flag` 函数中，修改 `if value` 为 `if value.strip().lower() == \\\",true,\\\"`，以处理前后有空格、制表符或换行的情况。\\\",\\n    \\\"在 `api.py` 文件的 `read_flag` 函数中，修改 `if key not in {\\\",true,\\\"}` 为 `if key.lower() not in {\\\",true,\\\"}`，以处理大小写不敏感的情况。\\\"\\n  ],\\n  \\\"risks\\\": [\\n    \\\"可能会影响现有代码的兼容性，因为 `format_flag` 函数的输入格式可能会发生变化。\\\"\\n  ],\\n  \\\"regression_test\\\": \\\"在 `tests/test_public.py` 文件中添加新的测试用例，以验证 `format_flag` 函数的正确性。例如，添加一个测试用例 `test_format_with_spaces`，输入 \\\" }\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":800,\"prompt_tokens_details\":{\"cached_tokens\":3},\"completion_tokens\":288,\"total_tokens\":1088}}\n",
+  "parsed": {
+    "root_cause": "输入的字符串前后有空格、制表符或换行时应该能够正确解析为布尔值，大小写不敏感。",
+    "affected_scope": [
+      "api.py",
+      "tests/test_public.py"
+    ],
+    "files_to_modify": [
+      {
+        "file_path": "api.py",
+        "lines": [
+          8,
+          1
+        ]
+      }
+    ],
+    "steps": [
+      "在 `api.py` 文件的 `format_flag` 函数中，修改 `if value` 为 `if value.strip().lower() == ",
+      true,
+      "`，以处理前后有空格、制表符或换行的情况。",
+      "在 `api.py` 文件的 `read_flag` 函数中，修改 `if key not in {",
+      true,
+      "}` 为 `if key.lower() not in {",
+      true,
+      "}`，以处理大小写不敏感的情况。"
+    ],
+    "risks": [
+      "可能会影响现有代码的兼容性，因为 `format_flag` 函数的输入格式可能会发生变化。"
+    ],
+    "regression_test": "在 `tests/test_public.py` 文件中添加新的测试用例，以验证 `format_flag` 函数的正确性。例如，添加一个测试用例 `test_format_with_spaces`，输入 "
+  },
+  "error": null,
+  "response_model": "qwen2.5-coder:1.5b",
+  "usage": {
+    "prompt_tokens": 800,
+    "prompt_tokens_details": {
+      "cached_tokens": 3
+    },
+    "completion_tokens": 288,
+    "total_tokens": 1088
+  }
+}
